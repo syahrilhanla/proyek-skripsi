@@ -7,7 +7,7 @@
   justify-content: space-between;
   align-items: center;
   background-color: #569AFF;
-  font-family: roboto;
+  font-family: 'Roboto';
 }
 
 .logo {
@@ -16,6 +16,8 @@
   align-items: center;
   justify-content: space-between;
   margin-left: 3rem;
+  font-weight: lighter;
+  font-size: 19px;
 }
 
 .logo > span {
