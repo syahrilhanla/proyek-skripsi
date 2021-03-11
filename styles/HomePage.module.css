@@ -56,6 +56,48 @@ section.billBoard > .startButton {
   opacity: 0.80
 }
 
+.contentWrap {
+  color: 0000;
+  font-size: 28px;
+  text-align: center;
+  max-width: 90%;
+}
+
 .sectionB {
-  color: black;
+  background-color: peachpuff;
+}
+
+.sectionB > .contentWrap {
+  margin: 3rem auto;
+}
+
+.sectionB > .contentWrap > h1 {
+  font-weight: 400;
+}
+
+.sectionB > .contentWrap ul {
+  margin-left: 0px;
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: space-around
+}
+
+.sectionB > .contentWrap li {
+  border: 1px solid #4444
+}
+
+.sectionB > .contentWrap h3 {
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.sectionB > .contentWrap p {
+  font-size: 18px;
+}
+
+@media (max-width: 768px) {
+  .sectionB > .contentWrap ul {
+  grid-template-columns: 1fr;
+}
 }
