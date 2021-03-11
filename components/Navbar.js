@@ -132,7 +132,7 @@ export default function Navbar() {
             <MenuIcon />
           </IconButton>
           <div className={classes.title}>
-            <div class={classes.logo}>
+            <div className={classes.logo}>
               <Image src="/stats.svg" height={35} width={40} />
               <h3 style={{ paddingTop: '5px', margin: '0px' }}>I/A Statistics</h3>
             </div>

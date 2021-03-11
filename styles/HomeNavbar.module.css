@@ -1,0 +1,38 @@
+
+.navbar {
+  height: 3.5rem;
+  width: 100%;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #569AFF;
+  font-family: roboto;
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 3rem;
+}
+
+.logo > span {
+  margin-left: .7rem
+}
+
+.links {
+  margin-right: 3rem;
+} 
+
+.links > ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+}
+
+.links > ul > li {
+  padding-left: 2.5rem;
+  cursor: pointer;
+}
