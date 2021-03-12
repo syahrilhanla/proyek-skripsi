@@ -128,6 +128,7 @@ section.billBoard > .startButton {
 
 .sectionC > .contentWrap > h1, .sectionC > .contentWrap h3 {
   font-weight: 400;
+  margin-left: 2rem;
 }
 
 .sectionC > .contentWrap h3 {
