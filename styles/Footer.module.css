@@ -35,7 +35,10 @@
 
 .links > ul {
   list-style-type: none;
-  width: 60%;
+}
+
+.links li {
+  padding-bottom: 0.4rem;
 }
 
 .identityGrid {
@@ -70,5 +73,17 @@
 
   .grid {
   grid-template-columns: 1fr;
+  }
+
+  .links li{
+    padding-bottom: 0.7rem;
+    cursor: pointer
+  }
+
+  .links {
+    margin-left: -2.5rem;
+  }
+    .footerDesc {
+    width: 100%;
   }
 }
