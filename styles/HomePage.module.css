@@ -1,3 +1,14 @@
+/* ============================GLOBAL============================== */
+.contentWrap {
+  color: 0000;
+  font-size: 28px;
+  text-align: center;
+  max-width: 90%;
+}
+/* ============================GLOBAL============================== */
+
+
+/* =========================SECTION A============================= */
 section.billBoard {
   width: 100%;
   height: 60vh;
@@ -56,12 +67,9 @@ section.billBoard > .startButton {
   opacity: 0.80
 }
 
-.contentWrap {
-  color: 0000;
-  font-size: 28px;
-  text-align: center;
-  max-width: 90%;
-}
+/* =========================SECTION A============================= */
+
+/* =========================SECTION B============================= */
 
 .sectionB > .contentWrap {
   margin: 3rem auto;
@@ -87,19 +95,83 @@ section.billBoard > .startButton {
   font-size: 24px;
   font-weight: 400;
   margin-bottom: 0px;
+  margin-top: 0.2rem;
 }
 
-.sectionB > .contentWrap p {
+.sectionB > .contentWrap p, .sectionC > .contentWrap p {
   font-size: 18px;
   margin-top: 0px;
+  padding-bottom: 2rem;
 }
 
 .sectionB > .contentWrap li > span {
   margin-bottom: 0px;
 }
 
+/* =========================SECTION B============================= */
+
+/* =========================SECTION C============================= */
+.sectionC {
+  background-color: #8f8e8e;
+  width: 100%;
+  height: 50vh;
+  font-family: 'Roboto';
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 36px;
+  text-align: center;
+  color: #fff;
+  padding: 0px 5rem 0px 0rem;
+}
+
+.sectionC > .contentWrap > h1, .sectionC > .contentWrap h3 {
+  font-weight: 400;
+}
+
+.sectionC > .contentWrap h3 {
+  margin-top: 0px;
+  margin-right: -2rem
+}
+
+.sectionC .gridKD li {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  margin-left: -6rem;
+  align-items: flex-start;
+  justify-items: center;
+}
+
+
+/* =========================SECTION C============================= */
+
+/* =========================MEDIA QUERY============================= */
+
 @media (max-width: 768px) {
   .sectionB > .contentWrap ul {
    grid-template-columns: 1fr;
   }
+
+  .sectionC {
+    padding: 0px;
+    height: 65vh
+  }
+
+  .sectionC .gridKD li {
+    margin-left: -2rem;
+    align-items: center;
+  }
+
+.sectionC > .contentWrap h3 {
+    margin-right: 0rem
+  }
+
+.sectionC > .contentWrap p {
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    font-size: 17px;
+    line-height: normal;
+  }  
 }
+/* =========================MEDIA QUERY============================= */
