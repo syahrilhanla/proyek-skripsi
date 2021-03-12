@@ -5,7 +5,7 @@ import Image from 'next/image';
 const Footer = () => {
   return (
     <div className={footerStyles.footer}>
-      <div class={footerStyles.footerHeader}>
+      <div className={footerStyles.footerHeader}>
         <Image src="/stats.svg" height={35} width={40} /> <span><h3>I/A Statistics</h3></span>
       </div>
       <div className={footerStyles.container}>
@@ -26,18 +26,20 @@ const Footer = () => {
           <p className={footerStyles.copyright}>&#169; 2021 - Syahril Hanla</p>
 
           <div className={footerStyles.identity}>
-            <span>
-              <Image src={'/github-icon.png'} height={18} width={16} />
-            </span>
-            <span > syahrilhanla</span>
+            <a href='http://github.com/syahrilhanla'>
+              <span>
+                <Image src={'/github-icon.png'} height={21} width={21} />
+              </span> syahrilhanla
+            </a>
+
           </div>
           <div className={footerStyles.identity}>
-            <span>
-              <Image src={'/instagram-icon.png'} height={18} width={16} />
-            </span>
-            <span >
-              @syahrilhanla64
-          </span>
+
+            <a href='http://instagram.com/syahrilhanla64'>
+              <span>
+                <Image src={'/instagram-icon.png'} height={21} width={21} />
+              </span> @syahrilhanla64
+            </a>
           </div>
 
         </div>

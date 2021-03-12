@@ -33,10 +33,10 @@ function AboutContent() {
         </h1>
         <div className={aboutStyles.pictures}>
           <span>
-            <Image src="/react-icon.png" height={100} width={100} />
+            <Image src="/react-1.svg" height={100} width={300} />
           </span>
           <span>
-            <Image src="/nextjs-3.svg" height={100} width={100} />
+            <Image src="/nextjs-3.svg" height={100} width={300} />
           </span>
           <span><Image src="/cloud_firestore.png" height={100} width={300} /></span>
         </div>

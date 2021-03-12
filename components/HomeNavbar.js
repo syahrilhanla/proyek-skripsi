@@ -5,11 +5,13 @@ import Link from 'next/link';
 
 const HomeNavbar = () => {
   return (
-    <nav class={navbarStyle.navbar}>
-      <div class={navbarStyle.logo}>
-        <Image src="/stats.svg" height={35} width={40} /> <span><h3>I/A Statistics</h3></span>
-      </div>
-      <div class={navbarStyle.links}>
+    <nav className={navbarStyle.navbar}>
+      <Link href={'/'}>
+        <div className={navbarStyle.logo}>
+          <Image src="/stats.svg" height={35} width={40} /> <span><h3>I/A Statistics</h3></span>
+        </div>
+      </Link>
+      <div className={navbarStyle.links}>
         <ul>
           <li>
             <p><Link href={'/'}>Home</Link></p>
