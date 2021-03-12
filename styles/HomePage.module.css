@@ -63,10 +63,6 @@ section.billBoard > .startButton {
   max-width: 90%;
 }
 
-.sectionB {
-  background-color: peachpuff;
-}
-
 .sectionB > .contentWrap {
   margin: 3rem auto;
 }
@@ -84,20 +80,26 @@ section.billBoard > .startButton {
 }
 
 .sectionB > .contentWrap li {
-  border: 1px solid #4444
+  max-width: 90%
 }
 
 .sectionB > .contentWrap h3 {
   font-size: 24px;
   font-weight: 400;
+  margin-bottom: 0px;
 }
 
 .sectionB > .contentWrap p {
   font-size: 18px;
+  margin-top: 0px;
+}
+
+.sectionB > .contentWrap li > span {
+  margin-bottom: 0px;
 }
 
 @media (max-width: 768px) {
   .sectionB > .contentWrap ul {
-  grid-template-columns: 1fr;
-}
+   grid-template-columns: 1fr;
+  }
 }
