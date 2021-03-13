@@ -22,6 +22,8 @@ const AuthProvider = ({ children }) => {
       setCurrentUser(user);
     });
 
+    console.log(currentUser)
+
     return unSub;
   }, []);
 

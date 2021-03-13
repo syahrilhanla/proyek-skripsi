@@ -26,16 +26,20 @@
 }
 
 .links {
-  margin-right: 3rem;
+  margin-right: 4rem;
 } 
 
 .links > ul {
   list-style-type: none;
   display: flex;
-  flex-direction: row;
 }
 
 .links > ul > li {
-  padding-left: 2.5rem;
-  cursor: pointer;
+  justify-content: center;
+  justify-items: flex-start;
+  margin-right: -2rem
+}
+
+.links a {
+  padding: 1rem 1rem;
 }
