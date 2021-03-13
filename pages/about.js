@@ -25,7 +25,7 @@ function AboutContent() {
           <i>I/A Statistics</i> merupakan media pembelajaran statistika yang menyediakan materi, latihan, dan pemantauan progres belajar yang mendukung peserta didik untuk belajar sesuai dengan kecepatan mereka sendiri.
         </p>
         <p style={{ marginBottom: "0.6rem", marginTop: "-1.5rem" }}>
-          <span style={{ fontSize: "21px" }}>M</span>ateri disusun dengan pendekatan kontekstual sehingga peserta didik dapat memahami apa hubungan dan manfaat dari statistika dalam kehiduoan sehari-hari
+          <span style={{ fontSize: "21px" }}>M</span>ateri disusun dengan pendekatan kontekstual sehingga peserta didik dapat memahami apa hubungan dan manfaat dari statistika dalam kehidupan sehari-hari
         </p>
 
         <h1>

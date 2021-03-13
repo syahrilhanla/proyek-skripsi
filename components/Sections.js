@@ -1,18 +1,19 @@
 import homeStyle from '../styles/Sections.module.css';
-import Link from 'next/link';
 import Image from 'next/image';
-
+import { useContext } from 'react';
+import { AuthContext } from './context/AuthContext';
 
 export function SectionA() {
+  const { login } = useContext(AuthContext);
   return (
     <section className={homeStyle.billBoard}>
-      <div class={homeStyle.bgImage}></div>
-      <div class={homeStyle.contentWrap}>
+      <div className={homeStyle.bgImage}></div>
+      <div className={homeStyle.contentWrap}>
         <h1>Media Pembelajaran Statistika</h1>
         <h1>Kelas VIII</h1>
       </div>
-      <div className={homeStyle.startButton}>
-        <Link href={'/'}>Mulai</Link>
+      <div onClick={() => login()} className={homeStyle.startButton}>
+        Mulai
       </div>
     </section>
   )
@@ -21,9 +22,9 @@ export function SectionA() {
 export function SectionB() {
   return (
     <section className={homeStyle.sectionB}>
-      <div class={homeStyle.contentWrap}>
+      <div className={homeStyle.contentWrap}>
         <h1>Mengapa App Bagus Untuk Kamu:</h1>
-        <div class={homeStyle.reasons}>
+        <div className={homeStyle.reasons}>
           <ul>
             <li>
               <span>
@@ -57,7 +58,7 @@ export function SectionB() {
 export function SectionC() {
   return (
     <section className={homeStyle.sectionC}>
-      <div class={homeStyle.contentWrap}>
+      <div className={homeStyle.contentWrap}>
         <h1>Kompetensi Dasar</h1>
         <div className={homeStyle.gridKD}>
           <ul>
