@@ -1,5 +1,5 @@
 import React, { useState, createContext, useContext, useEffect } from 'react'
-import { popup } from '../Firebase';
+import { popup, auth } from '../Firebase';
 
 export const AuthContext = createContext();
 
@@ -18,16 +18,16 @@ const AuthProvider = ({ children }) => {
     popup();
   }
 
-  // useEffect(() => {
-  //   const unSub = auth.onAuthStateChanged(user => {
-  //     setCurrentUser(user);
-  //   });
-  //   setTimeout(() => {
-  //     console.log(currentUser);
-  //   }, 2000);
+  useEffect(() => {
+    const unSub = auth.onAuthStateChanged(user => {
+      setCurrentUser(user);
+    });
+    setTimeout(() => {
+      console.log(currentUser);
+    }, 2000);
 
-  //   return unSub;
-  // }, []);
+    return unSub;
+  }, []);
 
   return (
     <AuthContext.Provider value={{

@@ -1,5 +1,4 @@
-import firebase from 'firebase/app';
-import 'firebase/auth';
+import firebase from 'firebase';
 
 let app;
 const config = {
@@ -15,12 +14,12 @@ if (!firebase.apps.length) {
   app = firebase.initializeApp(config);
 }
 
-// export const auth = app.auth();
-
 const provider = new firebase.auth.GoogleAuthProvider();
 
+export const auth = firebase.auth();
+
 export const popup = () => {
-  return firebase.auth().signInWithPopup(provider)
+  const signIn = auth.signInWithPopup(provider)
     .then((result) => {
       /** @type {firebase.auth.OAuthCredential} */
       var credential = result.credential;
@@ -34,5 +33,6 @@ export const popup = () => {
     }).catch((error) => {
       console.log(error)
     });
+  return signIn;
 }
 export default app;

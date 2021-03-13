@@ -26,7 +26,7 @@ const Footer = () => {
           <p className={footerStyles.copyright}>&#169; 2021 - Syahril Hanla</p>
 
           <div className={footerStyles.identity}>
-            <a href='http://github.com/syahrilhanla'>
+            <a href='http://github.com/syahrilhanla' target='_blank'>
               <span>
                 <Image src={'/github-icon.png'} height={21} width={21} />
               </span> syahrilhanla
@@ -35,7 +35,7 @@ const Footer = () => {
           </div>
           <div className={footerStyles.identity}>
 
-            <a href='http://instagram.com/syahrilhanla64'>
+            <a href='http://instagram.com/syahrilhanla64' target='_blank'>
               <span>
                 <Image src={'/instagram-icon.png'} height={21} width={21} />
               </span> @syahrilhanla64
