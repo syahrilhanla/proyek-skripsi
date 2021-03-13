@@ -2,9 +2,15 @@ import homeStyle from '../styles/Sections.module.css';
 import Image from 'next/image';
 import { useContext } from 'react';
 import { AuthContext } from './context/AuthContext';
+import { useEffect } from 'react';
 
 export function SectionA() {
-  const { login } = useContext(AuthContext);
+  const { login, currentUser } = useContext(AuthContext);
+
+  useEffect(() => {
+    console.log(currentUser)
+  }, [currentUser]);
+
   return (
     <section className={homeStyle.billBoard}>
       <div className={homeStyle.bgImage}></div>

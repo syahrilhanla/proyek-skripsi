@@ -1,7 +1,7 @@
 import firebase from 'firebase';
 
 let app;
-const config = {
+const firebaseConfig = {
   apiKey: "AIzaSyBmb036d-K6LGFbZexqTunjBfuv0u3JlZQ",
   authDomain: "proyek-skripsi-78f39.firebaseapp.com",
   projectId: "proyek-skripsi-78f39",
@@ -10,14 +10,16 @@ const config = {
   appId: "1:83382461748:web:2f743b30c24e090b5bf161"
 }
 
+// initialize firebase provider
 if (!firebase.apps.length) {
-  app = firebase.initializeApp(config);
+  app = firebase.initializeApp(firebaseConfig);
 }
 
 const provider = new firebase.auth.GoogleAuthProvider();
 
 export const auth = firebase.auth();
 
+// Displaying popup signIn
 export const popup = () => {
   const signIn = auth.signInWithPopup(provider)
     .then((result) => {

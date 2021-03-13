@@ -13,7 +13,6 @@ const AuthProvider = ({ children }) => {
   const logging = () => console.log(1414);
 
   const login = () => {
-    // initialize firebase provider
 
     popup();
   }
@@ -22,9 +21,6 @@ const AuthProvider = ({ children }) => {
     const unSub = auth.onAuthStateChanged(user => {
       setCurrentUser(user);
     });
-    setTimeout(() => {
-      console.log(currentUser);
-    }, 2000);
 
     return unSub;
   }, []);
