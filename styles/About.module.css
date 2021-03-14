@@ -33,16 +33,21 @@
 
 @media (max-width: 600px) {
   .aboutContent {
-    width: 100%;
-    height: 130vh;
+    width: 120%;
     margin-bottom: 1rem;
   }
 }
 
 @media (max-width: 768px) {
   .aboutContent {
-    width: 100%;
-    height: 130vh;
+    width: 120%;
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 412px) {
+  .aboutContent {
+    width: 120%;
     margin-bottom: 1rem;
   }
 }
