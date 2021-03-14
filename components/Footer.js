@@ -4,6 +4,7 @@ import Image from 'next/image';
 
 const Footer = () => {
   return (
+
     <div className={footerStyles.footer}>
       <div className={footerStyles.footerHeader}>
         <Image src="/stats.svg" height={35} width={40} /> <span><h3>I/A Statistics</h3></span>
@@ -45,6 +46,7 @@ const Footer = () => {
         </div>
       </div>
     </div>
+
   )
 }
 

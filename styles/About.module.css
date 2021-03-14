@@ -2,10 +2,14 @@
   margin-top:3rem
 }
 
+.mainAbout {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
 .aboutContent {
-  width: 100vw;
-  height: 85vh;
   margin-bottom: 3rem;
+  padding: 1rem;
 }
 
 .container {
@@ -29,9 +33,10 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   justify-content: center;
+  border: 1px solid black;
 }
 
-@media (min-width: 1300px) {
+/* @media (min-width: 1300px) {
   .aboutContent {
     width: 100vw;
     height: 50vh;
@@ -61,4 +66,4 @@
     height: 130vh;
     margin-bottom: 1rem;
   }
-}
+} */

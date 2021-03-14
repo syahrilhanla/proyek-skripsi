@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 const about = () => {
   return (
-    <div>
+    <div className={aboutStyles.mainAbout}>
       <HomeNavbar />
       <AboutContent />
       <Footer />
@@ -44,7 +44,7 @@ function AboutContent() {
         <h1>
           Profil Pengembang
         </h1>
-        <p>
+        <p style={{ padding: '2rem' }}>
           Syahril Hanla Azis (1710131110017), mahasiswa Pendidikan Komputer, Fakultas Keguruan dan Ilmu Pendidikan,  Universitas Lambung Mangkurat
         </p>
       </div>

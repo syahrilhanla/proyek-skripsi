@@ -1,7 +1,6 @@
 
 .navbar {
   height: 3.5rem;
-  width: 100%;
   color: white;
   display: flex;
   justify-content: space-between;
@@ -43,8 +42,19 @@
 .links a {
   padding: 1rem 1rem;
 }
+.mainFooter {
+  padding: 2em;
+  background: black;
+  color: #fff;
+  text-align: center;
+}
 
-@media (max-width: 321px) {
+.mainFooter a {
+  color: #2690d4;
+  text-decoration: none;
+}
+
+/* @media (max-width: 321px) {
  .navbar {
     height: 3.8rem;
     width: 120vw !important;
@@ -63,4 +73,4 @@
     height: 3.8rem;
     width: 100vw;
   }
-}
+} */

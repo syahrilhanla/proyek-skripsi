@@ -114,7 +114,6 @@ section.billBoard > .startButton {
 .sectionC {
   background-color: #8f8e8e;
   width: 100%;
-  height: 50vh;
   font-family: 'Roboto';
   display: flex;
   flex-direction: column;
@@ -136,6 +135,10 @@ section.billBoard > .startButton {
   margin-right: -2rem
 }
 
+.sectionC .gridKD ul {
+  padding-bottom: 2rem;
+} 
+
 .sectionC .gridKD li {
   display: grid;
   grid-template-columns: 1fr 4fr;
@@ -152,11 +155,6 @@ section.billBoard > .startButton {
 @media (max-width: 768px) {
   .sectionB > .contentWrap ul {
    grid-template-columns: 1fr;
-  }
-
-  .sectionC {
-    padding: 0px;
-    height: 65vh
   }
 
   .sectionC .gridKD li {

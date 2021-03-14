@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 
 const home = () => {
   return (
-    <div>
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr' }}>
       <HomeNavbar />
       <SectionA />
       <SectionB />
