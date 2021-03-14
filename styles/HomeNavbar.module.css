@@ -44,30 +44,23 @@
   padding: 1rem 1rem;
 }
 
-@media (max-width: 320px) {
+@media (max-width: 321px) {
  .navbar {
     height: 3.8rem;
-    width: 120%;
+    width: 120vw !important;
   }
 }
 
 @media (max-width: 360px) {
   .navbar {
     height: 3.8rem;
-    width: 120%;
+    width: 100vw;
   }
 }
 
 @media (max-width: 768px) {
     .navbar {
     height: 3.8rem;
-    width: 120%;
-  }
-}
-
-@media (min-width: 1024px) {
-    .navbar {
-    height: 3.8rem;
-    width: 120%;
+    width: 100vw;
   }
 }
