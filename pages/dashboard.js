@@ -29,7 +29,7 @@ function DashboardContent() {
           </div>
         </div>
         <div className={dashboardStyles.profileName}>
-          Jonathan Joestar
+          <h2>Jonathan Joestar</h2>
         </div>
       </div>
     </div>

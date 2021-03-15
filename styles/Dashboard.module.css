@@ -1,16 +1,28 @@
 .dashboard {
-  color: #ffff;
+  color: white;
   background: #4444;
+  font-family: 'Roboto';
+  padding: 1rem 0px;
 }
 
 .container {
   width: 90%;
-  margin: 2rem auto;
-  display: grid;
+  margin: 0 auto;
+  display: flex;
   justify-content: space-between; 
 }
 
 .progress {
   display: grid;
   grid-template-columns: 1fr 2fr;
+  align-items: center;
+}
+
+.progress p {
+  font-weight: 600;
+}
+
+.profileName {
+  align-items: center;
+  padding: 1.5rem;
 }
