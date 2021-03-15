@@ -9,7 +9,7 @@ import dashboardStyles from '../styles/Dashboard.module.css'
 
 const dashboard = () => {
   return (
-    <div>
+    <div className={dashboardStyles.mainProgress}>
       <HomeNavbar />
       <DashboardContent />
       <UserProgress />
@@ -25,7 +25,7 @@ const LearningProgress = ({ text, percentageValue, overallAction }) => {
         {text}
       </h3>
       <span style={{ alignSelf: 'center' }}>
-        <LinearProgress value={percentageValue} />
+        <LinearProgress variant="determinate" value={percentageValue} />
       </span>
       <h2 style={{ justifySelf: 'center', paddingLeft: '2rem' }}>
         {overallAction}
@@ -36,15 +36,15 @@ const LearningProgress = ({ text, percentageValue, overallAction }) => {
 
 function UserProgress() {
   return (
-    <section className={progressStyles.mainProgress}>
+    <section>
       <div className={progressStyles.container}>
         <h1 style={{ textAlign: 'center' }}>
           Progres Saya
         </h1>
         <hr />
         <LearningProgress text={'Menganalisis Data'} percentageValue={80} overallAction={'8/10'} />
-        <LearningProgress text={'Ukuran Pemusatan'} percentageValue={60} overallAction={'8/10'} />
-        <LearningProgress text={'Ukuran Penyebaran'} percentageValue={60} overallAction={'8/10'} />
+        <LearningProgress text={'Ukuran Pemusatan'} percentageValue={70} overallAction={'7/10'} />
+        <LearningProgress text={'Ukuran Penyebaran'} percentageValue={60} overallAction={'6/10'} />
       </div>
     </section>
   )

@@ -1,6 +1,3 @@
-.root {
-  margin-top:3rem
-}
 
 .mainAbout {
   display: grid;
@@ -34,35 +31,3 @@
   grid-template-columns: 1fr 1fr 1fr;
   justify-content: center;
 }
-
-/* @media (min-width: 1300px) {
-  .aboutContent {
-    width: 100vw;
-    height: 50vh;
-    margin-bottom: 1rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .aboutContent {
-    width: 100vw;
-    height: 100vh;
-    margin-bottom: 1rem;
-  }
-}
-
-@media (max-width: 412px) {
-  .aboutContent {
-    width: 100vw;
-    height: 100vh;
-    margin-bottom: 1rem;
-  }
-}
-
-@media (max-width: 320px) {
-  .aboutContent {
-    width: 100vw;
-    height: 130vh;
-    margin-bottom: 1rem;
-  }
-} */

@@ -42,35 +42,17 @@
 .links a {
   padding: 1rem 1rem;
 }
-.mainFooter {
-  padding: 2em;
-  background: black;
-  color: #fff;
-  text-align: center;
-}
 
-.mainFooter a {
-  color: #2690d4;
-  text-decoration: none;
-}
-
-/* @media (max-width: 321px) {
- .navbar {
-    height: 3.8rem;
-    width: 120vw !important;
+@media (max-width: 375px) {
+  .logo {
+    margin-left: 0.2rem;
   }
-}
 
-@media (max-width: 360px) {
-  .navbar {
-    height: 3.8rem;
-    width: 100vw;
-  }
-}
+  .links {
+    margin-right: 2rem;
+  } 
 
-@media (max-width: 768px) {
-    .navbar {
-    height: 3.8rem;
-    width: 100vw;
-  }
-} */
+  .links a {
+  padding: 1rem 0.6rem;
+}
+}
