@@ -25,7 +25,7 @@ function DashboardContent() {
             <CircularProgressWithLabel value={70} />
           </div>
           <div>
-            <p>21/30 Kegiatan Tuntas</p>
+            <h3>21/30 Kegiatan Tuntas</h3>
           </div>
         </div>
         <div className={dashboardStyles.profileName}>

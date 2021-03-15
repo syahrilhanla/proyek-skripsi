@@ -1,15 +1,23 @@
 .dashboard {
   color: white;
-  background: #4444;
   font-family: 'Roboto';
+  background-image: url("../public/rsz_1dark_backgound.jpg");
+  width: 100%;
   padding: 1rem 0px;
+  background-repeat: none;
+  background-size: cover;
 }
 
 .container {
   width: 90%;
   margin: 0 auto;
-  display: flex;
-  justify-content: space-between; 
+  display: grid;
+  grid-template-columns: 2fr 5fr; 
+}
+
+.backgroundPicture {
+  background: black;
+  z-index: 10;
 }
 
 .progress {
@@ -18,11 +26,13 @@
   align-items: center;
 }
 
-.progress p {
-  font-weight: 600;
+.progress h3 {
+  font-weight: 500;
 }
 
 .profileName {
+  display: flex;
   align-items: center;
+  justify-content: flex-end;
   padding: 1.5rem;
 }
