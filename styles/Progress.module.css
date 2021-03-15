@@ -1,0 +1,19 @@
+.mainProgress {
+  color: #474747;
+}
+
+.container {
+  width: 80%;
+  margin: 0px auto;
+  padding: 2rem 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.progresses {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 0px 0.7rem;
+  justify-content: space-evenly;
+}

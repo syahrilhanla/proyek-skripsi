@@ -1,17 +1,52 @@
 import React from 'react';
 import HomeNavbar from '../components/HomeNavbar';
 import Footer from '../components/Footer';
-
-import dashboardStyles from '../styles/Dashboard.module.css'
 import CircularProgressWithLabel from '../components/ProgressCircularBar';
+import { LinearProgress } from '@material-ui/core';
+
+import progressStyles from '../styles/Progress.module.css'
+import dashboardStyles from '../styles/Dashboard.module.css'
 
 const dashboard = () => {
   return (
     <div>
       <HomeNavbar />
       <DashboardContent />
+      <UserProgress />
       <Footer />
     </div>
+  )
+}
+
+const LearningProgress = ({ text, percentageValue, overallAction }) => {
+  return (
+    <div className={progressStyles.progresses}>
+      <h3>
+        {text}
+      </h3>
+      <span style={{ alignSelf: 'center' }}>
+        <LinearProgress value={percentageValue} />
+      </span>
+      <h2 style={{ justifySelf: 'center', paddingLeft: '2rem' }}>
+        {overallAction}
+      </h2>
+    </div>
+  )
+}
+
+function UserProgress() {
+  return (
+    <section className={progressStyles.mainProgress}>
+      <div className={progressStyles.container}>
+        <h1 style={{ textAlign: 'center' }}>
+          Progres Saya
+        </h1>
+        <hr />
+        <LearningProgress text={'Menganalisis Data'} percentageValue={80} overallAction={'8/10'} />
+        <LearningProgress text={'Ukuran Pemusatan'} percentageValue={60} overallAction={'8/10'} />
+        <LearningProgress text={'Ukuran Penyebaran'} percentageValue={60} overallAction={'8/10'} />
+      </div>
+    </section>
   )
 }
 
