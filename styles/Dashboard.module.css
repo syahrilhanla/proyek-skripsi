@@ -1,0 +1,16 @@
+.dashboard {
+  color: #ffff;
+  background: #4444;
+}
+
+.container {
+  width: 90%;
+  margin: 2rem auto;
+  display: grid;
+  justify-content: space-between; 
+}
+
+.progress {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}

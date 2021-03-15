@@ -51,6 +51,8 @@ const DrawerComponent = ({ open, handleDrawerClose }) => {
   const classes = useStyles();
   const theme = useTheme();
 
+  const items = ['All mail', 'Trash', 'Spam'];
+
   return (
     <Drawer
       className={classes.drawer}
@@ -77,7 +79,7 @@ const DrawerComponent = ({ open, handleDrawerClose }) => {
       </List>
       <Divider />
       <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
+        {items.map((text, index) => (
           <ListItem button key={text}>
             <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
             <ListItemText primary={text} />

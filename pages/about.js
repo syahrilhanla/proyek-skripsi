@@ -44,7 +44,7 @@ function AboutContent() {
         <h1>
           Profil Pengembang
         </h1>
-        <p style={{ padding: '2rem' }}>
+        <p>
           Syahril Hanla Azis (1710131110017), mahasiswa Pendidikan Komputer, Fakultas Keguruan dan Ilmu Pendidikan,  Universitas Lambung Mangkurat
         </p>
       </div>
