@@ -2,7 +2,7 @@ import React from 'react';
 import HomeNavbar from '../components/HomeNavbar';
 import Footer from '../components/Footer';
 import CircularProgressWithLabel from '../components/ProgressCircularBar';
-import { LinearProgress } from '@material-ui/core';
+import LearningProgress from '../components/LearningProgress';
 
 import progressStyles from '../styles/Progress.module.css'
 import dashboardStyles from '../styles/Dashboard.module.css'
@@ -14,22 +14,6 @@ const dashboard = () => {
       <DashboardContent />
       <UserProgress />
       <Footer />
-    </div>
-  )
-}
-
-const LearningProgress = ({ text, percentageValue, overallAction }) => {
-  return (
-    <div className={progressStyles.progresses}>
-      <h3>
-        {text}
-      </h3>
-      <span style={{ alignSelf: 'center' }}>
-        <LinearProgress variant="determinate" value={percentageValue} />
-      </span>
-      <h2 style={{ justifySelf: 'center', paddingLeft: '2rem' }}>
-        {overallAction}
-      </h2>
     </div>
   )
 }
@@ -56,7 +40,7 @@ function DashboardContent() {
       <div className={dashboardStyles.backgroundPicture}></div>
       <div className={dashboardStyles.container}>
         <div className={dashboardStyles.progress}>
-          <div>
+          <div className={dashboardStyles.progressBar}>
             <CircularProgressWithLabel value={70} />
           </div>
           <div>
