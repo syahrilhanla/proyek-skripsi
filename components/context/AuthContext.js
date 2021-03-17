@@ -1,5 +1,5 @@
 import React, { useState, createContext, useContext, useEffect } from 'react';
-import { setLocalUser, getLocalUser, removeLocalUser } from '../utils/userSavings';
+import { setLocalStorage, getLocalUser, removeLocalUser } from '../utils/userSavings';
 import { popup, auth } from '../Firebase';
 import { useRouter } from 'next/router';
 
@@ -12,6 +12,8 @@ export const useAuth = () => {
 const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [localUserData, setLocalUserData] = useState(null);
+  const [loading, setLoading] = useState(true);
+
   const router = useRouter();
 
   // set user after login success
@@ -29,18 +31,31 @@ const AuthProvider = ({ children }) => {
 
   const signOut = async () => {
     await auth.signOut();
-    removeLocalUser();
+    await removeLocalUser();
     console.log('signing out');
-    router.push('/');
+    setLoading(true);
+    router.push('/')
   }
 
   useEffect(() => {
     const unSub = auth.onAuthStateChanged(user => {
       setUser(user).then(() => {
-        // get local user from localStorage
-        getLocalUser().then(data => setLocalUserData(data));
+        try {
+          setCurrentUser(user);
+          setLocalStorage(user).then(() => {
+            // get local user from localStorage after login and set to localStorage
+            getLocalUser().then(data => {
+              setLocalUserData(data);
+              setLoading(false);
+            });
+          })
+        } catch (error) {
+          console.log(`failed to set user`);
+        }
       });
     });
+
+    console.log(loading);
 
     return unSub;
   }, []);
@@ -49,10 +64,11 @@ const AuthProvider = ({ children }) => {
     <AuthContext.Provider value={{
       currentUser,
       localUserData,
+      loading,
       login,
       signOut
     }}>
-      {children}
+      {!loading && children}
     </AuthContext.Provider>
   )
 }

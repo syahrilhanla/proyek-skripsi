@@ -10,7 +10,9 @@ import dashboardStyles from '../styles/Dashboard.module.css'
 import { useAuth } from '../components/context/AuthContext';
 
 const dashboard = () => {
-  const { localUserData } = useAuth();
+  const { localUserData, loading } = useAuth();
+
+  console.log(loading);
 
   return (
     <>
