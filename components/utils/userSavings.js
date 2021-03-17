@@ -1,6 +1,6 @@
 // set user from authentication to localStorage
 export const setLocalStorage = async (currentUser) => {
-  if (localStorage.getItem('user') === null) {
+  if (localStorage.getItem('user') === null && currentUser !== null) {
     console.log(currentUser)
     localStorage.setItem('user', JSON.stringify(currentUser));
   }
