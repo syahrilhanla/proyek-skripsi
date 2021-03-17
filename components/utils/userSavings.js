@@ -1,5 +1,5 @@
 // set user from authentication to localStorage
-export const setLocalUser = (currentUser) => {
+export const setLocalUser = async (currentUser) => {
   if (localStorage.getItem('user') === null) {
     console.log(currentUser)
     localStorage.setItem('user', JSON.stringify(currentUser));
@@ -7,11 +7,18 @@ export const setLocalUser = (currentUser) => {
 }
 
 // Get local user immediately after login attempt
-export const getLocalUser = (user) => {
-  if (user) {
+export const getLocalUser = async () => {
+  try {
     const localUser = JSON.parse(localStorage.getItem('user'));
-    console.log(localUser);
-    return localUser;
+    console.log(localUser.displayName);
+    return {
+      displayName: localUser.displayName,
+      email: localUser.email,
+      uid: localUser.uid,
+      photoURL: localUser.photoURL
+    };
+  } catch (error) {
+    console.log(error);
   }
 }
 

@@ -7,19 +7,27 @@ import LearningProgress from '../components/LearningProgress';
 import progressStyles from '../styles/Progress.module.css'
 import dashboardStyles from '../styles/Dashboard.module.css'
 
-import { AuthContext } from '../components/context/AuthContext';
+import { useAuth } from '../components/context/AuthContext';
 
 const dashboard = () => {
-  const { currentUser } = useContext(AuthContext);
+  const { localUserData } = useAuth();
 
   return (
-    <div className={dashboardStyles.mainProgress}>
-      <Navbar />
-      <DashboardContent />
-      <UserProgress />
-      <Footer />
-    </div>
+    <>
+      { localUserData && <DisplayDashboard />}
+    </>
   )
+
+  function DisplayDashboard() {
+    return (
+      <div className={dashboardStyles.mainProgress}>
+        <Navbar />
+        <DashboardContent displayName={localUserData.displayName} />
+        <UserProgress />
+        <Footer />
+      </div>
+    )
+  }
 }
 
 function UserProgress() {

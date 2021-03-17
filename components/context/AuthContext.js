@@ -11,27 +11,24 @@ export const useAuth = () => {
 
 const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
+  const [localUserData, setLocalUserData] = useState(null);
   const router = useRouter();
 
   // set user after login success
   const setUser = async (user) => {
     if (user) {
-      await setLocalUser(user);
-      const localUser = await getLocalUser(user);
-      await setCurrentUser(localUser);
+      setCurrentUser(user);
       console.log(user);
-      console.log(currentUser);
-      router.push('/dashboard');
     } else console.log('no users');
   }
 
-  const login = () => {
+  const login = async () => {
     // fires when user clicks login button from Home
-    popup();
+    await popup();
   }
 
-  const signOut = () => {
-    auth.signOut();
+  const signOut = async () => {
+    await auth.signOut();
     removeLocalUser();
     console.log('signing out');
     router.push('/');
@@ -39,7 +36,10 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const unSub = auth.onAuthStateChanged(user => {
-      setUser(user);
+      setUser(user).then(() => {
+        // get local user from localStorage
+        getLocalUser().then(data => setLocalUserData(data));
+      });
     });
 
     return unSub;
@@ -47,7 +47,8 @@ const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider value={{
-      currentUser: { currentUser },
+      currentUser,
+      localUserData,
       login,
       signOut
     }}>

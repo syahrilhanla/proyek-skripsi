@@ -7,7 +7,7 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import DrawerComponent from './Drawer';
 import Image from 'next/image';
-import { AuthContext } from './context/AuthContext';
+import { useAuth } from './context/AuthContext';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -51,7 +51,7 @@ export default function Navbar() {
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const [open, setOpen] = React.useState(false);
 
-  const { signOut } = useContext(AuthContext);
+  const { signOut } = useAuth();
 
   const handleDrawerOpen = () => {
     setOpen(true);
