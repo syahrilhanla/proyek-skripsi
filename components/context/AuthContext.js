@@ -1,5 +1,7 @@
-import React, { useState, createContext, useContext, useEffect } from 'react'
+import React, { useState, createContext, useContext, useEffect } from 'react';
+import { setLocalUser, getLocalUser, removeLocalUser } from '../utils/userSavings';
 import { popup, auth } from '../Firebase';
+import { useRouter } from 'next/router';
 
 export const AuthContext = createContext();
 
@@ -9,20 +11,36 @@ export const useAuth = () => {
 
 const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
+  const [localUserData, setLocalUserData] = useState(null);
+  const router = useRouter();
 
-  const logging = () => console.log(1414);
+  // set user after login success
+  const setUser = async (user) => {
+    if (user) {
+      setCurrentUser(user);
+      console.log(user);
+    } else console.log('no users');
+  }
 
-  const login = () => {
+  const login = async () => {
+    // fires when user clicks login button from Home
+    await popup();
+  }
 
-    popup();
+  const signOut = async () => {
+    await auth.signOut();
+    removeLocalUser();
+    console.log('signing out');
+    router.push('/');
   }
 
   useEffect(() => {
     const unSub = auth.onAuthStateChanged(user => {
-      setCurrentUser(user);
+      setUser(user).then(() => {
+        // get local user from localStorage
+        getLocalUser().then(data => setLocalUserData(data));
+      });
     });
-
-    console.log(currentUser)
 
     return unSub;
   }, []);
@@ -30,8 +48,9 @@ const AuthProvider = ({ children }) => {
   return (
     <AuthContext.Provider value={{
       currentUser,
+      localUserData,
       login,
-      logging
+      signOut
     }}>
       {children}
     </AuthContext.Provider>

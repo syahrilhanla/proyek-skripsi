@@ -1,15 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { fade, makeStyles, useTheme } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
+import { AppBar, Toolbar, IconButton, MenuItem, Menu } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import MoreIcon from '@material-ui/icons/MoreVert';
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import DrawerComponent from './Drawer';
 import Image from 'next/image';
+import { useAuth } from './context/AuthContext';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -24,13 +22,15 @@ const useStyles = makeStyles((theme) => ({
   },
   logo: {
     display: 'grid',
-    gridTemplateColumns: '1fr 2fr',
+    gridTemplateColumns: '1fr 3fr',
     width: '15%'
   },
   sectionDesktop: {
     display: 'none',
+    marginRight: '2rem',
     [theme.breakpoints.up('md')]: {
       display: 'flex',
+      paddingRight: '2rem'
     },
     float: 'right'
   },
@@ -40,6 +40,9 @@ const useStyles = makeStyles((theme) => ({
       display: 'none',
     },
   },
+  profileDesktop: {
+    paddingRight: '1.5rem'
+  }
 }));
 
 export default function Navbar() {
@@ -47,6 +50,8 @@ export default function Navbar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const [open, setOpen] = React.useState(false);
+
+  const { signOut } = useAuth();
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -77,20 +82,6 @@ export default function Navbar() {
   };
 
   const menuId = 'primary-search-account-menu';
-  const renderMenu = (
-    <Menu
-      anchorEl={anchorEl}
-      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-      id={menuId}
-      keepMounted
-      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-      open={isMenuOpen}
-      onClose={handleMenuClose}
-    >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-    </Menu>
-  );
 
   const mobileMenuId = 'primary-search-account-menu-mobile';
   const renderMobileMenu = (
@@ -113,7 +104,14 @@ export default function Navbar() {
         >
           <AccountCircle />
         </IconButton>
-        <p>Profile</p>
+        <IconButton
+          aria-label="logout"
+          aria-controls="primary-search-account-menu"
+          aria-haspopup="false"
+          color="inherit"
+        >
+          <ExitToAppIcon />
+        </IconButton>
       </MenuItem>
     </Menu>
   );
@@ -140,16 +138,28 @@ export default function Navbar() {
 
           <div className={classes.sectionDesktop}>
 
-            <IconButton
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
+            <span className={classes.profileDesktop}>
+              <IconButton
+                edge="end"
+                aria-label="account of current user"
+                aria-controls={menuId}
+                onClick={handleProfileMenuOpen}
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+            </span>
+            <span onClick={() => signOut()}>
+              <IconButton
+                edge="end"
+                aria-label="sign out"
+                aria-controls={menuId}
+                onClick={handleProfileMenuOpen}
+                color="inherit"
+              >
+                <ExitToAppIcon />
+              </IconButton>
+            </span>
           </div>
           <div className={classes.sectionMobile}>
             <IconButton
@@ -159,14 +169,13 @@ export default function Navbar() {
               onClick={handleMobileMenuOpen}
               color="inherit"
             >
-              <MoreIcon />
+              <MoreHorizIcon />
             </IconButton>
           </div>
         </Toolbar>
       </AppBar>
       <DrawerComponent open={open} handleDrawerClose={handleDrawerClose} />
       {renderMobileMenu}
-      {renderMenu}
     </div>
   );
 }

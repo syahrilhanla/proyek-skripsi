@@ -1,5 +1,5 @@
-import React from 'react';
-import HomeNavbar from '../components/HomeNavbar';
+import React, { useContext, useEffect } from 'react';
+import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import CircularProgressWithLabel from '../components/ProgressCircularBar';
 import LearningProgress from '../components/LearningProgress';
@@ -7,15 +7,27 @@ import LearningProgress from '../components/LearningProgress';
 import progressStyles from '../styles/Progress.module.css'
 import dashboardStyles from '../styles/Dashboard.module.css'
 
+import { useAuth } from '../components/context/AuthContext';
+
 const dashboard = () => {
+  const { localUserData } = useAuth();
+
   return (
-    <div className={dashboardStyles.mainProgress}>
-      <HomeNavbar />
-      <DashboardContent />
-      <UserProgress />
-      <Footer />
-    </div>
+    <>
+      { localUserData && <DisplayDashboard />}
+    </>
   )
+
+  function DisplayDashboard() {
+    return (
+      <div className={dashboardStyles.mainProgress}>
+        <Navbar />
+        <DashboardContent displayName={localUserData.displayName} />
+        <UserProgress />
+        <Footer />
+      </div>
+    )
+  }
 }
 
 function UserProgress() {
@@ -34,7 +46,8 @@ function UserProgress() {
   )
 }
 
-function DashboardContent() {
+function DashboardContent({ displayName }) {
+  console.log(displayName)
   return <section className={dashboardStyles.dashboard}>
     <div className={dashboardStyles.profile}>
       <div className={dashboardStyles.backgroundPicture}></div>
@@ -48,7 +61,7 @@ function DashboardContent() {
           </div>
         </div>
         <div className={dashboardStyles.profileName}>
-          <h2>Jonathan Joestar</h2>
+          <h2>{displayName}</h2>
         </div>
       </div>
     </div>
