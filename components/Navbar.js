@@ -1,8 +1,7 @@
 import React, { useContext } from 'react';
 import { fade, makeStyles, useTheme } from '@material-ui/core/styles';
-import { AppBar, Toolbar, IconButton, MenuItem, Menu } from '@material-ui/core';
+import { AppBar, Avatar, Toolbar, IconButton, MenuItem, Menu } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
-import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import DrawerComponent from './Drawer';
@@ -19,6 +18,10 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     width: '87%'
+  },
+  small: {
+    width: theme.spacing(3.5),
+    height: theme.spacing(3.5),
   },
   logo: {
     display: 'grid',
@@ -51,7 +54,7 @@ export default function Navbar() {
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const [open, setOpen] = React.useState(false);
 
-  const { signOut } = useAuth();
+  const { signOut, localUserData } = useAuth();
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -102,7 +105,7 @@ export default function Navbar() {
           aria-haspopup="true"
           color="inherit"
         >
-          <AccountCircle />
+          <Avatar alt={localUserData.displayName} src={localUserData.photoURL} className={classes.small} />
         </IconButton>
         <IconButton
           aria-label="logout"
@@ -146,7 +149,7 @@ export default function Navbar() {
                 onClick={handleProfileMenuOpen}
                 color="inherit"
               >
-                <AccountCircle />
+                <Avatar alt={localUserData.displayName} src={localUserData.photoURL} className={classes.small} />
               </IconButton>
             </span>
             <span onClick={() => signOut()}>

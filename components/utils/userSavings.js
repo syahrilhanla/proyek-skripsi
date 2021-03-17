@@ -1,6 +1,6 @@
 // set user from authentication to localStorage
-export const setLocalUser = async (currentUser) => {
-  if (localStorage.getItem('user') === null) {
+export const setLocalStorage = async (currentUser) => {
+  if (localStorage.getItem('user') === null && currentUser !== null) {
     console.log(currentUser)
     localStorage.setItem('user', JSON.stringify(currentUser));
   }
@@ -23,7 +23,7 @@ export const getLocalUser = async () => {
 }
 
 // remove local user when signing out
-export const removeLocalUser = () => {
+export const removeLocalUser = async () => {
   if (localStorage.getItem('user')) {
     localStorage.removeItem('user');
   }

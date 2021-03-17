@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import CircularProgressWithLabel from '../components/ProgressCircularBar';
@@ -10,7 +10,9 @@ import dashboardStyles from '../styles/Dashboard.module.css'
 import { useAuth } from '../components/context/AuthContext';
 
 const dashboard = () => {
-  const { localUserData } = useAuth();
+  const { localUserData, loading } = useAuth();
+
+  console.log(loading);
 
   return (
     <>
