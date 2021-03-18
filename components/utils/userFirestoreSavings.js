@@ -15,7 +15,7 @@ export const getUserFirestore = async (localUser) => {
   } else return null;
 }
 
-export const getUserData = async (localUser) => {
+export const getUserProgress = async (localUser) => {
 
   if (localUser) {
     const data = await docRef.doc(localUser.uid).collection('progress').get();
@@ -52,16 +52,11 @@ export const createUserProgress = async (localUser) => {
 
   if (localUser) {
     // data is just for experiment for now 
-    const initialData = [
-      {
-        analyze_table: 1,
-        quiz1: 0
-      },
-      {
-        mean: 1,
-        quiz2: 0
-      },
-    ]
+    const initialData = [{
+      analyze_table: 1,
+      quiz1: 0
+    }]
+
 
     const data = docRef.doc(localUser.uid).collection('progress');
     await data.doc().set({ initialData });
@@ -73,9 +68,12 @@ export const createUserProgress = async (localUser) => {
 export const updateProgress = async (localUser, newData) => {
   if (localUser) {
     // data is just for experiment for now 
+    console.log('updating progress');
 
     const data = docRef.doc(localUser.uid).collection('progress');
-    await data.doc('wPipFsFca9IcydXFZFJ5').update({ mean: 2 });
+    await data.doc('wPipFsFca9IcydXFZFJ5').update({
+      "initialData.quiz1": 8
+    });
     console.log('progress updated');
 
   } else return;

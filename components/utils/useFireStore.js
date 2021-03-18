@@ -1,4 +1,4 @@
-import { getUserFirestore, getUserData, addUser, createUserProgress, updateProgress } from './userFirestoreSavings';
+import { getUserFirestore, getUserProgress, addUser, createUserProgress, updateProgress } from './userFirestoreSavings';
 
 const useFireStore = async (localUser) => {
 
@@ -15,7 +15,7 @@ const useFireStore = async (localUser) => {
 
   const checkingInitialProgress = async () => {
     // getting user progress from firestore when application start
-    const progressData = await getUserData(localUser);
+    const progressData = await getUserProgress(localUser);
     console.log(progressData);
 
     // checking if there is no progress then create initial progress
@@ -28,7 +28,7 @@ const useFireStore = async (localUser) => {
   await checkingInitialUser();
   await checkingInitialProgress();
 
-  await updateProgress();
+  await updateProgress(localUser);
 
 }
 
