@@ -3,6 +3,8 @@ import { setLocalStorage, getLocalUser, removeLocalUser } from '../utils/userSav
 import { popup, auth } from '../Firebase';
 import { useRouter } from 'next/router';
 
+import useFireStore from '../utils/useFireStore';
+
 export const AuthContext = createContext();
 
 export const useAuth = () => {
@@ -41,11 +43,11 @@ const AuthProvider = ({ children }) => {
     const unSub = auth.onAuthStateChanged(user => {
       setUser(user).then(() => {
         try {
-          setCurrentUser(user);
           setLocalStorage(user).then(() => {
             // get local user from localStorage after login and set to localStorage
             getLocalUser().then(data => {
               setLocalUserData(data);
+              useFireStore(data);
               setLoading(false);
             });
           })
