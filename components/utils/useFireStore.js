@@ -1,44 +1,35 @@
-import { firestore } from '../Firebase';
+import { getUserFirestore, getUserData, addUser, createUserProgress, updateProgress } from './userFirestoreSavings';
 
 const useFireStore = async (localUser) => {
 
-  const docRef = firestore.collection('users')
+  const checkingInitialUser = async () => {
+    // getting user from firestore when application start
+    const userFireStore = await getUserFirestore(localUser);
+    console.log(userFireStore);
 
-  const getUserFirestore = async () => {
-    if (localUser) {
-      const data = await docRef.doc(localUser.uid).get();
-      if (!data) {
-        console.log('data not exists');
-        return null
-      }
-
-      console.log('got the data');
-      return data.data();
-    } else return null;
+    // checking if theres any data from the function above
+    if (userFireStore === null || userFireStore === undefined) {
+      await addUser(localUser);
+    }
   }
 
-  const addUser = async () => {
-    if (localUser) {
-      const userData = {
-        displayName: localUser.displayName,
-        photoURL: localUser.photoURL,
-        email: localUser.email
-      }
+  const checkingInitialProgress = async () => {
+    // getting user progress from firestore when application start
+    const progressData = await getUserData(localUser);
+    console.log(progressData);
 
-      const addData = docRef.doc(localUser.uid);
-      await addData.set(userData)
-      console.log('user added');
-
-    } else return;
+    // checking if there is no progress then create initial progress
+    if (progressData === null || progressData === undefined || !progressData.length) {
+      console.log('no progress')
+      await createUserProgress(localUser);
+    }
   }
 
-  const userFireStore = await getUserFirestore();
+  await checkingInitialUser();
+  await checkingInitialProgress();
 
-  if (userFireStore === null || userFireStore === undefined) {
-    await addUser();
-  }
+  await updateProgress();
 
-  return userFireStore;
 }
 
 export default useFireStore

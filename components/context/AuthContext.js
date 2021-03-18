@@ -1,5 +1,5 @@
 import React, { useState, createContext, useContext, useEffect } from 'react';
-import { setLocalStorage, getLocalUser, removeLocalUser } from '../utils/userSavings';
+import { setLocalStorage, getLocalUser, removeLocalUser } from '../utils/userLocalSavings';
 import { popup, auth } from '../Firebase';
 import { useRouter } from 'next/router';
 
