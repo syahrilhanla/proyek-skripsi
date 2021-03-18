@@ -6,10 +6,10 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+
+import Link from 'next/link';
+import { useAuth } from './context/AuthContext';
 
 const drawerWidth = 240;
 
@@ -51,7 +51,15 @@ const DrawerComponent = ({ open, handleDrawerClose }) => {
   const classes = useStyles();
   const theme = useTheme();
 
-  const items = ['All mail', 'Trash', 'Spam'];
+  const { signOut } = useAuth();
+
+  const items = ['Analisis Data', 'Ukuran Pemusatan Data', 'Ukuran Penyebaran Data'];
+  const commonLinks = [
+    {
+      text: 'About',
+      link: '/about'
+    }
+  ]
 
   return (
     <Drawer
@@ -70,23 +78,23 @@ const DrawerComponent = ({ open, handleDrawerClose }) => {
       </div>
       <Divider />
       <List>
-        {
-          <ListItem button >
-            <ListItemIcon><InboxIcon /></ListItemIcon>
-            <ListItemText primary={'inbox'} />
-          </ListItem>
-        }
-      </List>
-      <Divider />
-      <List>
         {items.map((text, index) => (
           <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
         ))}
       </List>
-    </Drawer>
+      <Divider />
+      <List>
+        {commonLinks.map((item, index) => (
+          <ListItem button key={index} >
+            <Link href={item.link} onClick={() => item.action()}>
+              <ListItemText primary={item.text} />
+            </Link>
+          </ListItem>
+        ))}
+      </List>
+    </Drawer >
   )
 }
 
