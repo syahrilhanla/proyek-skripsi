@@ -22,7 +22,6 @@ const AuthProvider = ({ children }) => {
   const setUser = async (user) => {
     if (user) {
       setCurrentUser(user);
-      console.log(user);
     } else console.log('no users');
   }
 
