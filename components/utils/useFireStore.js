@@ -1,23 +1,23 @@
-import React from 'react';
 import { firestore } from '../Firebase';
 
 const useFireStore = async (localUser) => {
 
-  const getUserFirestore = () => {
-    if (localUser) {
-      return firestore.collection('users').doc(localUser.uid).get().then((doc) => {
-        if (!doc) {
-          console.log('data not exists');
-          return null
-        }
+  const docRef = firestore.collection('users')
 
-        const data = doc.data();
-        return data;
-      });
+  const getUserFirestore = async () => {
+    if (localUser) {
+      const data = await docRef.doc(localUser.uid).get();
+      if (!data) {
+        console.log('data not exists');
+        return null
+      }
+
+      console.log('got the data');
+      return data.data();
     } else return null;
   }
 
-  const addUser = () => {
+  const addUser = async () => {
     if (localUser) {
       const userData = {
         displayName: localUser.displayName,
@@ -25,9 +25,10 @@ const useFireStore = async (localUser) => {
         email: localUser.email
       }
 
-      return firestore.collection('users')
-        .doc(localUser.uid).set(userData)
-        .then(() => console.log('user added'));
+      const addData = docRef.doc(localUser.uid);
+      await addData.set(userData)
+      console.log('user added');
+
     } else return;
   }
 

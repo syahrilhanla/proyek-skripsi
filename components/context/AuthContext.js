@@ -22,7 +22,7 @@ const AuthProvider = ({ children }) => {
   const setUser = async (user) => {
     if (user) {
       setCurrentUser(user);
-    } else console.log('no users');
+    } else return;
   }
 
   const login = async () => {
@@ -55,8 +55,6 @@ const AuthProvider = ({ children }) => {
         }
       });
     });
-
-    console.log(loading);
 
     return unSub;
   }, []);

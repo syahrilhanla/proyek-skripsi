@@ -17,7 +17,7 @@ export const getLocalUser = async () => {
       photoURL: localUser.photoURL
     };
   } catch (error) {
-    console.log(error);
+    console.log('try to fetch from localStorage or logged out');
   }
 }
 
