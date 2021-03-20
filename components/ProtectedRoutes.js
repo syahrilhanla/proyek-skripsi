@@ -7,15 +7,18 @@ const ProtectedRoutes = ({ children }) => {
   const router = useRouter();
   const { localUserData } = useAuth();
 
+  const publicLinks = ['/about', '/'];
+  const currentLink = router.pathname;
+
   useEffect(() => {
-    if (!localUserData && window.location.pathname !== '/') {
+    if (!localUserData && currentLink.includes(publicLinks)) {
       router.push('/');
       console.log('no user')
-    } else if (localUserData && window.location.pathname === '/') {
+    } else if (localUserData && currentLink === '/') {
       router.push('/dashboard');
       // console.log('there is a user');
     }
-  }, [localUserData]);
+  });
 
   return children;
 }
