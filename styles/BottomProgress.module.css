@@ -1,0 +1,31 @@
+.main {
+  bottom: 0;
+  left: 0;
+  min-width: 100%;
+  background-color: #3F51B5;
+  margin: 0px 0px;
+  padding: 1rem;
+  padding-bottom: 0.3rem;
+  color: #fff;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 2fr 8fr 2fr;
+  margin: 0px auto;
+  border: 1px solid #4444;
+  width: 80%
+}
+
+.progress p {
+  font-family: 'Roboto';
+  font-weight: 600;
+  font-size: 14px;
+  text-align: center;
+  padding: 0.6rem;
+  margin: 0px;
+}
+
+.right, .left {
+  justify-self: center;
+}

@@ -28,6 +28,10 @@
   justify-content: space-evenly;
 }
 
+.progressSection {
+  background-image: rgb(236, 233, 233);
+}
+
 .progresses h3, .progresses h2 {
   font-weight: 500;
 }

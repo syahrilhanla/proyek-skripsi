@@ -35,7 +35,7 @@ const dashboard = () => {
 function UserProgress() {
 
   return (
-    <section>
+    <section className={progressStyles.progressSection}>
       <div className={progressStyles.container}>
         <h1>
           Progres Saya
