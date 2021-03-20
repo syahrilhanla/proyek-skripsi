@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+
 import CircularProgressWithLabel from '../components/ProgressCircularBar';
 import LearningProgress from '../components/LearningProgress';
 
@@ -9,10 +10,9 @@ import dashboardStyles from '../styles/Dashboard.module.css'
 
 import { useAuth } from '../components/context/AuthContext';
 
-const dashboard = () => {
-  const { localUserData, loading } = useAuth();
 
-  console.log(loading);
+const dashboard = () => {
+  const { localUserData } = useAuth();
 
   return (
     <>
@@ -22,7 +22,7 @@ const dashboard = () => {
 
   function DisplayDashboard() {
     return (
-      <div className={dashboardStyles.mainProgress}>
+      <div className={progressStyles.mainProgress}>
         <Navbar />
         <DashboardContent displayName={localUserData.displayName} />
         <UserProgress />
@@ -33,13 +33,13 @@ const dashboard = () => {
 }
 
 function UserProgress() {
+
   return (
     <section>
       <div className={progressStyles.container}>
-        <h1 style={{ textAlign: 'center' }}>
+        <h1>
           Progres Saya
         </h1>
-        <hr />
         <LearningProgress text={'Menganalisis Data'} percentageValue={80} overallAction={'8/10'} />
         <LearningProgress text={'Ukuran Pemusatan'} percentageValue={70} overallAction={'7/10'} />
         <LearningProgress text={'Ukuran Penyebaran'} percentageValue={60} overallAction={'6/10'} />
