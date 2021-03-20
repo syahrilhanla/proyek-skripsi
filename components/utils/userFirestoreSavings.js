@@ -52,10 +52,10 @@ export const createUserProgress = async (localUser) => {
 
   if (localUser) {
     // data is just for experiment for now 
-    const initialData = [{
+    const initialData = {
       analyze_table: 1,
       quiz1: 0
-    }]
+    }
 
 
     const data = docRef.doc(localUser.uid).collection('progress');
@@ -71,7 +71,7 @@ export const updateProgress = async (localUser, newData) => {
     console.log('updating progress');
 
     const data = docRef.doc(localUser.uid).collection('progress');
-    await data.doc('wPipFsFca9IcydXFZFJ5').update({
+    await data.doc('upylsZjAbdW7b6O7lkx2').update({
       "initialData.quiz1": 8
     });
     console.log('progress updated');
