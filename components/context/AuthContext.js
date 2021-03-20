@@ -46,7 +46,7 @@ const AuthProvider = ({ children }) => {
             // get local user from localStorage after login and set to localStorage
             getLocalUser().then(data => {
               setLocalUserData(data);
-              useFireStore(data);
+              // useFireStore(data);
               setLoading(false);
             });
           })

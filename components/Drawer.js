@@ -1,65 +1,37 @@
-import React from 'react';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
+import React, { useState } from 'react';
+import { useTheme } from '@material-ui/core/styles';
+import { Drawer, List, Divider, IconButton, ListItem, ListItemText, Collapse } from '@material-ui/core';
+import { ExpandLess, ExpandMore } from '@material-ui/icons';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
+
+import { commonLinks, data } from './data/drawersData';
+import { useStyles } from './data/drawerStyles';
 
 import Link from 'next/link';
-import { useAuth } from './context/AuthContext';
-
-const drawerWidth = 240;
-
-const useStyles = makeStyles((theme) => ({
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-  },
-  drawerPaper: {
-    width: drawerWidth,
-  },
-  drawerHeader: {
-    display: 'flex',
-    alignItems: 'center',
-    padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
-    justifyContent: 'flex-end',
-  },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(3),
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    marginLeft: -drawerWidth,
-  },
-  contentShift: {
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-    marginLeft: 0,
-  },
-}));
 
 const DrawerComponent = ({ open, handleDrawerClose }) => {
   const classes = useStyles();
   const theme = useTheme();
 
-  const { signOut } = useAuth();
+  const [collapse, setCollapse] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(null);
 
-  const items = ['Analisis Data', 'Ukuran Pemusatan Data', 'Ukuran Penyebaran Data'];
-  const commonLinks = [
-    {
-      text: 'About',
-      link: '/about'
-    }
-  ]
+  const handleClick = (index) => {
+    setCurrentIndex(index + 1)
+    setCollapse(!collapse);
+  };
+
+  const SubChapters = ({ subChapter }) => {
+    return (
+      <Collapse in={collapse} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItem button className={classes.nested}>
+            <ListItemText primary={subChapter.subTitle} />
+          </ListItem>
+        </List>
+      </Collapse>
+    )
+  }
 
   return (
     <Drawer
@@ -71,19 +43,35 @@ const DrawerComponent = ({ open, handleDrawerClose }) => {
         paper: classes.drawerPaper,
       }}
     >
+
       <div className={classes.drawerHeader}>
         <IconButton onClick={handleDrawerClose}>
           {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
         </IconButton>
       </div>
       <Divider />
-      <List>
-        {items.map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
+
+      {data.map((chapter, chapterIndex) => {
+        return (
+          <div key={chapter.id}>
+
+            {/* Lessons */}
+            <ListItem button onClick={() => handleClick(chapterIndex)}>
+              <ListItemText primary={chapter.title} />
+              {collapse && currentIndex - 1 === chapterIndex ? <ExpandLess /> : <ExpandMore />}
+            </ListItem>
+
+            {/* Fires below list item when clicked */}
+            {currentIndex === chapter.id ? chapter.items.map(subChapter => {
+              return (
+                <SubChapters subChapter={subChapter} key={subChapter.key} />
+              )
+            }) : null}
+          </div>
+        )
+      })}
+
+      {/* Links */}
       <Divider />
       <List>
         {commonLinks.map((item, index) => (

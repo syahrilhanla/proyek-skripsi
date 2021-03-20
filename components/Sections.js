@@ -24,7 +24,7 @@ export function SectionB() {
   return (
     <section className={homeStyle.sectionB}>
       <div className={homeStyle.contentWrap}>
-        <h1>Mengapa App Bagus Untuk Kamu:</h1>
+        <h1>Mengapa App Ini Bagus Untuk Kamu:</h1>
         <div className={homeStyle.reasons}>
           <ul>
             <li>
