@@ -6,26 +6,27 @@ import layoutStyles from '../styles/MainLayout.module.css';
 
 const MainLayout = ({ Child1, Child2, title }) => {
   return (
-    <div className={layoutStyles.wrapper}>
-      <Navbar />
+    <>
+      <div className={layoutStyles.wrapper}>
+        <Navbar />
 
-      <h1 className={layoutStyles.title}>
-        {title}
-      </h1>
+        <h1 className={layoutStyles.title}>
+          {title}
+        </h1>
 
-      <div className={layoutStyles.container} style={
-        !Child2 && { gridTemplateColumns: '1fr' }
-      }>
-        <div className={layoutStyles.column1}>
-          <Child1 />
+        <div className={layoutStyles.container} style={
+          !Child2 && { gridTemplateColumns: '1fr' }
+        }>
+          <div className={layoutStyles.column1}>
+            <Child1 />
+          </div>
+          {Child2 && <div className={layoutStyles.column2}>
+            <Child2 />
+          </div>}
         </div>
-        {Child2 && <div className={layoutStyles.column2}>
-          <Child2 />
-        </div>}
       </div>
-
       <BottomProgress />
-    </div>
+    </>
   )
 }
 

@@ -6,11 +6,13 @@ import Image from 'next/image';
 
 const about = () => {
   return (
-    <div className={aboutStyles.mainAbout}>
-      <HomeNavbar />
-      <AboutContent />
-      <Footer />
-    </div>
+    <>
+      <div className={aboutStyles.mainAbout}>
+        <HomeNavbar />
+        <AboutContent />
+        <Footer />
+      </div>
+    </>
   )
 }
 
