@@ -6,7 +6,7 @@ import layoutStyles from '../styles/MainLayout.module.css';
 
 const MainLayout = ({ Child1, Child2, title }) => {
   return (
-    <>
+    <div className={layoutStyles.wrapper}>
       <Navbar />
 
       <h1 className={layoutStyles.title}>
@@ -25,7 +25,7 @@ const MainLayout = ({ Child1, Child2, title }) => {
       </div>
 
       <BottomProgress />
-    </>
+    </div>
   )
 }
 

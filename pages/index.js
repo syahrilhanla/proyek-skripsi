@@ -5,12 +5,12 @@ import Footer from '../components/Footer';
 
 export default function Home() {
   return (
-    <>
+    <div style={{ position: 'relative' }}>
       <HomeNavbar />
       <SectionA />
       <SectionB />
       <SectionC />
       <Footer />
-    </>
+    </div>
   )
 }

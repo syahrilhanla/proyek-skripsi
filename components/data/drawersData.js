@@ -4,15 +4,15 @@ export const data = [
     title: 'Menganalisis Data',
     items: [
       {
-        id: 'Menganalisis Tabel',
+        id: '1',
         subTitle: 'Menganalisis Tabel'
       },
       {
-        id: 'Menganalisis Grafik',
+        id: '2',
         subTitle: 'Menganalisis Grafik'
       },
       {
-        id: 'Kuis 1',
+        id: 'Kuis1',
         subTitle: 'Kuis 1'
       },
     ]
@@ -22,19 +22,19 @@ export const data = [
     title: 'Ukuran Pemusatan Data',
     items: [
       {
-        id: 'Mean',
+        id: '1',
         subTitle: 'Mean'
       },
       {
-        id: 'Median',
+        id: '2',
         subTitle: 'Median'
       },
       {
-        id: 'Modus',
+        id: '3',
         subTitle: 'Modus'
       },
       {
-        id: 'Kuis 2',
+        id: 'Kuis2',
         subTitle: 'Kuis 2'
       },
     ]
@@ -44,23 +44,23 @@ export const data = [
     title: 'Ukuran Penyebaran Data',
     items: [
       {
-        id: 'Jangkauan Data',
+        id: '1',
         subTitle: 'Jangkauan Data'
       },
       {
-        id: 'Kuartil',
+        id: '2',
         subTitle: 'Kuartil'
       },
       {
-        id: 'Jangkauan Antarkuartil',
+        id: '3',
         subTitle: 'Jangkauan Antarkuartil'
       },
       {
-        id: 'Simpangan Kuartil',
+        id: '4',
         subTitle: 'Simpangan Kuartil'
       },
       {
-        id: 'Kuis 3',
+        id: 'Kuis3',
         subTitle: 'Kuis 3'
       },
     ]

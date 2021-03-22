@@ -3,6 +3,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 import BorderLinearProgress from './BorderLinearProgress';
+import { data } from './data/drawersData';
 
 import progressStyles from '../styles/BottomProgress.module.css';
 
@@ -12,17 +13,37 @@ import Link from 'next/link';
 const BottomProgress = () => {
   const router = useRouter();
   const currentURL = router.pathname;
+  const parentPath = currentURL.split('/')[1];
   const currentPath = currentURL.split('/')[2];
 
   // pages of contents
+  const urlList = data.map(item => (
+    {
+      content: item.title,
+      url: item.items.map(unit => unit.id)
+    }
+  ));
+
+  const chooseURLList = (parentPath) => {
+    if (parentPath === 'analisis') {
+      return urlList.filter(item => item.content === 'Menganalisis Data')
+    } else if (parentPath === 'pemusatan') {
+      return urlList.filter(item => item.content === 'Ukuran Pemusatan Data')
+    } else if (parentPath === 'penyebaran') {
+      return urlList.filter(item => item.content === 'Ukuran Penyebaran Data')
+    }
+  }
+
   const analysisList = ['1', '2', '3'];
 
   const nextURL = () => {
-    if (parseInt(currentPath) < analysisList.length) return `${currentURL}/${analysisList[currentPath]}`;
+    if (parseInt(currentPath) < chooseURLList(parentPath).length) return `${parentPath}/${chooseURLList(parentPath)
+    [currentPath]}`;
   }
 
   const prevURL = () => {
-    if (parseInt(currentPath) > 1) return `${currentURL}/${analysisList[currentPath - 1]}`;
+    if (parseInt(currentPath) > 1) return `${parentPath}/${chooseURLList(parentPath)
+    [currentPath - 1]}`;
   }
 
   return (

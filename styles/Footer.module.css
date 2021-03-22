@@ -1,6 +1,8 @@
 .footer {
   color: white;  
   background: #408CFF;
+  bottom: 0px;
+  left: 0px;
 }
 
 .footerHeader {

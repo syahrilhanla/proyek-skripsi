@@ -2,6 +2,7 @@
   color: #474747;
   display: grid;
   grid-template-columns: 1fr;
+  position: relative;
 }
 
 .container {

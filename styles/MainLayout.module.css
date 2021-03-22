@@ -1,3 +1,4 @@
+
 .title {
   color: #444;
   font-family: 'Roboto';
@@ -23,9 +24,6 @@
 .column1, .column2 {
   width: 100%;
   padding: 1rem 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
   border: 1px solid #4444;
   border-radius: 6px;
   text-align: justify;
