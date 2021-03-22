@@ -14,7 +14,9 @@ const BottomProgress = () => {
   const router = useRouter();
   const currentURL = router.pathname;
   const parentPath = currentURL.split('/')[1];
-  const currentPath = currentURL.split('/')[2];
+  const currentPath = parseInt(currentURL.split('/')[2]);
+
+  console.log({ parentPath }, { currentPath }, { currentURL });
 
   // pages of contents
   const urlList = data.map(item => (
@@ -26,31 +28,41 @@ const BottomProgress = () => {
 
   const chooseURLList = (parentPath) => {
     if (parentPath === 'analisis') {
-      return urlList.filter(item => item.content === 'Menganalisis Data')
+      return urlList.filter(item => item.content === 'Menganalisis Data').map(unit => unit.url);
     } else if (parentPath === 'pemusatan') {
-      return urlList.filter(item => item.content === 'Ukuran Pemusatan Data')
+      return urlList.filter(item => item.content === 'Ukuran Pemusatan Data').map(unit => unit.url);
     } else if (parentPath === 'penyebaran') {
-      return urlList.filter(item => item.content === 'Ukuran Penyebaran Data')
+      return urlList.filter(item => item.content === 'Ukuran Penyebaran Data').map(unit => unit.url);
     }
   }
 
-  const analysisList = ['1', '2', '3'];
+  console.log(chooseURLList(parentPath).length);
 
   const nextURL = () => {
-    if (parseInt(currentPath) < chooseURLList(parentPath).length) return `${parentPath}/${chooseURLList(parentPath)
-    [currentPath]}`;
+    if (currentPath && currentPath < chooseURLList(parentPath).length) {
+      // if already is on page numbering
+      return `/${parentPath}/${chooseURLList(parentPath)[currentPath]}`;
+    } else if (currentPath && currentPath === chooseURLList(parentPath).length) {
+      // if already at the top of the content, then go to quiz/last url of content
+      return `/${parentPath}/${chooseURLList(parentPath)[currentPath.length]}`;
+    } else return `/${parentPath}/1`;
   }
 
   const prevURL = () => {
-    if (parseInt(currentPath) > 1) return `${parentPath}/${chooseURLList(parentPath)
-    [currentPath - 1]}`;
+    // if already is on page numbering, then can only go to previous link if on page 2
+    if (currentPath > 1) {
+      return `/${parentPath}/${chooseURLList(parentPath)
+      [currentPath - 1]}`
+    }
+    // if no, then always go to the first page
+    else return `/${parentPath}/1`;
   }
 
   return (
     <div className={progressStyles.main}>
       <div className={progressStyles.content}>
         <span className={progressStyles.left}>
-          <Link href={`${router.pathname}/${prevURL()}`}>
+          <Link href={`/${prevURL()}`}>
             <ChevronLeftIcon fontSize={'large'} color={'inherit'} />
           </Link>
         </span>
@@ -65,7 +77,7 @@ const BottomProgress = () => {
         </span>
 
         <span className={progressStyles.right}>
-          <Link href={`${router.pathname}/${nextURL()}`}>
+          <Link href={`/${nextURL()}`}>
             <ChevronRightIcon fontSize={'large'} color={'inherit'} />
           </Link>
         </span>
