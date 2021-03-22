@@ -26,19 +26,19 @@ const page1 = () => {
   };
 
   const pieChart = () => (
-    <div>
-      <h2>Pie Example</h2>
+    <>
+      {/* <h2>Pie Example</h2>
       <Pie data={data}
         width={300}
         height={100}
         options={{ maintainAspectRatio: false }}
-      />
-    </div>
+      /> */}
+    </>
   )
 
   return (
     <>
-      <MainLayout Child1={pieChart} />
+      <MainLayout Child1={pieChart} title={'Menganalisis Data'} />
     </>
   )
 }

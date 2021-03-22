@@ -36,25 +36,23 @@ const BottomProgress = () => {
     }
   }
 
-  console.log(chooseURLList(parentPath).length);
-
   const nextURL = () => {
-    if (currentPath && currentPath < chooseURLList(parentPath).length) {
+    if (currentPath && currentPath < chooseURLList(parentPath)[0].length) {
       // if already is on page numbering
-      return `/${chooseURLList(parentPath)[currentPath]}`;
-    } else if (currentPath && currentPath === chooseURLList(parentPath).length) {
+      return `${parentPath}/${chooseURLList(parentPath)[0][currentPath]}`;
+    } else if (currentPath && currentPath === chooseURLList(parentPath)[0].length) {
       // if already at the top of the content, then go to quiz/last url of content
-      return `/${chooseURLList(parentPath)[currentPath.length]}`;
-    } else return `/${currentURL}/1`;
+      return `${parentPath}/${chooseURLList(parentPath)[0][currentPath.length - 1]}`;
+    } else return `${parentPath}/1`;
   }
 
   const prevURL = () => {
     // if already is on page numbering, then can only go to previous link if on page 2
     if (currentPath > 1) {
-      return `/${chooseURLList(parentPath)[currentPath - 1]}`
+      return `${parentPath}/${chooseURLList(parentPath)[0][currentPath - 2]}`
     }
     // if no, then always go to the first page
-    else return `/${currentURL}/1`;
+    else return `${parentPath}/1`;
   }
 
   return (

@@ -38,7 +38,7 @@ const page2 = () => {
 
   return (
     <>
-      <MainLayout Child1={pieChart} />
+      <MainLayout Child1={pieChart} title={'Menganalisis Tabel'} />
     </>
   )
 }
