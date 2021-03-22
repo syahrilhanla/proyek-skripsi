@@ -27,4 +27,9 @@
 
 .right, .left {
   justify-self: center;
+  cursor: pointer;
+}
+
+.right:hover, .left:hover {
+  opacity: 0.5rem
 }
