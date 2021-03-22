@@ -4,22 +4,24 @@ import BottomProgress from './BottomProgress';
 
 import layoutStyles from '../styles/MainLayout.module.css';
 
-const MainLayout = ({ child1, child2 }) => {
+const MainLayout = ({ Child1, Child2, title }) => {
   return (
     <>
       <Navbar />
 
       <h1 className={layoutStyles.title}>
-        Analisis Data
+        {title}
       </h1>
 
-      <div className={layoutStyles.container}>
+      <div className={layoutStyles.container} style={
+        !Child2 && { gridTemplateColumns: '1fr' }
+      }>
         <div className={layoutStyles.column1}>
-          {texts()}
+          <Child1 />
         </div>
-        <div className={layoutStyles.column2}>
-          {texts()}
-        </div>
+        {Child2 && <div className={layoutStyles.column2}>
+          <Child2 />
+        </div>}
       </div>
 
       <BottomProgress />

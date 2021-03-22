@@ -7,13 +7,13 @@
   padding: 1rem;
   padding-bottom: 0.3rem;
   color: #fff;
+  position: absolute;
 }
 
 .content {
   display: grid;
   grid-template-columns: 2fr 8fr 2fr;
   margin: 0px auto;
-  border: 1px solid #4444;
   width: 80%
 }
 

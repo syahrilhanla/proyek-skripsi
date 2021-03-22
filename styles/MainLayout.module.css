@@ -12,7 +12,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
   width: 90%;
-  margin: 2rem auto;
+  margin: 1.5rem auto;
   align-self: center;
   padding: 1rem;
   border: 1px solid #4444;
@@ -22,12 +22,14 @@
 
 .column1, .column2 {
   width: 100%;
-  padding: 1rem;
+  padding: 1rem 2rem;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   border: 1px solid #4444;
   border-radius: 6px;
+  text-align: justify;
+  line-height: 1.5rem;
 }
 
 @media (max-width: 600px) {
