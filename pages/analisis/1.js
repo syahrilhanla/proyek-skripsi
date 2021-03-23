@@ -1,46 +1,21 @@
 import React from 'react';
 import MainLayout from '../../components/MainLayout';
-import { Pie } from 'react-chartjs-2';
 
 const page1 = () => {
-
-  const data = {
-    labels: [
-      'Red',
-      'Blue',
-      'Yellow'
-    ],
-    datasets: [{
-      data: [300, 50, 100],
-      backgroundColor: [
-        '#FF6384',
-        '#36A2EB',
-        '#FFCE56'
-      ],
-      hoverBackgroundColor: [
-        '#FF6384',
-        '#36A2EB',
-        '#FFCE56'
-      ]
-    }]
-  };
-
-  const pieChart = () => (
+  const Text = () => (
     <>
-      {/* <h2>Pie Example</h2>
-      <Pie data={data}
-        width={300}
-        height={100}
-        options={{ maintainAspectRatio: false }}
-      /> */}
+      <p>
+        Kamu mungkin pernah mendengar dengan kata “rata-rata”, “paling tinggi/rendah”, atau “paling berat/ringan”. Contohnya ada pada kalimat seperti “rata-rata tinggi orang Indonesia adalah 158,12 cm”, atau “gunung tertinggi di dunia adalah Gunung Everest”. Kalimat-kalimat tersebut didapatkan dari data yang diperoleh sebelumnya melalui pengumpulan dan pengolahan data. Inilah yang disebut dengan statistika, yaitu ilmu yang mempelajari tentang pengumpulan, pengolahan, penganalisisan, dan penarikan kesimpulan data.
+      </p>
+      <p>
+        Di sini kamu akan mempelajari apa itu statistika berdasarkan masalah yang ditemui di kehidupan sehari-hari melalui data berbentuk tabel dan diagram. Selain itu kamu akan mempelajari cara menentukan nilai rata-rata (mean), median, modus, dan sebaran data.
+      </p>
     </>
   )
 
   return (
-    <>
-      <MainLayout Child1={pieChart} title={'Menganalisis Data'} />
-    </>
+    <MainLayout Child1={Text} title={'Apa itu Statistika?'} />
   )
 }
 
-export default page1
+export default page1;

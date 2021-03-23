@@ -1,44 +1,19 @@
 import React from 'react';
 import MainLayout from '../../components/MainLayout';
-import { Pie } from 'react-chartjs-2';
 
 const page2 = () => {
 
-  const data = {
-    labels: [
-      'Red',
-      'Blue',
-      'Yellow'
-    ],
-    datasets: [{
-      data: [300, 50, 100],
-      backgroundColor: [
-        '#FF6384',
-        '#36A2EB',
-        '#FFCE56'
-      ],
-      hoverBackgroundColor: [
-        '#FF6384',
-        '#36A2EB',
-        '#FFCE56'
-      ]
-    }]
-  };
-
-  const pieChart = () => (
+  const Text = () => (
     <div>
-      <h2>Page 2</h2>
-      <Pie data={data}
-        width={300}
-        height={100}
-        options={{ maintainAspectRatio: false }}
-      />
+      <p>
+        Statistika ada dalam kehidupan sehari-hari, mungkin kamu tidak menyadarinya karena memang digunakan hampir untuk semua bidang, karena itu penting bagi kamu untuk mempelajarinya. Salah satu ilmu yang paling sering digunakan adalah menganalisis data, dan di sini kamu akan belajar bagaimana cara menganalisis data dari tabel dan grafik atau diagram.
+      </p>
     </div>
   )
 
   return (
     <>
-      <MainLayout Child1={pieChart} title={'Menganalisis Tabel'} />
+      <MainLayout Child1={Text} Child2={Text} title={'Menganalisis Data'} />
     </>
   )
 }

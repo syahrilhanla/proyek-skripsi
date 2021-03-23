@@ -6,13 +6,13 @@ import Image from 'next/image';
 
 const about = () => {
   return (
-    <>
+    <div style={{ position: 'relative' }}>
       <div className={aboutStyles.mainAbout}>
         <HomeNavbar />
         <AboutContent />
-        <Footer />
       </div>
-    </>
+      <Footer />
+    </div>
   )
 }
 

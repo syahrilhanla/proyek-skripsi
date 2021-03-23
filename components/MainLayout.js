@@ -14,9 +14,7 @@ const MainLayout = ({ Child1, Child2, title }) => {
           {title}
         </h1>
 
-        <div className={layoutStyles.container} style={
-          !Child2 && { gridTemplateColumns: '1fr' }
-        }>
+        <div className={Child2 ? layoutStyles.containerCombo : layoutStyles.containerSolo} >
           <div className={layoutStyles.column1}>
             <Child1 />
           </div>

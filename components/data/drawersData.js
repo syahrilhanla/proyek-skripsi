@@ -5,11 +5,19 @@ export const data = [
     items: [
       {
         id: '1',
-        subTitle: 'Menganalisis Tabel'
+        subTitle: 'Apa itu Statistika'
       },
       {
         id: '2',
-        subTitle: 'Menganalisis Grafik'
+        subTitle: 'Menganalis Data'
+      },
+      {
+        id: '3',
+        subTitle: 'Menganalis Tabel'
+      },
+      {
+        id: '4',
+        subTitle: 'Menganalis Grafik'
       },
       {
         id: 'Kuis1',

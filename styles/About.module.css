@@ -2,7 +2,6 @@
 .mainAbout {
   display: grid;
   grid-template-columns: 1fr;
-  position: relative;
   min-height: 100%;
   padding: 0;
   margin: 0;
