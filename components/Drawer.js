@@ -13,6 +13,16 @@ const DrawerComponent = ({ open, handleDrawerClose }) => {
   const classes = useStyles();
   const theme = useTheme();
 
+  const chooseURLList = (chapter) => {
+    if (chapter.title === 'Menganalisis Data') {
+      return `analisis`;
+    } else if (chapter.title === 'Ukuran Pemusatan Data') {
+      return `pemusatan`;
+    } else if (chapter.title === 'Ukuran Penyebaran Data') {
+      return `penyebaran`;
+    }
+  }
+
   const [collapse, setCollapse] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(null);
 
@@ -21,13 +31,15 @@ const DrawerComponent = ({ open, handleDrawerClose }) => {
     setCollapse(!collapse);
   };
 
-  const SubChapters = ({ subChapter }) => {
+  const SubChapters = ({ subChapter, chapter, key }) => {
     return (
       <Collapse in={collapse} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItem button className={classes.nested}>
-            <ListItemText primary={subChapter.subTitle} />
-          </ListItem>
+        <List component="div" disablePadding key={key}>
+          <Link href={`/${chooseURLList(chapter)}/${subChapter.id}`} key={key}>
+            <ListItem button className={classes.nested} key={key}>
+              <ListItemText primary={subChapter.subTitle} key={key} />
+            </ListItem>
+          </Link>
         </List>
       </Collapse>
     )
@@ -64,7 +76,7 @@ const DrawerComponent = ({ open, handleDrawerClose }) => {
             {/* Fires below list item when clicked */}
             {currentIndex === chapter.id ? chapter.items.map(subChapter => {
               return (
-                <SubChapters subChapter={subChapter} key={subChapter.key} />
+                <SubChapters subChapter={subChapter} key={subChapter.key} chapter={chapter} />
               )
             }) : null}
           </div>

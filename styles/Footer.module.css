@@ -1,6 +1,9 @@
 .footer {
   color: white;  
   background: #408CFF;
+  bottom: 0px;
+  left: 0px;
+  min-width: 100%;
 }
 
 .footerHeader {
@@ -88,7 +91,8 @@
   .links {
     margin-left: -2.5rem;
   }
-    .footerDesc {
+  
+  .footerDesc {
     width: 100%;
   }
 }

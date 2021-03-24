@@ -1,10 +1,13 @@
-import React, { useContext } from 'react';
-import { fade, makeStyles, useTheme } from '@material-ui/core/styles';
+import React from 'react';
+
+import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, Avatar, Toolbar, IconButton, MenuItem, Menu } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import DrawerComponent from './Drawer';
+
+import Link from 'next/link';
 import Image from 'next/image';
 import { useAuth } from './context/AuthContext';
 
@@ -105,7 +108,9 @@ export default function Navbar() {
           aria-haspopup="true"
           color="inherit"
         >
-          <Avatar alt={localUserData.displayName} src={localUserData.photoURL} className={classes.small} />
+          <Link href={'/dashboard'}>
+            <Avatar alt={localUserData.displayName} src={localUserData.photoURL} className={classes.small} />
+          </Link>
         </IconButton>
         <IconButton
           aria-label="logout"
@@ -149,7 +154,9 @@ export default function Navbar() {
                 onClick={handleProfileMenuOpen}
                 color="inherit"
               >
-                <Avatar alt={localUserData.displayName} src={localUserData.photoURL} className={classes.small} />
+                <Link href={'/dashboard'}>
+                  <Avatar alt={localUserData.displayName} src={localUserData.photoURL} className={classes.small} />
+                </Link>
               </IconButton>
             </span>
             <span onClick={() => signOut()}>

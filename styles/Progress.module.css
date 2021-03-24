@@ -2,6 +2,7 @@
   color: #474747;
   display: grid;
   grid-template-columns: 1fr;
+  position: relative;
 }
 
 .container {
@@ -26,6 +27,10 @@
   grid-template-columns: 1fr 1fr 1fr;
   padding: 0px 0.7rem;
   justify-content: space-evenly;
+}
+
+.progressSection {
+  background-image: rgb(236, 233, 233);
 }
 
 .progresses h3, .progresses h2 {

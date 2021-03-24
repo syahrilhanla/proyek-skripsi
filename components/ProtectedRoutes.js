@@ -7,7 +7,7 @@ const ProtectedRoutes = ({ children }) => {
   const router = useRouter();
   const { localUserData } = useAuth();
 
-  const publicLinks = ['/about', '/'];
+  const publicLinks = ['/about', '/', '/analisis/*'];
   const currentLink = router.pathname;
 
   useEffect(() => {

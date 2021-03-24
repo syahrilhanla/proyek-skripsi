@@ -6,9 +6,11 @@ import Image from 'next/image';
 
 const about = () => {
   return (
-    <div className={aboutStyles.mainAbout}>
-      <HomeNavbar />
-      <AboutContent />
+    <div style={{ position: 'relative' }}>
+      <div className={aboutStyles.mainAbout}>
+        <HomeNavbar />
+        <AboutContent />
+      </div>
       <Footer />
     </div>
   )
@@ -46,6 +48,20 @@ function AboutContent() {
         </h1>
         <p>
           Syahril Hanla Azis (1710131110017), mahasiswa Pendidikan Komputer, Fakultas Keguruan dan Ilmu Pendidikan,  Universitas Lambung Mangkurat
+        </p>
+
+        <h1>
+          Kepentingan Pengembangan
+        </h1>
+        <p>
+          Media ini dibuat untuk memenuhi persyaratan dalam menyelesaikan Program Strata-1 Pendidikan Komputer dengan judul "<i>Pengembangan Media Pembelajaran Interaktif Berbasis Web pada Materi Statistika Kelas VIII dengan Pendekatan Kontekstual Lahan Basah</i>"
+        </p>
+
+        <h1>
+          Ucapan Terima Kasih
+        </h1>
+        <p>
+          Terima kasih diucapkan sebesar-besarnya kepada para Dosen Pembimbing, yakni Bapak Dr. Harja Santanapurba, M. Kom. selaku <i>Dosen Pembimbing 1</i>, dan Bapak Novan A. B. Saputra, S. Kom., M. T. selaku <i>Dosen Pembimbing 2</i>.
         </p>
       </div>
     </div>
