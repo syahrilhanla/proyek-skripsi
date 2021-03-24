@@ -21,7 +21,7 @@ const BarChart = ({ charData }) => {
     <div>
       <Bar
         data={data}
-        width={300}
+        width={280}
         height={200}
         options={{
           maintainAspectRatio: false
