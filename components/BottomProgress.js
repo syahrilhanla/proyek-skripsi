@@ -16,8 +16,6 @@ const BottomProgress = () => {
   const parentPath = currentURL.split('/')[1];
   const currentPath = parseInt(currentURL.split('/')[2]);
 
-  console.log({ parentPath }, { currentPath }, { currentURL });
-
   // pages of contents
   const urlList = data.map(item => (
     {

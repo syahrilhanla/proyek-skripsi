@@ -55,6 +55,12 @@
   align-items: center;
 }
 
+.questionBox {
+  width: 90%;
+  margin: 1rem auto;
+  padding: 1rem;
+}
+
 @media (max-width: 600px) {
   .containerCombo {
     grid-template-columns: 1fr;

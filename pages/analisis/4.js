@@ -93,6 +93,15 @@ const page4 = () => {
     data: data
   };
 
+  const questionData = [
+    {
+      question: 'what is this?',
+      answer: 'yes'
+    }
+  ];
+
+  const instruction = 'Di bawah ini merupakan diagram garis yang menunjukkan aktivitas bertelur dari Itik Alabio, itik yang terkenal sebagai produk peternakan khas Hulu Sungai yang berdaya jual tinggi. Berdasarkan data yang disajikan coba kamu analisa data di atas dan ambil kesimpulan, kemudian jawablah pertanyaan berikut:'
+
   const Data = () => (
     <div style={{ margin: 'auto' }}>
       <Table1 />
@@ -103,7 +112,12 @@ const page4 = () => {
 
   return (
     <>
-      <MainLayout Child1={Data} Child2={Text} title={'Menganalisis Grafik/Diagram'} />
+      <MainLayout
+        Child1={Data}
+        Child2={Text}
+        title={'Menganalisis Grafik/Diagram'}
+        questionData={questionData}
+        instruction={instruction} />
     </>
   )
 }
