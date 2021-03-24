@@ -31,14 +31,15 @@ const DrawerComponent = ({ open, handleDrawerClose }) => {
     setCollapse(!collapse);
   };
 
-  const SubChapters = ({ subChapter, chapter }) => {
+  const SubChapters = ({ subChapter, chapter, key }) => {
     return (
       <Collapse in={collapse} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <Link href={`/${chooseURLList(chapter)}/${subChapter.id}`}>
-            <ListItem button className={classes.nested}>
-              <ListItemText primary={subChapter.subTitle} />
-            </ListItem></Link>
+        <List component="div" disablePadding key={key}>
+          <Link href={`/${chooseURLList(chapter)}/${subChapter.id}`} key={key}>
+            <ListItem button className={classes.nested} key={key}>
+              <ListItemText primary={subChapter.subTitle} key={key} />
+            </ListItem>
+          </Link>
         </List>
       </Collapse>
     )

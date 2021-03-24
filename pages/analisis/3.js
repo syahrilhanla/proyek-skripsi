@@ -1,6 +1,6 @@
 import React from 'react';
 import MainLayout from '../../components/MainLayout';
-import TableComponent from '../../components/TableComponent';
+import tableStyle from '../../styles/TableStyle.module.css';
 
 const page3 = () => {
 
@@ -29,37 +29,39 @@ const page3 = () => {
 
   const Table1 = () => {
     return (
-      <table>
-        <thead>
-          <tr>
-            <th>
-              No
+      <div style={{ margin: 'auto' }}>
+        <table className={tableStyle.mainTable}>
+          <thead>
+            <tr>
+              <th className={tableStyle.tableHead}>
+                No
               </th>
-            <th>
-              Umur Benih (Hari)
+              <th className={tableStyle.tableHead}>
+                Umur Benih (Hari)
               </th>
-            <th>
-              Panjang (cm)
+              <th className={tableStyle.tableHead}>
+                Panjang (cm)
               </th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {tableData.map(item => (
-            <tr key={item.no}>
-              <td>
-                {item.no}
-              </td>
-              <td>
-                {item.age}
-              </td>
-              <td>
-                {item.size}
-              </td>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+
+          <tbody>
+            {tableData.map(item => (
+              <tr key={item.no}>
+                <td>
+                  {item.no}
+                </td>
+                <td>
+                  {item.age}
+                </td>
+                <td>
+                  {item.size}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     )
   }
 
@@ -69,7 +71,7 @@ const page3 = () => {
 
   const Content = () => {
     return (
-      <>
+      <div>
         <p>
           Perhatikan tabel di bawah, berikut merupakan tabel untuk menyajikan data pertumbuhan ikan gabus. Data ini didapatkan berdasarkan pengukuran yang dilakukan dalam jangka waktu tertentu, kemudian data disajikan dalam bentuk tabel agar mudah untuk dibaca dan informasi dapat lebih mudah dipahami.
         </p>
@@ -77,20 +79,20 @@ const page3 = () => {
           Berdasarkan tabel di atas bisa dilihat terdapat dua judul kolom yakni Umur Benih dengan satuan hari dan Panjang dengan satuan cm. Data dari pengukuran dikelompokkan berdasarkan dua judul kolom tersebut, yang mana didapatkan ikan berumur 30 hari memiliki panjang yang berbeda-beda dari 1-3 cm, begitu pula dengan yang 60 hari dan seterusnya. Berdasarkan data yang disajikan pada tabel di atas, kita bisa menarik kesimpulan bahwa:
         </p>
 
-        {/* <ul>
-          {points.map(item => (
-            <li>
+        <ul>
+          {points.map((item, index) => (
+            <li key={index}>
               {item}
             </li>
           ))}
-        </ul> */}
-      </>
+        </ul>
+      </div>
     )
   }
 
   return (
     <>
-      <MainLayout Child1={Content} title={'Menganalisis Tabel'} />
+      <MainLayout Child1={Table1} Child2={Content} title={'Menganalisis Tabel'} />
     </>
   )
 }

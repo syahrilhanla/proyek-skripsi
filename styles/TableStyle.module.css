@@ -5,9 +5,13 @@
   border-collapse: collapse;
 }
 
+.mainTable table {
+  margin: auto auto;
+}
+
 .tableHead {
   background-color: #3F51B5;
-  color: #cecece;
+  color: #ffff !important;
   text-transform: capitalize;
   font-weight: 600;
   padding: 0.5rem 0.7rem;

@@ -29,7 +29,7 @@
 }
 
 .containerSolo {
-    color: #444;
+  color: #444;
   font-family: 'Roboto';
   display: grid;
   grid-template-columns: 1fr;
@@ -51,10 +51,13 @@
   text-align: justify;
   line-height: 1.5rem;
   overflow: auto;
+  display: flex;
+  justify-items: center;
+  align-items: center;
 }
 
 @media (max-width: 600px) {
-  .container {
+  .containerCombo {
     grid-template-columns: 1fr;
   }
 
