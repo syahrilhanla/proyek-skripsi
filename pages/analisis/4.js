@@ -1,4 +1,5 @@
 import React from 'react';
+import BarChart from '../../components/BarChart';
 import MainLayout from '../../components/MainLayout';
 import tableStyle from '../../styles/TableStyle.module.css';
 
@@ -10,7 +11,7 @@ const page4 = () => {
         Data biasanya juga disajikan dalam bentuk grafik atau diagram, dengan menggunakan tampilan ini biasanya data yang lebih kompleks dapat lebih mudah untuk dipahami tanpa perlu usaha lebih untuk menganalisisnya. Sebagai contoh kita mempunyai sebuah tabel dengan data ukuran ikan Kelabau yang tertangkap di sungai. Kita bisa mengubahnya dari tabel menjadi berbagai macam grafik atau diagram, misalnya diagram batang, diagram lingkaran, dan diagram garis.
       </p>
       <p>
-        Di tersebut merupakan data dari hasil kumpulan tangkapan ikan Kelabau yang ada di sepanjang sungai Kapuas. Berdasarkan hasil tangkapan tersebut kita dapat menyajikan datanya menjadi sebuah tabel yang menggolongkan ikan berdasarkan ukurannya, kemudian per golongan ukuran tersebut didapatkan persentase dari jumlah keseluruhan. Berdasarkan data yang ini kita dapat membuatnya menjadi berbagai macam jenis diagram. Di bawah merupakan hasil dari pembuatan diagram batang menggunakan data yang sama pada tabel di atas. Kita dapat membaginya
+        Di samping merupakan data dari hasil kumpulan tangkapan ikan Kelabau yang ada di sepanjang sungai Kapuas. Berdasarkan hasil tangkapan tersebut kita dapat menyajikan datanya menjadi sebuah tabel yang menggolongkan ikan berdasarkan ukurannya, kemudian per golongan ukuran tersebut didapatkan persentase dari jumlah keseluruhan. Berdasarkan data yang ini kita dapat membuatnya menjadi berbagai macam jenis diagram. Di bawah merupakan hasil dari pembuatan diagram batang menggunakan data yang sama pada tabel di atas. Kita dapat membaginya
         Ayo Mencoba!
         sesuai dengan golongan ukuran pada tabel, dan melihat berapa banyak populasi (dalam persentase) dari jumlah ikan tersebut.
       </p>
@@ -83,9 +84,20 @@ const page4 = () => {
     )
   }
 
+  const labels = tableData.map(label => label.size);
+  const data = tableData.map(item => item.percentage);
+
+  const charData = {
+    labels: labels,
+    label: 'Ukuran Ikan Kelabau',
+    data: data
+  };
+
   const Data = () => (
     <div style={{ margin: 'auto' }}>
       <Table1 />
+      <br />
+      <BarChart charData={charData} />
     </div>
   )
 
