@@ -15,6 +15,7 @@ const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [localUserData, setLocalUserData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [userProgress, setUserProgress] = useState(null);
 
   const router = useRouter();
 
@@ -46,7 +47,7 @@ const AuthProvider = ({ children }) => {
             // get local user from localStorage after login and set to localStorage
             getLocalUser().then(data => {
               setLocalUserData(data);
-              // useFireStore(data);
+              // setUserProgress(useFireStore(data));
               setLoading(false);
             });
           })
@@ -63,6 +64,7 @@ const AuthProvider = ({ children }) => {
     <AuthContext.Provider value={{
       currentUser,
       localUserData,
+      userProgress,
       loading,
       login,
       signOut

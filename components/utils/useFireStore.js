@@ -23,12 +23,16 @@ const useFireStore = async (localUser) => {
       console.log('no progress')
       await createUserProgress(localUser);
     }
+
+    return progressData;
   }
 
   await checkingInitialUser();
-  await checkingInitialProgress();
+  const progressData = await checkingInitialProgress();
 
   // await updateProgress(localUser);
+
+  return progressData;
 
 }
 
