@@ -15,10 +15,10 @@ const HomeNavbar = () => {
       <div className={navbarStyle.links}>
         <ul>
           <li>
-            <a><Link href={'/'}>Home</Link></a>
+            <Link href={'/'}>Home</Link>
           </li>
           <li>
-            <a><Link href={'/about'}>About</Link></a>
+            <Link href={'/about'}>About</Link>
           </li>
         </ul>
       </div>
