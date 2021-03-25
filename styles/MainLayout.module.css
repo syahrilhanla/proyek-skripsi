@@ -25,7 +25,7 @@
   padding: 1rem;
   border: 1px solid #4444;
   border-radius: 6px;
-  min-height: 60vh;
+  min-height: 70vh;
 }
 
 .containerSolo {
@@ -40,7 +40,7 @@
   padding: 1rem;
   border: 1px solid #4444;
   border-radius: 6px;
-  min-height: 60vh;
+  min-height: 70vh;
 }
 
 .column1, .column2 {
@@ -73,5 +73,6 @@
 
   .column1 {
     padding: 0.8rem 0px;
+    overflow-x: scroll;
   }
 }

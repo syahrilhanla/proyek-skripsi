@@ -1,3 +1,6 @@
+// SETUSERPROGRESS HAVENT USED YET, DUE TO DEVELOPMENT SO IT CAN RUN IN OFFLINE MODE
+// WHICH DOES NOT USE USEFIRESTORE TO GET DATA FROM DATABASE
+
 import React, { useState, createContext, useContext, useEffect } from 'react';
 import { setLocalStorage, getLocalUser, removeLocalUser } from '../utils/userLocalSavings';
 import { popup, auth } from '../Firebase';

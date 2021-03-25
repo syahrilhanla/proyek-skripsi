@@ -1,0 +1,26 @@
+.main {
+  border: 1px solid #444;
+  padding: 1rem;
+  font-family: 'Roboto';
+}
+
+.question {
+  font-size: 14px;
+  font-weight: 300;
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.answers {
+  display: flex;
+  flex-direction: column;
+}
+
+.answerButton {
+  padding: 1rem;
+  background-color: #6b7cdd8c;
+  text-align: center;
+  border: none;
+  border-radius: 4px;
+  margin: 1rem auto;
+}
