@@ -1,9 +1,9 @@
 import React from 'react';
-import BarChart from '../../components/BarChart';
-import MainLayout from '../../components/MainLayout';
-import TableTwo from '../../components/graphsAndTables/TableTwo';
-import { data } from '../../components/graphsAndTables/TableTwo';
-import Caption from '../../components/Caption';
+import BarChart from '@/components/BarChart';
+import MainLayout from '@/components/MainLayout';
+import TableTwo from '@/components/graphsAndTables/TableTwo';
+import { data } from '@/components/graphsAndTables/TableTwo';
+import Caption from '@/components/Caption';
 
 const page4 = () => {
   const tableData = data();

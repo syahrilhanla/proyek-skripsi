@@ -1,5 +1,5 @@
 import React from 'react';
-import questionStyle from '../styles/QuestionBox.module.css';
+import questionStyle from '@/styles/QuestionBox.module.css';
 
 const QuestionBox = ({ question, instruction }) => {
   return (

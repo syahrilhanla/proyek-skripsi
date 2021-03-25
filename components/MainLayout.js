@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from './Navbar';
 import BottomProgress from './BottomProgress';
 
-import layoutStyles from '../styles/MainLayout.module.css';
+import layoutStyles from '@/styles/MainLayout.module.css';
 import QuestionBox from './QuestionBox';
 
 const MainLayout = ({ Child1, Child2, title, questionData, instruction }) => {

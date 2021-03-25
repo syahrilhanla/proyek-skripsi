@@ -1,5 +1,5 @@
 import React from 'react';
-import captionStyle from '../styles/CaptionStyle.module.css';
+import captionStyle from '@/styles/CaptionStyle.module.css';
 
 const CaptionComponent = ({ children }) => {
   return (

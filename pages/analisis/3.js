@@ -1,6 +1,6 @@
 import React from 'react';
-import MainLayout from '../../components/MainLayout';
-import TableOne from '../../components/graphsAndTables/TableOne';
+import MainLayout from '@/components/MainLayout';
+import TableOne from '@/components/graphsAndTables/TableOne';
 
 const page3 = () => {
 

@@ -1,4 +1,4 @@
-import homeStyle from '../styles/Sections.module.css';
+import homeStyle from '@/styles/Sections.module.css';
 import Image from 'next/image';
 
 import { useAuth } from './context/AuthContext';

@@ -1,8 +1,7 @@
 import React from 'react';
-import navbarStyle from '../styles/HomeNavbar.module.css';
+import navbarStyle from '@/styles/HomeNavbar.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useAuth } from './context/AuthContext';
 
 const HomeNavbar = () => {
   return (
@@ -15,10 +14,10 @@ const HomeNavbar = () => {
       <div className={navbarStyle.links}>
         <ul>
           <li>
-            <Link href={'/'}>Home</Link>
+            <a><Link href={'/'}>Home</Link></a>
           </li>
           <li>
-            <Link href={'/about'}>About</Link>
+            <a><Link href={'/about'}>About</Link></a>
           </li>
         </ul>
       </div>

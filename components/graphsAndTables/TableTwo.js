@@ -1,5 +1,5 @@
 import React from 'react';
-import tableStyle from '../../styles/TableStyle.module.css';
+import tableStyle from '@/styles/TableStyle.module.css';
 
 const TableTwo = () => {
 

@@ -5,7 +5,7 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import BorderLinearProgress from './BorderLinearProgress';
 import { data } from './data/drawersData';
 
-import progressStyles from '../styles/BottomProgress.module.css';
+import progressStyles from '@/styles/BottomProgress.module.css';
 
 import { useRouter } from 'next/router';
 import Link from 'next/link';
