@@ -57,9 +57,9 @@ const BottomProgress = () => {
     <div className={progressStyles.main}>
       <div className={progressStyles.content}>
         <span className={progressStyles.left}>
-          <Link href={`/${prevURL()}`}>
+          {currentPath !== 1 && <Link href={`/${prevURL()}`}>
             <ChevronLeftIcon fontSize={'large'} color={'inherit'} />
-          </Link>
+          </Link>}
         </span>
 
         <span>
@@ -72,9 +72,9 @@ const BottomProgress = () => {
         </span>
 
         <span className={progressStyles.right}>
-          <Link href={`/${nextURL()}`}>
+          {currentPath < chooseURLList(parentPath)[0].length && <Link href={`/${nextURL()}`}>
             <ChevronRightIcon fontSize={'large'} color={'inherit'} />
-          </Link>
+          </Link>}
         </span>
       </div>
     </div >
