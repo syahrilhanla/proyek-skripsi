@@ -21,11 +21,11 @@ export const questionData = [
     ]
   },
   {
-    questionText: 'Sungai terpanjang dari daftar tersebut adalah....',
+    questionText: 'Jembatan terpanjang di Banua Anyar adalah....',
     answerChoices: [
       {
-        answerText: 'Barito',
-        isCorrect: false
+        answerText: 'Rumpiang',
+        isCorrect: true
       },
       {
         answerText: 'Alalak',
@@ -37,20 +37,20 @@ export const questionData = [
       },
       {
         answerText: 'Martapura',
-        isCorrect: true
+        isCorrect: false
       }
     ]
   },
   {
-    questionText: 'Sungai terpanjang dari daftar tersebut adalah....',
+    questionText: 'Kota yang terkenal akan universitasnya adalah....',
     answerChoices: [
       {
         answerText: 'Barito',
         isCorrect: false
       },
       {
-        answerText: 'Alalak',
-        isCorrect: false
+        answerText: 'San Diego',
+        isCorrect: true
       },
       {
         answerText: 'Benawa',
@@ -58,7 +58,27 @@ export const questionData = [
       },
       {
         answerText: 'Martapura',
+        isCorrect: false
+      }
+    ]
+  }, {
+    questionText: 'Kota yang terkenal akan universitasnya adalah....',
+    answerChoices: [
+      {
+        answerText: 'Barito',
+        isCorrect: false
+      },
+      {
+        answerText: 'San Diego',
         isCorrect: true
+      },
+      {
+        answerText: 'Benawa',
+        isCorrect: false
+      },
+      {
+        answerText: 'Martapura',
+        isCorrect: false
       }
     ]
   }

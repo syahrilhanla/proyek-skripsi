@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import quizStyle from '@/styles/QuizStyle.module.css';
 
-const QuizComponent = ({ questionData, setDataState }) => {
+const QuizComponent = ({ questionData, DisplayData }) => {
   const [quizScore, setQuizScore] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [isFinished, setIsFinished] = useState(false);
@@ -37,33 +37,40 @@ const QuizComponent = ({ questionData, setDataState }) => {
 
     if (currentQuestion < questionData.length - 1) {
       setCurrentQuestion(prevState => prevState + 1);
-      setDataState(currentQuestion);
+      // setDataState(currentQuestion);
+      console.log(questionData[currentQuestion]);
     } else {
       setIsFinished(true);
+      console.log(isFinished);
     }
   }
 
   return (
     <div key={currentQuestion} className={quizStyle.main}>
-      <div className={quizStyle.question}>
-        Soal {currentQuestion + 1} / {questionData.length}
-        <p>
-          {questionData[currentQuestion].questionText}
-        </p>
-      </div>
-      <div className={quizStyle.answers}>
-        {questionData[currentQuestion].answerChoices.map((answer, index) => (
-          <button
-            key={index}
-            onClick={() => checkAnswer(answer.isCorrect)}
-            className={quizStyle.answerButton}
-          >
-            {optionDisplay(index)} {answer.answerText}
-          </button>
-        ))}
-      </div>
+      {!isFinished ? <DisplayData currentQuestion={currentQuestion} /> : null}
+      <div key={currentQuestion} className={quizStyle.questionDisplay}>
+        <div className={quizStyle.question}>
+          <h3>
+            Soal <b><i>{currentQuestion + 1}</i></b> / {questionData.length}
+          </h3>
+          <p>
+            {questionData[currentQuestion].questionText}
+          </p>
+        </div>
+        <div className={quizStyle.answers}>
+          {questionData[currentQuestion].answerChoices.map((answer, index) => (
+            <button
+              key={index}
+              onClick={() => checkAnswer(answer.isCorrect)}
+              className={quizStyle.answerButton}
+            >
+              {optionDisplay(index)}. {answer.answerText}
+            </button>
+          ))}
+        </div>
 
-      {isFinished && <DisplayScore quizScore={quizScore} />}
+        {isFinished && <DisplayScore quizScore={quizScore} />}
+      </div>
     </div>
   )
 }
