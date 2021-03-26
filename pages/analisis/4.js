@@ -1,5 +1,5 @@
 import React from 'react';
-import BarChart from '@/components/BarChart';
+import BarChart from '@/components/charts/BarChart';
 import MainLayout from '@/components/MainLayout';
 import TableTwo from '@/components/graphsAndTables/TableTwo';
 import { data } from '@/components/graphsAndTables/TableTwo';
@@ -22,7 +22,7 @@ const page4 = () => {
   const labels = tableData.map(label => label.size);
   const percentageData = tableData.map(item => item.percentage);
 
-  const charData = {
+  const chartData = {
     labels: labels,
     label: 'Ukuran Ikan Kelabau',
     data: percentageData
@@ -53,7 +53,7 @@ const page4 = () => {
         Data-2: Ukuran Ikan kelabau
       </Caption>
       <br />
-      <BarChart charData={charData} />
+      <BarChart chartData={chartData} />
       <Caption>
         Data-2: Ukuran Ikan kelabau
       </Caption>
