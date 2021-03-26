@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import quizStyle from '@/styles/QuizStyle.module.css';
 
-const QuizComponent = ({ questionData }) => {
+const QuizComponent = ({ questionData, setDataState }) => {
   const [quizScore, setQuizScore] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [isFinished, setIsFinished] = useState(false);
@@ -37,7 +37,10 @@ const QuizComponent = ({ questionData }) => {
 
     if (currentQuestion < questionData.length - 1) {
       setCurrentQuestion(prevState => prevState + 1);
-    } else setIsFinished(true);
+      setDataState(currentQuestion);
+    } else {
+      setIsFinished(true);
+    }
   }
 
   return (
