@@ -7,10 +7,11 @@ const EquationDisplay = ({ children }) => {
   )
 }
 
-const MathJax = ({ text }) => {
+const MathJax = ({ children }) => {
+  console.log(children);
   return (
     <EquationDisplay>
-      {text}
+      {children}
     </EquationDisplay>
   )
 }
