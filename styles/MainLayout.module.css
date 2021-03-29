@@ -46,8 +46,6 @@
 .column1, .column2 {
   width: 100%;
   padding: 1rem 2rem;
-  border: 1px solid #4444;
-  border-radius: 6px;
   text-align: justify;
   line-height: 1.5rem;
   display: flex;

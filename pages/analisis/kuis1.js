@@ -12,6 +12,7 @@ const quiz1 = () => {
   // takes number as argument from questionData array being set in QuizComponent
   const DisplayData = ({ currentQuestion }) => {
     const displayDataDynamically = (currentQuestion) => {
+      // display first chart of the quiz, which is used by question 1 & 2 
       if (currentQuestion < 2) {
         return (
           <>
@@ -21,7 +22,9 @@ const quiz1 = () => {
             <TableOne />
           </>
         )
-      } else if (currentQuestion < 4) {
+      }
+      // display first chart of the quiz, which is used by question 3-4
+      else if (currentQuestion < 4) {
         return (
           <><Caption>
             Data berikut digunakan untuk pertanyaan no 3

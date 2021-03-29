@@ -35,19 +35,16 @@ const QuizComponent = ({ questionData, DisplayData }) => {
       console.log({ quizScore });
     }
 
-    if (currentQuestion < questionData.length - 1) {
-      setCurrentQuestion(prevState => prevState + 1);
-      // setDataState(currentQuestion);
-      console.log(questionData[currentQuestion]);
-    } else {
+    if (!(currentQuestion < questionData.length - 1)) {
       setIsFinished(true);
-      console.log(isFinished);
     }
+
+    setCurrentQuestion(prevState => prevState + 1);
   }
 
   return (
     <div key={currentQuestion} className={quizStyle.main}>
-      {!isFinished ? <DisplayData currentQuestion={currentQuestion} /> : null}
+      {!isFinished && <DisplayData currentQuestion={currentQuestion} />}
       <div key={currentQuestion} className={quizStyle.questionDisplay}>
         <div className={quizStyle.question}>
           <h3>

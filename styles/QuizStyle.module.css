@@ -7,8 +7,6 @@
   flex-wrap: wrap;
   border-radius: 6px;
   justify-content: space-evenly;
-  border: 1px solid #4444;
-  border-radius: 6px;
   min-width: 90%;
 }
 

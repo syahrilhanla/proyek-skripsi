@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext } from 'react';
 import { useAuth } from '@/components/context/AuthContext';
 
 const ProgressContext = createContext();

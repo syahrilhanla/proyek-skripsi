@@ -50,12 +50,12 @@ const AuthProvider = ({ children }) => {
             // get local user from localStorage after login and set to localStorage
             getLocalUser().then(data => {
               setLocalUserData(data);
-              // setUserProgress(useFireStore(data));
+              setUserProgress(useFireStore(data));
               setLoading(false);
             });
           })
         } catch (error) {
-          console.log(`failed to set user`);
+          console.log(`failed to set user: ${error}`);
         }
       });
     });

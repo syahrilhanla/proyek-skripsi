@@ -1,6 +1,26 @@
 import { firestore } from '../Firebase';
 
+// documents references
 const docRef = firestore.collection('users');
+
+const createInitProgress = (collection, initialData) => {
+  collection.doc('doc1').collection('page1').doc('act1').set(initialData);
+}
+
+const createDocRefs = (uid, initialData) => {
+  try {
+    const chapter1 = docRef.doc(uid).collection('chapter1');
+    const chapter2 = docRef.doc(uid).collection('chapter2');
+    const chapter3 = docRef.doc(uid).collection('chapter3');
+
+    createInitProgress(chapter1, initialData);
+    createInitProgress(chapter2, initialData);
+    createInitProgress(chapter3, initialData);
+  } catch (error) {
+    console.log(`failed to create init refs: ${error}`);
+  }
+}
+
 
 export const getUserFirestore = async (localUser) => {
   if (localUser) {
@@ -18,7 +38,7 @@ export const getUserFirestore = async (localUser) => {
 export const getUserProgress = async (localUser) => {
 
   if (localUser) {
-    const data = await docRef.doc(localUser.uid).collection('progress').get();
+    const data = await docRef.doc(localUser.uid).collection('chapter1').get();
     if (!data) {
       console.log('progress yet not exists');
       return null
@@ -52,15 +72,11 @@ export const createUserProgress = async (localUser) => {
 
   if (localUser) {
     // data is just for experiment for now 
-    const initialData = {
-      analyze_table: 1,
-      quiz1: 0
-    }
+    const initialData = { act: true }
 
+    console.log('progress created');
 
-    const data = docRef.doc(localUser.uid).collection('progress');
-    await data.doc().set({ initialData });
-    console.log('progress created')
+    createDocRefs(localUser.uid, initialData);
 
   } else return;
 }
