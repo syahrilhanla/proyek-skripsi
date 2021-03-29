@@ -26,11 +26,11 @@ export const getUserFirestore = async (localUser) => {
   if (localUser) {
     const data = await docRef.doc(localUser.uid).get();
     if (!data) {
-      console.log('data not exists');
+      console.log('user not exists');
       return null
     }
 
-    console.log('got the data');
+    console.log('got the user');
     return data.data();
   } else return null;
 }
@@ -38,14 +38,23 @@ export const getUserFirestore = async (localUser) => {
 export const getUserProgress = async (localUser) => {
 
   if (localUser) {
-    const data = await docRef.doc(localUser.uid).collection('chapter1').get();
-    if (!data) {
+    const chapter1Page1 = await docRef.doc(localUser.uid).collection('chapter1').doc('doc1').collection('page1').get();
+
+    // chapter1Page2 and so on...
+    // const chapter1Page2 = await docRef.doc(localUser.uid).collection('chapter1').doc('doc1').collection('page2').get();
+
+    const chapter2Data = await docRef.doc(localUser.uid).collection('chapter2').doc('doc1').collection('page1').get();
+
+    const chapter3Data = await docRef.doc(localUser.uid).collection('chapter3').doc('doc1').collection('page1').get();
+
+    if (!chapter1Page1 || chapter1Page1.length === 0) {
       console.log('progress yet not exists');
       return null
     }
 
+    console.log(chapter1Page1);
     console.log('there is a progress');
-    const results = data.docs.map(item => item.data());
+    const results = chapter1Page1.docs.map(item => item.data());
 
     console.log(results);
 
