@@ -1,7 +1,6 @@
 import React from 'react';
 import MainLayout from '@/components/MainLayout';
-import 'katex/dist/katex.min.css';
-import { BlockMath } from 'react-katex';
+import DisplayEquation from '@/components/charts/KatexComponent';
 
 const page1 = () => {
 
@@ -14,8 +13,9 @@ const page1 = () => {
         Di sini kamu akan mempelajari apa itu statistika berdasarkan masalah yang ditemui di kehidupan sehari-hari melalui data berbentuk tabel dan diagram. Selain itu kamu akan mempelajari cara menentukan nilai rata-rata (mean), median, modus, dan sebaran data.
       </p>
 
-      <BlockMath>\int_0^\infty x^2 dx</BlockMath>
-
+      <DisplayEquation>
+        \int_0^\infty x^2 dx
+      </DisplayEquation>
     </div>
   )
 
