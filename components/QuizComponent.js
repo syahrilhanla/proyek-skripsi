@@ -37,9 +37,8 @@ const QuizComponent = ({ questionData, DisplayData }) => {
 
     if (!(currentQuestion < questionData.length - 1)) {
       setIsFinished(true);
-    }
+    } else setCurrentQuestion(prevState => prevState + 1);
 
-    setCurrentQuestion(prevState => prevState + 1);
   }
 
   return (
