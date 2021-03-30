@@ -1,14 +1,14 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
-import CircularProgressWithLabel from '../components/ProgressCircularBar';
-import LearningProgress from '../components/LearningProgress';
+import CircularProgressWithLabel from '@/components/ProgressCircularBar';
+import LearningProgress from '@/components/LearningProgress';
 
-import progressStyles from '../styles/Progress.module.css'
-import dashboardStyles from '../styles/Dashboard.module.css'
+import progressStyles from '@/styles/Progress.module.css'
+import dashboardStyles from '@/styles/Dashboard.module.css'
 
-import { useAuth } from '../components/context/AuthContext';
+import { useAuth } from '@/components/context/AuthContext';
 
 
 const dashboard = () => {

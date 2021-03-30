@@ -1,4 +1,4 @@
-import progressStyles from '../styles/Progress.module.css';
+import progressStyles from '@/styles/Progress.module.css';
 import BorderLinearProgress from './BorderLinearProgress';
 
 const LearningProgress = ({ text, percentageValue, overallAction }) => {

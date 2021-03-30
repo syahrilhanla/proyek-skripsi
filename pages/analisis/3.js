@@ -1,69 +1,8 @@
 import React from 'react';
-import MainLayout from '../../components/MainLayout';
-import tableStyle from '../../styles/TableStyle.module.css';
+import MainLayout from '@/components/MainLayout';
+import TableOne from '@/components/graphsAndTables/TableOne';
 
 const page3 = () => {
-
-  const tableData = [
-    {
-      no: 1,
-      age: 30,
-      size: '1-3'
-    },
-    {
-      no: 2,
-      age: 60,
-      size: '3-5'
-    },
-    {
-      no: 3,
-      age: 90,
-      size: '5-8'
-    },
-    {
-      no: 4,
-      age: 1200,
-      size: '8-12'
-    },
-  ]
-
-  const Table1 = () => {
-    return (
-      <div style={{ margin: 'auto' }}>
-        <table className={tableStyle.mainTable}>
-          <thead>
-            <tr>
-              <th className={tableStyle.tableHead}>
-                No
-              </th>
-              <th className={tableStyle.tableHead}>
-                Umur Benih (Hari)
-              </th>
-              <th className={tableStyle.tableHead}>
-                Panjang (cm)
-              </th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {tableData.map(item => (
-              <tr key={item.no}>
-                <td>
-                  {item.no}
-                </td>
-                <td>
-                  {item.age}
-                </td>
-                <td>
-                  {item.size}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    )
-  }
 
   const points = [
     'Panjang ikan dengan umur 30 hari adalah 1-3 cm dan seterusnya.', 'Setiap 30 hari ikan bertambah panjang sebesar 3-5 cm.', 'Panjang ikan gabus paling kecil berumur 120 hari (4 bulan) adalah 8 cm, dan paling besarnya adalah 12 cm, begitu pula dengan nomor baris yang lain.'
@@ -92,7 +31,7 @@ const page3 = () => {
 
   return (
     <>
-      <MainLayout Child1={Table1} Child2={Content} title={'Menganalisis Tabel'} />
+      <MainLayout Child1={TableOne} Child2={Content} title={'Menganalisis Tabel'} />
     </>
   )
 }

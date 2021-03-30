@@ -33,7 +33,7 @@ const DrawerComponent = ({ open, handleDrawerClose }) => {
 
   const SubChapters = ({ subChapter, chapter, key }) => {
     return (
-      <Collapse in={collapse} timeout="auto" unmountOnExit>
+      <Collapse in={collapse} timeout="auto" unmountOnExit key={key}>
         <List component="div" disablePadding key={key}>
           <Link href={`/${chooseURLList(chapter)}/${subChapter.id}`} key={key}>
             <ListItem button className={classes.nested} key={key}>

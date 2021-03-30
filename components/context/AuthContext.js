@@ -1,3 +1,6 @@
+// SETUSERPROGRESS HAVENT USED YET, DUE TO DEVELOPMENT SO IT CAN RUN IN OFFLINE MODE
+// WHICH DOES NOT USE USEFIRESTORE TO GET DATA FROM DATABASE
+
 import React, { useState, createContext, useContext, useEffect } from 'react';
 import { setLocalStorage, getLocalUser, removeLocalUser } from '../utils/userLocalSavings';
 import { popup, auth } from '../Firebase';
@@ -15,6 +18,7 @@ const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [localUserData, setLocalUserData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [userProgress, setUserProgress] = useState(null);
 
   const router = useRouter();
 
@@ -46,12 +50,12 @@ const AuthProvider = ({ children }) => {
             // get local user from localStorage after login and set to localStorage
             getLocalUser().then(data => {
               setLocalUserData(data);
-              // useFireStore(data);
+              setUserProgress(useFireStore(data));
               setLoading(false);
             });
           })
         } catch (error) {
-          console.log(`failed to set user`);
+          console.log(`failed to set user: ${error}`);
         }
       });
     });
@@ -63,6 +67,7 @@ const AuthProvider = ({ children }) => {
     <AuthContext.Provider value={{
       currentUser,
       localUserData,
+      userProgress,
       loading,
       login,
       signOut

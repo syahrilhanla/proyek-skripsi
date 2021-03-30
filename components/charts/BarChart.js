@@ -1,18 +1,18 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
 
-const BarChart = ({ charData }) => {
+const BarChart = ({ chartData }) => {
   const data = {
-    labels: charData.labels,
+    labels: chartData.labels,
     datasets: [
       {
-        label: charData.label,
+        label: chartData.label,
         backgroundColor: '#408CFF',
         borderColor: '#408CFF',
         borderWidth: 1,
         hoverBackgroundColor: '#408CFF',
         hoverBorderColor: '#408CFF',
-        data: charData.data
+        data: chartData.data
       }
     ]
   };
@@ -21,7 +21,7 @@ const BarChart = ({ charData }) => {
     <div>
       <Bar
         data={data}
-        width={300}
+        width={280}
         height={200}
         options={{
           maintainAspectRatio: false

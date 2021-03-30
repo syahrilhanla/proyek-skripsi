@@ -1,8 +1,7 @@
 import React from 'react';
-import navbarStyle from '../styles/HomeNavbar.module.css';
+import navbarStyle from '@/styles/HomeNavbar.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useAuth } from './context/AuthContext';
 
 const HomeNavbar = () => {
   return (

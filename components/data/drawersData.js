@@ -20,7 +20,7 @@ export const data = [
         subTitle: 'Menganalis Grafik'
       },
       {
-        id: 'Kuis1',
+        id: 'kuis1',
         subTitle: 'Kuis 1'
       },
     ]
@@ -42,7 +42,7 @@ export const data = [
         subTitle: 'Modus'
       },
       {
-        id: 'Kuis2',
+        id: 'kuis2',
         subTitle: 'Kuis 2'
       },
     ]
@@ -68,7 +68,7 @@ export const data = [
         subTitle: 'Simpangan Kuartil'
       },
       {
-        id: 'Kuis3',
+        id: 'kuis3',
         subTitle: 'Kuis 3'
       },
     ]

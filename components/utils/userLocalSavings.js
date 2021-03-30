@@ -9,7 +9,6 @@ export const setLocalStorage = async (currentUser) => {
 export const getLocalUser = async () => {
   try {
     const localUser = JSON.parse(localStorage.getItem('user'));
-    console.log(localUser.displayName);
     return {
       displayName: localUser.displayName,
       email: localUser.email,
