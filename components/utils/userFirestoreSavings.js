@@ -93,8 +93,6 @@ export const getUserProgress = async (localUser) => {
     // returning results as objects within an array
     const results = [{ chapter1: chapter1Data }, { chapter2: chapter2Data }, { chapter3: chapter3Data }];
 
-    console.log(results);
-
     return results;
   } else return null;
 }
