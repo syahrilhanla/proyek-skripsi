@@ -6,7 +6,7 @@ const page1 = () => {
   const [displayMatJax, setDisplayMathJax] = useState(false);
 
   useEffect(() => {
-    setDisplayMathJax(true);
+    setDisplayMathJax(true)
   }, []);
 
   const Text = () => (

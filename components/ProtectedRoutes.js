@@ -7,16 +7,18 @@ const ProtectedRoutes = ({ children }) => {
   const router = useRouter();
   const { localUserData } = useAuth();
 
-  const publicLinks = ['/about', '/', '/analisis/*'];
+  const publicLinks = ['/about'];
   const currentLink = router.pathname;
 
   useEffect(() => {
     if (!localUserData && currentLink.includes(publicLinks)) {
-      router.push('/');
-      console.log('no user')
+      // do nothing if theres no localUser and the route is public
     } else if (localUserData && currentLink === '/') {
+      // redirect to dashboard if user goes to home when there's localUser
       router.push('/dashboard');
-      // console.log('there is a user');
+    } else if (!localUserData && currentLink !== '/') {
+      // redirect to home if there is no localUser and the route is not public 
+      router.push('/');
     }
   });
 

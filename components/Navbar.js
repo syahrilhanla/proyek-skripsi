@@ -109,7 +109,7 @@ export default function Navbar() {
           color="inherit"
         >
           <Link href={'/dashboard'}>
-            <Avatar alt={localUserData.displayName} src={localUserData.photoURL} className={classes.small} />
+            <Avatar alt={localUserData && localUserData.displayName} src={localUserData && localUserData.photoURL} className={classes.small} />
           </Link>
         </IconButton>
         <IconButton
@@ -155,7 +155,7 @@ export default function Navbar() {
                 color="inherit"
               >
                 <Link href={'/dashboard'}>
-                  <Avatar alt={localUserData.displayName} src={localUserData.photoURL} className={classes.small} />
+                  <Avatar alt={localUserData && localUserData.displayName} src={localUserData && localUserData.photoURL} className={classes.small} />
                 </Link>
               </IconButton>
             </span>
