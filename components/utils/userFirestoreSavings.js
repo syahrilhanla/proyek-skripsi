@@ -4,7 +4,7 @@ import { firestore } from '../Firebase';
 const docRef = firestore.collection('users');
 
 const createInitProgress = (collection, initialData) => {
-  collection.doc('doc1').collection('page1').doc('act1').set(initialData);
+  collection.doc('page1').set(initialData);
 }
 
 const createDocRefs = (uid, initialData) => {
@@ -38,23 +38,23 @@ export const getUserFirestore = async (localUser) => {
 export const getUserProgress = async (localUser) => {
 
   if (localUser) {
-    const chapter1Page1 = await docRef.doc(localUser.uid).collection('chapter1').doc('doc1').collection('page1').get();
+    const chapter1Page1 = await docRef.doc(localUser.uid).collection('chapter1').doc('page1').get();
 
     // chapter1Page2 and so on...
     // const chapter1Page2 = await docRef.doc(localUser.uid).collection('chapter1').doc('doc1').collection('page2').get();
 
-    const chapter2Data = await docRef.doc(localUser.uid).collection('chapter2').doc('doc1').collection('page1').get();
+    const chapter2Page1 = await docRef.doc(localUser.uid).collection('chapter2').doc('page1').get();
 
-    const chapter3Data = await docRef.doc(localUser.uid).collection('chapter3').doc('doc1').collection('page1').get();
+    const chapter3Page1 = await docRef.doc(localUser.uid).collection('chapter2').doc('page1').get();
 
     if (!chapter1Page1 || chapter1Page1.length === 0) {
       console.log('progress yet not exists');
       return null
     }
 
-    console.log(chapter1Page1);
+    console.log(chapter1Page1.data());
     console.log('there is a progress');
-    const results = chapter1Page1.docs.map(item => item.data());
+    const results = chapter1Page1.data();
 
     console.log(results);
 
