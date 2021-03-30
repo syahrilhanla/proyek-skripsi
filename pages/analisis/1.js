@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import MainLayout from '@/components/MainLayout';
+import MathJax from '@/components/charts/MathJax';
 
 const page1 = () => {
+  const [displayMatJax, setDisplayMathJax] = useState(false);
+
+  useEffect(() => {
+    setDisplayMathJax(true);
+  }, []);
+
   const Text = () => (
     <div style={{ padding: '0.8rem' }}>
       <p>
@@ -11,6 +18,7 @@ const page1 = () => {
         Di sini kamu akan mempelajari apa itu statistika berdasarkan masalah yang ditemui di kehidupan sehari-hari melalui data berbentuk tabel dan diagram. Selain itu kamu akan mempelajari cara menentukan nilai rata-rata (mean), median, modus, dan sebaran data.
       </p>
 
+      {displayMatJax && <MathJax>a^2</MathJax>}
     </div>
   )
 
