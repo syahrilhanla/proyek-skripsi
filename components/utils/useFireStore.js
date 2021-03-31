@@ -15,7 +15,6 @@ const useFireStore = async (localUser) => {
   const checkingInitialProgress = async () => {
     // getting user progress from firestore when application start
     const progressData = await getUserProgress(localUser);
-    console.log(progressData);
 
     // checking if there is no progress then create initial progress
     if (!progressData) {
@@ -28,6 +27,8 @@ const useFireStore = async (localUser) => {
 
   await checkingInitialUser();
   const progressData = await checkingInitialProgress();
+  console.log(progressData);
+
 
   // await updateProgress(localUser);
 

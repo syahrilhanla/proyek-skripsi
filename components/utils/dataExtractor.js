@@ -7,3 +7,6 @@ export const dataExtractor = (chapter) => {
     }
   });
 }
+
+// separates data from array to each chapter in ProgressContext
+export const dataSeparator = (data, chapterName) => data.filter(item => item.chapter === chapterName);

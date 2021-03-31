@@ -1,5 +1,6 @@
-import { createContext, useContext } from 'react';
+import { useState, createContext, useContext, useEffect } from 'react';
 import { useAuth } from '@/components/context/AuthContext';
+import { dataSeparator } from '@/components/utils/dataExtractor';
 
 const ProgressContext = createContext();
 
@@ -8,6 +9,13 @@ const useProgress = () => {
 }
 
 const ProgressProvider = ({ children }) => {
+  const [chapter1Progress, setChapter1Progress] = useState([]);
+  const [chapter2Progress, setChapter2Progress] = useState([]);
+  const [chapter3Progress, setChapter3Progress] = useState([]);
+
+  // userProgress is a promise, so use .then() and .catch()
+  // can't use async await because this root function is used to render globally
+  // so it should not be a promise
   const { userProgress } = useAuth();
 
   /*
@@ -25,9 +33,18 @@ const ProgressProvider = ({ children }) => {
       }
     ]
   */
-  console.log(userProgress);
 
-  // const chapter1Progress = userProgress.filter(chapter => chapter.)
+  // getting the value of the promise, then separate them to each array
+  // setting them to localState
+  useEffect(() => {
+    userProgress.then((data) => {
+      setChapter1Progress(dataSeparator(data, 'chapter1'));
+      setChapter2Progress(dataSeparator(data, 'chapter2'));
+      setChapter3Progress(dataSeparator(data, 'chapter3'));
+
+      console.log(chapter1Progress, chapter2Progress, chapter3Progress);
+    });
+  }, [userProgress]);
 
   const value = {
     useProgress,
