@@ -88,24 +88,24 @@ export const getUserProgress = async (localUser) => {
     }
 
     // setting them to variables
-    const chapter1Data = await getChapterData('chapter1');
-    const chapter2Data = await getChapterData('chapter2');
-    const chapter3Data = await getChapterData('chapter3');
+    const rawChapter1Data = await getChapterData('chapter1');
+    const rawChapter2Data = await getChapterData('chapter2');
+    const rawChapter3Data = await getChapterData('chapter3');
 
     // if no progress then returns null, so it creates new progress  
-    if (!chapter1Data || chapter1Data.length === 0) {
+    if (!rawChapter1Data || rawChapter1Data.length === 0) {
       console.log('progress yet not exists');
       return null;
     }
 
     // returned as an array which consists (n) number of elements with page as object key
     // expected output [{page1: [act1: Boolean, ... act(n): Boolean]}, ... {page(n): [act1: Boolean, ... act(n): Boolean]}];
-    const chapterData1 = dataExtractor(chapter1Data);
-    const chapterData2 = dataExtractor(chapter2Data);
-    const chapterData3 = dataExtractor(chapter3Data);
+    const chapter1Data = dataExtractor(rawChapter1Data);
+    const chapter2Data = dataExtractor(rawChapter2Data);
+    const chapter3Data = dataExtractor(rawChapter3Data);
 
     // returning results as objects within an array
-    const results = [{ chapter1: chapterData1 }, { chapter2: chapterData2 }, { chapter3: chapterData3 }];
+    const results = [{ chapter1: chapter1Data }, { chapter2: chapter2Data }, { chapter3: chapter3Data }];
 
     return results;
   } else return null;
