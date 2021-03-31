@@ -1,5 +1,6 @@
 import { firestore } from '../Firebase';
 import { initialData } from '@/components/data/initialData';
+import { dataExtractor } from '@/components/utils/dataExtractor';
 
 // ROOT DOCUMENTS REFERENCE
 const docRef = firestore.collection('users');
@@ -94,11 +95,17 @@ export const getUserProgress = async (localUser) => {
     // if no progress then returns null, so it creates new progress  
     if (!chapter1Data || chapter1Data.length === 0) {
       console.log('progress yet not exists');
-      return null
+      return null;
     }
 
+    // returned as an array which consists (n) number of elements with page as object key
+    // expected output [{page1: [act1: Boolean, ... act(n): Boolean]}, ... {page(n): [act1: Boolean, ... act(n): Boolean]}];
+    const chapterData1 = dataExtractor(chapter1Data);
+    const chapterData2 = dataExtractor(chapter2Data);
+    const chapterData3 = dataExtractor(chapter3Data);
+
     // returning results as objects within an array
-    const results = [{ chapter1: chapter1Data }, { chapter2: chapter2Data }, { chapter3: chapter3Data }];
+    const results = [{ chapter1: chapterData1 }, { chapter2: chapterData2 }, { chapter3: chapterData3 }];
 
     return results;
   } else return null;
