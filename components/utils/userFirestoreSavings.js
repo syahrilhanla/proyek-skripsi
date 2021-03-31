@@ -105,7 +105,11 @@ export const getUserProgress = async (localUser) => {
     const chapter3Data = dataExtractor(rawChapter3Data);
 
     // returning results as objects within an array
-    const results = [{ chapter1: chapter1Data }, { chapter2: chapter2Data }, { chapter3: chapter3Data }];
+    const results = [
+      { chapter: 'chapter1', data: chapter1Data },
+      { chapter: 'chapter2', data: chapter2Data },
+      { chapter: 'chapter3', data: chapter3Data }
+    ];
 
     return results;
   } else return null;
