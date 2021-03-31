@@ -5,7 +5,6 @@ const useFireStore = async (localUser) => {
   const checkingInitialUser = async () => {
     // getting user from firestore when application start
     const userFireStore = await getUserFirestore(localUser);
-    console.log(userFireStore);
 
     // checking if theres any data from the function above
     if (userFireStore === null || userFireStore === undefined) {

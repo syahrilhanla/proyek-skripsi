@@ -1,8 +1,8 @@
 import { firestore } from '../Firebase';
+import { initialData } from '@/components/data/initialData';
 
 // ROOT DOCUMENTS REFERENCE
 const docRef = firestore.collection('users');
-
 
 // used in createUserProgress
 // UID from localStorage credential, initialData currently from createUserProgress below
@@ -10,13 +10,20 @@ const createDocRefs = (uid, initialData) => {
 
   // function to create document references
   const createInitProgress = (collection, initialData) => {
-    docRef.doc(uid).collection(collection).doc('page1').set(initialData);
+    // docRef.doc(uid).collection(collection).doc('page1').set(initialData);
+
+    const chapterRef = docRef.doc(uid).collection(collection);
+
+    initialData.map(item => {
+      const docs = chapterRef.doc(item.page);
+      docs.set({ acts: item.acts });
+    })
   }
 
   try {
-    createInitProgress('chapter1', initialData);
-    createInitProgress('chapter2', initialData);
-    createInitProgress('chapter3', initialData);
+    initialData.map(item => {
+      createInitProgress(item.chapter, item.pages)
+    })
   } catch (error) {
     console.log(`failed to create init refs: ${error}`);
   }
@@ -27,7 +34,7 @@ export const createUserProgress = async (localUser) => {
 
   if (localUser) {
     // this data is only for experiment for now 
-    const initialData = { act: true };
+
 
     console.log('progress created');
 
