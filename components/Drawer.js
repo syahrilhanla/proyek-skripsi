@@ -31,13 +31,13 @@ const DrawerComponent = ({ open, handleDrawerClose }) => {
     setCollapse(!collapse);
   };
 
-  const SubChapters = ({ subChapter, chapter, key }) => {
+  const SubChapters = ({ subChapter, chapter }) => {
     return (
-      <Collapse in={collapse} timeout="auto" unmountOnExit key={key}>
-        <List component="div" disablePadding key={key}>
-          <Link href={`/${chooseURLList(chapter)}/${subChapter.id}`} key={key}>
-            <ListItem button className={classes.nested} key={key}>
-              <ListItemText primary={subChapter.subTitle} key={key} />
+      <Collapse in={collapse} timeout="auto" unmountOnExit key={subChapter.id}>
+        <List component="div" disablePadding key={subChapter.id}>
+          <Link href={`/${chooseURLList(chapter)}/${subChapter.id}`} key={subChapter.id}>
+            <ListItem button className={classes.nested} key={subChapter.id}>
+              <ListItemText primary={subChapter.subTitle} key={subChapter.id} />
             </ListItem>
           </Link>
         </List>
@@ -68,7 +68,7 @@ const DrawerComponent = ({ open, handleDrawerClose }) => {
           <div key={chapter.id}>
 
             {/* Lessons */}
-            <ListItem button onClick={() => handleClick(chapterIndex)}>
+            <ListItem button onClick={() => handleClick(chapterIndex)} key={chapter.id}>
               <ListItemText primary={chapter.title} />
               {collapse && currentIndex - 1 === chapterIndex ? <ExpandLess /> : <ExpandMore />}
             </ListItem>
@@ -76,7 +76,7 @@ const DrawerComponent = ({ open, handleDrawerClose }) => {
             {/* Fires below list item when clicked */}
             {currentIndex === chapter.id ? chapter.items.map(subChapter => {
               return (
-                <SubChapters subChapter={subChapter} key={subChapter.key} chapter={chapter} />
+                <SubChapters subChapter={subChapter} chapter={chapter} key={subChapter.id} />
               )
             }) : null}
           </div>
@@ -88,8 +88,8 @@ const DrawerComponent = ({ open, handleDrawerClose }) => {
       <List>
         {commonLinks.map((item, index) => (
           <ListItem button key={index} >
-            <Link href={item.link} onClick={() => item.action()}>
-              <ListItemText primary={item.text} />
+            <Link href={item.link} key={index} onClick={() => item.action()}>
+              <ListItemText primary={item.text} key={index} />
             </Link>
           </ListItem>
         ))}

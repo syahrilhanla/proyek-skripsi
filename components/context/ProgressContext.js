@@ -1,4 +1,4 @@
-import { useState, createContext, useContext, useEffect } from 'react';
+import { createContext, useContext, useEffect } from 'react';
 import { useAuth } from '@/components/context/AuthContext';
 import { dataSeparator } from '@/components/utils/dataExtractor';
 
@@ -9,9 +9,6 @@ const useProgress = () => {
 }
 
 const ProgressProvider = ({ children }) => {
-  const [chapter1Progress, setChapter1Progress] = useState([]);
-  const [chapter2Progress, setChapter2Progress] = useState([]);
-  const [chapter3Progress, setChapter3Progress] = useState([]);
 
   // userProgress is a promise, so use .then() and .catch()
   // can't use async await because this root function is used to render globally
@@ -37,10 +34,23 @@ const ProgressProvider = ({ children }) => {
   // getting the value of the promise, then separate them to each array
   // setting them to localState
   useEffect(() => {
+    // this also checked in when logging out, and the data will be null
     userProgress.then((data) => {
-      setChapter1Progress(dataSeparator(data, 'chapter1'));
-      setChapter2Progress(dataSeparator(data, 'chapter2'));
-      setChapter3Progress(dataSeparator(data, 'chapter3'));
+
+      // if no data or logged out, then exit function immediately;
+      if (!data) return;
+
+      const chapter1Progress = (dataSeparator(data, 'chapter1'));
+      const chapter2Progress = (dataSeparator(data, 'chapter2'));
+      const chapter3Progress = (dataSeparator(data, 'chapter3'));
+
+      const countProgress = () => {
+        chapter1Progress.map(item => {
+          item.data.map(unit => console.log(unit.page1))
+        })
+      }
+
+      countProgress();
 
       console.log(chapter1Progress, chapter2Progress, chapter3Progress);
     });
