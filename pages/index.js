@@ -1,7 +1,7 @@
-import HomeNavbar from "../components/HomeNavbar";
+import HomeNavbar from "@/components/common/HomeNavbar";
 import React from "react";
-import { SectionA, SectionB, SectionC } from "../components/Sections";
-import Footer from "../components/Footer";
+import { SectionA, SectionB, SectionC } from "@/components/common/Sections";
+import Footer from "@/components/common/Footer";
 
 export default function Home() {
 	return (

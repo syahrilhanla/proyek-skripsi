@@ -1,21 +1,23 @@
-import { createContext, useContext, useEffect } from 'react';
-import { useAuth } from '@/components/context/AuthContext';
-import { dataSeparator } from '@/components/utils/dataExtractor';
+import { createContext, useContext, useEffect } from "react";
+import { useAuth } from "@/components/context/AuthContext";
+import {
+	dataSeparator,
+	countProgress,
+} from "@/components/utils/dataProcessors";
 
 const ProgressContext = createContext();
 
 const useProgress = () => {
-  return useContext(ProgressContext);
-}
+	return useContext(ProgressContext);
+};
 
 const ProgressProvider = ({ children }) => {
+	// userProgress is a promise, so use .then() and .catch()
+	// can't use async await because this root function is used to render globally
+	// so it should not be a promise
+	const { userProgress } = useAuth();
 
-  // userProgress is a promise, so use .then() and .catch()
-  // can't use async await because this root function is used to render globally
-  // so it should not be a promise
-  const { userProgress } = useAuth();
-
-  /*
+	/*
     EXPECTED OUTPUT of userProgress:
     [
       { chapter: chapter(n),
@@ -31,41 +33,45 @@ const ProgressProvider = ({ children }) => {
     ]
   */
 
-  // getting the value of the promise, then separate them to each array
-  // setting them to localState
-  useEffect(() => {
-    // this also checked in when logging out, and the data will be null
-    userProgress.then((data) => {
+	// getting the value of the promise, then separate them to each array,
+	// setting them to localState
+	useEffect(() => {
+		// this also checked in when logging out, and the data will be null
+		userProgress.then((data) => {
+			// if no data or logged out, then exit function immediately;
+			if (!data) return;
 
-      // if no data or logged out, then exit function immediately;
-      if (!data) return;
+			const chapter1Progress = dataSeparator(data, "chapter1");
+			const chapter2Progress = dataSeparator(data, "chapter2");
+			const chapter3Progress = dataSeparator(data, "chapter3");
 
-      const chapter1Progress = (dataSeparator(data, 'chapter1'));
-      const chapter2Progress = (dataSeparator(data, 'chapter2'));
-      const chapter3Progress = (dataSeparator(data, 'chapter3'));
+			const pageProgresses = (chapterProgress) => {
+				// expected output:
+				// { page: String, pageData: Array }
 
-      const countProgress = (chapterProgress) => {
-        chapterProgress.map(item => {
-          item.data.map(unit => console.log(unit))
-        })
-      };
+				return chapterProgress.map((item) => {
+					item.data.map((pageData) => pageData);
+				});
+			};
 
-      countProgress(chapter1Progress);
+			pageProgresses(chapter1Progress);
+			// pageProgresses(chapter2Progress);
+			// pageProgresses(chapter3Progress);
 
-      console.log(chapter1Progress, chapter2Progress, chapter3Progress);
-    });
-  }, [userProgress]);
+			console.log(chapter1Progress, chapter2Progress, chapter3Progress);
+		});
+	}, [userProgress]);
 
-  const value = {
-    useProgress,
-    userProgress
-  }
+	const value = {
+		useProgress,
+		userProgress,
+	};
 
-  return (
-    <ProgressContext.Provider value={{ value }}>
-      {children}
-    </ProgressContext.Provider>
-  )
-}
+	return (
+		<ProgressContext.Provider value={{ value }}>
+			{children}
+		</ProgressContext.Provider>
+	);
+};
 
 export default ProgressProvider;
