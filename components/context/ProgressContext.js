@@ -44,13 +44,13 @@ const ProgressProvider = ({ children }) => {
       const chapter2Progress = (dataSeparator(data, 'chapter2'));
       const chapter3Progress = (dataSeparator(data, 'chapter3'));
 
-      const countProgress = () => {
-        chapter1Progress.map(item => {
-          item.data.map(unit => console.log(unit.page1))
+      const countProgress = (chapterProgress) => {
+        chapterProgress.map(item => {
+          item.data.map(unit => console.log(unit))
         })
-      }
+      };
 
-      countProgress();
+      countProgress(chapter1Progress);
 
       console.log(chapter1Progress, chapter2Progress, chapter3Progress);
     });

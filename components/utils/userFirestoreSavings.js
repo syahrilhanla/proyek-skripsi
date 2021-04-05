@@ -99,7 +99,16 @@ export const getUserProgress = async (localUser) => {
     }
 
     // returned as an array which consists (n) number of elements with page as object key
-    // expected output [{page1: [act1: Boolean, ... act(n): Boolean]}, ... {page(n): [act1: Boolean, ... act(n): Boolean]}];
+    // expected output [
+    // {
+    //   page: page1,
+    //   pageData: [act1, ...]
+    // },
+    // {
+    //   page: page(n),
+    //   pageData: [act1, ...]
+    // ];
+
     const chapter1Data = dataExtractor(rawChapter1Data);
     const chapter2Data = dataExtractor(rawChapter2Data);
     const chapter3Data = dataExtractor(rawChapter3Data);
