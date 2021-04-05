@@ -82,5 +82,4 @@ const page4 = () => {
 		</>
 	);
 };
-
 export default page4;
