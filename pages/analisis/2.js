@@ -16,7 +16,11 @@ const page2 = () => {
 
 	return (
 		<>
-			<MainLayout Child1={Text} title={"Menganalisis Data"} />
+			<MainLayout
+				Child1={Text}
+				title={"Menganalisis Data"}
+				percentageValue={50}
+			/>
 		</>
 	);
 };

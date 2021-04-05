@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 
@@ -10,7 +10,7 @@ import progressStyles from "@/styles/BottomProgress.module.css";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
-const BottomProgress = () => {
+const BottomProgress = ({ percentageValue = 0 }) => {
 	const router = useRouter();
 	const currentURL = router.pathname;
 	const parentPath = currentURL.split("/")[1];
@@ -74,7 +74,7 @@ const BottomProgress = () => {
 				</span>
 
 				<span>
-					<BorderLinearProgress value={20} />
+					<BorderLinearProgress value={percentageValue} />
 					<div className={progressStyles.progress}>
 						<p>1/5 Kegiatan</p>
 					</div>

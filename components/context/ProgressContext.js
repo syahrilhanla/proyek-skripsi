@@ -50,11 +50,11 @@ const ProgressProvider = ({ children }) => {
 				// { page: String, pageData: Array }
 
 				return chapterProgress.map((item) => {
-					item.data.map((pageData) => pageData);
+					return item.data.map((pageData) => pageData);
 				});
 			};
 
-			pageProgresses(chapter1Progress);
+			console.log(pageProgresses(chapter1Progress));
 			// pageProgresses(chapter2Progress);
 			// pageProgresses(chapter3Progress);
 
