@@ -27,3 +27,8 @@ const pageProgresses = (chapterProgress) => {
 // separates data from array to each chapter with pages them at ProgressContext
 export const dataSeparator = (data, chapterName) =>
 	pageProgresses(data.filter((item) => item.chapter === chapterName));
+
+// get current page's data
+export const getCurrentPageProgress = (data, currentPage) => {
+	return data.filter((data) => data.page === currentPage);
+};

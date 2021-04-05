@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { useAuth } from "@/components/context/AuthContext";
 import {
 	dataSeparator,
-	countProgress,
+	getCurrentPageProgress,
 } from "@/components/utils/dataProcessors";
 
 const ProgressContext = createContext();
@@ -17,9 +17,9 @@ const ProgressProvider = ({ children }) => {
 	// so it should not be a promise
 	const { userProgress } = useAuth();
 
-	const [chapter1Progress, setChapter1Progress] = useState();
-	const [chapter2Progress, setChapter2Progress] = useState();
-	const [chapter3Progress, setChapter3Progress] = useState();
+	const [chapter1Progress, setChapter1Progress] = useState([]);
+	const [chapter2Progress, setChapter2Progress] = useState([]);
+	const [chapter3Progress, setChapter3Progress] = useState([]);
 
 	/*
     EXPECTED OUTPUT of userProgress:
@@ -76,6 +76,7 @@ const ProgressProvider = ({ children }) => {
 				chapter1Progress,
 				chapter2Progress,
 				chapter3Progress,
+				getCurrentPageProgress: getCurrentPageProgress,
 			}}
 		>
 			{children}
