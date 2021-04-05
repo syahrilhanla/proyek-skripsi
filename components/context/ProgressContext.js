@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { useAuth } from "@/components/context/AuthContext";
 import {
 	dataSeparator,
@@ -7,7 +7,7 @@ import {
 
 const ProgressContext = createContext();
 
-const useProgress = () => {
+export const useProgress = () => {
 	return useContext(ProgressContext);
 };
 
@@ -16,6 +16,10 @@ const ProgressProvider = ({ children }) => {
 	// can't use async await because this root function is used to render globally
 	// so it should not be a promise
 	const { userProgress } = useAuth();
+
+	const [chapter1Progress, setChapter1Progress] = useState();
+	const [chapter2Progress, setChapter2Progress] = useState();
+	const [chapter3Progress, setChapter3Progress] = useState();
 
 	/*
     EXPECTED OUTPUT of userProgress:
@@ -33,42 +37,47 @@ const ProgressProvider = ({ children }) => {
     ]
   */
 
-	// getting the value of the promise, then separate them to each array,
-	// setting them to localState
-	useEffect(() => {
+	const getProgress = (userProgress) => {
 		// this also checked in when logging out, and the data will be null
 		userProgress.then((data) => {
 			// if no data or logged out, then exit function immediately;
 			if (!data) return;
 
-			const chapter1Progress = dataSeparator(data, "chapter1");
-			const chapter2Progress = dataSeparator(data, "chapter2");
-			const chapter3Progress = dataSeparator(data, "chapter3");
+			// EXPECTED OUTPUT OF dataSeparator
+			// [
+			// 	{
+			//   page1: [act1: Boolean, ... act(n): Boolean]
+			// 	},
+			// 	{
+			//   	page(n): [act1: Boolean, ... act(n): Boolean]
+			// 	}
+			// ]
 
-			const pageProgresses = (chapterProgress) => {
-				// expected output:
-				// { page: String, pageData: Array }
+			const chapter1 = dataSeparator(data, "chapter1");
+			const chapter2 = dataSeparator(data, "chapter2");
+			const chapter3 = dataSeparator(data, "chapter3");
 
-				return chapterProgress.map((item) => {
-					return item.data.map((pageData) => pageData);
-				});
-			};
-
-			console.log(pageProgresses(chapter1Progress));
-			// pageProgresses(chapter2Progress);
-			// pageProgresses(chapter3Progress);
-
-			console.log(chapter1Progress, chapter2Progress, chapter3Progress);
+			setChapter1Progress(chapter1);
+			setChapter2Progress(chapter2);
+			setChapter3Progress(chapter3);
 		});
-	}, [userProgress]);
-
-	const value = {
-		useProgress,
-		userProgress,
 	};
 
+	// getting the value of the promise, then separate them to each array,
+	// setting them to localState
+	useEffect(() => {
+		getProgress(userProgress);
+	}, [userProgress]);
+
 	return (
-		<ProgressContext.Provider value={{ value }}>
+		<ProgressContext.Provider
+			value={{
+				useProgress,
+				chapter1Progress,
+				chapter2Progress,
+				chapter3Progress,
+			}}
+		>
 			{children}
 		</ProgressContext.Provider>
 	);

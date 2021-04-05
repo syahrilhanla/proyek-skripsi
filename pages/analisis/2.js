@@ -1,7 +1,11 @@
 import React from "react";
 import MainLayout from "@/components/common/MainLayout";
+import { useProgress } from "@/components/context/ProgressContext";
 
 const page2 = () => {
+	const { chapter2Progress } = useProgress();
+	console.log(chapter2Progress);
+
 	const Text = () => (
 		<div style={{ padding: "0.8rem" }}>
 			<p>
@@ -19,7 +23,7 @@ const page2 = () => {
 			<MainLayout
 				Child1={Text}
 				title={"Menganalisis Data"}
-				percentageValue={50}
+				percentageValue={80}
 			/>
 		</>
 	);
