@@ -1,70 +1,68 @@
 .dashboard {
-  color: white;
-  font-family: 'Roboto';
-  background-image: url("../public/rsz_1dark_backgound.jpg");
-  width: 100%;
-  padding: 1rem 0px;
-  background-repeat: none;
-  background-size: cover;
+	color: white;
+	background-image: url("../public/rsz_1dark_backgound.jpg");
+	width: 100%;
+	padding: 1rem 0px;
+	background-repeat: none;
+	background-size: cover;
 }
 
 .container {
-  width: 90%;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 2fr 5fr; 
+	width: 90%;
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: 2fr 5fr;
 }
 
 .backgroundPicture {
-  background: black;
-  z-index: 10;
+	background: black;
+	z-index: 10;
 }
 
 .progress {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  align-items: center;
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	align-items: center;
 }
 
 .progress h3 {
-  font-weight: 400;
+	font-weight: 400;
 }
 
 .profileName {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding: 1.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	padding: 1.5rem;
 }
 
 .profileName h2 {
-  font-weight: 400;
+	font-weight: 400;
 }
 
 @media (max-width: 1100px) {
-  .container {
-    grid-template-columns: 3fr 2fr; 
-  }
+	.container {
+		grid-template-columns: 3fr 2fr;
+	}
 }
 
 @media (max-width: 600px) {
-  
-  .container {
-    grid-template-columns: 1fr; 
-  }
+	.container {
+		grid-template-columns: 1fr;
+	}
 
-  .progress {
-    grid-template-columns: 1fr;
-    justify-self: center;
-  }
+	.progress {
+		grid-template-columns: 1fr;
+		justify-self: center;
+	}
 
-  .profileName {
-    justify-content: center;
-    padding: 0.8rem;
-  }
+	.profileName {
+		justify-content: center;
+		padding: 0.8rem;
+	}
 
-  .progressBar {
-    display: flex;
-    justify-content: center;
-  }
+	.progressBar {
+		display: flex;
+		justify-content: center;
+	}
 }

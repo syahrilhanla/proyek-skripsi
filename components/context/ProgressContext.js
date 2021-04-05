@@ -1,27 +1,103 @@
-import { createContext, useContext } from 'react';
-import { useAuth } from '@/components/context/AuthContext';
+import { createContext, useContext, useEffect, useState } from "react";
+import { useAuth } from "@/components/context/AuthContext";
+import {
+	dataSeparator,
+	getCurrentPageProgress,
+} from "@/components/utils/dataProcessors";
+import { useRouter } from "next/router";
 
 const ProgressContext = createContext();
 
-const useProgress = () => {
-  return useContext(ProgressContext);
-}
+export const useProgress = () => {
+	return useContext(ProgressContext);
+};
 
 const ProgressProvider = ({ children }) => {
-  const { userProgress } = useAuth();
+	// userProgress is a promise, so use .then() and .catch()
+	// can't use async await because this root function is used to render globally
+	// so it should not be a promise
+	const { userProgress } = useAuth();
 
-  console.log(userProgress);
+	const [chapter1Progress, setChapter1Progress] = useState([]);
+	const [chapter2Progress, setChapter2Progress] = useState([]);
+	const [chapter3Progress, setChapter3Progress] = useState([]);
 
-  const value = {
-    useProgress,
-    userProgress
-  }
+	// used to get the wanted chapter progress
+	const router = useRouter();
+	const getCurrentChapterProgress = () => {
+		const currentChapter = router.pathname.split("/")[1];
+		const currentPage = router.pathname.split("/")[2];
+		if (currentChapter === "analisis") {
+			return getCurrentPageProgress(chapter1Progress, `page${currentPage}`);
+		} else if (currentChapter === "pemusatan") {
+			return getCurrentPageProgress(chapter2Progress, `page${currentPage}`);
+		} else if (currentChapter === "penyebaran") {
+			return getCurrentPageProgress(chapter3Progress, `page${currentPage}`);
+		}
+	};
 
-  return (
-    <ProgressContext.Provider value={{ value }}>
-      {children}
-    </ProgressContext.Provider>
-  )
-}
+	/*
+    EXPECTED OUTPUT of userProgress:
+    [
+      { chapter: chapter(n),
+        data: [
+          {
+            page1: [act1: Boolean, ... act(n): Boolean]
+          },  
+          {
+            page(n): [act1: Boolean, ... act(n): Boolean]
+          }
+        ]
+      }
+    ]
+  */
+
+	const getProgress = (userProgress) => {
+		// this also checked in when logging out, and the data will be null
+		userProgress.then((data) => {
+			// if no data or logged out, then exit function immediately;
+			if (!data) return;
+
+			// EXPECTED OUTPUT OF dataSeparator
+			// [
+			// 	{
+			//   page1: [act1: Boolean, ... act(n): Boolean]
+			// 	},
+			// 	{
+			//   	page(n): [act1: Boolean, ... act(n): Boolean]
+			// 	}
+			// ]
+
+			const chapter1 = dataSeparator(data, "chapter1");
+			const chapter2 = dataSeparator(data, "chapter2");
+			const chapter3 = dataSeparator(data, "chapter3");
+
+			setChapter1Progress(chapter1);
+			setChapter2Progress(chapter2);
+			setChapter3Progress(chapter3);
+		});
+	};
+
+	// getting the value of the promise, then separate them to each array,
+	// setting them to localState
+	useEffect(() => {
+		getProgress(userProgress);
+	}, [userProgress]);
+
+	return (
+		<ProgressContext.Provider
+			value={{
+				useProgress,
+				chapter1Progress,
+				chapter2Progress,
+				chapter3Progress,
+				getCurrentPageProgress,
+				getCurrentChapterProgress,
+			}}
+		>
+			{children}
+		</ProgressContext.Provider>
+	);
+};
 
 export default ProgressProvider;
