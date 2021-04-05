@@ -4,6 +4,7 @@ import {
 	dataSeparator,
 	getCurrentPageProgress,
 } from "@/components/utils/dataProcessors";
+import { useRouter } from "next/router";
 
 const ProgressContext = createContext();
 
@@ -20,6 +21,20 @@ const ProgressProvider = ({ children }) => {
 	const [chapter1Progress, setChapter1Progress] = useState([]);
 	const [chapter2Progress, setChapter2Progress] = useState([]);
 	const [chapter3Progress, setChapter3Progress] = useState([]);
+
+	// used to get the wanted chapter progress
+	const router = useRouter();
+	const getCurrentChapterProgress = () => {
+		const currentChapter = router.pathname.split("/")[1];
+		const currentPage = router.pathname.split("/")[2];
+		if (currentChapter === "analisis") {
+			return getCurrentPageProgress(chapter1Progress, `page${currentPage}`);
+		} else if (currentChapter === "pemusatan") {
+			return getCurrentPageProgress(chapter2Progress, `page${currentPage}`);
+		} else if (currentChapter === "penyebaran") {
+			return getCurrentPageProgress(chapter3Progress, `page${currentPage}`);
+		}
+	};
 
 	/*
     EXPECTED OUTPUT of userProgress:
@@ -76,7 +91,8 @@ const ProgressProvider = ({ children }) => {
 				chapter1Progress,
 				chapter2Progress,
 				chapter3Progress,
-				getCurrentPageProgress: getCurrentPageProgress,
+				getCurrentPageProgress,
+				getCurrentChapterProgress,
 			}}
 		>
 			{children}

@@ -5,6 +5,8 @@ import BottomProgress from "./BottomProgress";
 import layoutStyles from "@/styles/MainLayout.module.css";
 import QuestionBox from "./QuestionBox";
 
+import { useProgress } from "@/components/context/ProgressContext";
+
 const MainLayout = ({
 	Child1,
 	Child2,
@@ -13,6 +15,10 @@ const MainLayout = ({
 	instruction,
 	percentageValue,
 }) => {
+	const { getCurrentPageProgress, getCurrentChapterProgress } = useProgress();
+
+	console.log(getCurrentChapterProgress());
+
 	return (
 		<>
 			<div className={layoutStyles.wrapper}>

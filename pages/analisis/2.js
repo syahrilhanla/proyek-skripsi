@@ -1,11 +1,7 @@
 import React from "react";
 import MainLayout from "@/components/common/MainLayout";
-import { useProgress } from "@/components/context/ProgressContext";
 
 const page2 = () => {
-	const { chapter2Progress, getCurrentPageProgress } = useProgress();
-	console.log(getCurrentPageProgress(chapter2Progress, "page2"));
-
 	const Text = () => (
 		<div style={{ padding: "0.8rem" }}>
 			<p>
