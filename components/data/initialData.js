@@ -6,12 +6,15 @@ export const initialData = [
 				page: "page1",
 				acts: [
 					{
+						name: "act1",
 						act: false,
 					},
 					{
+						name: "act2",
 						act: false,
 					},
 					{
+						name: "act3",
 						act: false,
 					},
 				],
