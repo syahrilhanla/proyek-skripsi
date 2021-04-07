@@ -15,7 +15,7 @@ const MainLayout = ({
 	instruction,
 	percentageValue,
 }) => {
-	const { getCurrentPageProgress, getCurrentChapterProgress } = useProgress();
+	const { getCurrentChapterProgress } = useProgress();
 
 	console.log(getCurrentChapterProgress());
 

@@ -88,9 +88,6 @@ const ProgressProvider = ({ children }) => {
 		<ProgressContext.Provider
 			value={{
 				useProgress,
-				chapter1Progress,
-				chapter2Progress,
-				chapter3Progress,
 				getCurrentPageProgress,
 				getCurrentChapterProgress,
 			}}
