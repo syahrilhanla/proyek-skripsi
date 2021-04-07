@@ -10,7 +10,7 @@ import progressStyles from "@/styles/BottomProgress.module.css";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
-const BottomProgress = ({ percentageValue = 0 }) => {
+const BottomProgress = ({ pageProgress }) => {
 	const router = useRouter();
 	const currentURL = router.pathname;
 	const parentPath = currentURL.split("/")[1];
@@ -74,9 +74,11 @@ const BottomProgress = ({ percentageValue = 0 }) => {
 				</span>
 
 				<span>
-					<BorderLinearProgress value={percentageValue} />
+					<BorderLinearProgress value={pageProgress.percentage} />
 					<div className={progressStyles.progress}>
-						<p>1/5 Kegiatan</p>
+						<p>
+							{pageProgress.score}/{pageProgress.actLength} Kegiatan
+						</p>
 					</div>
 				</span>
 

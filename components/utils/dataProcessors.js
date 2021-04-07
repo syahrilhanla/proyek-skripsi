@@ -8,9 +8,26 @@ export const dataExtractor = (chapter) => {
 	});
 };
 
+const countPercentage = (score, actLength) => {
+	const percentage = Math.round((actLength / score) * 100);
+	return percentage;
+};
+
 // counting progress data as percentage to be displayed in ProgressBar component
-export const countProgress = (dataProgress) => {
-	dataProgress.map((item) => console.log(item));
+export const getScore = (dataProgress) => {
+	let score = 0;
+	let actLength;
+	let percentage;
+	dataProgress.map((item) => {
+		actLength = item.pageData.length;
+		item.pageData.map((data) => {
+			if (data.act === false) score += 1;
+		});
+	});
+
+	percentage = countPercentage(score, actLength);
+
+	return { score, actLength, percentage };
 };
 
 // used in dataSeparator below

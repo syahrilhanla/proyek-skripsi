@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import BottomProgress from "./BottomProgress";
 
@@ -6,18 +6,15 @@ import layoutStyles from "@/styles/MainLayout.module.css";
 import QuestionBox from "./QuestionBox";
 
 import { useProgress } from "@/components/context/ProgressContext";
+import { getScore } from "../utils/dataProcessors";
 
-const MainLayout = ({
-	Child1,
-	Child2,
-	title,
-	questionData,
-	instruction,
-	percentageValue,
-}) => {
+const MainLayout = ({ Child1, Child2, title, questionData, instruction }) => {
 	const { getCurrentChapterProgress } = useProgress();
+	const [pageProgress, setPageProgress] = useState([]);
 
-	console.log(getCurrentChapterProgress());
+	useEffect(() => {
+		setPageProgress(getScore(getCurrentChapterProgress()));
+	}, []);
 
 	return (
 		<>
@@ -46,7 +43,7 @@ const MainLayout = ({
 					)}
 				</div>
 			</div>
-			<BottomProgress percentageValue={percentageValue} />
+			<BottomProgress pageProgress={pageProgress} />
 		</>
 	);
 };
