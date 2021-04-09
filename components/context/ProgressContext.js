@@ -62,9 +62,6 @@ const ProgressProvider = ({ children }) => {
       // EXPECTED OUTPUT OF dataSeparator
       // [
       // 	{
-      //   page1: [act1: Boolean, ... act(n): Boolean]
-      // 	},
-      // 	{
       //   	page(n): [act1: Boolean, ... act(n): Boolean]
       // 	}
       // ]

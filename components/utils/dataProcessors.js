@@ -51,3 +51,8 @@ export const dataSeparator = (data, chapterName) =>
 export const getCurrentPageProgress = (data, currentPage) => {
 	return data.filter((data) => data.page === currentPage);
 };
+
+// update user progress on page
+export const updateProgress = () => {
+	console.log('updating progress');
+}

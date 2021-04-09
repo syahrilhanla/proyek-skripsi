@@ -10,6 +10,8 @@ import progressStyles from "@/styles/BottomProgress.module.css";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
+import { updateProgress } from '@/components/utils/dataProcessors';
+
 const BottomProgress = ({ pageProgress }) => {
 	const router = useRouter();
 	const currentURL = router.pathname;
@@ -72,19 +74,19 @@ const BottomProgress = ({ pageProgress }) => {
 					)}
 				</span>
 
-				<span>
+				{currentURL.split("/")[2] !== 'kuis' && <span>
 					<BorderLinearProgress value={pageProgress.percentage ? pageProgress.percentage : 0} />
 					<div className={progressStyles.progress}>
 						<p>
 							{pageProgress.score}/{pageProgress.actLength} Kegiatan
 						</p>
 					</div>
-				</span>
+				</span>}
 
 				<span className={progressStyles.right}>
 					{currentPath < chooseURLList(parentPath)[0].length && (
-						<Link href={`/${nextURL()}`}>
-							<ChevronRightIcon fontSize={"large"} color={"inherit"} />
+						<Link href={`/${nextURL()}`} >
+							<ChevronRightIcon fontSize={"large"} color={"inherit"} onClick={() => updateProgress()} />
 						</Link>
 					)}
 				</span>
