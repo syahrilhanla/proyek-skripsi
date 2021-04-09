@@ -47,9 +47,8 @@ const BottomProgress = ({ pageProgress }) => {
 			currentPath === chooseURLList(parentPath)[0].length
 		) {
 			// if already at the top of the content, then go to quiz/last url of content
-			return `${parentPath}/${
-				chooseURLList(parentPath)[0][currentPath.length - 1]
-			}`;
+			return `${parentPath}/${chooseURLList(parentPath)[0][currentPath.length - 1]
+				}`;
 		} else return `${parentPath}/1`;
 	};
 
@@ -74,7 +73,7 @@ const BottomProgress = ({ pageProgress }) => {
 				</span>
 
 				<span>
-					<BorderLinearProgress value={pageProgress.percentage} />
+					<BorderLinearProgress value={pageProgress.percentage ? pageProgress.percentage : 0} />
 					<div className={progressStyles.progress}>
 						<p>
 							{pageProgress.score}/{pageProgress.actLength} Kegiatan

@@ -35,6 +35,38 @@ export const initialData = [
 						act: false,
 					},
 				],
+			}, {
+				page: "page3",
+				acts: [
+					{
+						name: "act1",
+						act: false,
+					},
+					{
+						name: "act2",
+						act: false,
+					},
+					{
+						name: "act3",
+						act: false,
+					},
+				],
+			}, {
+				page: "page4",
+				acts: [
+					{
+						name: "act1",
+						act: false,
+					},
+					{
+						name: "act2",
+						act: false,
+					},
+					{
+						name: "act3",
+						act: false,
+					},
+				],
 			},
 		],
 	},
