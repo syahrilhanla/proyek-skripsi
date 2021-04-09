@@ -6,6 +6,7 @@ import {
 	setLocalStorage,
 	getLocalUser,
 	removeLocalUser,
+	deleteLocalProgress
 } from "../utils/userLocalSavings";
 import { popup, auth } from "@/components/common/Firebase";
 import { useRouter } from "next/router";
@@ -42,6 +43,7 @@ const AuthProvider = ({ children }) => {
 		await auth.signOut();
 		await removeLocalUser();
 		console.log("signing out");
+		deleteLocalProgress();
 		setLoading(true);
 		router.push("/");
 	};

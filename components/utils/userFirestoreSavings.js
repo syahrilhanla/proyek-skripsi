@@ -63,7 +63,6 @@ export const getUserFirestore = async (localUser) => {
 			return null;
 		}
 
-		console.log("got the user");
 		return data.data();
 	} else return null;
 };

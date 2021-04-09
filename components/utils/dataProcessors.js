@@ -9,7 +9,7 @@ export const dataExtractor = (chapter) => {
 };
 
 const countPercentage = (score, actLength) => {
-	const percentage = Math.round((actLength / score) * 100);
+	const percentage = Math.round((score / actLength) * 100);
 	console.log({ percentage }, { score }, { actLength });
 	return percentage;
 };
@@ -22,9 +22,8 @@ export const getScore = (dataProgress) => {
 
 	dataProgress.map((item) => {
 		actLength = item.pageData.length;
-		console.log(item);
 		item.pageData.map((data) => {
-			if (data.act === false) score += 1;
+			if (data.act === true) score += 1;
 		});
 	});
 

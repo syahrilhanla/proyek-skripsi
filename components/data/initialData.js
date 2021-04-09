@@ -44,11 +44,11 @@ export const initialData = [
 					},
 					{
 						name: "act2",
-						act: false,
+						act: true,
 					},
 					{
 						name: "act3",
-						act: false,
+						act: true,
 					},
 				],
 			}, {
