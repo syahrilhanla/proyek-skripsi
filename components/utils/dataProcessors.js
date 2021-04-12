@@ -10,7 +10,6 @@ export const dataExtractor = (chapter) => {
 
 const countPercentage = (score, actLength) => {
 	const percentage = Math.round((score / actLength) * 100);
-	console.log({ percentage }, { score }, { actLength });
 	return percentage;
 };
 
@@ -22,15 +21,7 @@ export const getScore = (dataProgress) => {
 
 	dataProgress.map(data => {
 		if (data === true) score += 1;
-	})
-
-	// dataProgress.map((item) => {
-	// 	actLength = item.pageData.length;
-	// 	console.log(item)
-	// 	item.pageData.map((data) => {
-	// 		if (data.act === true) score += 1;
-	// 	});
-	// });
+	});
 
 	percentage = countPercentage(score, actLength);
 
@@ -56,7 +47,6 @@ export const dataSeparator = (data, chapterName) =>
 export const getCurrentPageProgress = (data, currentPage) => {
 	const combinedProgress = [];
 	data.filter((data) => data.page === currentPage).map(item => item.pageData.map(unit => combinedProgress.push(unit.act)));
-	console.log(combinedProgress);
 	return combinedProgress;
 };
 
@@ -65,10 +55,11 @@ export const updateProgress = () => {
 	console.log('updating progress');
 }
 
-// combine all the progress in the chapter
+// combines all the progress from the pages within the chapter, and returns only the acts as one array
+// expected output: [boolean, boolean, boolean, ...];
 export const combinePageProgress = (localChapterProgress) => {
 	const combinedProgress = [];
-	const allProgress = localChapterProgress.map(data => data.pageData.map(unit => combinedProgress.push(unit.act)));
+	localChapterProgress.map(data => data.pageData.map(unit => combinedProgress.push(unit.act)));
 
-	return { combinedProgress, length: combinedProgress }
+	return { combinedProgress, length: combinedProgress.length }
 }

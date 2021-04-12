@@ -27,7 +27,6 @@ const ProgressProvider = ({ children }) => {
     const currentChapter = router.pathname.split("/")[1];
     const currentPage = router.pathname.split("/")[2];
     if (currentChapter === "analisis") {
-      combinePageProgress(getLocalUserProgress('chapter1'));
       return getCurrentPageProgress(getLocalUserProgress('chapter1')
         , `page${currentPage}`);
     } else if (currentChapter === "pemusatan") {

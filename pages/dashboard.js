@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "@/components/common/Navbar";
 import Footer from "@/components/common/Footer";
 
@@ -8,10 +8,34 @@ import LearningProgress from "@/components/common/LearningProgress";
 import progressStyles from "@/styles/Progress.module.css";
 import dashboardStyles from "@/styles/Dashboard.module.css";
 
+import { combinePageProgress, getScore } from "@/components/utils/dataProcessors";
+import { getLocalUserProgress } from '@/components/utils/userLocalSavings';
+
 import { useAuth } from "@/components/context/AuthContext";
 
 const dashboard = () => {
 	const { localUserData } = useAuth();
+	const [chapter1Value, setChapter1Value] = useState(0);
+	const [chapter2Value, setChapter2Value] = useState(0);
+	const [chapter3Value, setChapter3Value] = useState(0);
+
+	const setProgressValues = () => {
+		return { chapter1Value, chapter2Value, chapter3Value, }
+	}
+
+	const setUserProgress = () => {
+		const chapter1Progress = combinePageProgress(getLocalUserProgress('chapter1'));
+		const chapter2Progress = combinePageProgress(getLocalUserProgress('chapter2'));
+		const chapter3Progress = combinePageProgress(getLocalUserProgress('chapter3'));
+
+		setChapter1Value(getScore(chapter1Progress.combinedProgress));
+		setChapter2Value(getScore(chapter2Progress.combinedProgress));
+		setChapter3Value(getScore(chapter3Progress.combinedProgress));
+	}
+
+	useEffect(() => {
+		setUserProgress();
+	}, []);
 
 	return <>{localUserData && <DisplayDashboard />}</>;
 
@@ -20,32 +44,33 @@ const dashboard = () => {
 			<div className={progressStyles.mainProgress}>
 				<Navbar />
 				<DashboardContent displayName={localUserData.displayName} />
-				<UserProgress />
+				<UserProgress progressValues={setProgressValues()} />
 				<Footer />
 			</div>
 		);
 	}
 };
 
-function UserProgress() {
+function UserProgress({ progressValues }) {
+
 	return (
 		<section className={progressStyles.progressSection}>
 			<div className={progressStyles.container}>
 				<h1>Progres Saya</h1>
 				<LearningProgress
 					text={"Menganalisis Data"}
-					percentageValue={80}
-					overallAction={"8/10"}
+					percentageValue={progressValues.chapter1Value.percentage}
+					overallAction={`${progressValues.chapter1Value.score}/${progressValues.chapter1Value.actLength}`}
 				/>
 				<LearningProgress
 					text={"Ukuran Pemusatan"}
-					percentageValue={70}
-					overallAction={"7/10"}
+					percentageValue={progressValues.chapter2Value.percentage}
+					overallAction={`${progressValues.chapter2Value.score}/${progressValues.chapter2Value.actLength}`}
 				/>
 				<LearningProgress
 					text={"Ukuran Penyebaran"}
-					percentageValue={60}
-					overallAction={"6/10"}
+					percentageValue={progressValues.chapter3Value.percentage}
+					overallAction={`${progressValues.chapter3Value.score}/${progressValues.chapter3Value.actLength}`}
 				/>
 			</div>
 		</section>

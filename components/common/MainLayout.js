@@ -6,7 +6,7 @@ import layoutStyles from "@/styles/MainLayout.module.css";
 import QuestionBox from "./QuestionBox";
 
 import { useProgress } from "@/components/context/ProgressContext";
-import { getScore } from "../utils/dataProcessors";
+import { getScore } from "@/components/utils/dataProcessors";
 
 const MainLayout = ({ Child1, Child2, title, questionData, instruction }) => {
 	const { getCurrentChapterProgress } = useProgress();
