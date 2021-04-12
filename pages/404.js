@@ -8,7 +8,7 @@ const custom404 = () => {
 
   const invalidAddress = {
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center'
   }

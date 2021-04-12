@@ -1,8 +1,9 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect } from "react";
 import { useAuth } from "@/components/context/AuthContext";
 import {
   dataSeparator,
   getCurrentPageProgress,
+  combinePageProgress
 } from "@/components/utils/dataProcessors";
 import { useRouter } from "next/router";
 
@@ -26,6 +27,7 @@ const ProgressProvider = ({ children }) => {
     const currentChapter = router.pathname.split("/")[1];
     const currentPage = router.pathname.split("/")[2];
     if (currentChapter === "analisis") {
+      combinePageProgress(getLocalUserProgress('chapter1'));
       return getCurrentPageProgress(getLocalUserProgress('chapter1')
         , `page${currentPage}`);
     } else if (currentChapter === "pemusatan") {
@@ -36,6 +38,7 @@ const ProgressProvider = ({ children }) => {
         , `page${currentPage}`);
     }
   };
+
 
   /*
     EXPECTED OUTPUT of userProgress:

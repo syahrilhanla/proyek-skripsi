@@ -17,15 +17,20 @@ const countPercentage = (score, actLength) => {
 // counting progress data as percentage to be displayed in ProgressBar component
 export const getScore = (dataProgress) => {
 	let score = 0;
-	let actLength;
+	const actLength = dataProgress.length;
 	let percentage;
 
-	dataProgress.map((item) => {
-		actLength = item.pageData.length;
-		item.pageData.map((data) => {
-			if (data.act === true) score += 1;
-		});
-	});
+	dataProgress.map(data => {
+		if (data === true) score += 1;
+	})
+
+	// dataProgress.map((item) => {
+	// 	actLength = item.pageData.length;
+	// 	console.log(item)
+	// 	item.pageData.map((data) => {
+	// 		if (data.act === true) score += 1;
+	// 	});
+	// });
 
 	percentage = countPercentage(score, actLength);
 
@@ -49,10 +54,21 @@ export const dataSeparator = (data, chapterName) =>
 
 // get current page's data
 export const getCurrentPageProgress = (data, currentPage) => {
-	return data.filter((data) => data.page === currentPage);
+	const combinedProgress = [];
+	data.filter((data) => data.page === currentPage).map(item => item.pageData.map(unit => combinedProgress.push(unit.act)));
+	console.log(combinedProgress);
+	return combinedProgress;
 };
 
 // update user progress on page
 export const updateProgress = () => {
 	console.log('updating progress');
+}
+
+// combine all the progress in the chapter
+export const combinePageProgress = (localChapterProgress) => {
+	const combinedProgress = [];
+	const allProgress = localChapterProgress.map(data => data.pageData.map(unit => combinedProgress.push(unit.act)));
+
+	return { combinedProgress, length: combinedProgress }
 }
