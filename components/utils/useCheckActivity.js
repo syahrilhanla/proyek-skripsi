@@ -1,8 +1,15 @@
-const useCheckActivity = (setIsActive) => {
-	const resetTimer = () => setTimeout(() => setIsActive(false), 300000);
+import { useMemo } from "react";
+
+const useCheckActivity = (isActive, setIsActive) => {
+	const resetTimer = () => {
+		setTimeout(() => setIsActive(false), 300000);
+	};
+
+	// only reset the timer when the value changes
+	const activeMemo = useMemo(() => resetTimer, [isActive]);
 
 	// reset count if user interacts with the app
-	document.addEventListener("mousemove", resetTimer);
-	document.addEventListener("keypress", resetTimer);
+	document.addEventListener("mousemove", activeMemo);
+	document.addEventListener("keypress", activeMemo);
 };
 export default useCheckActivity;
