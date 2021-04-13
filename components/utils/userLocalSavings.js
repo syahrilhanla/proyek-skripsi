@@ -26,3 +26,27 @@ export const removeLocalUser = async () => {
     localStorage.removeItem('user');
   }
 }
+
+// set userProgress to localStorage 
+export const setLocalProgress = (collection, userProgress) => {
+  if (userProgress) {
+    if (localStorage.getItem(collection) !== null) {
+      localStorage.removeItem(collection);
+    }
+
+    localStorage.setItem(collection, JSON.stringify(userProgress));
+  }
+}
+
+export const getLocalUserProgress = (collection) => {
+  if (localStorage.getItem(collection) !== null) {
+    return JSON.parse(localStorage.getItem(collection));
+  }
+}
+
+export const deleteLocalProgress = () => {
+  localStorage.removeItem('chapter1');
+  localStorage.removeItem('chapter2');
+  localStorage.removeItem('chapter3');
+
+}
