@@ -7,10 +7,16 @@ import QuestionBox from "./QuestionBox";
 
 import { useProgress } from "@/components/context/ProgressContext";
 import { getScore } from "@/components/utils/dataProcessors";
+import useCheckActivity from "@/components/utils/useCheckActivity";
 
 const MainLayout = ({ Child1, Child2, title, questionData, instruction }) => {
 	const { getCurrentChapterProgress } = useProgress();
 	const [pageProgress, setPageProgress] = useState([]);
+
+	const [isActive, setIsActive] = useState(true);
+
+	// check if user still active, if not then change isActive to false
+	useCheckActivity(setIsActive);
 
 	useEffect(() => {
 		setPageProgress(getScore(getCurrentChapterProgress()));
@@ -34,6 +40,7 @@ const MainLayout = ({ Child1, Child2, title, questionData, instruction }) => {
 					{Child2 && (
 						<div className={layoutStyles.column2}>
 							<Child2 />
+							{isActive === false ? <div>inactive</div> : <div>active</div>}
 						</div>
 					)}
 				</div>
