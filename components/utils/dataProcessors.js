@@ -57,7 +57,13 @@ export const updateProgress = () => {
 
 // combines all the progress from the pages within the chapter, and returns only the acts as one array
 // expected output: [boolean, boolean, boolean, ...];
+// used in 
 export const combinePageProgress = (localChapterProgress) => {
+	if (localChapterProgress === undefined) {
+		return [];
+	}
+
+	console.log(localChapterProgress);
 	const combinedProgress = [];
 	localChapterProgress.map(data => data.pageData.map(unit => combinedProgress.push(unit.act)));
 

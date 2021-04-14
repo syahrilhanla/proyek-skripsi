@@ -3,7 +3,6 @@ import { useAuth } from "@/components/context/AuthContext";
 import {
   dataSeparator,
   getCurrentPageProgress,
-  combinePageProgress
 } from "@/components/utils/dataProcessors";
 import { useRouter } from "next/router";
 
