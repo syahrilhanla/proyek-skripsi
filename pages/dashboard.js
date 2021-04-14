@@ -1,5 +1,13 @@
+<<<<<<< HEAD
+import React from 'react';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+import CircularProgressWithLabel from '../components/ProgressCircularBar';
+import LearningProgress from '../components/LearningProgress';
+=======
 import Navbar from "@/components/common/Navbar";
 import Footer from "@/components/common/Footer";
+>>>>>>> f3d7133b48cd805b436fd0f1c0a0b4a87a902c9b
 
 import CircularProgressWithLabel from "@/components/common/ProgressCircularBar";
 import LearningProgress from "@/components/common/LearningProgress";
