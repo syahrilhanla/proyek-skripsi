@@ -15,6 +15,7 @@ const MainLayout = ({ Child1, Child2, title, questionData, instruction }) => {
 	const { getCurrentChapterProgress } = useProgress();
 	const [pageProgress, setPageProgress] = useState([]);
 
+	// passed into checking activity in utils/useCheckActivity
 	const [isActive, setIsActive] = useState(true);
 
 	// check if user still active, if not then change isActive to false
@@ -26,6 +27,7 @@ const MainLayout = ({ Child1, Child2, title, questionData, instruction }) => {
 
 	return (
 		<>
+			{/* Show popup modal if user is inactive for certain amount of time */}
 			{isActive === false ? (
 				<Notification isActive={isActive} setIsActive={setIsActive} />
 			) : null}

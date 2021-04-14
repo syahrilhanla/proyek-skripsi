@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import Navbar from "@/components/common/Navbar";
 import Footer from "@/components/common/Footer";
 
@@ -8,43 +7,19 @@ import LearningProgress from "@/components/common/LearningProgress";
 import progressStyles from "@/styles/Progress.module.css";
 import dashboardStyles from "@/styles/Dashboard.module.css";
 
-import { combinePageProgress, getScore } from "@/components/utils/dataProcessors";
-import { getLocalUserProgress } from '@/components/utils/userLocalSavings';
-
-import { useAuth } from "@/components/context/AuthContext";
+import useProgressValues from "@/components/utils/useProgressValues";
 
 const dashboard = () => {
-	const { localUserData } = useAuth();
-	const [chapter1Value, setChapter1Value] = useState(0);
-	const [chapter2Value, setChapter2Value] = useState(0);
-	const [chapter3Value, setChapter3Value] = useState(0);
+	const progressValues = useProgressValues();
 
-	const setProgressValues = () => {
-		return { chapter1Value, chapter2Value, chapter3Value, }
-	}
-
-	const setUserProgress = () => {
-		const chapter1Progress = combinePageProgress(getLocalUserProgress('chapter1'));
-		const chapter2Progress = combinePageProgress(getLocalUserProgress('chapter2'));
-		const chapter3Progress = combinePageProgress(getLocalUserProgress('chapter3'));
-
-		setChapter1Value(getScore(chapter1Progress.combinedProgress));
-		setChapter2Value(getScore(chapter2Progress.combinedProgress));
-		setChapter3Value(getScore(chapter3Progress.combinedProgress));
-	}
-
-	useEffect(() => {
-		setUserProgress();
-	}, []);
-
-	return <>{localUserData && <DisplayDashboard />}</>;
+	return <>{progressValues.localUserData && <DisplayDashboard />}</>;
 
 	function DisplayDashboard() {
 		return (
 			<div className={progressStyles.mainProgress}>
 				<Navbar />
-				<DashboardContent displayName={localUserData.displayName} />
-				<UserProgress progressValues={setProgressValues()} />
+				<DashboardContent displayName={progressValues.localUserData.displayName} />
+				<UserProgress progressValues={progressValues.setProgressValues()} />
 				<Footer />
 			</div>
 		);
