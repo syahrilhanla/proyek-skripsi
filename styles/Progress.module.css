@@ -2,6 +2,7 @@
   color: #474747;
   display: grid;
   grid-template-columns: 1fr;
+  position: relative;
 }
 
 .container {
@@ -13,11 +14,27 @@
   justify-content: center;
 }
 
+.container h1 {
+  text-align: center;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #bbbbbb;
+  border-bottom-width: 2px;
+  font-weight: 600;
+}
+
 .progresses {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   padding: 0px 0.7rem;
   justify-content: space-evenly;
+}
+
+.progressSection {
+  background-image: rgb(236, 233, 233);
+}
+
+.progresses h3, .progresses h2 {
+  font-weight: 500;
 }
 
 @media (max-width: 600px) {

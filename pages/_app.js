@@ -1,12 +1,18 @@
-import '../styles/globals.css';
-import AuthProvider from '../components/context/AuthContext';
+import "../styles/globals.css";
+import AuthProvider from "@/components/context/AuthContext";
+import ProtectedRoutes from "@/components/common/ProtectedRoutes";
+import ProgressProvider from "@/components/context/ProgressContext";
 
 function MyApp({ Component, pageProps }) {
-  return (
-    <AuthProvider>
-      <Component {...pageProps} />
-    </AuthProvider>
-  )
+	return (
+		<AuthProvider>
+			<ProgressProvider>
+				<ProtectedRoutes>
+					<Component {...pageProps} />
+				</ProtectedRoutes>
+			</ProgressProvider>
+		</AuthProvider>
+	);
 }
 
-export default MyApp
+export default MyApp;

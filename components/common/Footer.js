@@ -1,6 +1,7 @@
-import footerStyles from '../styles/Footer.module.css';
+import footerStyles from '@/styles/Footer.module.css';
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const Footer = () => {
   return (
@@ -16,7 +17,9 @@ const Footer = () => {
         </div>
           <div className={footerStyles.links}>
             <ul>
-              <li>Tentang</li>
+              <li>
+                <Link href={'/about'}>Tentang</Link>
+              </li>
               <li>Petunjuk Penggunaan</li>
             </ul>
           </div>
@@ -27,19 +30,19 @@ const Footer = () => {
           <p className={footerStyles.copyright}>&#169; 2021 - Syahril Hanla</p>
 
           <div className={footerStyles.identity}>
-            <a href='http://github.com/syahrilhanla' target='_blank'>
-              <span>
-                <Image src={'/github-icon.png'} height={21} width={21} />
-              </span> syahrilhanla
+            <span>
+              <Image src={'/github-icon.png'} height={21} width={21} />
+            </span>
+            <a href='https://github.com/syahrilhanla' target='_blank'>
+              syahrilhanla
             </a>
-
           </div>
           <div className={footerStyles.identity}>
-
-            <a href='http://instagram.com/syahrilhanla64' target='_blank'>
-              <span>
-                <Image src={'/instagram-icon.png'} height={21} width={21} />
-              </span> @syahrilhanla64
+            <span>
+              <Image src={'/instagram-icon.png'} height={21} width={21} />
+            </span>
+            <a href='https://www.instagram.com/syahrilhanla64' target='_blank'>
+              @syahrilhanla64
             </a>
           </div>
 

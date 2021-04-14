@@ -1,6 +1,5 @@
-import { LinearProgress } from '@material-ui/core';
-
-import progressStyles from '../styles/Progress.module.css';
+import progressStyles from '@/styles/Progress.module.css';
+import BorderLinearProgress from './BorderLinearProgress';
 
 const LearningProgress = ({ text, percentageValue, overallAction }) => {
   return (
@@ -9,7 +8,7 @@ const LearningProgress = ({ text, percentageValue, overallAction }) => {
         {text}
       </h3>
       <span style={{ alignSelf: 'center' }}>
-        <LinearProgress variant="determinate" value={percentageValue} />
+        <BorderLinearProgress value={percentageValue} />
       </span>
       <h2 style={{ justifySelf: 'center', paddingLeft: '2rem' }}>
         {overallAction}
