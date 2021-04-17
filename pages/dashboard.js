@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import Navbar from "@/components/common/Navbar";
 import Footer from "@/components/common/Footer";
 
@@ -72,10 +73,8 @@ const dashboard = () => {
 		return (
 			<div className={progressStyles.mainProgress}>
 				<Navbar />
-				<DashboardContent
-					displayName={progressValues.localUserData.displayName}
-				/>
-				<UserProgress progressValues={progressValues.setProgressValues()} />
+				<DashboardContent displayName={localUserData.displayName} />
+				<UserProgress progressValues={setProgressValues()} />
 				<Footer />
 			</div>
 		);
