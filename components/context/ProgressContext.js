@@ -1,8 +1,13 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useAuth } from "@/components/context/AuthContext";
 import {
+<<<<<<< HEAD
 	dataSeparator,
 	getCurrentPageProgress,
+=======
+  dataSeparator,
+  getCurrentPageProgress,
+>>>>>>> 36b6b4b608bdea223f175814247441ce22cfae2c
 } from "@/components/utils/dataProcessors";
 import { useRouter } from "next/router";
 

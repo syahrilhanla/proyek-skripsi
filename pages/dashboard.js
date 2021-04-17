@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import Navbar from "@/components/common/Navbar";
 import Footer from "@/components/common/Footer";
 
@@ -8,6 +7,7 @@ import LearningProgress from "@/components/common/LearningProgress";
 import progressStyles from "@/styles/Progress.module.css";
 import dashboardStyles from "@/styles/Dashboard.module.css";
 
+<<<<<<< HEAD
 import {
 	combinePageProgress,
 	getScore,
@@ -68,13 +68,21 @@ const dashboard = () => {
 			)}
 		</>
 	);
+=======
+import useProgressValues from "@/components/utils/useProgressValues";
+
+const dashboard = () => {
+	const progressValues = useProgressValues();
+
+	return <>{progressValues.localUserData && <DisplayDashboard />}</>;
+>>>>>>> 36b6b4b608bdea223f175814247441ce22cfae2c
 
 	function DisplayDashboard() {
 		return (
 			<div className={progressStyles.mainProgress}>
 				<Navbar />
-				<DashboardContent displayName={localUserData.displayName} />
-				<UserProgress progressValues={setProgressValues()} />
+				<DashboardContent displayName={progressValues.localUserData.displayName} />
+				<UserProgress progressValues={progressValues.setProgressValues()} />
 				<Footer />
 			</div>
 		);
