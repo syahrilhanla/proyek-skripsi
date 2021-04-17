@@ -1,13 +1,6 @@
-<<<<<<< HEAD
-import React from 'react';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import CircularProgressWithLabel from '../components/ProgressCircularBar';
-import LearningProgress from '../components/LearningProgress';
-=======
+import React, { useState, useEffect } from "react";
 import Navbar from "@/components/common/Navbar";
 import Footer from "@/components/common/Footer";
->>>>>>> f3d7133b48cd805b436fd0f1c0a0b4a87a902c9b
 
 import CircularProgressWithLabel from "@/components/common/ProgressCircularBar";
 import LearningProgress from "@/components/common/LearningProgress";
@@ -15,19 +8,73 @@ import LearningProgress from "@/components/common/LearningProgress";
 import progressStyles from "@/styles/Progress.module.css";
 import dashboardStyles from "@/styles/Dashboard.module.css";
 
-import useProgressValues from "@/components/utils/useProgressValues";
+import {
+	combinePageProgress,
+	getScore,
+} from "@/components/utils/dataProcessors";
+import { getLocalUserProgress } from "@/components/utils/userLocalSavings";
+
+import { useAuth } from "@/components/context/AuthContext";
+import { useProgress } from "@/components/context/ProgressContext";
 
 const dashboard = () => {
-	const progressValues = useProgressValues();
+	const { localUserData } = useAuth();
+	const { dashboardProgress, dashboardLoading } = useProgress();
 
-	return <>{progressValues.localUserData && <DisplayDashboard />}</>;
+	const [pageReady, setPageReady] = useState(false);
+
+	const [chapter1Value, setChapter1Value] = useState(0);
+	const [chapter2Value, setChapter2Value] = useState(0);
+	const [chapter3Value, setChapter3Value] = useState(0);
+
+	const setProgressValues = () => {
+		return { chapter1Value, chapter2Value, chapter3Value };
+	};
+
+	const setUserProgress = async (dashboardProgress) => {
+		console.log(dashboardProgress);
+		if (dashboardProgress.chapter1 !== undefined) {
+			const chapter1Progress = combinePageProgress(
+				await dashboardProgress.chapter1
+			);
+			const chapter2Progress = combinePageProgress(
+				await dashboardProgress.chapter2
+			);
+			const chapter3Progress = combinePageProgress(
+				await dashboardProgress.chapter3
+			);
+
+			setChapter1Value(getScore(chapter1Progress.combinedProgress));
+			setChapter2Value(getScore(chapter2Progress.combinedProgress));
+			setChapter3Value(getScore(chapter3Progress.combinedProgress));
+
+			setPageReady(true);
+		}
+	};
+
+	useEffect(() => {
+		if (dashboardProgress !== null) {
+			console.log(dashboardProgress);
+			setUserProgress(dashboardProgress);
+		}
+	}, [dashboardLoading]);
+
+	return (
+		<>
+			{localUserData && pageReady === true ? (
+				<DisplayDashboard />
+			) : (
+				<p>Loading</p>
+			)}
+		</>
+	);
 
 	function DisplayDashboard() {
 		return (
 			<div className={progressStyles.mainProgress}>
 				<Navbar />
-				<DashboardContent displayName={progressValues.localUserData.displayName} />
-				<UserProgress progressValues={progressValues.setProgressValues()} />
+				<DashboardContent displayName={localUserData.displayName} />
+				<UserProgress progressValues={setProgressValues()} />
 				<Footer />
 			</div>
 		);
@@ -35,7 +82,6 @@ const dashboard = () => {
 };
 
 function UserProgress({ progressValues }) {
-
 	return (
 		<section className={progressStyles.progressSection}>
 			<div className={progressStyles.container}>
