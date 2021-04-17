@@ -8,36 +8,66 @@ import LearningProgress from "@/components/common/LearningProgress";
 import progressStyles from "@/styles/Progress.module.css";
 import dashboardStyles from "@/styles/Dashboard.module.css";
 
-import { combinePageProgress, getScore } from "@/components/utils/dataProcessors";
-import { getLocalUserProgress } from '@/components/utils/userLocalSavings';
+import {
+	combinePageProgress,
+	getScore,
+} from "@/components/utils/dataProcessors";
+import { getLocalUserProgress } from "@/components/utils/userLocalSavings";
 
 import { useAuth } from "@/components/context/AuthContext";
+import { useProgress } from "@/components/context/ProgressContext";
 
 const dashboard = () => {
 	const { localUserData } = useAuth();
+	const { dashboardProgress, dashboardLoading } = useProgress();
+
+	const [pageReady, setPageReady] = useState(false);
+
 	const [chapter1Value, setChapter1Value] = useState(0);
 	const [chapter2Value, setChapter2Value] = useState(0);
 	const [chapter3Value, setChapter3Value] = useState(0);
 
 	const setProgressValues = () => {
-		return { chapter1Value, chapter2Value, chapter3Value, }
-	}
+		return { chapter1Value, chapter2Value, chapter3Value };
+	};
 
-	const setUserProgress = () => {
-		const chapter1Progress = combinePageProgress(getLocalUserProgress('chapter1'));
-		const chapter2Progress = combinePageProgress(getLocalUserProgress('chapter2'));
-		const chapter3Progress = combinePageProgress(getLocalUserProgress('chapter3'));
+	const setUserProgress = async (dashboardProgress) => {
+		console.log(dashboardProgress);
+		if (dashboardProgress.chapter1 !== undefined) {
+			const chapter1Progress = combinePageProgress(
+				await dashboardProgress.chapter1
+			);
+			const chapter2Progress = combinePageProgress(
+				await dashboardProgress.chapter2
+			);
+			const chapter3Progress = combinePageProgress(
+				await dashboardProgress.chapter3
+			);
 
-		setChapter1Value(getScore(chapter1Progress.combinedProgress));
-		setChapter2Value(getScore(chapter2Progress.combinedProgress));
-		setChapter3Value(getScore(chapter3Progress.combinedProgress));
-	}
+			setChapter1Value(getScore(chapter1Progress.combinedProgress));
+			setChapter2Value(getScore(chapter2Progress.combinedProgress));
+			setChapter3Value(getScore(chapter3Progress.combinedProgress));
+
+			setPageReady(true);
+		}
+	};
 
 	useEffect(() => {
-		setUserProgress();
-	}, []);
+		if (dashboardProgress !== null) {
+			console.log(dashboardProgress);
+			setUserProgress(dashboardProgress);
+		}
+	}, [dashboardLoading]);
 
-	return <>{localUserData && <DisplayDashboard />}</>;
+	return (
+		<>
+			{localUserData && pageReady === true ? (
+				<DisplayDashboard />
+			) : (
+				<p>Loading</p>
+			)}
+		</>
+	);
 
 	function DisplayDashboard() {
 		return (
@@ -52,7 +82,6 @@ const dashboard = () => {
 };
 
 function UserProgress({ progressValues }) {
-
 	return (
 		<section className={progressStyles.progressSection}>
 			<div className={progressStyles.container}>
