@@ -7,7 +7,6 @@ import LearningProgress from "@/components/common/LearningProgress";
 import progressStyles from "@/styles/Progress.module.css";
 import dashboardStyles from "@/styles/Dashboard.module.css";
 
-<<<<<<< HEAD
 import {
 	combinePageProgress,
 	getScore,
@@ -73,7 +72,9 @@ const dashboard = () => {
 		return (
 			<div className={progressStyles.mainProgress}>
 				<Navbar />
-				<DashboardContent displayName={progressValues.localUserData.displayName} />
+				<DashboardContent
+					displayName={progressValues.localUserData.displayName}
+				/>
 				<UserProgress progressValues={progressValues.setProgressValues()} />
 				<Footer />
 			</div>
