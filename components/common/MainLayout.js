@@ -12,7 +12,7 @@ import useCheckActivity from "@/components/utils/useCheckActivity";
 import Notification from "@/components/common/Notification";
 
 const MainLayout = ({ Child1, Child2, title, questionData, instruction }) => {
-	const { getCurrentChapterProgress } = useProgress();
+	const { useGetCurrentChapterProgress } = useProgress();
 	const [pageProgress, setPageProgress] = useState([]);
 
 	// passed into checking activity in utils/useCheckActivity
@@ -22,7 +22,7 @@ const MainLayout = ({ Child1, Child2, title, questionData, instruction }) => {
 	useCheckActivity(isActive, setIsActive);
 
 	useEffect(() => {
-		setPageProgress(getScore(getCurrentChapterProgress()));
+		setPageProgress(getScore(useGetCurrentChapterProgress()));
 	}, []);
 
 	return (

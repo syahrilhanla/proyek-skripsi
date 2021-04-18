@@ -1,15 +1,13 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useAuth } from "@/components/context/AuthContext";
-import {
-	dataSeparator,
-	getCurrentPageProgress,
-} from "@/components/utils/dataProcessors";
-import { useRouter } from "next/router";
+import { dataSeparator } from "@/components/utils/dataProcessors";
 
 import {
 	setLocalProgress,
 	getLocalUserProgress,
 } from "@/components/utils/userLocalSavings";
+
+import useGetCurrentChapterProgress from "@/components/utils/useGetCurrentChapterProgress";
 
 const ProgressContext = createContext();
 
@@ -25,29 +23,6 @@ const ProgressProvider = ({ children }) => {
 
 	const [dashboardLoading, setDashboardLoading] = useState(true);
 	const [dashboardProgress, setDashboardProgress] = useState(null);
-
-	// used to get the wanted chapter progress
-	const router = useRouter();
-	const getCurrentChapterProgress = () => {
-		const currentChapter = router.pathname.split("/")[1];
-		const currentPage = router.pathname.split("/")[2];
-		if (currentChapter === "analisis") {
-			return getCurrentPageProgress(
-				getLocalUserProgress("chapter1"),
-				`page${currentPage}`
-			);
-		} else if (currentChapter === "pemusatan") {
-			return getCurrentPageProgress(
-				getLocalUserProgress("chapter2"),
-				`page${currentPage}`
-			);
-		} else if (currentChapter === "penyebaran") {
-			return getCurrentPageProgress(
-				getLocalUserProgress("chapter3"),
-				`page${currentPage}`
-			);
-		}
-	};
 
 	/*
     EXPECTED OUTPUT of userProgress:
@@ -116,8 +91,7 @@ const ProgressProvider = ({ children }) => {
 		<ProgressContext.Provider
 			value={{
 				useProgress,
-				getCurrentPageProgress,
-				getCurrentChapterProgress,
+				useGetCurrentChapterProgress,
 				dashboardLoading,
 				dashboardProgress,
 			}}
