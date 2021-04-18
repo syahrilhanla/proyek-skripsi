@@ -7,7 +7,7 @@ import {
 	getLocalUserProgress,
 } from "@/components/utils/userLocalSavings";
 
-const useSetDashboardProgress = () => {
+const useSetProgress = () => {
 	// userProgress is a promise, so use .then() and .catch()
 	// can't use async await because this root function is used to render globally
 	// so it should not be a promise
@@ -81,4 +81,4 @@ const useSetDashboardProgress = () => {
 	return { dashboardLoading, dashboardProgress };
 };
 
-export default useSetDashboardProgress;
+export default useSetProgress;
