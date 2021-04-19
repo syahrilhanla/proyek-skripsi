@@ -1,38 +1,59 @@
 import { useState, useEffect } from "react";
-import { combinePageProgress, getScore } from "@/components/utils/dataProcessors";
-import { getLocalUserProgress } from '@/components/utils/userLocalSavings';
+
+import {
+	combinePageProgress,
+	getScore,
+} from "@/components/utils/dataProcessors";
 
 import { useAuth } from "@/components/context/AuthContext";
+import { useProgress } from "@/components/context/ProgressContext";
 
 const useProgressValues = () => {
+	const { localUserData } = useAuth();
+	const { dashboardProgress, dashboardLoading } = useProgress();
 
-  const { localUserData } = useAuth();
+	const [pageReady, setPageReady] = useState(false);
 
-  const initData = { score: 0, actLength: 0, percentage: 0 };
+	const [chapter1Value, setChapter1Value] = useState(0);
+	const [chapter2Value, setChapter2Value] = useState(0);
+	const [chapter3Value, setChapter3Value] = useState(0);
 
-  const [chapter1Value, setChapter1Value] = useState(initData);
-  const [chapter2Value, setChapter2Value] = useState(initData);
-  const [chapter3Value, setChapter3Value] = useState(initData);
+	const setProgressValues = () => {
+		return { chapter1Value, chapter2Value, chapter3Value };
+	};
 
-  const setProgressValues = () => {
-    return { chapter1Value, chapter2Value, chapter3Value, }
-  }
+	const setUserProgress = async (dashboardProgress) => {
+		console.log(dashboardProgress);
+		if (dashboardProgress.chapter1 !== undefined) {
+			const chapter1Progress = combinePageProgress(
+				await dashboardProgress.chapter1
+			);
+			const chapter2Progress = combinePageProgress(
+				await dashboardProgress.chapter2
+			);
+			const chapter3Progress = combinePageProgress(
+				await dashboardProgress.chapter3
+			);
 
-  const setUserProgress = async () => {
-    const chapter1Progress = combinePageProgress(await getLocalUserProgress('chapter1'));
-    const chapter2Progress = combinePageProgress(await getLocalUserProgress('chapter2'));
-    const chapter3Progress = combinePageProgress(await getLocalUserProgress('chapter3'));
+			setChapter1Value(getScore(chapter1Progress.combinedProgress));
+			setChapter2Value(getScore(chapter2Progress.combinedProgress));
+			setChapter3Value(getScore(chapter3Progress.combinedProgress));
 
-    setChapter1Value(getScore(chapter1Progress.combinedProgress));
-    setChapter2Value(getScore(chapter2Progress.combinedProgress));
-    setChapter3Value(getScore(chapter3Progress.combinedProgress));
-  }
+			setPageReady(true);
+		}
+	};
 
-  useEffect(() => {
-    setUserProgress();
-  }, []);
+	useEffect(() => {
+		if (dashboardProgress !== null) {
+			console.log(dashboardProgress);
+			setUserProgress(dashboardProgress);
+		}
+	}, [dashboardLoading]);
 
-  return { localUserData, setProgressValues }
-}
-
+	return {
+		localUserData,
+		setProgressValues,
+		pageReady,
+	};
+};
 export default useProgressValues;

@@ -12,13 +12,23 @@ import useProgressValues from "@/components/utils/useProgressValues";
 const dashboard = () => {
 	const progressValues = useProgressValues();
 
-	return <>{progressValues.localUserData && <DisplayDashboard />}</>;
+	return (
+		<>
+			{progressValues.localUserData && progressValues.pageReady === true ? (
+				<DisplayDashboard />
+			) : (
+				<p>Loading</p>
+			)}
+		</>
+	);
 
 	function DisplayDashboard() {
 		return (
 			<div className={progressStyles.mainProgress}>
 				<Navbar />
-				<DashboardContent displayName={progressValues.localUserData.displayName} />
+				<DashboardContent
+					displayName={progressValues.localUserData.displayName}
+				/>
 				<UserProgress progressValues={progressValues.setProgressValues()} />
 				<Footer />
 			</div>
@@ -27,7 +37,6 @@ const dashboard = () => {
 };
 
 function UserProgress({ progressValues }) {
-
 	return (
 		<section className={progressStyles.progressSection}>
 			<div className={progressStyles.container}>
