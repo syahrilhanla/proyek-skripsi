@@ -41,16 +41,17 @@ export const createUserProgress = async (localUser) => {
 };
 
 // THIS FUNCTION HAS NOT BEEN USED YET
-export const updateProgress = async (localUser, newData) => {
+export const updateProgress = async (localUser) => {
 	if (localUser) {
 		// data is just for experiment for now
 		console.log("updating progress");
 
 		// docs id below only used for testing
-		const data = docRef.doc(localUser.uid).collection("progress");
-		await data.doc("upylsZjAbdW7b6O7lkx2").update({
-			"initialData.quiz1": 8,
-		});
+		const data = docRef.doc(localUser.uid).collection("chapter1");
+
+		data.doc('page1').update({
+
+		})
 		console.log("progress updated");
 	} else return;
 };
@@ -80,7 +81,7 @@ export const getUserProgress = async (localUser) => {
 			return chapterData.docs.map((doc) => doc.data());
 		};
 
-		// setting them to variables
+		// just setting them to variables
 		const rawChapter1Data = await getChapterData("chapter1");
 		const rawChapter2Data = await getChapterData("chapter2");
 		const rawChapter3Data = await getChapterData("chapter3");
@@ -101,6 +102,8 @@ export const getUserProgress = async (localUser) => {
 		//   page: page(n),
 		//   pageData: [act1, ...]
 		// ];
+
+		console.log(rawChapter1Data)
 
 		// returning results as objects within an array
 		const results = [

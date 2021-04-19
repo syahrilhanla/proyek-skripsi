@@ -69,7 +69,7 @@ const BottomProgress = ({ pageProgress }) => {
 				<span className={progressStyles.left}>
 					{currentPath !== 1 && (
 						<Link href={`/${prevURL()}`}>
-							<ChevronLeftIcon fontSize={"large"} color={"inherit"} />
+							<ChevronLeftIcon fontSize={"large"} color={"inherit"} onClick={() => updateProgress()} />
 						</Link>
 					)}
 				</span>

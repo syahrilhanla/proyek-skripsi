@@ -23,7 +23,6 @@ const useProgressValues = () => {
 	};
 
 	const setUserProgress = async (dashboardProgress) => {
-		console.log(dashboardProgress);
 		if (dashboardProgress.chapter1 !== undefined) {
 			const chapter1Progress = combinePageProgress(
 				await dashboardProgress.chapter1
@@ -45,7 +44,6 @@ const useProgressValues = () => {
 
 	useEffect(() => {
 		if (dashboardProgress !== null) {
-			console.log(dashboardProgress);
 			setUserProgress(dashboardProgress);
 		}
 	}, [dashboardLoading]);

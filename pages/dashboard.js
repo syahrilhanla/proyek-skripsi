@@ -14,11 +14,7 @@ const dashboard = () => {
 
 	return (
 		<>
-			{progressValues.localUserData && progressValues.pageReady === true ? (
-				<DisplayDashboard />
-			) : (
-				<p>Loading</p>
-			)}
+			{(progressValues.localUserData && progressValues.pageReady === true) && <DisplayDashboard />}
 		</>
 	);
 
@@ -62,7 +58,6 @@ function UserProgress({ progressValues }) {
 }
 
 function DashboardContent({ displayName }) {
-	console.log(displayName);
 	return (
 		<section className={dashboardStyles.dashboard}>
 			<div className={dashboardStyles.profile}>

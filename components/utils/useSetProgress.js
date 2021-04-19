@@ -17,20 +17,20 @@ const useSetProgress = () => {
 	const [dashboardProgress, setDashboardProgress] = useState(null);
 
 	/*
-    EXPECTED OUTPUT of userProgress:
-    [
-      { chapter: chapter(n),
-        data: [
-          {
-            page1: [act1: Boolean, ... act(n): Boolean]
-          },  
-          {
-            page(n): [act1: Boolean, ... act(n): Boolean]
-          }
-        ]
-      }
-    ]
-  */
+		EXPECTED OUTPUT of userProgress:
+		[
+			{ chapter: chapter(n),
+				data: [
+					{
+						page1: [act1: Boolean, ... act(n): Boolean]
+					},  
+					{
+						page(n): [act1: Boolean, ... act(n): Boolean]
+					}
+				]
+			}
+		]
+	*/
 
 	const getProgress = async (userProgress) => {
 		// this also checked in when logging out, and the data will be null
@@ -74,7 +74,6 @@ const useSetProgress = () => {
 	useEffect(() => {
 		if (dashboardProgress !== null) {
 			setDashboardLoading((prevState) => !prevState);
-			console.log(dashboardLoading);
 		}
 	}, [dashboardProgress]);
 

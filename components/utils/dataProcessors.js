@@ -69,7 +69,6 @@ export const combinePageProgress = (localChapterProgress) => {
 		return [];
 	}
 
-	console.log(localChapterProgress);
 	const combinedProgress = [];
 	localChapterProgress.map((data) =>
 		data.pageData.map((unit) => combinedProgress.push(unit.act))
