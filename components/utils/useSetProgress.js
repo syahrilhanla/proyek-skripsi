@@ -56,7 +56,7 @@ const useSetProgress = () => {
 		await setLocalProgress("chapter3", chapter3);
 	};
 
-	const settingUpProgress = async () => {
+	const settingUpProgress = async (userProgress) => {
 		await getProgress(userProgress);
 		const chapter1 = await getLocalUserProgress("chapter1");
 		const chapter2 = await getLocalUserProgress("chapter2");
@@ -68,7 +68,7 @@ const useSetProgress = () => {
 	// getting the value of the promise, then separate them to each array,
 	// setting them to localState
 	useEffect(() => {
-		settingUpProgress();
+		settingUpProgress(userProgress);
 	}, [userProgress]);
 
 	useEffect(() => {
