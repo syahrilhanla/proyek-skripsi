@@ -1,30 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-
-import Navbar from "./Navbar";
-import BottomProgress from "./BottomProgress";
+import Navbar from "@/components/common/Navbar";
+import BottomProgress from "@/components/common/BottomProgress";
 
 import layoutStyles from "@/styles/MainLayout.module.css";
-import QuestionBox from "./QuestionBox";
+import QuestionBox from "@/components/common/QuestionBox";
 
 import Notification from "@/components/common/Notification";
 import useMainLayoutProgress from "@/components/utils/useMainLayoutProgress";
 
 const MainLayout = ({ Child1, Child2, title, questionData, instruction }) => {
-	// const [pageProgress, setPageProgress] = useState([]);
-	// const router = useRouter();
-
-	// // passed into checking activity in utils/useCheckActivity
-	// const [isActive, setIsActive] = useState(true);
-
-	// // check if user still active, if not then change isActive to false
-	// useCheckActivity(isActive, setIsActive);
-
-	// useEffect(() => {
-	// 	useGetCurrentChapterProgress(router).then((data) =>
-	// 		setPageProgress(getScore(data))
-	// 	);
-	// }, []);
 
 	const mainLayoutProgress = useMainLayoutProgress();
 

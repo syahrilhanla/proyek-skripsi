@@ -10,8 +10,6 @@ export const useProgress = () => {
 };
 
 const ProgressProvider = ({ children }) => {
-	const router = useRouter();
-
 	const setProgress = useSetProgress();
 
 	return (
