@@ -56,9 +56,9 @@ export const getCurrentPageProgress = (data, currentPage) => {
 			.map((item) =>
 				item.pageData.map((unit) => combinedProgress.push(unit.act))
 			);
-	} else return [];
 
-	return combinedProgress;
+		return combinedProgress;
+	} else return [];
 };
 
 // update user progress on page

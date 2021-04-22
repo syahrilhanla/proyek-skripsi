@@ -17,7 +17,7 @@ const MainLayout = ({ Child1, Child2, title, questionData, instruction }) => {
 
 	useEffect(() => {
 		console.log(overallProgress);
-	}, [overallProgress]);
+	}, []);
 
 	return (
 		<>

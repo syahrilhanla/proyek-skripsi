@@ -1,6 +1,6 @@
 import { createContext, useContext } from "react";
 
-import useSetProgress from "../utils/useSetProgress";
+import useSetProgress from "@/components/utils/useSetProgress";
 
 const ProgressContext = createContext();
 
