@@ -8,16 +8,12 @@ import Notification from "@/components/common/Notification";
 import useMainLayoutProgress from "@/components/utils/useMainLayoutProgress";
 
 import { useProgress } from '@/components/context/ProgressContext';
-import { useEffect } from "react";
+import useUpdateProgress from '@/components/utils/useUpdateProgress';
 
 const MainLayout = ({ Child1, Child2, title, questionData, instruction }) => {
 
 	const mainLayoutProgress = useMainLayoutProgress();
-	const { overallProgress } = useProgress();
-
-	useEffect(() => {
-		console.log(overallProgress);
-	}, []);
+	// const { overallProgress } = useProgress();
 
 	return (
 		<>

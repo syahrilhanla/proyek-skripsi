@@ -1,4 +1,4 @@
-export const data = [
+export const drawersData = [
   {
     id: 1,
     title: 'Menganalisis Data',

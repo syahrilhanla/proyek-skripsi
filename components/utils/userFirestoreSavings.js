@@ -40,7 +40,7 @@ export const createUserProgress = async (localUser) => {
 	} else return;
 };
 
-// THIS FUNCTION HAS NOT BEEN USED YET
+// THIS FUNCTION WILL BE USED WHEN USER MOVE FROM THE CURRENT PAGE
 export const updateProgress = async (localUser) => {
 	if (localUser) {
 		// data is just for experiment for now
