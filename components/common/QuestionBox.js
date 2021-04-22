@@ -25,7 +25,10 @@ const QuestionBox = ({ question, instruction }) => {
               <ul>
                 {item.answerChoices.map((answer, index) => (
                   <li key={index}>
-                    <button onClick={() => console.log(answer.isCorrect)}>
+                    <button onClick={() => {
+                      console.log(item.name);
+                      console.log(answer.isCorrect);
+                    }}>
                       {answer.answerText}
                     </button>
                   </li>

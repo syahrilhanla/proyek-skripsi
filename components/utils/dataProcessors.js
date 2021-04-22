@@ -1,3 +1,5 @@
+import { updateLocalProgress } from '@/components/utils/userLocalSavings';
+
 // extracting chapter(n)Data to have pages as key objects and acts per page as its value
 export const dataExtractor = (chapter) => {
 	return chapter.map((pageData, pageIndex) => {
@@ -59,6 +61,14 @@ export const getCurrentPageProgress = (data, currentPage) => {
 // update user progress on page
 export const updateProgress = () => {
 	console.log("updating progress");
+	const newData = {
+		page: 'pageN',
+		pageData: [
+			{ act: 'this is an act' }
+		]
+	}
+
+	updateLocalProgress('chapter1', newData);
 };
 
 // combines all the progress from the pages within the chapter, and returns only the acts as one array

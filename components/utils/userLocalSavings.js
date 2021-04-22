@@ -49,3 +49,9 @@ export const deleteLocalProgress = () => {
 	localStorage.removeItem("chapter2");
 	localStorage.removeItem("chapter3");
 };
+
+export const updateLocalProgress = (collection, newData) => {
+	// localStorage.setItem(collection, JSON.stringify(newData));
+
+
+}
