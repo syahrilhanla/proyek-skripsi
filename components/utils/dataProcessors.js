@@ -49,12 +49,15 @@ export const dataSeparator = (data, chapterName) =>
 
 // get current page's data
 export const getCurrentPageProgress = (data, currentPage) => {
-	const combinedProgress = [];
-	data
-		.filter((data) => data.page === currentPage)
-		.map((item) =>
-			item.pageData.map((unit) => combinedProgress.push(unit.act))
-		);
+	if (data) {
+		const combinedProgress = [];
+		data
+			.filter((data) => data.page === currentPage)
+			.map((item) =>
+				item.pageData.map((unit) => combinedProgress.push(unit.act))
+			);
+	} else return [];
+
 	return combinedProgress;
 };
 

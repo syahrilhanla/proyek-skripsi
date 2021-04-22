@@ -11,7 +11,7 @@ import { useProgress } from "@/components/context/ProgressContext";
 const useProgressValues = () => {
 	// grabbing values from contexts
 	const { localUserData } = useAuth();
-	const { dashboardProgress, dashboardLoading } = useProgress();
+	const { overallProgress, dashboardLoading } = useProgress();
 
 	// this determines if page is ready to rendered or not
 	const [pageReady, setPageReady] = useState(false);
@@ -47,8 +47,8 @@ const useProgressValues = () => {
 	};
 
 	useEffect(() => {
-		if (dashboardProgress !== null) {
-			setUserProgress(dashboardProgress);
+		if (overallProgress !== null) {
+			setUserProgress(overallProgress);
 		}
 	}, [dashboardLoading]);
 

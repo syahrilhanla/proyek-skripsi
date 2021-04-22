@@ -1,5 +1,4 @@
 import { createContext, useContext } from "react";
-import { useRouter } from "next/router";
 
 import useSetProgress from "../utils/useSetProgress";
 
@@ -17,7 +16,7 @@ const ProgressProvider = ({ children }) => {
 			value={{
 				useProgress,
 				dashboardLoading: setProgress.dashboardLoading,
-				dashboardProgress: setProgress.dashboardProgress,
+				overallProgress: setProgress.dashboardProgress,
 			}}
 		>
 			{children}
