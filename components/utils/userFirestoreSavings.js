@@ -49,9 +49,7 @@ export const updateProgress = async (localUser) => {
 		// docs id below only used for testing
 		const data = docRef.doc(localUser.uid).collection("chapter1");
 
-		data.doc('page1').update({
-
-		})
+		data.doc("page1").update({});
 		console.log("progress updated");
 	} else return;
 };
@@ -103,7 +101,7 @@ export const getUserProgress = async (localUser) => {
 		//   pageData: [act1, ...]
 		// ];
 
-		console.log(rawChapter1Data)
+		console.log({ rawChapter1Data });
 
 		// returning results as objects within an array
 		const results = [
