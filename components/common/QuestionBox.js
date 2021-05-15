@@ -1,17 +1,23 @@
-import React from "react";
 import questionStyle from "@/styles/QuestionBox.module.css";
 import useUpdateCertainAct from "@/components/utils/useUpdateCertainAct";
 
-const QuestionBox = ({ question, instruction, logic }) => {
+const QuestionBox = ({
+	question,
+	instruction,
+	logic,
+	setUpdateProgress,
+	updateProgress,
+}) => {
 	const { parentPath, currentPath } = logic;
-	console.log(logic);
 
-	const checkAnswer = (item, answer) => {
+	const checkAnswer = async (item, answer) => {
 		console.log(item.name);
 		console.log(answer.isCorrect);
 
 		if (answer.isCorrect) {
-			useUpdateCertainAct(item.name, parentPath, currentPath);
+			await useUpdateCertainAct(item.name, parentPath, currentPath);
+
+			setUpdateProgress(!updateProgress);
 		}
 	};
 

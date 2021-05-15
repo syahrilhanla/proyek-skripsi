@@ -48,6 +48,8 @@ const MainLayout = ({ Child1, Child2, title, questionData, instruction }) => {
 							question={questionData}
 							instruction={instruction}
 							logic={bottomProgressLogic}
+							setUpdateProgress={mainLayoutProgress.setUpdateProgress}
+							updateProgress={mainLayoutProgress.updateProgress}
 						/>
 					)}
 				</div>

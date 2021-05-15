@@ -1,26 +1,35 @@
-import { useRouter } from 'next/router';
-import { useState, useEffect } from 'react'
-import { getScore } from '@/components/utils/dataProcessors';
-import useCheckActivity from '@/components/utils/useCheckActivity';
-import useGetCurrentChapterProgress from '@/components/utils/useGetCurrentChapterProgress';
+import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
+import { getScore } from "@/components/utils/dataProcessors";
+import useCheckActivity from "@/components/utils/useCheckActivity";
+import useGetCurrentChapterProgress from "@/components/utils/useGetCurrentChapterProgress";
 
 const useMainLayoutProgress = () => {
-  const [pageProgress, setPageProgress] = useState([]);
-  const router = useRouter();
+	const [pageProgress, setPageProgress] = useState([]);
+	const router = useRouter();
 
-  // passed into checking activity in utils/useCheckActivity
-  const [isActive, setIsActive] = useState(true);
+	// passed into checking activity in utils/useCheckActivity
+	const [isActive, setIsActive] = useState(true);
 
-  // check if user still active, if not then change isActive to false
-  useCheckActivity(isActive, setIsActive);
+	// set this when there is any progress update
+	const [updateProgress, setUpdateProgress] = useState(false);
 
-  useEffect(() => {
-    useGetCurrentChapterProgress(router).then((data) =>
-      setPageProgress(getScore(data))
-    );
-  }, []);
+	// check if user still active, if not then change isActive to false
+	useCheckActivity(isActive, setIsActive);
 
-  return { pageProgress, isActive, setIsActive };
-}
+	useEffect(() => {
+		useGetCurrentChapterProgress(router).then((data) =>
+			setPageProgress(getScore(data))
+		);
+	}, [updateProgress]);
+
+	return {
+		pageProgress,
+		isActive,
+		updateProgress,
+		setUpdateProgress,
+		setIsActive,
+	};
+};
 
 export default useMainLayoutProgress;

@@ -8,7 +8,7 @@ const useUpdateProgress = (currentPage) => {
 		pageData: [{ act: "this is an act" }],
 	};
 
-	updateLocalProgress("chapter1", newData);
+	// updateLocalProgress("chapter1", newData);
 };
 
 export default useUpdateProgress;

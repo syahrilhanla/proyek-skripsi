@@ -51,7 +51,5 @@ export const deleteLocalProgress = () => {
 };
 
 export const updateLocalProgress = (collection, newData) => {
-	console.log(collection, { newData });
-
-	// localStorage.setItem(collection, JSON.stringify(newData));
+	localStorage.setItem(collection, JSON.stringify(newData));
 };
