@@ -1,7 +1,6 @@
 import { createContext, useContext } from "react";
-import { useRouter } from "next/router";
 
-import useSetProgress from "../utils/useSetProgress";
+import useSetProgress from "@/components/utils/useSetProgress";
 
 const ProgressContext = createContext();
 
@@ -10,8 +9,6 @@ export const useProgress = () => {
 };
 
 const ProgressProvider = ({ children }) => {
-	const router = useRouter();
-
 	const setProgress = useSetProgress();
 
 	return (
@@ -19,7 +16,7 @@ const ProgressProvider = ({ children }) => {
 			value={{
 				useProgress,
 				dashboardLoading: setProgress.dashboardLoading,
-				dashboardProgress: setProgress.dashboardProgress,
+				overallProgress: setProgress.dashboardProgress,
 			}}
 		>
 			{children}

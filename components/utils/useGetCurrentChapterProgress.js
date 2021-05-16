@@ -6,7 +6,6 @@ const useGetCurrentChapterProgress = async (router) => {
 	const getCurrentChapterProgress = async () => {
 		const currentChapter = router.pathname.split("/")[1];
 		const currentPage = router.pathname.split("/")[2];
-		console.log({ currentChapter }, { currentPage });
 		if (currentChapter === "analisis") {
 			return getCurrentPageProgress(
 				await getLocalUserProgress("chapter1"),

@@ -47,18 +47,16 @@ export const dataSeparator = (data, chapterName) =>
 
 // get current page's data
 export const getCurrentPageProgress = (data, currentPage) => {
-	const combinedProgress = [];
-	data
-		.filter((data) => data.page === currentPage)
-		.map((item) =>
-			item.pageData.map((unit) => combinedProgress.push(unit.act))
-		);
-	return combinedProgress;
-};
+	if (data) {
+		const combinedProgress = [];
+		data
+			.filter((data) => data.page === currentPage)
+			.map((item) =>
+				item.pageData.map((unit) => combinedProgress.push(unit.act))
+			);
 
-// update user progress on page
-export const updateProgress = () => {
-	console.log("updating progress");
+		return combinedProgress;
+	} else return [];
 };
 
 // combines all the progress from the pages within the chapter, and returns only the acts as one array
@@ -69,7 +67,6 @@ export const combinePageProgress = (localChapterProgress) => {
 		return [];
 	}
 
-	console.log(localChapterProgress);
 	const combinedProgress = [];
 	localChapterProgress.map((data) =>
 		data.pageData.map((unit) => combinedProgress.push(unit.act))

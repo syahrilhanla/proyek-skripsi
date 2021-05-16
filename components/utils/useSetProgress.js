@@ -17,20 +17,20 @@ const useSetProgress = () => {
 	const [dashboardProgress, setDashboardProgress] = useState(null);
 
 	/*
-    EXPECTED OUTPUT of userProgress:
-    [
-      { chapter: chapter(n),
-        data: [
-          {
-            page1: [act1: Boolean, ... act(n): Boolean]
-          },  
-          {
-            page(n): [act1: Boolean, ... act(n): Boolean]
-          }
-        ]
-      }
-    ]
-  */
+		EXPECTED OUTPUT of userProgress:
+		[
+			{ chapter: chapter(n),
+				data: [
+					{
+						page1: [act1: Boolean, ... act(n): Boolean]
+					},  
+					{
+						page(n): [act1: Boolean, ... act(n): Boolean]
+					}
+				]
+			}
+		]
+	*/
 
 	const getProgress = async (userProgress) => {
 		// this also checked in when logging out, and the data will be null
@@ -56,7 +56,7 @@ const useSetProgress = () => {
 		await setLocalProgress("chapter3", chapter3);
 	};
 
-	const settingUpProgress = async () => {
+	const settingUpProgress = async (userProgress) => {
 		await getProgress(userProgress);
 		const chapter1 = await getLocalUserProgress("chapter1");
 		const chapter2 = await getLocalUserProgress("chapter2");
@@ -68,13 +68,12 @@ const useSetProgress = () => {
 	// getting the value of the promise, then separate them to each array,
 	// setting them to localState
 	useEffect(() => {
-		settingUpProgress();
+		settingUpProgress(userProgress);
 	}, [userProgress]);
 
 	useEffect(() => {
 		if (dashboardProgress !== null) {
 			setDashboardLoading((prevState) => !prevState);
-			console.log(dashboardLoading);
 		}
 	}, [dashboardProgress]);
 

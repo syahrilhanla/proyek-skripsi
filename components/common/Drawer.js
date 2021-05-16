@@ -12,7 +12,7 @@ import {
 import { ExpandLess, ExpandMore } from "@material-ui/icons";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 
-import { commonLinks, data } from "@/components/data/drawersData";
+import { commonLinks, drawersData } from "@/components/data/drawersData";
 import { useStyles } from "@/components/data/drawerStyles";
 
 import Link from "next/link";
@@ -77,7 +77,7 @@ const DrawerComponent = ({ open, handleDrawerClose }) => {
 			</div>
 			<Divider />
 
-			{data.map((chapter, chapterIndex) => {
+			{drawersData.map((chapter, chapterIndex) => {
 				return (
 					<div key={chapter.id}>
 						{/* Lessons */}
@@ -97,14 +97,14 @@ const DrawerComponent = ({ open, handleDrawerClose }) => {
 						{/* Fires below list item when clicked */}
 						{currentIndex === chapter.id
 							? chapter.items.map((subChapter) => {
-									return (
-										<SubChapters
-											subChapter={subChapter}
-											chapter={chapter}
-											key={subChapter.id}
-										/>
-									);
-							  })
+								return (
+									<SubChapters
+										subChapter={subChapter}
+										chapter={chapter}
+										key={subChapter.id}
+									/>
+								);
+							})
 							: null}
 					</div>
 				);

@@ -43,6 +43,7 @@ const page4 = () => {
 
 	const questionData = [
 		{
+			name: 'act1',
 			questionText: "what is this?",
 			answerChoices: [
 				{

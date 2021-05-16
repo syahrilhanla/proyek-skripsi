@@ -14,11 +14,7 @@ const dashboard = () => {
 
 	return (
 		<>
-			{progressValues.localUserData && progressValues.pageReady === true ? (
-				<DisplayDashboard />
-			) : (
-				<p>Loading</p>
-			)}
+			{(progressValues.localUserData && progressValues.pageReady === true) && <DisplayDashboard />}
 		</>
 	);
 
@@ -43,18 +39,18 @@ function UserProgress({ progressValues }) {
 				<h1>Progres Saya</h1>
 				<LearningProgress
 					text={"Menganalisis Data"}
-					percentageValue={progressValues.chapter1Value.percentage}
-					overallAction={`${progressValues.chapter1Value.score}/${progressValues.chapter1Value.actLength}`}
+					percentageValue={progressValues.chapter1Percentage.percentage}
+					overallAction={`${progressValues.chapter1Percentage.score}/${progressValues.chapter1Percentage.actLength}`}
 				/>
 				<LearningProgress
 					text={"Ukuran Pemusatan"}
-					percentageValue={progressValues.chapter2Value.percentage}
-					overallAction={`${progressValues.chapter2Value.score}/${progressValues.chapter2Value.actLength}`}
+					percentageValue={progressValues.chapter2Percentage.percentage}
+					overallAction={`${progressValues.chapter2Percentage.score}/${progressValues.chapter2Percentage.actLength}`}
 				/>
 				<LearningProgress
 					text={"Ukuran Penyebaran"}
-					percentageValue={progressValues.chapter3Value.percentage}
-					overallAction={`${progressValues.chapter3Value.score}/${progressValues.chapter3Value.actLength}`}
+					percentageValue={progressValues.chapter3Percentage.percentage}
+					overallAction={`${progressValues.chapter3Percentage.score}/${progressValues.chapter3Percentage.actLength}`}
 				/>
 			</div>
 		</section>
@@ -62,7 +58,6 @@ function UserProgress({ progressValues }) {
 }
 
 function DashboardContent({ displayName }) {
-	console.log(displayName);
 	return (
 		<section className={dashboardStyles.dashboard}>
 			<div className={dashboardStyles.profile}>
