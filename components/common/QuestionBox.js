@@ -18,6 +18,8 @@ const QuestionBox = ({
 			await useUpdateCertainAct(item.name, parentPath, currentPath);
 
 			setUpdateProgress(!updateProgress);
+		} else {
+			setOpen(true);
 		}
 	};
 
