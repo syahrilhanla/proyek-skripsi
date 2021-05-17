@@ -10,10 +10,8 @@ const QuestionBox = ({
 }) => {
 	const { parentPath, currentPath } = logic;
 
+	// check answers on multiple-choice question
 	const checkAnswer = async (item, answer) => {
-		console.log(item.id);
-		console.log(answer.isCorrect);
-
 		if (answer.isCorrect) {
 			await useUpdateCertainAct(item.id, parentPath, currentPath);
 

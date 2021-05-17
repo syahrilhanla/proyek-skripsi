@@ -3,6 +3,9 @@ import {
 	updateLocalProgress,
 } from "@/components/utils/userLocalSavings";
 
+// Used only when user had done an activity correctly
+// Only updates single element of array
+
 const useUpdateCertainAct = async (actID, parentPath, currentPath) => {
 	const currentPage = `page${currentPath}`;
 	const checkCurrentLocation = (parentPath) => {
