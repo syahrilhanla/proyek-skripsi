@@ -1,5 +1,3 @@
-import { updateLocalProgress } from "@/components/utils/userLocalSavings";
-
 // update user progress on page
 const useUpdateProgress = (currentPage) => {
 	console.log(currentPage);

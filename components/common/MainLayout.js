@@ -9,19 +9,19 @@ import useMainLayoutProgress from "@/components/utils/useMainLayoutProgress";
 import useBottomProgressLogic from "@/components/utils/useBottomProgressLogic";
 
 const MainLayout = ({ Child1, Child2, title, questionData, instruction }) => {
-	const mainLayoutProgress = useMainLayoutProgress();
-
-	// routing address and BottomProgress's component functions
-	const bottomProgressLogic = useBottomProgressLogic();
+	const {
+		isActive,
+		setIsActive,
+		setUpdateProgress,
+		updateProgress,
+		pageProgress,
+	} = useMainLayoutProgress();
 
 	return (
 		<>
 			{/* Show popup modal if user is inactive for certain amount of time */}
-			{mainLayoutProgress.isActive === false ? (
-				<Notification
-					isActive={mainLayoutProgress.isActive}
-					setIsActive={mainLayoutProgress.setIsActive}
-				/>
+			{isActive === false ? (
+				<Notification isActive={isActive} setIsActive={setIsActive} />
 			) : null}
 			<div className={layoutStyles.wrapper}>
 				<Navbar />
@@ -47,17 +47,13 @@ const MainLayout = ({ Child1, Child2, title, questionData, instruction }) => {
 						<QuestionBox
 							question={questionData}
 							instruction={instruction}
-							logic={bottomProgressLogic}
-							setUpdateProgress={mainLayoutProgress.setUpdateProgress}
-							updateProgress={mainLayoutProgress.updateProgress}
+							setUpdateProgress={setUpdateProgress}
+							updateProgress={updateProgress}
 						/>
 					)}
 				</div>
 			</div>
-			<BottomProgress
-				pageProgress={mainLayoutProgress.pageProgress}
-				logic={bottomProgressLogic}
-			/>
+			<BottomProgress pageProgress={pageProgress} />
 		</>
 	);
 };
