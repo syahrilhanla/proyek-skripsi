@@ -11,11 +11,11 @@ const QuestionBox = ({
 	const { parentPath, currentPath } = logic;
 
 	const checkAnswer = async (item, answer) => {
-		console.log(item.name);
+		console.log(item.id);
 		console.log(answer.isCorrect);
 
 		if (answer.isCorrect) {
-			await useUpdateCertainAct(item.name, parentPath, currentPath);
+			await useUpdateCertainAct(item.id, parentPath, currentPath);
 
 			setUpdateProgress(!updateProgress);
 		} else {
