@@ -1,7 +1,6 @@
 import questionStyle from "@/styles/QuestionBox.module.css";
 
 import useUpdateCertainAct from "@/components/utils/useUpdateCertainAct";
-import useGetCurrentPage from "@/components/utils/useGetCurrentPage";
 
 const QuestionBox = ({
 	question,
@@ -9,12 +8,10 @@ const QuestionBox = ({
 	setUpdateProgress,
 	updateProgress,
 }) => {
-	const { parentPath, currentPath } = useGetCurrentPage();
-
 	// check answers on multiple-choice question
 	const checkAnswer = async (item, answer) => {
 		if (answer.isCorrect) {
-			await useUpdateCertainAct(item.id, parentPath, currentPath);
+			await useUpdateCertainAct(item.id);
 
 			setUpdateProgress(!updateProgress);
 		} else {
