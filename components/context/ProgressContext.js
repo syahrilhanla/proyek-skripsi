@@ -1,74 +1,24 @@
-import { createContext, useContext, useEffect } from "react";
-import { useAuth } from "@/components/context/AuthContext";
-import {
-	dataSeparator,
-	countProgress,
-} from "@/components/utils/dataProcessors";
+import { createContext, useContext } from "react";
+
+import useSetProgress from "@/components/utils/useSetProgress";
 
 const ProgressContext = createContext();
 
-const useProgress = () => {
+export const useProgress = () => {
 	return useContext(ProgressContext);
 };
 
 const ProgressProvider = ({ children }) => {
-	// userProgress is a promise, so use .then() and .catch()
-	// can't use async await because this root function is used to render globally
-	// so it should not be a promise
-	const { userProgress } = useAuth();
-
-	/*
-    EXPECTED OUTPUT of userProgress:
-    [
-      { chapter: chapter(n),
-        data: [
-          {
-            page1: [act1: Boolean, ... act(n): Boolean]
-          },  
-          {
-            page(n): [act1: Boolean, ... act(n): Boolean]
-          }
-        ]
-      }
-    ]
-  */
-
-	// getting the value of the promise, then separate them to each array,
-	// setting them to localState
-	useEffect(() => {
-		// this also checked in when logging out, and the data will be null
-		userProgress.then((data) => {
-			// if no data or logged out, then exit function immediately;
-			if (!data) return;
-
-			const chapter1Progress = dataSeparator(data, "chapter1");
-			const chapter2Progress = dataSeparator(data, "chapter2");
-			const chapter3Progress = dataSeparator(data, "chapter3");
-
-			const pageProgresses = (chapterProgress) => {
-				// expected output:
-				// { page: String, pageData: Array }
-
-				return chapterProgress.map((item) => {
-					item.data.map((pageData) => pageData);
-				});
-			};
-
-			pageProgresses(chapter1Progress);
-			// pageProgresses(chapter2Progress);
-			// pageProgresses(chapter3Progress);
-
-			console.log(chapter1Progress, chapter2Progress, chapter3Progress);
-		});
-	}, [userProgress]);
-
-	const value = {
-		useProgress,
-		userProgress,
-	};
+	const setProgress = useSetProgress();
 
 	return (
-		<ProgressContext.Provider value={{ value }}>
+		<ProgressContext.Provider
+			value={{
+				useProgress,
+				dashboardLoading: setProgress.dashboardLoading,
+				overallProgress: setProgress.dashboardProgress,
+			}}
+		>
 			{children}
 		</ProgressContext.Provider>
 	);

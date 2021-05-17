@@ -1,4 +1,4 @@
-export const data = [
+export const drawersData = [
   {
     id: 1,
     title: 'Menganalisis Data',
@@ -20,7 +20,7 @@ export const data = [
         subTitle: 'Menganalis Grafik'
       },
       {
-        id: 'kuis1',
+        id: 'kuis',
         subTitle: 'Kuis 1'
       },
     ]
@@ -42,7 +42,7 @@ export const data = [
         subTitle: 'Modus'
       },
       {
-        id: 'kuis2',
+        id: 'kuis',
         subTitle: 'Kuis 2'
       },
     ]
@@ -68,7 +68,7 @@ export const data = [
         subTitle: 'Simpangan Kuartil'
       },
       {
-        id: 'kuis3',
+        id: 'kuis',
         subTitle: 'Kuis 3'
       },
     ]

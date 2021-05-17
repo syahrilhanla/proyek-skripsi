@@ -1,4 +1,3 @@
-import React from "react";
 import Navbar from "@/components/common/Navbar";
 import Footer from "@/components/common/Footer";
 
@@ -8,44 +7,50 @@ import LearningProgress from "@/components/common/LearningProgress";
 import progressStyles from "@/styles/Progress.module.css";
 import dashboardStyles from "@/styles/Dashboard.module.css";
 
-import { useAuth } from "@/components/context/AuthContext";
+import useProgressValues from "@/components/utils/useProgressValues";
 
 const dashboard = () => {
-	const { localUserData } = useAuth();
+	const progressValues = useProgressValues();
 
-	return <>{localUserData && <DisplayDashboard />}</>;
+	return (
+		<>
+			{(progressValues.localUserData && progressValues.pageReady === true) && <DisplayDashboard />}
+		</>
+	);
 
 	function DisplayDashboard() {
 		return (
 			<div className={progressStyles.mainProgress}>
 				<Navbar />
-				<DashboardContent displayName={localUserData.displayName} />
-				<UserProgress />
+				<DashboardContent
+					displayName={progressValues.localUserData.displayName}
+				/>
+				<UserProgress progressValues={progressValues.setProgressValues()} />
 				<Footer />
 			</div>
 		);
 	}
 };
 
-function UserProgress() {
+function UserProgress({ progressValues }) {
 	return (
 		<section className={progressStyles.progressSection}>
 			<div className={progressStyles.container}>
 				<h1>Progres Saya</h1>
 				<LearningProgress
 					text={"Menganalisis Data"}
-					percentageValue={80}
-					overallAction={"8/10"}
+					percentageValue={progressValues.chapter1Percentage.percentage}
+					overallAction={`${progressValues.chapter1Percentage.score}/${progressValues.chapter1Percentage.actLength}`}
 				/>
 				<LearningProgress
 					text={"Ukuran Pemusatan"}
-					percentageValue={70}
-					overallAction={"7/10"}
+					percentageValue={progressValues.chapter2Percentage.percentage}
+					overallAction={`${progressValues.chapter2Percentage.score}/${progressValues.chapter2Percentage.actLength}`}
 				/>
 				<LearningProgress
 					text={"Ukuran Penyebaran"}
-					percentageValue={60}
-					overallAction={"6/10"}
+					percentageValue={progressValues.chapter3Percentage.percentage}
+					overallAction={`${progressValues.chapter3Percentage.score}/${progressValues.chapter3Percentage.actLength}`}
 				/>
 			</div>
 		</section>
@@ -53,7 +58,6 @@ function UserProgress() {
 }
 
 function DashboardContent({ displayName }) {
-	console.log(displayName);
 	return (
 		<section className={dashboardStyles.dashboard}>
 			<div className={dashboardStyles.profile}>

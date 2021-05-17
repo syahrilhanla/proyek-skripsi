@@ -6,11 +6,12 @@ import {
 	setLocalStorage,
 	getLocalUser,
 	removeLocalUser,
-} from "../utils/userLocalSavings";
+	deleteLocalProgress,
+} from "@/components/utils/userLocalSavings";
 import { popup, auth } from "@/components/common/Firebase";
 import { useRouter } from "next/router";
 
-import useFireStore from "../utils/useFireStore";
+import useFireStore from "@/components/utils/useFireStore";
 
 export const AuthContext = createContext();
 
@@ -42,6 +43,7 @@ const AuthProvider = ({ children }) => {
 		await auth.signOut();
 		await removeLocalUser();
 		console.log("signing out");
+		deleteLocalProgress();
 		setLoading(true);
 		router.push("/");
 	};

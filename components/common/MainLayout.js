@@ -1,39 +1,61 @@
-import React from 'react';
-import Navbar from './Navbar';
-import BottomProgress from './BottomProgress';
+import Navbar from "@/components/common/Navbar";
+import BottomProgress from "@/components/common/BottomProgress";
 
-import layoutStyles from '@/styles/MainLayout.module.css';
-import QuestionBox from './QuestionBox';
+import layoutStyles from "@/styles/MainLayout.module.css";
+import QuestionBox from "@/components/common/QuestionBox";
+
+import Notification from "@/components/common/Notification";
+import useMainLayoutProgress from "@/components/utils/useMainLayoutProgress";
+import useBottomProgressLogic from "@/components/utils/useBottomProgressLogic";
 
 const MainLayout = ({ Child1, Child2, title, questionData, instruction }) => {
-  return (
-    <>
-      <div className={layoutStyles.wrapper}>
-        <Navbar />
+	const {
+		isActive,
+		setIsActive,
+		setUpdateProgress,
+		updateProgress,
+		pageProgress,
+	} = useMainLayoutProgress();
 
-        <h1 className={layoutStyles.title}>
-          {title}
-        </h1>
+	return (
+		<>
+			{/* Show popup modal if user is inactive for certain amount of time */}
+			{isActive === false ? (
+				<Notification isActive={isActive} setIsActive={setIsActive} />
+			) : null}
+			<div className={layoutStyles.wrapper}>
+				<Navbar />
 
-        <div className={Child2 ? layoutStyles.containerCombo : layoutStyles.containerSolo} >
-          <div className={layoutStyles.column1}>
-            <Child1 />
-          </div>
-          {Child2 && <div className={layoutStyles.column2}>
-            <Child2 />
-          </div>}
-        </div>
-        <div className={layoutStyles.questionBox}>
-          {questionData && <QuestionBox question={questionData} instruction={instruction} />}
-        </div>
-      </div>
-      <BottomProgress />
-    </>
-  )
-}
+				<h1 className={layoutStyles.title}>{title}</h1>
 
-export default MainLayout
+				<div
+					className={
+						Child2 ? layoutStyles.containerCombo : layoutStyles.containerSolo
+					}
+				>
+					<div className={layoutStyles.column1}>
+						<Child1 />
+					</div>
+					{Child2 && (
+						<div className={layoutStyles.column2}>
+							<Child2 />
+						</div>
+					)}
+				</div>
+				<div className={layoutStyles.questionBox}>
+					{questionData && (
+						<QuestionBox
+							question={questionData}
+							instruction={instruction}
+							setUpdateProgress={setUpdateProgress}
+							updateProgress={updateProgress}
+						/>
+					)}
+				</div>
+			</div>
+			<BottomProgress pageProgress={pageProgress} />
+		</>
+	);
+};
 
-function texts() {
-  return 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio temporibus rerum quod tempora quis deserunt enim omnis nobis dicta pariatur earum, beatae fugit illo, modi asperiores nisi repudiandae sed doloremqu     Obcaecati autem quibusdam fugiat debitis ex corporis doloremque dignissimos nemo animi possimus! Unde est quas neque.Qui, earum, enim alias quasi tempore nisi et quisquam, quaerat perferendis velit facere nam!'
-}
+export default MainLayout;
