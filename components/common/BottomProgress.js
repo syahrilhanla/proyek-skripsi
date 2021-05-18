@@ -10,10 +10,12 @@ import useGetCurrentPage from "@/components/utils/useGetCurrentPage";
 
 import Link from "next/link";
 import useBottomProgressLogic from "@/components/utils/useBottomProgressLogic";
+import { useAuth } from "@/components/context/AuthContext";
 
 const BottomProgress = ({ pageProgress }) => {
 	const { parentPath, currentPath, currentURL } = useGetCurrentPage();
 	const { nextURL, prevURL, chooseURLList } = useBottomProgressLogic();
+	const { localUserData } = useAuth();
 
 	return (
 		<div className={progressStyles.main}>
@@ -24,7 +26,9 @@ const BottomProgress = ({ pageProgress }) => {
 							<ChevronLeftIcon
 								fontSize={"large"}
 								color={"inherit"}
-								onClick={() => useUpdateProgress(parentPath)}
+								onClick={() =>
+									useUpdateProgress(parentPath, currentPath, localUserData)
+								}
 							/>
 						</Link>
 					)}
@@ -49,7 +53,9 @@ const BottomProgress = ({ pageProgress }) => {
 							<ChevronRightIcon
 								fontSize={"large"}
 								color={"inherit"}
-								onClick={() => useUpdateProgress(parentPath)}
+								onClick={() =>
+									useUpdateProgress(parentPath, currentPath, localUserData)
+								}
 							/>
 						</Link>
 					)}
