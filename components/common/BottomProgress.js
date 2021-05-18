@@ -24,7 +24,7 @@ const BottomProgress = ({ pageProgress }) => {
 							<ChevronLeftIcon
 								fontSize={"large"}
 								color={"inherit"}
-								onClick={() => useUpdateProgress(currentPath)}
+								onClick={() => useUpdateProgress(parentPath)}
 							/>
 						</Link>
 					)}
@@ -49,7 +49,7 @@ const BottomProgress = ({ pageProgress }) => {
 							<ChevronRightIcon
 								fontSize={"large"}
 								color={"inherit"}
-								onClick={() => useUpdateProgress(currentPath)}
+								onClick={() => useUpdateProgress(parentPath)}
 							/>
 						</Link>
 					)}

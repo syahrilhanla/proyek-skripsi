@@ -2,14 +2,11 @@ import {
 	getLocalUserProgress,
 	updateLocalProgress,
 } from "@/components/utils/userLocalSavings";
-import useGetCurrentPage from "@/components/utils/useGetCurrentPage";
 
 // Used only when user had done an activity correctly
 // Only updates single element of array
 
-const useUpdateCertainAct = async (actID) => {
-	const { parentPath, currentPath } = useGetCurrentPage();
-
+const useUpdateCertainAct = async (actID, parentPath, currentPath) => {
 	const currentPage = `page${currentPath}`;
 	const checkCurrentLocation = (parentPath) => {
 		if (parentPath === "analisis") return "chapter1";
