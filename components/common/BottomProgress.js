@@ -6,25 +6,35 @@ import BorderLinearProgress from "@/components/common/BorderLinearProgress";
 import progressStyles from "@/styles/BottomProgress.module.css";
 
 import useUpdateProgress from "@/components/utils/useUpdateProgress";
-import Link from "next/link";
+import useGetCurrentPage from "@/components/utils/useGetCurrentPage";
 
-const BottomProgress = ({ pageProgress, logic }) => {
+import Link from "next/link";
+import useBottomProgressLogic from "@/components/utils/useBottomProgressLogic";
+import { useAuth } from "@/components/context/AuthContext";
+
+const BottomProgress = ({ pageProgress }) => {
+	const { parentPath, currentPath, currentURL } = useGetCurrentPage();
+	const { nextURL, prevURL, chooseURLList } = useBottomProgressLogic();
+	const { localUserData } = useAuth();
+
 	return (
 		<div className={progressStyles.main}>
 			<div className={progressStyles.content}>
 				<span className={progressStyles.left}>
-					{logic.currentPath !== 1 && (
-						<Link href={`/${logic.prevURL()}`}>
+					{currentPath !== 1 && (
+						<Link href={`/${prevURL()}`}>
 							<ChevronLeftIcon
 								fontSize={"large"}
 								color={"inherit"}
-								onClick={() => useUpdateProgress(logic.currentPath)}
+								onClick={() =>
+									useUpdateProgress(parentPath, currentPath, localUserData)
+								}
 							/>
 						</Link>
 					)}
 				</span>
 
-				{logic.currentURL.split("/")[2] !== "kuis" && (
+				{currentURL.split("/")[2] !== "kuis" && (
 					<span>
 						<BorderLinearProgress
 							value={pageProgress.percentage ? pageProgress.percentage : 0}
@@ -38,13 +48,14 @@ const BottomProgress = ({ pageProgress, logic }) => {
 				)}
 
 				<span className={progressStyles.right}>
-					{logic.currentPath <
-						logic.chooseURLList(logic.parentPath)[0].length && (
-						<Link href={`/${logic.nextURL()}`}>
+					{currentPath < chooseURLList(parentPath)[0].length && (
+						<Link href={`/${nextURL()}`}>
 							<ChevronRightIcon
 								fontSize={"large"}
 								color={"inherit"}
-								onClick={() => useUpdateProgress(logic.currentPath)}
+								onClick={() =>
+									useUpdateProgress(parentPath, currentPath, localUserData)
+								}
 							/>
 						</Link>
 					)}

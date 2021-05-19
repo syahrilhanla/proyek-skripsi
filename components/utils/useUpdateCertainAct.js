@@ -1,23 +1,16 @@
-import {
-	getLocalUserProgress,
-	updateLocalProgress,
-} from "@/components/utils/userLocalSavings";
+import { updateLocalProgress } from "@/components/utils/userLocalSavings";
+import useGetChapterProgress from "./useGetChapterProgress";
+
+// Used only when user had done an activity correctly
+// Only updates single element of array
 
 const useUpdateCertainAct = async (actID, parentPath, currentPath) => {
-	const updateValue = false;
-
-	const currentPage = `page${currentPath}`;
-	const checkCurrentLocation = (parentPath) => {
-		if (parentPath === "analisis") return "chapter1";
-		else if (parentPath === "pemusatan") return "chapter2";
-		else if (parentPath === "penyebaran") return "chapter3";
-	};
-
-	const chapterProgress = await getLocalUserProgress(
-		checkCurrentLocation(parentPath)
+	const { chapterProgress, checkCurrentLocation } = await useGetChapterProgress(
+		parentPath
 	);
+	const currentPage = `page${currentPath}`;
 
-	// updating the boolean value in page progress
+	// updating the boolean value based on actID
 	const newProgress = chapterProgress.map((item) => {
 		if (item.page === currentPage) {
 			item.pageData.map((data) => {
@@ -30,8 +23,6 @@ const useUpdateCertainAct = async (actID, parentPath, currentPath) => {
 	});
 
 	updateLocalProgress(checkCurrentLocation(parentPath), newProgress);
-
-	return !updateValue;
 };
 
 export default useUpdateCertainAct;

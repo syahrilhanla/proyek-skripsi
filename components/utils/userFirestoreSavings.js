@@ -41,15 +41,20 @@ export const createUserProgress = async (localUser) => {
 };
 
 // THIS FUNCTION WILL BE USED WHEN USER MOVE FROM THE CURRENT PAGE
-export const updateProgress = async (localUser) => {
+export const updateProgress = async (
+	localUser,
+	acts,
+	currentChapter,
+	currentPage
+) => {
 	if (localUser) {
 		// data is just for experiment for now
-		console.log("updating progress");
+		console.log(acts, currentPage, currentChapter);
 
 		// docs id below only used for testing
-		const data = docRef.doc(localUser.uid).collection("chapter1");
+		const data = docRef.doc(localUser.uid).collection(currentChapter);
 
-		data.doc("page1").update({});
+		await data.doc(currentPage).set({ acts });
 		console.log("progress updated");
 	} else return;
 };
