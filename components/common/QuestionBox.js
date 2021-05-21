@@ -32,14 +32,20 @@ const QuestionBox = ({
 				{question.map((item, index) => (
 					<li key={index}>
 						<div>
-							<p>{item.questionText}</p>
+							<h3>
+								{index + 1}. {""}
+								{item.questionText}
+							</h3>
 						</div>
 						<div>
-							<ul>
+							<ul className={questionStyle.choices}>
 								{item.answerChoices.map((answer, index) => (
 									<li key={index}>
-										<button onClick={() => checkAnswer(item, answer)}>
-											{answer.answerText}
+										<button
+											className={questionStyle.answer}
+											onClick={() => checkAnswer(item, answer)}
+										>
+											<p>{answer.answerText}</p>
 										</button>
 									</li>
 								))}
