@@ -29,7 +29,7 @@ const Notification = ({ isActive, setIsActive }) => {
 		<div>
 			<Modal open={open} onClose={handleClose} className={classes.modal}>
 				<div className={classes.paper}>
-					<h2>Kamu sudah diam selama 5 menit</h2>
+					<h2>Kamu kehilangan fokus belajar</h2>
 				</div>
 			</Modal>
 		</div>

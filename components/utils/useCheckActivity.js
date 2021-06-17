@@ -1,18 +1,12 @@
-import { useMemo } from "react";
-
 // pass in hooks from MainLayout component to update its value
-const useCheckActivity = (isActive, setIsActive) => {
+// used in useMainLayoutProgress hook
 
-	// fires every time user moves the mouse or pressing keys to reset the count down back to 5 minutes
-	const resetTimer = () => {
-		setTimeout(() => setIsActive(false), 300000);
-	};
+const useCheckActivity = async (setIsActive, option) => {
+	// use dynamic import to load library which uses browser engine
+	const createActivityDetector = (await import("activity-detector")).default;
 
-	// only reset the timer if and only if isActive's value changes (after the modal popped up and closed)
-	const activeMemo = useMemo(() => resetTimer, [isActive]);
-
-	// reset count if user interacts with the app
-	document.addEventListener("mousemove", activeMemo);
-	document.addEventListener("keypress", activeMemo);
+	// fires every time user goes idle (doing nothing for 5 minutes, goes to other tab or window, anything that cause losing the focus of the app)
+	const activityDetector = createActivityDetector(option);
+	activityDetector.on("idle", () => setIsActive(false));
 };
 export default useCheckActivity;

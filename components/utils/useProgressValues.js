@@ -49,6 +49,7 @@ const useProgressValues = () => {
 	useEffect(() => {
 		if (overallProgress !== null) {
 			setUserProgress(overallProgress);
+			console.log(overallProgress);
 		}
 	}, [dashboardLoading]);
 

@@ -6,7 +6,6 @@ import QuestionBox from "@/components/common/QuestionBox";
 
 import Notification from "@/components/common/Notification";
 import useMainLayoutProgress from "@/components/utils/useMainLayoutProgress";
-import useBottomProgressLogic from "@/components/utils/useBottomProgressLogic";
 
 const MainLayout = ({ Child1, Child2, title, questionData, instruction }) => {
 	const {
@@ -19,7 +18,7 @@ const MainLayout = ({ Child1, Child2, title, questionData, instruction }) => {
 
 	return (
 		<>
-			{/* Show popup modal if user is inactive for certain amount of time */}
+			{/* Show popup modal if user is inactive for certain amount of time or user goes idle*/}
 			{isActive === false ? (
 				<Notification isActive={isActive} setIsActive={setIsActive} />
 			) : null}
