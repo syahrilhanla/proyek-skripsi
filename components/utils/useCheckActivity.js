@@ -1,24 +1,12 @@
-import { useEffect } from "react";
-import dynamic from "next/dynamic";
-import createActivityDetector from "activity-detector";
-
 // pass in hooks from MainLayout component to update its value
+// used in useMainLayoutProgress hook
 
-const useCheckActivity = dynamic(
-	(setIsActive, option) => {
-		// fires every time user moves the mouse or pressing keys to reset the count down back to 5 minutes
+const useCheckActivity = async (setIsActive, option) => {
+	// use dynamic import to load library which uses browser engine
+	const createActivityDetector = (await import("activity-detector")).default;
 
-		useEffect(() => {
-			console.log(typeof window);
-			if (typeof (window !== "undefined")) {
-				console.log("window is object");
-				const activityDetector = createActivityDetector(option);
-				activityDetector.on("idle", () => setIsActive(false));
-				// activityDetector.on("active", () => setUserActive());
-				return () => activityDetector.stop();
-			}
-		}, []);
-	},
-	{ ssr: false }
-);
+	// fires every time user goes idle (doing nothing for 5 minutes, goes to other tab or window, anything that cause losing the focus of the app)
+	const activityDetector = createActivityDetector(option);
+	activityDetector.on("idle", () => setIsActive(false));
+};
 export default useCheckActivity;
