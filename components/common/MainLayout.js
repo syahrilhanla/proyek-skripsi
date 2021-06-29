@@ -6,6 +6,7 @@ import QuestionBox from "@/components/common/QuestionBox";
 
 import Notification from "@/components/common/Notification";
 import useMainLayoutProgress from "@/components/utils/useMainLayoutProgress";
+import useGetCurrentPage from "@/components/utils/useGetCurrentPage";
 
 const MainLayout = ({ Child1, Child2, title, questionData, instruction }) => {
 	const {
@@ -15,6 +16,14 @@ const MainLayout = ({ Child1, Child2, title, questionData, instruction }) => {
 		updateProgress,
 		pageProgress,
 	} = useMainLayoutProgress();
+
+	const { parentPath } = useGetCurrentPage();
+
+	const SubmitButton = () => {
+		return (
+			<button className={layoutStyles.answerButton}>Submit Answers</button>
+		);
+	};
 
 	return (
 		<>
@@ -42,17 +51,23 @@ const MainLayout = ({ Child1, Child2, title, questionData, instruction }) => {
 					)}
 				</div>
 				<div className={layoutStyles.questionBox}>
-					{questionData && (
+					{questionData ? (
 						<QuestionBox
 							question={questionData}
 							instruction={instruction}
 							setUpdateProgress={setUpdateProgress}
 							updateProgress={updateProgress}
 						/>
-					)}
+					) : parentPath === "evaluasi" ? (
+						<SubmitButton />
+					) : null}
 				</div>
 			</div>
-			<BottomProgress pageProgress={pageProgress} />
+			{parentPath !== "evaluasi" && (
+				<>
+					<BottomProgress pageProgress={pageProgress} />
+				</>
+			)}
 		</>
 	);
 };
