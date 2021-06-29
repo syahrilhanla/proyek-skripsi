@@ -52,4 +52,5 @@
 .answer:hover {
 	opacity: 1;
 	cursor: pointer;
+	color: white;
 }

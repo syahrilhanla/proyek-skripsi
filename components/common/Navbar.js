@@ -81,14 +81,16 @@ export default function Navbar() {
 						/>
 					</Link>
 				</IconButton>
-				<IconButton
-					aria-label='logout'
-					aria-controls='primary-search-account-menu'
-					aria-haspopup='false'
-					color='inherit'
-				>
-					<ExitToAppIcon />
-				</IconButton>
+				<span onClick={() => signOut()}>
+					<IconButton
+						aria-label='logout'
+						aria-controls='primary-search-account-menu'
+						aria-haspopup='false'
+						color='inherit'
+					>
+						<ExitToAppIcon />
+					</IconButton>
+				</span>
 			</MenuItem>
 		</Menu>
 	);

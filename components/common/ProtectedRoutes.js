@@ -1,3 +1,6 @@
+// USED TO PROTECT SOME ADDRESS FROM UNSIGNED USERS
+// USERS NEED TO BE SIGNED IN FIRST TO ACCESS THE CONTENTS AND DASHBOARD
+
 import { useEffect } from "react";
 import { useAuth } from "@/components/context/AuthContext";
 import { useRouter } from "next/router";

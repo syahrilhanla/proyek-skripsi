@@ -17,12 +17,16 @@ const useUpdateProgress = async (
 
 	const acts = newProgress.map((item) => item.pageData)[0];
 
-	await updateProgress(
-		localUserData,
-		acts,
-		checkCurrentLocation(currentChapter),
-		`page${currentPage}`
-	);
+	// checking if user is in quiz page, then do nothing
+	// if user is still in the learning material, then update progress
+	if (currentPage !== NaN)
+		await updateProgress(
+			localUserData,
+			acts,
+			checkCurrentLocation(currentChapter),
+			`page${currentPage}`
+		);
+	else return;
 };
 
 export default useUpdateProgress;
