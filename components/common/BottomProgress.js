@@ -27,7 +27,9 @@ const BottomProgress = ({ pageProgress }) => {
 								fontSize={"large"}
 								color={"inherit"}
 								onClick={() =>
-									useUpdateProgress(parentPath, currentPath, localUserData)
+									currentURL.split("/")[2] !== "kuis"
+										? useUpdateProgress(parentPath, currentPath, localUserData)
+										: false
 								}
 							/>
 						</Link>

@@ -2,7 +2,7 @@ import { drawersData } from "@/components/data/drawersData";
 import useGetCurrentPage from "@/components/utils/useGetCurrentPage";
 
 const useBottomProgressLogic = () => {
-	const { parentPath, currentPath } = useGetCurrentPage();
+	const { parentPath, currentPath, currentURL } = useGetCurrentPage();
 
 	// pages of contents
 	const urlList = drawersData.map((item) => ({
@@ -43,7 +43,7 @@ const useBottomProgressLogic = () => {
 
 	const prevURL = () => {
 		// if already is on page numbering, then can only go to previous link if on page 2
-		if (currentPath > 1) {
+		if (currentPath > 1 || currentURL.split("/")[2] !== "kuis") {
 			return `${parentPath}/${chooseURLList(parentPath)[0][currentPath - 2]}`;
 		}
 		// if no, then always go to the first page
