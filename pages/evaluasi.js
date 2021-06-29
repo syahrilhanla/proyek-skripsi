@@ -7,7 +7,11 @@ import Caption from "@/components/common/Caption";
 import BorderLinearProgress from "@/components/common/BorderLinearProgress";
 import DisplayCountDown from "@/components/common/DisplayCountDown";
 
+import useTimerPercentage from "@/components/utils/useTimerPercentage";
+
 const evaluation = () => {
+	const { percentage } = useTimerPercentage();
+
 	// needed to display data on QuizComponent
 	// takes number as argument from questionData array being set in QuizComponent
 	const DisplayData = ({ currentQuestion }) => {
@@ -48,7 +52,7 @@ const evaluation = () => {
 			<MainLayout Child1={DisplayQuiz} />{" "}
 			<span style={{ alignSelf: "center" }}>
 				<DisplayCountDown />
-				<BorderLinearProgress value={79} />
+				<BorderLinearProgress value={percentage} />
 			</span>
 			;
 		</>
