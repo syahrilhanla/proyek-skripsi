@@ -11,7 +11,7 @@ const useCheckOnline = () => {
 		window.addEventListener("offline", setOffline);
 		window.addEventListener("online", setOnline);
 
-		return () => console.log("finished rendering");
+		return () => {};
 	}, []);
 
 	return open;

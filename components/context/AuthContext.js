@@ -1,5 +1,4 @@
-// SETUSERPROGRESS HAVENT USED YET, DUE TO DEVELOPMENT SO IT CAN RUN IN OFFLINE MODE
-// WHICH DOES NOT USE USEFIRESTORE TO GET DATA FROM DATABASE
+// THIS CODE IS CRUCIAL FOR ANY PROGRESS IN THE WHOLE APP
 
 import React, { useState, createContext, useContext, useEffect } from "react";
 import {
@@ -42,7 +41,6 @@ const AuthProvider = ({ children }) => {
 	const signOut = async () => {
 		await auth.signOut();
 		await removeLocalUser();
-		console.log("signing out");
 		deleteLocalProgress();
 		setLoading(true);
 		router.push("/");

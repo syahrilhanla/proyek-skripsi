@@ -32,10 +32,6 @@ const createDocRefs = (uid, initialData) => {
 // fired when there is no user checked in the initial loading
 export const createUserProgress = async (localUser) => {
 	if (localUser) {
-		// this data is only for experiment for now
-
-		console.log("progress created");
-
 		createDocRefs(localUser.uid, initialData);
 	} else return;
 };
@@ -48,14 +44,9 @@ export const updateProgress = async (
 	currentPage
 ) => {
 	if (localUser) {
-		// data is just for experiment for now
-		console.log(acts, currentPage, currentChapter);
-
-		// docs id below only used for testing
 		const data = docRef.doc(localUser.uid).collection(currentChapter);
 
 		await data.doc(currentPage).set({ acts });
-		console.log("progress updated");
 	} else return;
 };
 
@@ -63,7 +54,6 @@ export const getUserFirestore = async (localUser) => {
 	if (localUser) {
 		const data = await docRef.doc(localUser.uid).get();
 		if (!data) {
-			console.log("user not exists");
 			return null;
 		}
 
@@ -91,7 +81,6 @@ export const getUserProgress = async (localUser) => {
 
 		// if no progress then returns null, so it creates new progress
 		if (!rawChapter1Data || rawChapter1Data.length === 0) {
-			console.log("progress yet not exists");
 			return null;
 		}
 
@@ -105,8 +94,6 @@ export const getUserProgress = async (localUser) => {
 		//   page: page(n),
 		//   pageData: [act1, ...]
 		// ];
-
-		console.log({ rawChapter1Data });
 
 		// returning results as objects within an array
 		const results = [
@@ -131,6 +118,5 @@ export const addUser = async (localUser) => {
 		// setting them to firestore so it can be used in data display
 		const addData = docRef.doc(localUser.uid);
 		await addData.set(userData);
-		console.log("user added");
 	} else return;
 };
