@@ -4,6 +4,8 @@ import { questionData } from "@/components/data/quiz1Data";
 import TableOne from "@/components/graphsAndTables/TableOne";
 import TableTwo from "@/components/graphsAndTables/TableTwo";
 import Caption from "@/components/common/Caption";
+import BorderLinearProgress from "@/components/common/BorderLinearProgress";
+import DisplayCountDown from "@/components/common/DisplayCountDown";
 
 const evaluation = () => {
 	// needed to display data on QuizComponent
@@ -41,7 +43,16 @@ const evaluation = () => {
 		<QuizComponent questionData={questionData} DisplayData={DisplayData} />
 	);
 
-	return <MainLayout Child1={DisplayQuiz} />;
+	return (
+		<>
+			<MainLayout Child1={DisplayQuiz} />{" "}
+			<span style={{ alignSelf: "center" }}>
+				<DisplayCountDown />
+				<BorderLinearProgress value={79} />
+			</span>
+			;
+		</>
+	);
 };
 
 export default evaluation;
