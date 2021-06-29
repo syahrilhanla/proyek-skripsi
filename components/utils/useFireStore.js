@@ -22,11 +22,8 @@ const useFireStore = async (localUser) => {
 
 		// checking if there is no progress then create initial progress
 		if (!progressData) {
-			console.log("no progress");
 			await createUserProgress(localUser);
 		}
-
-		// console.log(progressData);
 
 		return progressData;
 	};

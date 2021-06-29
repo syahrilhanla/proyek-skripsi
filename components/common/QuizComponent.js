@@ -44,10 +44,8 @@ const QuizComponent = ({ questionData, DisplayData }) => {
 	};
 
 	const checkAnswer = (isCorrect) => {
-		console.log(isCorrect);
 		if (isCorrect === true) {
 			setQuizScore((prevState) => prevState + 1);
-			console.log({ quizScore });
 		}
 
 		if (!(currentQuestion < questionData.length - 1)) {
