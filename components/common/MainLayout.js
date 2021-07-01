@@ -8,6 +8,8 @@ import Notification from "@/components/common/Notification";
 import useMainLayoutProgress from "@/components/utils/useMainLayoutProgress";
 import useGetCurrentPage from "@/components/utils/useGetCurrentPage";
 
+import { useAuth } from "@/components/context/AuthContext";
+
 const MainLayout = ({ Child1, Child2, title, questionData, instruction }) => {
 	const {
 		isActive,
@@ -18,6 +20,8 @@ const MainLayout = ({ Child1, Child2, title, questionData, instruction }) => {
 	} = useMainLayoutProgress();
 
 	const { parentPath } = useGetCurrentPage();
+
+	const { isAdmin } = useAuth();
 
 	const SubmitButton = () => {
 		return (
@@ -37,7 +41,7 @@ const MainLayout = ({ Child1, Child2, title, questionData, instruction }) => {
 	return (
 		<>
 			{/* Show popup modal if user is inactive for certain amount of time or user goes idle*/}
-			{isActive === false ? (
+			{isActive === false && isAdmin !== false ? (
 				<Notification isActive={isActive} setIsActive={setIsActive} />
 			) : null}
 			<div className={layoutStyles.wrapper}>

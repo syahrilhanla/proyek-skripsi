@@ -11,6 +11,7 @@ import { popup, auth } from "@/components/common/Firebase";
 import { useRouter } from "next/router";
 
 import useFireStore from "@/components/utils/useFireStore";
+import useCheckAdmin from "@/components/utils/useCheckAdmin";
 
 export const AuthContext = createContext();
 
@@ -23,6 +24,7 @@ const AuthProvider = ({ children }) => {
 	const [localUserData, setLocalUserData] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [userProgress, setUserProgress] = useState(null);
+	const [isAdmin, setIsAdmin] = useState(false);
 
 	const router = useRouter();
 
@@ -55,6 +57,7 @@ const AuthProvider = ({ children }) => {
 						getLocalUser().then((data) => {
 							setLocalUserData(data);
 							setUserProgress(useFireStore(data));
+							setIsAdmin(useCheckAdmin(data));
 							setLoading(false);
 						});
 					});
@@ -74,6 +77,7 @@ const AuthProvider = ({ children }) => {
 				localUserData,
 				userProgress,
 				loading,
+				isAdmin,
 				login,
 				signOut,
 			}}
