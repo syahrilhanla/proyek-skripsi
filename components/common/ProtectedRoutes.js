@@ -9,7 +9,7 @@ const ProtectedRoutes = ({ children }) => {
 	const router = useRouter();
 	const { localUserData } = useAuth();
 
-	const publicLinks = ["/about"];
+	const publicLinks = ["/tentang"];
 	const currentLink = router.pathname;
 
 	useEffect(() => {

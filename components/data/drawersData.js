@@ -81,7 +81,7 @@ export const commonLinks = [
 		link: "/evaluasi",
 	},
 	{
-		text: "About",
-		link: "/about",
+		text: "Tentang",
+		link: "/tentang",
 	},
 ];

@@ -25,6 +25,15 @@ const MainLayout = ({ Child1, Child2, title, questionData, instruction }) => {
 		);
 	};
 
+	const DisplayBottomProgress = () => {
+		if (parentPath !== "admin" && parentPath !== "evaluasi")
+			return (
+				<>
+					<BottomProgress pageProgress={pageProgress} />
+				</>
+			);
+	};
+
 	return (
 		<>
 			{/* Show popup modal if user is inactive for certain amount of time or user goes idle*/}
@@ -63,11 +72,7 @@ const MainLayout = ({ Child1, Child2, title, questionData, instruction }) => {
 					) : null}
 				</div>
 			</div>
-			{parentPath !== "evaluasi" && (
-				<>
-					<BottomProgress pageProgress={pageProgress} />
-				</>
-			)}
+			{DisplayBottomProgress()}
 		</>
 	);
 };
