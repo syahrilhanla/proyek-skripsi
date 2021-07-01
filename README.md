@@ -3,6 +3,10 @@
 First, run the development server on your terminal:
 
 ```bash
+npm install 
+# or 
+yarn install
+# then
 npm run dev
 # or
 yarn dev
