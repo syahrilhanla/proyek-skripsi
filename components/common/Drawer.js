@@ -15,11 +15,15 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import { commonLinks, drawersData } from "@/components/data/drawersData";
 import { useStyles } from "@/components/data/drawerStyles";
 
+import { useAuth } from "@/components/context/AuthContext";
+
 import Link from "next/link";
 
 const DrawerComponent = ({ open, handleDrawerClose }) => {
 	const classes = useStyles();
 	const theme = useTheme();
+
+	const { isAdmin } = useAuth();
 
 	const chooseURLList = (chapter) => {
 		if (chapter.title === "Menganalisis Data") {
@@ -56,6 +60,11 @@ const DrawerComponent = ({ open, handleDrawerClose }) => {
 		);
 	};
 
+	const isAdminDrawer = () => {
+		if (isAdmin) return commonLinks.admin;
+		else return commonLinks.user;
+	};
+
 	return (
 		<Drawer
 			className={classes.drawer}
@@ -77,43 +86,45 @@ const DrawerComponent = ({ open, handleDrawerClose }) => {
 			</div>
 			<Divider />
 
-			{drawersData.map((chapter, chapterIndex) => {
-				return (
-					<div key={chapter.id}>
-						{/* Lessons */}
-						<ListItem
-							button
-							onClick={() => handleClick(chapterIndex)}
-							key={chapter.id}
-						>
-							<ListItemText primary={chapter.title} />
-							{collapse && currentIndex - 1 === chapterIndex ? (
-								<ExpandLess />
-							) : (
-								<ExpandMore />
-							)}
-						</ListItem>
+			{isAdmin === false
+				? drawersData.map((chapter, chapterIndex) => {
+						return (
+							<div key={chapter.id}>
+								{/* Lessons */}
+								<ListItem
+									button
+									onClick={() => handleClick(chapterIndex)}
+									key={chapter.id}
+								>
+									<ListItemText primary={chapter.title} />
+									{collapse && currentIndex - 1 === chapterIndex ? (
+										<ExpandLess />
+									) : (
+										<ExpandMore />
+									)}
+								</ListItem>
 
-						{/* Fires below list item when clicked */}
-						{currentIndex === chapter.id
-							? chapter.items.map((subChapter) => {
-								return (
-									<SubChapters
-										subChapter={subChapter}
-										chapter={chapter}
-										key={subChapter.id}
-									/>
-								);
-							})
-							: null}
-					</div>
-				);
-			})}
+								{/* Fires below list item when clicked */}
+								{currentIndex === chapter.id
+									? chapter.items.map((subChapter) => {
+											return (
+												<SubChapters
+													subChapter={subChapter}
+													chapter={chapter}
+													key={subChapter.id}
+												/>
+											);
+									  })
+									: null}
+							</div>
+						);
+				  })
+				: null}
 
 			{/* Links */}
 			<Divider />
 			<List>
-				{commonLinks.map((item, index) => (
+				{isAdminDrawer().map((item, index) => (
 					<ListItem button key={index}>
 						<Link href={item.link} key={index} onClick={() => item.action()}>
 							<ListItemText primary={item.text} key={index} />

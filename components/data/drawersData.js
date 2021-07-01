@@ -75,13 +75,21 @@ export const drawersData = [
 	},
 ];
 
-export const commonLinks = [
-	{
-		text: "Evaluasi",
-		link: "/evaluasi",
-	},
-	{
-		text: "Tentang",
-		link: "/tentang",
-	},
-];
+export const commonLinks = {
+	user: [
+		{
+			text: "Evaluasi",
+			link: "/evaluasi",
+		},
+		{
+			text: "Tentang",
+			link: "/tentang",
+		},
+	],
+	admin: [
+		{
+			text: "Tentang",
+			link: "/tentang",
+		},
+	],
+};
