@@ -1,3 +1,6 @@
+// USED IN AuthContext.js TO VALIDATE IF USER IS ADMIN
+// IF YES, THEN PUSHED TO ADMIN PAGE AND DISPLAY FOR ADMIN
+
 const useCheckAdmin = (data) => {
 	if (data) {
 		console.log(data);

@@ -38,10 +38,15 @@ const MainLayout = ({ Child1, Child2, title, questionData, instruction }) => {
 			);
 	};
 
+	const checkIsAdmin = () => {
+		if (isAdmin === true) return false;
+		else if (isActive === false) return true;
+	};
+
 	return (
 		<>
 			{/* Show popup modal if user is inactive for certain amount of time or user goes idle*/}
-			{isActive === false && isAdmin !== false ? (
+			{checkIsAdmin() ? (
 				<Notification isActive={isActive} setIsActive={setIsActive} />
 			) : null}
 			<div className={layoutStyles.wrapper}>
