@@ -15,7 +15,7 @@ const useMainLayoutProgress = () => {
 	const [updateProgress, setUpdateProgress] = useState(false);
 
 	// check if user still active, if not then change isActive to false
-	useCheckActivity(isActive, setIsActive);
+	useCheckActivity(setIsActive, { timeToIdle: 120000 });
 
 	useEffect(() => {
 		useGetCurrentChapterProgress(router).then((data) =>

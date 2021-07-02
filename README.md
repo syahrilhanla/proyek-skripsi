@@ -3,12 +3,19 @@
 First, run the development server on your terminal:
 
 ```bash
+npm install 
+# or 
+yarn install
+# then
 npm run dev
 # or
 yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Production Build
+https://proyek-skripsi.vercel.app
 
 ## Urgensi Pengembangan
 

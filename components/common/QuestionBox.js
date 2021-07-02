@@ -1,6 +1,7 @@
 import questionStyle from "@/styles/QuestionBox.module.css";
 
 import useUpdateCertainAct from "@/components/utils/useUpdateCertainAct";
+import useGetCurrentPage from "@/components/utils/useGetCurrentPage";
 
 const QuestionBox = ({
 	question,
@@ -8,10 +9,12 @@ const QuestionBox = ({
 	setUpdateProgress,
 	updateProgress,
 }) => {
+	const { parentPath, currentPath } = useGetCurrentPage();
+
 	// check answers on multiple-choice question
 	const checkAnswer = async (item, answer) => {
 		if (answer.isCorrect) {
-			await useUpdateCertainAct(item.id);
+			await useUpdateCertainAct(item.id, parentPath, currentPath);
 
 			setUpdateProgress(!updateProgress);
 		} else {
@@ -29,14 +32,20 @@ const QuestionBox = ({
 				{question.map((item, index) => (
 					<li key={index}>
 						<div>
-							<p>{item.questionText}</p>
+							<h3>
+								{index + 1}. {""}
+								{item.questionText}
+							</h3>
 						</div>
 						<div>
-							<ul>
+							<ul className={questionStyle.choices}>
 								{item.answerChoices.map((answer, index) => (
 									<li key={index}>
-										<button onClick={() => checkAnswer(item, answer)}>
-											{answer.answerText}
+										<button
+											className={questionStyle.answer}
+											onClick={() => checkAnswer(item, answer)}
+										>
+											<p>{answer.answerText}</p>
 										</button>
 									</li>
 								))}

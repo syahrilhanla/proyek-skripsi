@@ -1,3 +1,7 @@
+// NEVER CHANGE THIS INITIAL DATA EVER AGAIN
+// THIS DATA IS USED AS TEMPLATE WHEN A NEW USER IS SIGNED IN
+// FIRESTORE WILL INITIALIZE THE DATA BASED ON THE STRUCTURE IN THIS FILE
+
 export const initialData = [
 	{
 		chapter: "chapter1",
@@ -35,7 +39,8 @@ export const initialData = [
 						act: false,
 					},
 				],
-			}, {
+			},
+			{
 				page: "page3",
 				acts: [
 					{
@@ -51,7 +56,8 @@ export const initialData = [
 						act: true,
 					},
 				],
-			}, {
+			},
+			{
 				page: "page4",
 				acts: [
 					{

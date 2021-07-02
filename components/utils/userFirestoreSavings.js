@@ -32,25 +32,21 @@ const createDocRefs = (uid, initialData) => {
 // fired when there is no user checked in the initial loading
 export const createUserProgress = async (localUser) => {
 	if (localUser) {
-		// this data is only for experiment for now
-
-		console.log("progress created");
-
 		createDocRefs(localUser.uid, initialData);
 	} else return;
 };
 
 // THIS FUNCTION WILL BE USED WHEN USER MOVE FROM THE CURRENT PAGE
-export const updateProgress = async (localUser) => {
+export const updateProgress = async (
+	localUser,
+	acts,
+	currentChapter,
+	currentPage
+) => {
 	if (localUser) {
-		// data is just for experiment for now
-		console.log("updating progress");
+		const data = docRef.doc(localUser.uid).collection(currentChapter);
 
-		// docs id below only used for testing
-		const data = docRef.doc(localUser.uid).collection("chapter1");
-
-		data.doc("page1").update({});
-		console.log("progress updated");
+		await data.doc(currentPage).set({ acts });
 	} else return;
 };
 
@@ -58,7 +54,6 @@ export const getUserFirestore = async (localUser) => {
 	if (localUser) {
 		const data = await docRef.doc(localUser.uid).get();
 		if (!data) {
-			console.log("user not exists");
 			return null;
 		}
 
@@ -86,7 +81,6 @@ export const getUserProgress = async (localUser) => {
 
 		// if no progress then returns null, so it creates new progress
 		if (!rawChapter1Data || rawChapter1Data.length === 0) {
-			console.log("progress yet not exists");
 			return null;
 		}
 
@@ -100,8 +94,6 @@ export const getUserProgress = async (localUser) => {
 		//   page: page(n),
 		//   pageData: [act1, ...]
 		// ];
-
-		console.log({ rawChapter1Data });
 
 		// returning results as objects within an array
 		const results = [
@@ -126,6 +118,5 @@ export const addUser = async (localUser) => {
 		// setting them to firestore so it can be used in data display
 		const addData = docRef.doc(localUser.uid);
 		await addData.set(userData);
-		console.log("user added");
 	} else return;
 };

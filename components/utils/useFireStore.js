@@ -3,7 +3,6 @@ import {
 	getUserProgress,
 	addUser,
 	createUserProgress,
-	updateProgress,
 } from "./userFirestoreSavings";
 
 const useFireStore = async (localUser) => {
@@ -23,19 +22,14 @@ const useFireStore = async (localUser) => {
 
 		// checking if there is no progress then create initial progress
 		if (!progressData) {
-			console.log("no progress");
 			await createUserProgress(localUser);
 		}
-
-		// console.log(progressData);
 
 		return progressData;
 	};
 
 	await checkingInitialUser();
 	const progressData = await checkingInitialProgress();
-
-	// await updateProgress(localUser);
 
 	return progressData;
 };

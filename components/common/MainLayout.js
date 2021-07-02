@@ -6,7 +6,7 @@ import QuestionBox from "@/components/common/QuestionBox";
 
 import Notification from "@/components/common/Notification";
 import useMainLayoutProgress from "@/components/utils/useMainLayoutProgress";
-import useBottomProgressLogic from "@/components/utils/useBottomProgressLogic";
+import useGetCurrentPage from "@/components/utils/useGetCurrentPage";
 
 const MainLayout = ({ Child1, Child2, title, questionData, instruction }) => {
 	const {
@@ -17,9 +17,26 @@ const MainLayout = ({ Child1, Child2, title, questionData, instruction }) => {
 		pageProgress,
 	} = useMainLayoutProgress();
 
+	const { parentPath } = useGetCurrentPage();
+
+	const SubmitButton = () => {
+		return (
+			<button className={layoutStyles.answerButton}>Submit Answers</button>
+		);
+	};
+
+	const DisplayBottomProgress = () => {
+		if (parentPath !== "admin" && parentPath !== "evaluasi")
+			return (
+				<>
+					<BottomProgress pageProgress={pageProgress} />
+				</>
+			);
+	};
+
 	return (
 		<>
-			{/* Show popup modal if user is inactive for certain amount of time */}
+			{/* Show popup modal if user is inactive for certain amount of time or user goes idle*/}
 			{isActive === false ? (
 				<Notification isActive={isActive} setIsActive={setIsActive} />
 			) : null}
@@ -43,17 +60,19 @@ const MainLayout = ({ Child1, Child2, title, questionData, instruction }) => {
 					)}
 				</div>
 				<div className={layoutStyles.questionBox}>
-					{questionData && (
+					{questionData ? (
 						<QuestionBox
 							question={questionData}
 							instruction={instruction}
 							setUpdateProgress={setUpdateProgress}
 							updateProgress={updateProgress}
 						/>
-					)}
+					) : parentPath === "evaluasi" ? (
+						<SubmitButton />
+					) : null}
 				</div>
 			</div>
-			<BottomProgress pageProgress={pageProgress} />
+			{DisplayBottomProgress()}
 		</>
 	);
 };
