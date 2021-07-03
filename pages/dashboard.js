@@ -8,14 +8,30 @@ import progressStyles from "@/styles/Progress.module.css";
 import dashboardStyles from "@/styles/Dashboard.module.css";
 
 import useProgressValues from "@/components/utils/useProgressValues";
+import { useAuth } from "@/components/context/AuthContext";
+import { useRouter } from "next/router";
 
 const dashboard = () => {
 	const progressValues = useProgressValues();
+	const { isAdmin } = useAuth();
+	const router = useRouter();
+
+	// If the user is an admin, it will redirect from dashboard page to admin page
+	const RedirectAdmin = () => {
+		// Needs to be done this way, because router.push returns a promise
+		// React cannot render promise, so the router runs here as it will return nothing and become a void function
+		// So it wont cause any trouble to rendering stuff
+		router.push("/admin");
+	};
 
 	return (
 		<>
-			{progressValues.localUserData && progressValues.pageReady === true && (
+			{progressValues.localUserData &&
+			progressValues.pageReady === true &&
+			!isAdmin ? (
 				<DisplayDashboard />
+			) : (
+				RedirectAdmin()
 			)}
 		</>
 	);
