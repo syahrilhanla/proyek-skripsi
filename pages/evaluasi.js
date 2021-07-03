@@ -51,7 +51,7 @@ const evaluation = () => {
 		<>
 			<MainLayout Child1={DisplayQuiz} />{" "}
 			<span style={{ alignSelf: "center" }}>
-				<DisplayCountDown />
+				<DisplayCountDown timeSet={600} />
 				<BorderLinearProgress value={percentage} />
 			</span>
 			;

@@ -25,9 +25,9 @@ const CountingDown = ({ expiryTimestamp }) => {
 	);
 };
 
-const DisplayCountDown = () => {
+const DisplayCountDown = ({ timeSet }) => {
 	const time = new Date();
-	time.setSeconds(time.getSeconds() + 600); // 10 minutes timer
+	time.setSeconds(time.getSeconds() + timeSet); // 600 to 10 minutes
 
 	return <CountingDown expiryTimestamp={time} />;
 };
