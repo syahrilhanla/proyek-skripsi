@@ -1,5 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
+import DisplayCountDown from "@/components/common/DisplayCountDown";
 
 const custom404 = () => {
 	const router = useRouter();
@@ -19,7 +20,10 @@ const custom404 = () => {
 				<h2>Oops... Alamat Salah</h2>
 			</div>
 			<div>
-				<h4>Mengarahkan ke beranda ...</h4>
+				<h4>
+					Mengarahkan ke beranda...
+					<span>{<DisplayCountDown timeSet={3} />}</span>
+				</h4>
 			</div>
 		</div>
 	);

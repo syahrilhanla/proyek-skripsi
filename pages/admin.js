@@ -2,6 +2,8 @@ import MainLayout from "@/components/common/MainLayout";
 import { useAuth } from "@/components/context/AuthContext";
 import { useRouter } from "next/router";
 
+import DisplayCountDown from "@/components/common/DisplayCountDown";
+
 const admin = () => {
 	const { isAdmin } = useAuth();
 	const router = useRouter();
@@ -23,7 +25,8 @@ const admin = () => {
 				</div>
 				<div>
 					<h4>
-						Mengarahkan ke <i>dashboard</i> ...
+						Mengarahkan ke <i>dashboard</i>...
+						<span>{<DisplayCountDown timeSet={3} />}</span>
 					</h4>
 				</div>
 			</div>
