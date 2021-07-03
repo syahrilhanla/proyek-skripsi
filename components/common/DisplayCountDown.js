@@ -8,7 +8,7 @@ const CountingDown = ({ expiryTimestamp }) => {
 	});
 
 	return (
-		<div style={{ margin: "0px auto" }}>
+		<div style={{ margin: "0px auto", width: "100%", textAlign: "center" }}>
 			<h2>
 				Waktu Tersisa:{" "}
 				<span>
