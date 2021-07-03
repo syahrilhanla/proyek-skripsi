@@ -6,7 +6,7 @@ const useGetCurrentPage = () => {
 	const parentPath = currentURL.split("/")[1];
 	const currentPath = parseInt(currentURL.split("/")[2]);
 
-	return { currentPath, currentURL, parentPath };
+	return { currentPath, parentPath, currentURL };
 };
 
 export default useGetCurrentPage;
