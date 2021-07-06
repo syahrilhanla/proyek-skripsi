@@ -13,7 +13,7 @@ const AddClassButton = ({ setNewClass }) => {
 			>
 				<AddIcon />
 				<span>
-					<p style={{ textAlign: "center" }}>New Class</p>
+					<p style={{ textAlign: "center" }}>Buat Kelas</p>
 				</span>
 			</div>
 		</button>

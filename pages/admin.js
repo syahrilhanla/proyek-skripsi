@@ -18,11 +18,12 @@ const admin = () => {
 			{/* shows modal with form to add new class */}
 			{newClass && <AddClassModal setNewClass={setNewClass} />}
 
-			<div className={adminStyle.pickClass}>
-				<span>
+			<div className={adminStyle.classMenu}>
+				<span className={adminStyle.pickClass}>
+					<h2>Pilih Kelas</h2>
 					<ClassDropDown />
 				</span>
-				<span>
+				<span className={adminStyle.addClass}>
 					<AddClassButton setNewClass={setNewClass} />
 				</span>
 			</div>

@@ -13,7 +13,10 @@ const ClassDropDown = () => {
 	return (
 		<div className={selectStyle.dropdown}>
 			<form onSubmit={handleSubmit(onSubmit)}>
-				<select {...register("gender")} className={selectStyle.select}>
+				<select
+					{...register("gender", { required: true })}
+					className={selectStyle.select}
+				>
 					<option value='female'>female</option>
 					<option value='male'>male</option>
 					<option value='other'>other</option>

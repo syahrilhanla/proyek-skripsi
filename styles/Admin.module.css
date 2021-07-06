@@ -3,10 +3,37 @@
 	height: 100%;
 }
 
-.pickClass {
+.classMenu {
 	padding: 0.8rem;
 	width: 100%;
-	display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
+	display: grid;
+	grid-template-columns: 5fr 5fr;
+}
+
+.classMenu h2 {
+	font-weight: 400;
+	text-align: center;
+}
+
+.pickClass {
+	display: grid;
+	grid-template-columns: 2fr 3fr;
+}
+
+.addClass {
+	justify-self: right;
+}
+
+@media (max-width: 480px) {
+	.pickClass {
+		grid-template-columns: 1fr;
+	}
+
+	.classMenu {
+		grid-template-columns: 1fr;
+	}
+
+	.addClass {
+		justify-self: center;
+	}
 }

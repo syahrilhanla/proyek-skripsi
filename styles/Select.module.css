@@ -4,13 +4,15 @@
 	width: 20em;
 	height: 3em;
 	line-height: 3;
-	background: #5c7a97;
+	background: #d0dde9;
 	overflow: hidden;
 	border-radius: 0.25em;
 	padding: 0 0.5em;
-	color: rgb(255, 255, 255);
+	color: rgb(48, 47, 47);
 	cursor: pointer;
 	text-align: center;
+	border: #d0dde9 1px solid;
+	margin-bottom: 0.4rem;
 }
 /* Arrow */
 .select::after {
