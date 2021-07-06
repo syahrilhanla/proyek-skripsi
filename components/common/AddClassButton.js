@@ -1,9 +1,9 @@
 import quizStyle from "@/styles/QuizStyle.module.css";
 import AddIcon from "@material-ui/icons/Add";
 
-const AddClassButton = () => {
+const AddClassButton = ({ setNewClass }) => {
 	return (
-		<button className={quizStyle.addClass}>
+		<button className={quizStyle.addClass} onClick={() => setNewClass(true)}>
 			<div
 				style={{
 					display: "flex",
