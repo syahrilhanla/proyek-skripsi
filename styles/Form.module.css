@@ -19,3 +19,9 @@
 	color: white;
 	cursor: pointer;
 }
+
+.errorMsg {
+	color: red;
+	font-size: smaller;
+	text-align: center;
+}
