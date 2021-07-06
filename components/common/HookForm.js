@@ -12,6 +12,7 @@ const HookForm = () => {
 	return (
 		<div>
 			<form onSubmit={handleSubmit(onSubmit)}>
+				<label>Isi Nama Kelas:</label>
 				<input
 					{...register("className", { required: true })}
 					className={formStyle.formInput}

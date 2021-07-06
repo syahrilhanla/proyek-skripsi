@@ -1,23 +1,25 @@
 import { useState } from "react";
+import { useAuth } from "@/components/context/AuthContext";
 
 import MainLayout from "@/components/common/MainLayout";
-import { useAuth } from "@/components/context/AuthContext";
 import AddClassButton from "@/components/common/AddClassButton";
 import NotAdmin from "@/components/common/NotAdmin";
-
 import AddClassModal from "@/components/common/AddClassModal";
+
+import adminStyle from "@/styles/Admin.module.css";
 
 const admin = () => {
 	const { isAdmin } = useAuth();
 	const [newClass, setNewClass] = useState(false);
 
 	const Text = () => (
-		<div style={{ padding: "0.8rem" }}>
-			<h2>This is an admin page</h2>
-
+		<div className={adminStyle.mother}>
+			{/* shows modal with form to add new class */}
 			{newClass && <AddClassModal setNewClass={setNewClass} />}
 
-			<AddClassButton setNewClass={setNewClass} />
+			<span style={{ marginRight: "0px" }}>
+				<AddClassButton setNewClass={setNewClass} />
+			</span>
 		</div>
 	);
 
