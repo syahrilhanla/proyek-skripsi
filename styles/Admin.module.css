@@ -1,4 +1,12 @@
 .mother {
+	width: 100%;
+	height: 100%;
+}
+
+.pickClass {
 	padding: 0.8rem;
 	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
 }
