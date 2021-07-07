@@ -29,6 +29,13 @@ const createDocRefs = (uid, initialData) => {
 	}
 };
 
+// used by admin
+export const getAllUserProgress = async () => {
+	const usersData = (await docRef.get()).docs.map((doc) => doc.data());
+	console.log(usersData);
+	return usersData;
+};
+
 // fired when there is no user checked in the initial loading
 export const createUserProgress = async (localUser) => {
 	if (localUser) {

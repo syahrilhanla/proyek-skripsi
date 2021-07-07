@@ -7,6 +7,8 @@ import NotAdmin from "@/components/common/NotAdmin";
 import AddClassModal from "@/components/common/AddClassModal";
 import ClassDropDown from "@/components/common/ClassDropDown";
 
+import { getAllUserProgress } from "@/components/utils/userFirestoreSavings";
+
 import adminStyle from "@/styles/Admin.module.css";
 
 const admin = () => {
@@ -23,7 +25,10 @@ const admin = () => {
 					<h2>Pilih Kelas</h2>
 					<ClassDropDown />
 				</span>
-				<span className={adminStyle.addClass}>
+				<span
+					className={adminStyle.addClass}
+					onClick={() => getAllUserProgress()}
+				>
 					<AddClassButton setNewClass={setNewClass} />
 				</span>
 			</div>
