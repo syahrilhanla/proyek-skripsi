@@ -30,8 +30,10 @@ const createDocRefs = (uid, initialData) => {
 };
 
 // used by admin
-export const getAllUserProgress = async () => {
-	const usersData = (await docRef.get()).docs.map((doc) => doc.data());
+export const getAllUserProgress = () => {
+	const usersData = docRef
+		.get()
+		.then((data) => data.docs.map((doc) => doc.data()));
 	console.log(usersData);
 	return usersData;
 };

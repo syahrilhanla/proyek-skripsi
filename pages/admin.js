@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAuth } from "@/components/context/AuthContext";
 
 import MainLayout from "@/components/common/MainLayout";
@@ -6,6 +6,7 @@ import AddClassButton from "@/components/common/AddClassButton";
 import NotAdmin from "@/components/common/NotAdmin";
 import AddClassModal from "@/components/common/AddClassModal";
 import ClassDropDown from "@/components/common/ClassDropDown";
+import DisplayUsers from "@/components/common/DisplayUsers";
 
 import { getAllUserProgress } from "@/components/utils/userFirestoreSavings";
 
@@ -13,7 +14,17 @@ import adminStyle from "@/styles/Admin.module.css";
 
 const admin = () => {
 	const { isAdmin } = useAuth();
+
 	const [newClass, setNewClass] = useState(false);
+	const [usersData, setUsersData] = useState(null);
+
+	useEffect(
+		() =>
+			setUsersData(
+				(prevState) => (prevState = getAllUserProgress().then((data) => data))
+			),
+		[]
+	);
 
 	const AdminBody = () => (
 		<div className={adminStyle.mother}>
@@ -25,17 +36,12 @@ const admin = () => {
 					<h2>Pilih Kelas</h2>
 					<ClassDropDown />
 				</span>
-				<span
-					className={adminStyle.addClass}
-					onClick={() => getAllUserProgress()}
-				>
+				<span className={adminStyle.addClass}>
 					<AddClassButton setNewClass={setNewClass} />
 				</span>
 			</div>
 
-			<div>
-				<h3>this is admin body</h3>
-			</div>
+			{usersData && <DisplayUsers usersData={usersData} />}
 		</div>
 	);
 
