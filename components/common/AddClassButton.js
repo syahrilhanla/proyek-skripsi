@@ -3,7 +3,12 @@ import AddIcon from "@material-ui/icons/Add";
 
 const AddClassButton = ({ setNewClass }) => {
 	return (
-		<button className={quizStyle.addClass} onClick={() => setNewClass(true)}>
+		<button
+			className={quizStyle.addClass}
+			onClick={() => {
+				setNewClass(true);
+			}}
+		>
 			<div
 				style={{
 					display: "flex",
