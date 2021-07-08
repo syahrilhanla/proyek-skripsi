@@ -1,13 +1,17 @@
 import { useForm } from "react-hook-form";
 import formStyle from "@/styles/Form.module.css";
+import { addClass } from "@/components/utils/userFirestoreSavings";
 
-const HookForm = () => {
+const NewClassForm = () => {
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
 	} = useForm();
-	const onSubmit = (data) => console.log(data);
+	const onSubmit = (data) => {
+		console.log(data);
+		addClass(data.className);
+	};
 
 	return (
 		<div>
@@ -26,4 +30,4 @@ const HookForm = () => {
 	);
 };
 
-export default HookForm;
+export default NewClassForm;

@@ -45,6 +45,14 @@ export const getAllUserProgress = async () => {
 	return usersData;
 };
 
+export const addClass = async (className) => {
+	if (className) {
+		firestore.collection("classNames").doc(className).set({
+			className: className,
+		});
+	} else return;
+};
+
 // ================================== USED BY USERS ==============================================
 
 // fired when there is no user checked in the initial loading

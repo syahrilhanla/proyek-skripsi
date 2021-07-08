@@ -1,7 +1,7 @@
 import Modal from "@material-ui/core/Modal";
 import modalStyles from "@/components/data/modalStyles";
 import { useState } from "react";
-import HookForm from "@/components/common/HookForm";
+import NewClassForm from "@/components/common/NewClassForm";
 
 const AddClassModal = ({ setNewClass, newClass }) => {
 	const classes = modalStyles();
@@ -14,7 +14,7 @@ const AddClassModal = ({ setNewClass, newClass }) => {
 	return (
 		<Modal open={open} onClose={handleClose} className={classes.modal}>
 			<div className={classes.paper}>
-				<HookForm />
+				<NewClassForm />
 			</div>
 		</Modal>
 	);
