@@ -22,7 +22,11 @@ const ClassDropDown = ({ setShowClass }) => {
 					className={selectStyle.select}
 				>
 					{classList.map((item) => {
-						return <option value={item.className}>{item.className}</option>;
+						return (
+							<option key={item.className} value={item.className}>
+								{item.className}
+							</option>
+						);
 					})}
 				</select>
 				<input type='submit' className={formStyle.submitButton} />

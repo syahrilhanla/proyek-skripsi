@@ -10,7 +10,7 @@ const DisplayUsers = () => {
 	return (
 		<div>
 			{data.map((item) => {
-				return <p>{item.displayName}</p>;
+				return <p key={item.displayName}>{item.displayName}</p>;
 			})}
 		</div>
 	);

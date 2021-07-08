@@ -35,7 +35,6 @@ export const getClassList = async () => {
 	const classList = (await firestore.collection("classNames").get()).docs.map(
 		(doc) => doc.data()
 	);
-	console.log(classList);
 	return classList;
 };
 
@@ -43,6 +42,14 @@ export const getClassList = async () => {
 export const getAllUserProgress = async () => {
 	const usersData = (await docRef.get()).docs.map((doc) => doc.data());
 	return usersData;
+};
+
+export const addClass = async (className) => {
+	if (className) {
+		firestore.collection("classNames").doc(className).set({
+			className: className,
+		});
+	} else return;
 };
 
 // ================================== USED BY USERS ==============================================
