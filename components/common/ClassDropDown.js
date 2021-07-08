@@ -1,13 +1,14 @@
+import { useForm } from "react-hook-form";
+import { useAuth } from "@/components/context/AuthContext";
+
 import formStyle from "@/styles/Form.module.css";
 import selectStyle from "@/styles/Select.module.css";
-import { useForm } from "react-hook-form";
 
 const ClassDropDown = ({ setShowClass }) => {
-	const {
-		register,
-		handleSubmit,
-		formState: { errors },
-	} = useForm();
+	const { classList } = useAuth();
+
+	const { register, handleSubmit } = useForm();
+
 	const onSubmit = (data) => {
 		console.log(data);
 		setShowClass(true);
@@ -20,9 +21,9 @@ const ClassDropDown = ({ setShowClass }) => {
 					{...register("gender", { required: true })}
 					className={selectStyle.select}
 				>
-					<option value='female'>female</option>
-					<option value='male'>male</option>
-					<option value='other'>other</option>
+					{classList.map((item) => {
+						return <option value={item.className}>{item.className}</option>;
+					})}
 				</select>
 				<input type='submit' className={formStyle.submitButton} />
 			</form>
