@@ -1,0 +1,33 @@
+/* Custom Select */
+.select {
+	display: flex;
+	width: 20em;
+	height: 3em;
+	line-height: 3;
+	background: #d0dde9;
+	overflow: hidden;
+	border-radius: 0.25em;
+	padding: 0 0.5em;
+	color: rgb(48, 47, 47);
+	cursor: pointer;
+	text-align: center;
+	border: #d0dde9 1px solid;
+	margin-bottom: 0.4rem;
+}
+/* Arrow */
+.select::after {
+	content: "\25BC";
+	top: 0;
+	right: 0;
+	padding: 0 1em;
+	background: #c8c8cace;
+	cursor: pointer;
+	pointer-events: none;
+}
+
+.dropdown {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: auto auto;
+}

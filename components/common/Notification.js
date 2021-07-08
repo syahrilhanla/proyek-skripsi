@@ -1,23 +1,9 @@
 import { useState } from "react";
 import Modal from "@material-ui/core/Modal";
-import { makeStyles } from "@material-ui/core/styles";
-
-const useStyles = makeStyles((theme) => ({
-	paper: {
-		backgroundColor: theme.palette.background.paper,
-		border: "2px solid #000",
-		boxShadow: theme.shadows[5],
-		padding: theme.spacing(2, 4, 3),
-	},
-	modal: {
-		display: "flex",
-		alignItems: "center",
-		justifyContent: "center",
-	},
-}));
+import modalStyles from "@/components/data/modalStyles";
 
 const Notification = ({ isActive, setIsActive }) => {
-	const classes = useStyles();
+	const classes = modalStyles();
 	const [open, setOpen] = useState(!isActive);
 
 	const handleClose = () => {
@@ -29,7 +15,7 @@ const Notification = ({ isActive, setIsActive }) => {
 		<div>
 			<Modal open={open} onClose={handleClose} className={classes.modal}>
 				<div className={classes.paper}>
-					<h2>Kamu kehilangan fokus belajar</h2>
+					<h2 style={{ textAlign: "center" }}>Kamu kehilangan fokus belajar</h2>
 				</div>
 			</Modal>
 		</div>

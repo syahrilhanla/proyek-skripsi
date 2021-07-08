@@ -12,6 +12,7 @@ import { useRouter } from "next/router";
 
 import useFireStore from "@/components/utils/useFireStore";
 import useCheckAdmin from "@/components/utils/useCheckAdmin";
+import { getClassList } from "@/components/utils/userFirestoreSavings";
 
 export const AuthContext = createContext();
 
@@ -25,6 +26,7 @@ const AuthProvider = ({ children }) => {
 	const [loading, setLoading] = useState(true);
 	const [userProgress, setUserProgress] = useState(null);
 	const [isAdmin, setIsAdmin] = useState(false);
+	const [classList, setClassList] = useState([]);
 
 	const router = useRouter();
 
@@ -58,6 +60,7 @@ const AuthProvider = ({ children }) => {
 							setLocalUserData(data);
 							setUserProgress(useFireStore(data));
 							setIsAdmin(useCheckAdmin(data));
+							getClassList().then((data) => setClassList(data));
 							setLoading(false);
 						});
 					});
@@ -78,6 +81,7 @@ const AuthProvider = ({ children }) => {
 				userProgress,
 				loading,
 				isAdmin,
+				classList,
 				login,
 				signOut,
 			}}

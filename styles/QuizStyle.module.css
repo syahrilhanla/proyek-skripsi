@@ -32,6 +32,18 @@
 	cursor: pointer;
 }
 
+.addClass {
+	text-align: center;
+	border: none;
+	background-color: #253ab38c;
+	margin: 1rem auto;
+	padding: 0.2rem;
+	border-radius: 8px;
+	width: 6rem;
+	cursor: pointer;
+	color: #2b2b2b;
+}
+
 .answerButton:hover {
 	background-color: #576bdfb4;
 }

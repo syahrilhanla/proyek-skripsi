@@ -1,48 +1,45 @@
-import MainLayout from "@/components/common/MainLayout";
+import { useState, useEffect } from "react";
 import { useAuth } from "@/components/context/AuthContext";
-import { useRouter } from "next/router";
 
-import DisplayCountDown from "@/components/common/DisplayCountDown";
+import MainLayout from "@/components/common/MainLayout";
+import AddClassButton from "@/components/common/AddClassButton";
+import NotAdmin from "@/components/common/NotAdmin";
+import AddClassModal from "@/components/common/AddClassModal";
+import ClassDropDown from "@/components/common/ClassDropDown";
+import DisplayUsers from "@/components/common/DisplayUsers";
+
+import adminStyle from "@/styles/Admin.module.css";
 
 const admin = () => {
 	const { isAdmin } = useAuth();
-	const router = useRouter();
 
-	const NotAdminStyle = {
-		display: "flex",
-		flexDirection: "column",
-		alignItems: "center",
-		justifyContent: "center",
-	};
+	const [newClass, setNewClass] = useState(false);
+	const [showClass, setShowClass] = useState(false);
 
-	const NotAdmin = () => {
-		setTimeout(() => router.push("/dashboard"), 3000);
+	const AdminBody = () => (
+		<div className={adminStyle.mother}>
+			{/* shows modal with form to add new class */}
+			{newClass && <AddClassModal setNewClass={setNewClass} />}
 
-		return (
-			<div style={NotAdminStyle}>
-				<div>
-					<h2>Maaf, anda bukan admin. </h2>
-				</div>
-				<div>
-					<h4>
-						Mengarahkan ke <i>dashboard</i>...
-						<span>{<DisplayCountDown timeSet={3} />}</span>
-					</h4>
-				</div>
+			<div className={adminStyle.classMenu}>
+				<span className={adminStyle.pickClass}>
+					<h2>Pilih Kelas</h2>
+					<ClassDropDown setShowClass={setShowClass} />
+				</span>
+				<span className={adminStyle.addClass}>
+					<AddClassButton setNewClass={setNewClass} />
+				</span>
 			</div>
-		);
-	};
 
-	const Text = () => (
-		<div style={{ padding: "0.8rem" }}>
-			<h2>This is an admin page</h2>
+			{showClass && <DisplayUsers />}
 		</div>
 	);
+
 	return (
 		<>
 			{isAdmin ? (
 				<>
-					<MainLayout Child1={Text} title={"Menganalisis Data"} />
+					<MainLayout Child1={AdminBody} title={"Menganalisis Data"} />
 				</>
 			) : (
 				<NotAdmin />
