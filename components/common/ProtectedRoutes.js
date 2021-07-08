@@ -13,7 +13,6 @@ const ProtectedRoutes = ({ children }) => {
 	const currentLink = router.pathname;
 
 	useEffect(() => {
-		console.log(isAdmin);
 		if (!localUserData && currentLink.includes(publicLinks)) {
 			// do nothing if theres no localUser and the route is public
 		} else if (localUserData && currentLink === "/" && isAdmin) {

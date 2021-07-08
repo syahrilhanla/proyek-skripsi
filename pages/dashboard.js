@@ -20,7 +20,7 @@ const dashboard = () => {
 	// If the user is an admin, it will redirect from dashboard page to admin page
 	useEffect(() => {
 		console.log("an admin");
-		if (isAdmin) router.push("/admin");
+		if (isAdmin) return () => router.push("/admin");
 	}, []);
 
 	return (

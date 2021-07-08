@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useAuth } from "@/components/context/AuthContext";
 
 import MainLayout from "@/components/common/MainLayout";

@@ -68,6 +68,7 @@ const AuthProvider = ({ children }) => {
 					console.log(`failed to set user: ${error}`);
 				}
 			});
+			return () => null;
 		});
 
 		return unSub;
