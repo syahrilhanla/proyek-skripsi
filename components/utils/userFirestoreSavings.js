@@ -34,7 +34,6 @@ export const getAllUserProgress = () => {
 	const usersData = docRef
 		.get()
 		.then((data) => data.docs.map((doc) => doc.data()));
-	console.log(usersData);
 	return usersData;
 };
 

@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getAllUserProgress } from "@/components/utils/userFirestoreSavings";
 
-const DisplayUsers = ({ usersData }) => {
+const DisplayUsers = () => {
 	const [data, setData] = useState([]);
-	usersData.then((item) => setData(item));
+
+	useEffect(() => getAllUserProgress().then((data) => setData(data)), []);
+
+	console.log(data);
 	return (
 		<div>
 			{data.map((item) => {

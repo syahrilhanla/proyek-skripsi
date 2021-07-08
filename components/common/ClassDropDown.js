@@ -2,13 +2,16 @@ import formStyle from "@/styles/Form.module.css";
 import selectStyle from "@/styles/Select.module.css";
 import { useForm } from "react-hook-form";
 
-const ClassDropDown = () => {
+const ClassDropDown = ({ setShowClass }) => {
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
 	} = useForm();
-	const onSubmit = (data) => console.log(data);
+	const onSubmit = (data) => {
+		console.log(data);
+		setShowClass(true);
+	};
 
 	return (
 		<div className={selectStyle.dropdown}>
