@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { getAllUserProgress } from "@/components/utils/userFirestoreSavings";
+import UserCard from "@/components/common/UserCard";
 
 const DisplayUsers = ({ selectedClass }) => {
 	const [data, setData] = useState([]);
@@ -18,13 +19,14 @@ const DisplayUsers = ({ selectedClass }) => {
 		});
 	};
 
-	console.log(filteredUsers(selectedClass).map((item) => item.displayName));
 	return (
 		<div>
-			{filteredUsers(selectedClass).map((item) => {
-				console.log(item.displayName);
-				return <p key={item.displayName}>{item.displayName}</p>;
-			})}
+			{selectedClass !== "Pilih Kelas" && (
+				<h2 style={{ fontWeight: 400 }}>Kelas {selectedClass}</h2>
+			)}
+			{filteredUsers(selectedClass).map((userData) => (
+				<UserCard userData={userData} />
+			))}
 		</div>
 	);
 };
