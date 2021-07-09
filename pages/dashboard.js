@@ -35,9 +35,7 @@ const dashboard = () => {
 		return (
 			<div className={progressStyles.mainProgress}>
 				<Navbar />
-				<DashboardContent
-					displayName={progressValues.localUserData.displayName}
-				/>
+				<DashboardContent displayInfo={progressValues.localUserData} />
 				<UserProgress progressValues={progressValues.setProgressValues()} />
 				<Footer />
 			</div>
@@ -74,7 +72,7 @@ function UserProgress({ progressValues }) {
 	);
 }
 
-function DashboardContent({ displayName }) {
+function DashboardContent({ displayInfo }) {
 	return (
 		<section className={dashboardStyles.dashboard}>
 			<div className={dashboardStyles.profile}>
@@ -88,8 +86,11 @@ function DashboardContent({ displayName }) {
 							<h3>21/30 Kegiatan Tuntas</h3>
 						</div>
 					</div>
-					<div className={dashboardStyles.profileName}>
-						<h2>{displayName}</h2>
+					<div className={dashboardStyles.infoContainer}>
+						<div className={dashboardStyles.profileName}>
+							<h1>{displayInfo.displayName}</h1>
+							<p>{displayInfo.className}</p>
+						</div>
 					</div>
 				</div>
 			</div>

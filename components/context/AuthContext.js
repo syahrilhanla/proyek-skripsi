@@ -12,7 +12,10 @@ import { useRouter } from "next/router";
 
 import useFireStore from "@/components/utils/useFireStore";
 import useCheckAdmin from "@/components/utils/useCheckAdmin";
-import { getClassList } from "@/components/utils/userFirestoreSavings";
+import {
+	getClassList,
+	getUserFirestore,
+} from "@/components/utils/userFirestoreSavings";
 
 export const AuthContext = createContext();
 
@@ -54,10 +57,10 @@ const AuthProvider = ({ children }) => {
 		const unSub = auth.onAuthStateChanged((user) => {
 			setUser(user).then(() => {
 				try {
+					getUserFirestore(user).then((userData) => setLocalUserData(userData));
 					setLocalStorage(user).then(() => {
 						// get local user from localStorage after login and set to localStorage
 						getLocalUser().then((data) => {
-							setLocalUserData(data);
 							setUserProgress(useFireStore(data));
 							setIsAdmin(useCheckAdmin(data));
 							getClassList().then((data) => setClassList(data));

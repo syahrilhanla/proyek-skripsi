@@ -138,6 +138,8 @@ export const addUser = async (localUser) => {
 			displayName: localUser.displayName,
 			photoURL: localUser.photoURL,
 			email: localUser.email,
+			uid: localUser.uid,
+			className: "Belum Masuk Kelas",
 		};
 
 		// setting them to firestore so it can be used in data display
