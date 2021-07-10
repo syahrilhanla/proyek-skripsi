@@ -26,7 +26,7 @@ const dashboard = () => {
 	return (
 		<>
 			{isAdmin === false &&
-				progressValues.localUserData &&
+				progressValues.userInfo &&
 				progressValues.pageReady === true && <DisplayDashboard />}
 		</>
 	);
@@ -35,7 +35,7 @@ const dashboard = () => {
 		return (
 			<div className={progressStyles.mainProgress}>
 				<Navbar />
-				<DashboardContent displayInfo={progressValues.localUserData} />
+				<DashboardContent displayInfo={progressValues.userInfo} />
 				<UserProgress progressValues={progressValues.setProgressValues()} />
 				<Footer />
 			</div>

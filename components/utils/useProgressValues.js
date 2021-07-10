@@ -10,7 +10,7 @@ import { useProgress } from "@/components/context/ProgressContext";
 
 const useProgressValues = () => {
 	// grabbing values from contexts
-	const { localUserData } = useAuth();
+	const { userInfo } = useAuth();
 	const { overallProgress, dashboardLoading } = useProgress();
 
 	// this determines if page is ready to rendered or not
@@ -53,7 +53,7 @@ const useProgressValues = () => {
 	}, [dashboardLoading]);
 
 	return {
-		localUserData,
+		userInfo,
 		setProgressValues,
 		pageReady,
 	};

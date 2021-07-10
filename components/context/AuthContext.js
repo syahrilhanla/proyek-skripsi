@@ -26,6 +26,7 @@ export const useAuth = () => {
 const AuthProvider = ({ children }) => {
 	const [currentUser, setCurrentUser] = useState(null);
 	const [localUserData, setLocalUserData] = useState(null);
+	const [userInfo, setUserInfo] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [userProgress, setUserProgress] = useState(null);
 	const [isAdmin, setIsAdmin] = useState(false);
@@ -57,10 +58,11 @@ const AuthProvider = ({ children }) => {
 		const unSub = auth.onAuthStateChanged((user) => {
 			setUser(user).then(() => {
 				try {
-					getUserFirestore(user).then((userData) => setLocalUserData(userData));
 					setLocalStorage(user).then(() => {
+						getUserFirestore(user).then((userData) => setUserInfo(userData));
 						// get local user from localStorage after login and set to localStorage
 						getLocalUser().then((data) => {
+							setLocalUserData(data);
 							setUserProgress(useFireStore(data));
 							setIsAdmin(useCheckAdmin(data));
 							getClassList().then((data) => setClassList(data));
@@ -81,6 +83,7 @@ const AuthProvider = ({ children }) => {
 		<AuthContext.Provider
 			value={{
 				currentUser,
+				userInfo,
 				localUserData,
 				userProgress,
 				loading,
