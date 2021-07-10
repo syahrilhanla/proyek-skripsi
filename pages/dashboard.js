@@ -19,7 +19,6 @@ const dashboard = () => {
 
 	// If the user is an admin, it will redirect from dashboard page to admin page
 	useEffect(() => {
-		console.log("an admin");
 		if (isAdmin) return () => router.push("/admin");
 	}, []);
 
@@ -35,7 +34,10 @@ const dashboard = () => {
 		return (
 			<div className={progressStyles.mainProgress}>
 				<Navbar />
-				<DashboardContent displayInfo={progressValues.userInfo} />
+				<DashboardContent
+					displayInfo={progressValues.userInfo}
+					acts={progressValues.displayOverallProgress()}
+				/>
 				<UserProgress progressValues={progressValues.setProgressValues()} />
 				<Footer />
 			</div>
@@ -44,10 +46,6 @@ const dashboard = () => {
 };
 
 function UserProgress({ progressValues }) {
-	console.log(
-		progressValues.chapter1Percentage.percentage,
-		progressValues.chapter1Percentage.score
-	);
 	return (
 		<section className={progressStyles.progressSection}>
 			<div className={progressStyles.container}>
@@ -72,7 +70,7 @@ function UserProgress({ progressValues }) {
 	);
 }
 
-function DashboardContent({ displayInfo }) {
+function DashboardContent({ displayInfo, acts }) {
 	return (
 		<section className={dashboardStyles.dashboard}>
 			<div className={dashboardStyles.profile}>
@@ -80,10 +78,10 @@ function DashboardContent({ displayInfo }) {
 				<div className={dashboardStyles.container}>
 					<div className={dashboardStyles.progress}>
 						<div className={dashboardStyles.progressBar}>
-							<CircularProgressWithLabel value={70} />
+							<CircularProgressWithLabel value={acts.overallPercentage} />
 						</div>
 						<div>
-							<h3>21/30 Kegiatan Tuntas</h3>
+							<h3>{acts.overallText}</h3>
 						</div>
 					</div>
 					<div className={dashboardStyles.infoContainer}>

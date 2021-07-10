@@ -25,6 +25,21 @@ const useProgressValues = () => {
 		return { chapter1Percentage, chapter2Percentage, chapter3Percentage };
 	};
 
+	const displayOverallProgress = () => {
+		const allScore =
+			chapter1Percentage.score +
+			chapter2Percentage.score +
+			chapter3Percentage.score;
+		const allActs =
+			chapter1Percentage.actLength +
+			chapter2Percentage.actLength +
+			chapter3Percentage.actLength;
+
+		const overallText = `${allScore} / ${allActs} Kegiatan Tuntas`;
+		const overallPercentage = (allScore / allActs) * 100;
+		return { overallText, overallPercentage };
+	};
+
 	// setting user progress from local to become percentage value
 	const setUserProgress = async (dashboardProgress) => {
 		if (dashboardProgress.chapter1 !== undefined) {
@@ -54,8 +69,9 @@ const useProgressValues = () => {
 
 	return {
 		userInfo,
-		setProgressValues,
 		pageReady,
+		displayOverallProgress,
+		setProgressValues,
 	};
 };
 export default useProgressValues;
