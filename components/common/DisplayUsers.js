@@ -11,8 +11,6 @@ const DisplayUsers = ({ selectedClass }) => {
 		return () => (unmount = true);
 	}, [selectedClass]);
 
-	console.log(data);
-
 	const filteredUsers = (selectedClass) => {
 		return data.filter((item) => {
 			return item.className === selectedClass;
@@ -25,7 +23,7 @@ const DisplayUsers = ({ selectedClass }) => {
 				<h2 style={{ fontWeight: 400 }}>Kelas {selectedClass}</h2>
 			)}
 			{filteredUsers(selectedClass).map((userData) => (
-				<UserCard userData={userData} />
+				<UserCard userData={userData} key={userData.uid} />
 			))}
 		</div>
 	);
