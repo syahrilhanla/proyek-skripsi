@@ -10,12 +10,14 @@ import dashboardStyles from "@/styles/Dashboard.module.css";
 import useProgressValues from "@/components/utils/useProgressValues";
 import { useAuth } from "@/components/context/AuthContext";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import UserNewClassModal from "@/components/common/UserNewClassModal";
 
 const dashboard = () => {
 	const progressValues = useProgressValues();
 	const { isAdmin } = useAuth();
 	const router = useRouter();
+	const [newClass, setNewClass] = useState(false);
 
 	// If the user is an admin, it will redirect from dashboard page to admin page
 	useEffect(() => {
@@ -27,6 +29,7 @@ const dashboard = () => {
 			{isAdmin === false &&
 				progressValues.userInfo &&
 				progressValues.pageReady === true && <DisplayDashboard />}
+			{newClass && <UserNewClassModal setNewClass={setNewClass} />}
 		</>
 	);
 
@@ -37,6 +40,7 @@ const dashboard = () => {
 				<DashboardContent
 					displayInfo={progressValues.userInfo}
 					acts={progressValues.displayOverallProgress()}
+					setNewClass={setNewClass}
 				/>
 				<UserProgress progressValues={progressValues.setProgressValues()} />
 				<Footer />
@@ -70,7 +74,7 @@ function UserProgress({ progressValues }) {
 	);
 }
 
-function DashboardContent({ displayInfo, acts }) {
+function DashboardContent({ displayInfo, acts, setNewClass }) {
 	return (
 		<section className={dashboardStyles.dashboard}>
 			<div className={dashboardStyles.profile}>
@@ -87,7 +91,16 @@ function DashboardContent({ displayInfo, acts }) {
 					<div className={dashboardStyles.infoContainer}>
 						<div className={dashboardStyles.profileName}>
 							<h1>{displayInfo.displayName}</h1>
-							<p>{displayInfo.className}</p>
+							{displayInfo.className === "Belum Masuk Kelas" ? (
+								<p
+									onClick={() => setNewClass(true)}
+									style={{ cursor: "pointer" }}
+								>
+									Klik Untuk Masuk Kelas
+								</p>
+							) : (
+								<p>{displayInfo.className}</p>
+							)}
 						</div>
 					</div>
 				</div>

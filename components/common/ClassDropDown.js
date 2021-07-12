@@ -4,7 +4,7 @@ import { useAuth } from "@/components/context/AuthContext";
 import formStyle from "@/styles/Form.module.css";
 import selectStyle from "@/styles/Select.module.css";
 
-const ClassDropDown = ({ setShowClass, setSelectedClass }) => {
+const ClassDropDown = ({ setShowClass = () => false, setSelectedClass }) => {
 	const { classList } = useAuth();
 
 	const { register, handleSubmit } = useForm();
