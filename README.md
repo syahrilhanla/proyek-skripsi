@@ -16,6 +16,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Production Build
 https://proyek-skripsi.vercel.app
+## Dev Build
+https://proyek-skripsi-git-dev-branch-syahrilhanla.vercel.app/
 
 ## Urgensi Pengembangan
 
