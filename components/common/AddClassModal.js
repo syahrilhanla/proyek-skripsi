@@ -14,7 +14,7 @@ const AddClassModal = ({ setNewClass, newClass }) => {
 	return (
 		<Modal open={open} onClose={handleClose} className={classes.modal}>
 			<div className={classes.paper}>
-				<NewClassForm />
+				<NewClassForm setOpen={setOpen} />
 			</div>
 		</Modal>
 	);

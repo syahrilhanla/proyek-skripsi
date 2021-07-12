@@ -1,9 +1,14 @@
 import { addClass } from "@/components/utils/userFirestoreSavings";
 
-const useAddClass = (data, classList, setIsSame) => {
+const useAddClass = (className, classList, setFeedback, password) => {
 	const classNames = classList.map((item) => item.className);
-	if (classNames.includes(data)) return setIsSame(true);
-	else addClass(data);
+
+	// check if there's a class with the same name
+	if (classNames.includes(className)) return setFeedback("Kelas Sudah Ada!");
+	else {
+		addClass(className, password);
+		return setFeedback("Kelas Berhasil Ditambahkan");
+	}
 };
 
 export default useAddClass;
