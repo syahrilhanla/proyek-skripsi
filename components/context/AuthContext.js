@@ -89,6 +89,7 @@ const AuthProvider = ({ children }) => {
 				loading,
 				isAdmin,
 				classList,
+				setClassList,
 				login,
 				signOut,
 			}}
