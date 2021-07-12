@@ -23,12 +23,6 @@ const MainLayout = ({ Child1, Child2, title, questionData, instruction }) => {
 
 	const { isAdmin } = useAuth();
 
-	const SubmitButton = () => {
-		return (
-			<button className={layoutStyles.answerButton}>Submit Answers</button>
-		);
-	};
-
 	const DisplayBottomProgress = () => {
 		if (parentPath !== "admin" && parentPath !== "evaluasi")
 			return (
@@ -76,8 +70,6 @@ const MainLayout = ({ Child1, Child2, title, questionData, instruction }) => {
 							setUpdateProgress={setUpdateProgress}
 							updateProgress={updateProgress}
 						/>
-					) : parentPath === "evaluasi" ? (
-						<SubmitButton />
 					) : null}
 				</div>
 			</div>

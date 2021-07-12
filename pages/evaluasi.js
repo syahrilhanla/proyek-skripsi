@@ -31,7 +31,6 @@ const evaluation = () => {
 			} else return null;
 		};
 
-		console.log("rendering evalution");
 		return (
 			<div style={{ margin: "auto 0px" }}>
 				{displayDataDynamically(currentQuestion)}

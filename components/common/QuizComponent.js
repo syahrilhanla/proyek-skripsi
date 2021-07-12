@@ -1,5 +1,11 @@
 import React, { useState } from "react";
+
 import quizStyle from "@/styles/QuizStyle.module.css";
+import layoutStyles from "@/styles/MainLayout.module.css";
+
+const SubmitButton = () => {
+	return <button className={layoutStyles.answerButton}>Submit Answers</button>;
+};
 
 const QuizComponent = ({ questionData, DisplayData }) => {
 	const [quizScore, setQuizScore] = useState(0);
@@ -74,7 +80,7 @@ const QuizComponent = ({ questionData, DisplayData }) => {
 							{questionData[currentQuestion].answerChoices.map(
 								(answer, index) => (
 									<button
-										key={index}
+										key={answer.id}
 										onClick={() => checkAnswer(answer.isCorrect)}
 										className={quizStyle.answerButton}
 									>
@@ -87,6 +93,7 @@ const QuizComponent = ({ questionData, DisplayData }) => {
 				)}
 				{isFinished && <DisplayScore quizScore={quizScore} />}
 			</div>
+			<SubmitButton />
 		</div>
 	);
 };
