@@ -22,7 +22,7 @@ const ClassDropDown = ({ setShowClass, setSelectedClass }) => {
 					{...register("className", { required: true })}
 					className={selectStyle.select}
 				>
-					<option value='Pilih Kelas' selected>
+					<option value='Pilih Kelas' defaultValue>
 						Pilih Kelas
 					</option>
 					{classList.map((item) => {
