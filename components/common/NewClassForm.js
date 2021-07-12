@@ -18,6 +18,9 @@ const NewClassForm = ({ setOpen }) => {
 	const onSubmit = (data) => {
 		// console.log(data);
 		useAddClass(data.className, classList, setFeedback, data.password);
+		setTimeout(() => {
+			setFeedback("");
+		}, 3000);
 	};
 
 	if (feedback === "Kelas Berhasil Ditambahkan") {
@@ -51,14 +54,15 @@ const NewClassForm = ({ setOpen }) => {
 									? formStyle.errorMsg
 									: formStyle.successMsg
 							}
-							style={{ marginBottom: "-0.4rem" }}
 						>
 							{feedback}
 						</p>
-						<p className={formStyle.errorMsg}>
-							Silahkan cek di menu <i>dropdown</i>
-						</p>
 					</>
+				)}
+				{feedback === "Kelas Sudah Ada!" && (
+					<p className={formStyle.errorMsg}>
+						Silahkan cek di menu <i>dropdown</i>
+					</p>
 				)}
 				<input type='submit' className={formStyle.submitButton} />
 			</form>

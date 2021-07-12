@@ -11,6 +11,9 @@ const AddClassModal = ({ setNewClass, newClass }) => {
 		setOpen(false);
 		setNewClass(false);
 	};
+
+	if (open === false) setNewClass(false);
+
 	return (
 		<Modal open={open} onClose={handleClose} className={classes.modal}>
 			<div className={classes.paper}>
