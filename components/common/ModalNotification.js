@@ -2,7 +2,7 @@ import { useState } from "react";
 import Modal from "@material-ui/core/Modal";
 import modalStyles from "@/components/data/modalStyles";
 
-const Notification = ({ isActive, setIsActive }) => {
+const ModalNotification = ({ isActive, setIsActive }) => {
 	const classes = modalStyles();
 	const [open, setOpen] = useState(!isActive);
 
@@ -22,4 +22,4 @@ const Notification = ({ isActive, setIsActive }) => {
 	);
 };
 
-export default Notification;
+export default ModalNotification;

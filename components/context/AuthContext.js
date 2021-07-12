@@ -12,7 +12,10 @@ import { useRouter } from "next/router";
 
 import useFireStore from "@/components/utils/useFireStore";
 import useCheckAdmin from "@/components/utils/useCheckAdmin";
-import { getClassList } from "@/components/utils/userFirestoreSavings";
+import {
+	getClassList,
+	getUserFirestore,
+} from "@/components/utils/userFirestoreSavings";
 
 export const AuthContext = createContext();
 
@@ -23,6 +26,7 @@ export const useAuth = () => {
 const AuthProvider = ({ children }) => {
 	const [currentUser, setCurrentUser] = useState(null);
 	const [localUserData, setLocalUserData] = useState(null);
+	const [userInfo, setUserInfo] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [userProgress, setUserProgress] = useState(null);
 	const [isAdmin, setIsAdmin] = useState(false);
@@ -55,6 +59,7 @@ const AuthProvider = ({ children }) => {
 			setUser(user).then(() => {
 				try {
 					setLocalStorage(user).then(() => {
+						getUserFirestore(user).then((userData) => setUserInfo(userData));
 						// get local user from localStorage after login and set to localStorage
 						getLocalUser().then((data) => {
 							setLocalUserData(data);
@@ -68,6 +73,7 @@ const AuthProvider = ({ children }) => {
 					console.log(`failed to set user: ${error}`);
 				}
 			});
+			return () => null;
 		});
 
 		return unSub;
@@ -77,6 +83,7 @@ const AuthProvider = ({ children }) => {
 		<AuthContext.Provider
 			value={{
 				currentUser,
+				userInfo,
 				localUserData,
 				userProgress,
 				loading,

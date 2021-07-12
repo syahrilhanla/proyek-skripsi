@@ -1,17 +1,30 @@
 import { useState, useEffect } from "react";
 import { getAllUserProgress } from "@/components/utils/userFirestoreSavings";
+import UserCard from "@/components/common/UserCard";
 
-const DisplayUsers = () => {
+const DisplayUsers = ({ selectedClass }) => {
 	const [data, setData] = useState([]);
 
-	useEffect(() => getAllUserProgress().then((data) => setData(data)), []);
+	useEffect(() => {
+		let unmount = false;
+		if (!unmount) getAllUserProgress().then((data) => setData(data));
+		return () => (unmount = true);
+	}, [selectedClass]);
 
-	console.log(data);
+	const filteredUsers = (selectedClass) => {
+		return data.filter((item) => {
+			return item.className === selectedClass;
+		});
+	};
+
 	return (
 		<div>
-			{data.map((item) => {
-				return <p key={item.displayName}>{item.displayName}</p>;
-			})}
+			{selectedClass !== "Pilih Kelas" && (
+				<h2 style={{ fontWeight: 400 }}>Kelas {selectedClass}</h2>
+			)}
+			{filteredUsers(selectedClass).map((userData) => (
+				<UserCard userData={userData} key={userData.uid} />
+			))}
 		</div>
 	);
 };

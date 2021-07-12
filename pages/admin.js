@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useAuth } from "@/components/context/AuthContext";
 
 import MainLayout from "@/components/common/MainLayout";
@@ -15,6 +15,7 @@ const admin = () => {
 
 	const [newClass, setNewClass] = useState(false);
 	const [showClass, setShowClass] = useState(false);
+	const [selectedClass, setSelectedClass] = useState("");
 
 	const AdminBody = () => (
 		<div className={adminStyle.mother}>
@@ -24,14 +25,17 @@ const admin = () => {
 			<div className={adminStyle.classMenu}>
 				<span className={adminStyle.pickClass}>
 					<h2>Pilih Kelas</h2>
-					<ClassDropDown setShowClass={setShowClass} />
+					<ClassDropDown
+						setShowClass={setShowClass}
+						setSelectedClass={setSelectedClass}
+					/>
 				</span>
 				<span className={adminStyle.addClass}>
 					<AddClassButton setNewClass={setNewClass} />
 				</span>
 			</div>
 
-			{showClass && <DisplayUsers />}
+			{showClass && <DisplayUsers selectedClass={selectedClass} />}
 		</div>
 	);
 

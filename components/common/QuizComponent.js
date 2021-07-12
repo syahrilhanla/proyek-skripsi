@@ -1,32 +1,26 @@
 import React, { useState } from "react";
+import SubmitButton from "@/components/common/SubmitButton";
+
 import quizStyle from "@/styles/QuizStyle.module.css";
+import MultipleChoices from "@/components/common/MultipleChoices";
+import useGetCurrentPage from "@/components/utils/useGetCurrentPage";
 
 const QuizComponent = ({ questionData, DisplayData }) => {
 	const [quizScore, setQuizScore] = useState(0);
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [isFinished, setIsFinished] = useState(false);
 
-	const optionDisplay = (index) => {
-		if (index === 0) {
-			return "a";
-		} else if (index === 1) {
-			return "b";
-		} else if (index === 2) {
-			return "c";
-		} else if (index === 3) {
-			return "d";
-		}
-	};
+	const { parentPath } = useGetCurrentPage();
 
 	const DisplayScore = ({ quizScore }) => {
-		const displayText = () => {
+		const DisplayFinish = () => {
 			if (quizScore < questionData.length / quizScore)
 				return <h3>Kamu sebaiknya mengulang kembali materi sebelumnya</h3>;
 			else
 				return (
 					<div>
 						<h3>Kamu bisa lanjut ke materi berikutnya!</h3>
-						<button className={quizStyle.answerButton}>
+						<button className={quizStyle.answerButton} key={quizScore}>
 							Materi Berikutnya
 						</button>
 					</div>
@@ -35,22 +29,12 @@ const QuizComponent = ({ questionData, DisplayData }) => {
 		return (
 			<div style={{ margin: "auto", textAlign: "center" }}>
 				<h3>
-					Skor yang kamu peroleh adalah {quizScore * 10} dari{" "}
+					Skor yang kamu peroleh adalah {quizScore} dari{" "}
 					{questionData.length * 10}!
 				</h3>
-				{displayText()}
+				{<DisplayFinish />}
 			</div>
 		);
-	};
-
-	const checkAnswer = (isCorrect) => {
-		if (isCorrect === true) {
-			setQuizScore((prevState) => prevState + 1);
-		}
-
-		if (!(currentQuestion < questionData.length - 1)) {
-			setIsFinished(true);
-		} else setCurrentQuestion((prevState) => prevState + 1);
 	};
 
 	return (
@@ -59,34 +43,17 @@ const QuizComponent = ({ questionData, DisplayData }) => {
 
 			<div key={currentQuestion} className={quizStyle.questionDisplay}>
 				{!isFinished && (
-					<>
-						<div className={quizStyle.question}>
-							<h3>
-								Soal{" "}
-								<b>
-									<i>{currentQuestion + 1}</i>
-								</b>{" "}
-								/ {questionData.length}
-							</h3>
-							<p>{questionData[currentQuestion].questionText}</p>
-						</div>
-						<div className={quizStyle.answers}>
-							{questionData[currentQuestion].answerChoices.map(
-								(answer, index) => (
-									<button
-										key={index}
-										onClick={() => checkAnswer(answer.isCorrect)}
-										className={quizStyle.answerButton}
-									>
-										{optionDisplay(index)}. {answer.answerText}
-									</button>
-								)
-							)}
-						</div>
-					</>
+					<MultipleChoices
+						questionData={questionData}
+						setQuizScore={setQuizScore}
+						setCurrentQuestion={setCurrentQuestion}
+						setIsFinished={setIsFinished}
+						currentQuestion={currentQuestion}
+					/>
 				)}
 				{isFinished && <DisplayScore quizScore={quizScore} />}
 			</div>
+			{parentPath === "evaluasi" && <SubmitButton quizScore={quizScore} />}
 		</div>
 	);
 };

@@ -18,9 +18,15 @@ const useMainLayoutProgress = () => {
 	useCheckActivity(setIsActive, { timeToIdle: 120000 });
 
 	useEffect(() => {
-		useGetCurrentChapterProgress(router).then((data) =>
-			setPageProgress(getScore(data))
-		);
+		let unmount = false;
+		if (!unmount)
+			useGetCurrentChapterProgress(router).then((data) =>
+				setPageProgress(getScore(data))
+			);
+
+		() => {
+			unmount = true;
+		};
 	}, [updateProgress]);
 
 	return {

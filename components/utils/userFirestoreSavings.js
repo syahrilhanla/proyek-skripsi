@@ -35,7 +35,6 @@ export const getClassList = async () => {
 	const classList = (await firestore.collection("classNames").get()).docs.map(
 		(doc) => doc.data()
 	);
-	console.log(classList);
 	return classList;
 };
 
@@ -139,10 +138,20 @@ export const addUser = async (localUser) => {
 			displayName: localUser.displayName,
 			photoURL: localUser.photoURL,
 			email: localUser.email,
+			uid: localUser.uid,
+			className: "Belum Masuk Kelas",
+			score: 0,
 		};
 
 		// setting them to firestore so it can be used in data display
 		const addData = docRef.doc(localUser.uid);
 		await addData.set(userData);
+	} else return;
+};
+
+export const submitTestScore = (localUser, score) => {
+	if (score) {
+		const userData = { score: score };
+		docRef.doc(localUser).update(userData);
 	} else return;
 };
