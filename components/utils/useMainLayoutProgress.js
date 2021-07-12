@@ -24,7 +24,9 @@ const useMainLayoutProgress = () => {
 				setPageProgress(getScore(data))
 			);
 
-		() => (unmount = true);
+		() => {
+			unmount = true;
+		};
 	}, [updateProgress]);
 
 	return {
