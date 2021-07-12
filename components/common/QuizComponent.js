@@ -3,11 +3,14 @@ import SubmitButton from "@/components/common/SubmitButton";
 
 import quizStyle from "@/styles/QuizStyle.module.css";
 import MultipleChoices from "@/components/common/MultipleChoices";
+import useGetCurrentPage from "@/components/utils/useGetCurrentPage";
 
 const QuizComponent = ({ questionData, DisplayData }) => {
 	const [quizScore, setQuizScore] = useState(0);
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [isFinished, setIsFinished] = useState(false);
+
+	const { parentPath } = useGetCurrentPage();
 
 	const DisplayScore = ({ quizScore }) => {
 		const DisplayFinish = () => {
@@ -50,7 +53,7 @@ const QuizComponent = ({ questionData, DisplayData }) => {
 				)}
 				{isFinished && <DisplayScore quizScore={quizScore} />}
 			</div>
-			<SubmitButton quizScore={quizScore} />
+			{parentPath === "evaluasi" && <SubmitButton quizScore={quizScore} />}
 		</div>
 	);
 };
