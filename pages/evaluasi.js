@@ -4,14 +4,9 @@ import { questionData } from "@/components/data/quiz1Data";
 import TableOne from "@/components/graphsAndTables/TableOne";
 import TableTwo from "@/components/graphsAndTables/TableTwo";
 import Caption from "@/components/common/Caption";
-import BorderLinearProgress from "@/components/common/BorderLinearProgress";
-import DisplayCountDown from "@/components/common/DisplayCountDown";
-
-import useTimerPercentage from "@/components/utils/useTimerPercentage";
+import EvaluationCountDown from "@/components/common/EvaluationCountDown";
 
 const evaluation = () => {
-	const { percentage } = useTimerPercentage();
-
 	// needed to display data on QuizComponent
 	// takes number as argument from questionData array being set in QuizComponent
 	const DisplayData = ({ currentQuestion }) => {
@@ -36,6 +31,7 @@ const evaluation = () => {
 			} else return null;
 		};
 
+		console.log("rendering evalution");
 		return (
 			<div style={{ margin: "auto 0px" }}>
 				{displayDataDynamically(currentQuestion)}
@@ -51,10 +47,8 @@ const evaluation = () => {
 		<>
 			<MainLayout Child1={DisplayQuiz} />{" "}
 			<span style={{ alignSelf: "center" }}>
-				<DisplayCountDown timeSet={600} />
-				<BorderLinearProgress value={percentage} />
+				<EvaluationCountDown />
 			</span>
-			;
 		</>
 	);
 };

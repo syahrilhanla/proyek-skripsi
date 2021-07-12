@@ -1,5 +1,4 @@
 import { useTimer } from "react-timer-hook";
-import useCountDown from "react-countdown-hook";
 
 const CountingDown = ({ expiryTimestamp }) => {
 	const { seconds, minutes } = useTimer({
