@@ -4,9 +4,11 @@ import BottomProgress from "@/components/common/BottomProgress";
 import layoutStyles from "@/styles/MainLayout.module.css";
 import QuestionBox from "@/components/common/QuestionBox";
 
-import Notification from "@/components/common/Notification";
+import ModalNotification from "@/components/common/ModalNotification";
 import useMainLayoutProgress from "@/components/utils/useMainLayoutProgress";
 import useGetCurrentPage from "@/components/utils/useGetCurrentPage";
+
+import { useAuth } from "@/components/context/AuthContext";
 
 const MainLayout = ({ Child1, Child2, title, questionData, instruction }) => {
 	const {
@@ -19,11 +21,7 @@ const MainLayout = ({ Child1, Child2, title, questionData, instruction }) => {
 
 	const { parentPath } = useGetCurrentPage();
 
-	const SubmitButton = () => {
-		return (
-			<button className={layoutStyles.answerButton}>Submit Answers</button>
-		);
-	};
+	const { isAdmin } = useAuth();
 
 	const DisplayBottomProgress = () => {
 		if (parentPath !== "admin" && parentPath !== "evaluasi")
@@ -34,11 +32,16 @@ const MainLayout = ({ Child1, Child2, title, questionData, instruction }) => {
 			);
 	};
 
+	const checkIsAdmin = () => {
+		if (isAdmin === true) return false;
+		else if (isActive === false) return true;
+	};
+
 	return (
 		<>
 			{/* Show popup modal if user is inactive for certain amount of time or user goes idle*/}
-			{isActive === false ? (
-				<Notification isActive={isActive} setIsActive={setIsActive} />
+			{checkIsAdmin() ? (
+				<ModalNotification isActive={isActive} setIsActive={setIsActive} />
 			) : null}
 			<div className={layoutStyles.wrapper}>
 				<Navbar />
@@ -67,8 +70,6 @@ const MainLayout = ({ Child1, Child2, title, questionData, instruction }) => {
 							setUpdateProgress={setUpdateProgress}
 							updateProgress={updateProgress}
 						/>
-					) : parentPath === "evaluasi" ? (
-						<SubmitButton />
 					) : null}
 				</div>
 			</div>

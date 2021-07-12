@@ -1,5 +1,4 @@
 import { useTimer } from "react-timer-hook";
-import useCountDown from "react-countdown-hook";
 
 const CountingDown = ({ expiryTimestamp }) => {
 	const { seconds, minutes } = useTimer({
@@ -8,7 +7,7 @@ const CountingDown = ({ expiryTimestamp }) => {
 	});
 
 	return (
-		<div style={{ margin: "0px auto" }}>
+		<div style={{ margin: "0px auto", width: "100%", textAlign: "center" }}>
 			<h2>
 				Waktu Tersisa:{" "}
 				<span>
@@ -25,9 +24,9 @@ const CountingDown = ({ expiryTimestamp }) => {
 	);
 };
 
-const DisplayCountDown = () => {
+const DisplayCountDown = ({ timeSet }) => {
 	const time = new Date();
-	time.setSeconds(time.getSeconds() + 600); // 10 minutes timer
+	time.setSeconds(time.getSeconds() + timeSet); // 600 to 10 minutes
 
 	return <CountingDown expiryTimestamp={time} />;
 };

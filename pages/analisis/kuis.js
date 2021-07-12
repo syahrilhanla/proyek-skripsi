@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import MainLayout from "@/components/common/MainLayout";
 import QuizComponent from "@/components/common/QuizComponent";
 import { questionData } from "@/components/data/quiz1Data";

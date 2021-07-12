@@ -23,7 +23,7 @@ export default function Navbar() {
 	const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 	const [open, setOpen] = React.useState(false);
 
-	const { signOut, localUserData } = useAuth();
+	const { signOut, localUserData, isAdmin } = useAuth();
 
 	const handleDrawerOpen = () => {
 		setOpen(true);
@@ -73,7 +73,7 @@ export default function Navbar() {
 					aria-haspopup='true'
 					color='inherit'
 				>
-					<Link href={"/dashboard"}>
+					<Link href={isAdmin ? "/admin" : "/dashboard"}>
 						<Avatar
 							alt={localUserData && localUserData.displayName}
 							src={localUserData && localUserData.photoURL}
@@ -126,7 +126,7 @@ export default function Navbar() {
 								onClick={handleProfileMenuOpen}
 								color='inherit'
 							>
-								<Link href={"/dashboard"}>
+								<Link href={isAdmin ? "/admin" : "/dashboard"}>
 									<Avatar
 										alt={localUserData && localUserData.displayName}
 										src={localUserData && localUserData.photoURL}

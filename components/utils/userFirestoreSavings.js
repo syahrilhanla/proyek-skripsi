@@ -5,6 +5,8 @@ import { dataExtractor } from "@/components/utils/dataProcessors";
 // ROOT DOCUMENTS REFERENCE
 const docRef = firestore.collection("users");
 
+// ================================== USED BY ALL ==============================================
+
 // used in createUserProgress
 // UID from localStorage credential, initialData currently from createUserProgress below
 const createDocRefs = (uid, initialData) => {
@@ -28,6 +30,29 @@ const createDocRefs = (uid, initialData) => {
 		console.log(`failed to create init refs: ${error}`);
 	}
 };
+
+export const getClassList = async () => {
+	const classList = (await firestore.collection("classNames").get()).docs.map(
+		(doc) => doc.data()
+	);
+	return classList;
+};
+
+// ================================== USED BY ADMIN ==============================================
+export const getAllUserProgress = async () => {
+	const usersData = (await docRef.get()).docs.map((doc) => doc.data());
+	return usersData;
+};
+
+export const addClass = async (className) => {
+	if (className) {
+		firestore.collection("classNames").doc(className).set({
+			className: className,
+		});
+	} else return;
+};
+
+// ================================== USED BY USERS ==============================================
 
 // fired when there is no user checked in the initial loading
 export const createUserProgress = async (localUser) => {
@@ -113,10 +138,20 @@ export const addUser = async (localUser) => {
 			displayName: localUser.displayName,
 			photoURL: localUser.photoURL,
 			email: localUser.email,
+			uid: localUser.uid,
+			className: "Belum Masuk Kelas",
+			score: 0,
 		};
 
 		// setting them to firestore so it can be used in data display
 		const addData = docRef.doc(localUser.uid);
 		await addData.set(userData);
+	} else return;
+};
+
+export const submitTestScore = (localUser, score) => {
+	if (score) {
+		const userData = { score: score };
+		docRef.doc(localUser).update(userData);
 	} else return;
 };

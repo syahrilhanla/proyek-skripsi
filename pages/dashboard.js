@@ -8,15 +8,25 @@ import progressStyles from "@/styles/Progress.module.css";
 import dashboardStyles from "@/styles/Dashboard.module.css";
 
 import useProgressValues from "@/components/utils/useProgressValues";
+import { useAuth } from "@/components/context/AuthContext";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 const dashboard = () => {
 	const progressValues = useProgressValues();
+	const { isAdmin } = useAuth();
+	const router = useRouter();
+
+	// If the user is an admin, it will redirect from dashboard page to admin page
+	useEffect(() => {
+		if (isAdmin) return () => router.push("/admin");
+	}, []);
 
 	return (
 		<>
-			{progressValues.localUserData && progressValues.pageReady === true && (
-				<DisplayDashboard />
-			)}
+			{isAdmin === false &&
+				progressValues.userInfo &&
+				progressValues.pageReady === true && <DisplayDashboard />}
 		</>
 	);
 
@@ -25,7 +35,8 @@ const dashboard = () => {
 			<div className={progressStyles.mainProgress}>
 				<Navbar />
 				<DashboardContent
-					displayName={progressValues.localUserData.displayName}
+					displayInfo={progressValues.userInfo}
+					acts={progressValues.displayOverallProgress()}
 				/>
 				<UserProgress progressValues={progressValues.setProgressValues()} />
 				<Footer />
@@ -35,10 +46,6 @@ const dashboard = () => {
 };
 
 function UserProgress({ progressValues }) {
-	console.log(
-		progressValues.chapter1Percentage.percentage,
-		progressValues.chapter1Percentage.score
-	);
 	return (
 		<section className={progressStyles.progressSection}>
 			<div className={progressStyles.container}>
@@ -63,7 +70,7 @@ function UserProgress({ progressValues }) {
 	);
 }
 
-function DashboardContent({ displayName }) {
+function DashboardContent({ displayInfo, acts }) {
 	return (
 		<section className={dashboardStyles.dashboard}>
 			<div className={dashboardStyles.profile}>
@@ -71,14 +78,17 @@ function DashboardContent({ displayName }) {
 				<div className={dashboardStyles.container}>
 					<div className={dashboardStyles.progress}>
 						<div className={dashboardStyles.progressBar}>
-							<CircularProgressWithLabel value={70} />
+							<CircularProgressWithLabel value={acts.overallPercentage} />
 						</div>
 						<div>
-							<h3>21/30 Kegiatan Tuntas</h3>
+							<h3>{acts.overallText}</h3>
 						</div>
 					</div>
-					<div className={dashboardStyles.profileName}>
-						<h2>{displayName}</h2>
+					<div className={dashboardStyles.infoContainer}>
+						<div className={dashboardStyles.profileName}>
+							<h1>{displayInfo.displayName}</h1>
+							<p>{displayInfo.className}</p>
+						</div>
 					</div>
 				</div>
 			</div>

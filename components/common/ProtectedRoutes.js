@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 
 const ProtectedRoutes = ({ children }) => {
 	const router = useRouter();
-	const { localUserData } = useAuth();
+	const { localUserData, isAdmin } = useAuth();
 
 	const publicLinks = ["/tentang"];
 	const currentLink = router.pathname;
@@ -15,6 +15,9 @@ const ProtectedRoutes = ({ children }) => {
 	useEffect(() => {
 		if (!localUserData && currentLink.includes(publicLinks)) {
 			// do nothing if theres no localUser and the route is public
+		} else if (localUserData && currentLink === "/" && isAdmin) {
+			// redirect to dashboard if user goes to home when there's localUser
+			router.push("/admin");
 		} else if (localUserData && currentLink === "/") {
 			// redirect to dashboard if user goes to home when there's localUser
 			router.push("/dashboard");
