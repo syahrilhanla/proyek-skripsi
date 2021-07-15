@@ -91,7 +91,8 @@ function DashboardContent({ displayInfo, acts, setNewClass }) {
 					<div className={dashboardStyles.infoContainer}>
 						<div className={dashboardStyles.profileName}>
 							<h1>{displayInfo.displayName}</h1>
-							{displayInfo.className === "Belum Masuk Kelas" ? (
+							{displayInfo.className === "Belum Masuk Kelas" ||
+							displayInfo.className === undefined ? (
 								<p
 									onClick={() => setNewClass(true)}
 									style={{ cursor: "pointer" }}
