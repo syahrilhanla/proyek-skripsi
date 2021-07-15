@@ -6,10 +6,13 @@ const DisplayUsers = ({ selectedClass }) => {
 	const [data, setData] = useState([]);
 
 	useEffect(() => {
-		let unmount = false;
-		if (!unmount) getAllUserProgress().then((data) => setData(data));
-		return () => (unmount = true);
-	}, [selectedClass]);
+		let isMounted = true;
+		getAllUserProgress().then((data) => {
+			if (isMounted) setData(data);
+		});
+
+		return () => (isMounted = false);
+	}, []);
 
 	const filteredUsers = (selectedClass) => {
 		return data.filter((item) => {

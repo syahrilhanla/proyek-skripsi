@@ -11,7 +11,7 @@ import DisplayUsers from "@/components/common/DisplayUsers";
 import adminStyle from "@/styles/Admin.module.css";
 
 const admin = () => {
-	const { isAdmin } = useAuth();
+	const { isAdmin, setClassList } = useAuth();
 
 	const [newClass, setNewClass] = useState(false);
 	const [showClass, setShowClass] = useState(false);
@@ -20,7 +20,9 @@ const admin = () => {
 	const AdminBody = () => (
 		<div className={adminStyle.mother}>
 			{/* shows modal with form to add new class */}
-			{newClass && <AddClassModal setNewClass={setNewClass} />}
+			{newClass && (
+				<AddClassModal setNewClass={setNewClass} setClassList={setClassList} />
+			)}
 
 			<div className={adminStyle.classMenu}>
 				<span className={adminStyle.pickClass}>

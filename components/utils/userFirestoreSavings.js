@@ -44,10 +44,11 @@ export const getAllUserProgress = async () => {
 	return usersData;
 };
 
-export const addClass = async (className) => {
-	if (className) {
+export const addClass = async (className, password) => {
+	if (className && password) {
 		firestore.collection("classNames").doc(className).set({
 			className: className,
+			password: password,
 		});
 	} else return;
 };

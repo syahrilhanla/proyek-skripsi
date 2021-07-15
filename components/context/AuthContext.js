@@ -59,11 +59,16 @@ const AuthProvider = ({ children }) => {
 			setUser(user).then(() => {
 				try {
 					setLocalStorage(user).then(() => {
-						getUserFirestore(user).then((userData) => setUserInfo(userData));
+						// getUserFirestore(user).then((userData) => setUserInfo(userData));
 						// get local user from localStorage after login and set to localStorage
 						getLocalUser().then((data) => {
 							setLocalUserData(data);
 							setUserProgress(useFireStore(data));
+
+							getUserFirestore(data).then((userData) => {
+								if (userData === undefined) setUserInfo(data);
+								else setUserInfo(userData);
+							});
 							setIsAdmin(useCheckAdmin(data));
 							getClassList().then((data) => setClassList(data));
 							setLoading(false);
@@ -89,6 +94,7 @@ const AuthProvider = ({ children }) => {
 				loading,
 				isAdmin,
 				classList,
+				setClassList,
 				login,
 				signOut,
 			}}
