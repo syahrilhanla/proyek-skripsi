@@ -10,7 +10,6 @@ const UserDetailModal = ({ openModal, setOpenModal }) => {
 		setOpen(false);
 		setOpenModal(false);
 	};
-	console.log("opening modal");
 
 	return (
 		<Modal open={open} onClose={handleClose} className={classes.modal}>
