@@ -1,5 +1,5 @@
 export default async function useCountAllActs(userData) {
-	const data = await userData;
+	const data = userData;
 
 	let overallDone = 0;
 	let overallHaveNotDone = 0;
