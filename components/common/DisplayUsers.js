@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { getAllUserProgress } from "@/components/utils/userFirestoreSavings";
+import UserDetailModal from "@/components/common/UserDetailModal";
 import UserCard from "@/components/common/UserCard";
 
 const DisplayUsers = ({ selectedClass }) => {
 	const [data, setData] = useState([]);
+	const [openModal, setOpenModal] = useState(false);
 
 	useEffect(() => {
 		let isMounted = true;
@@ -26,8 +28,14 @@ const DisplayUsers = ({ selectedClass }) => {
 				<h2 style={{ fontWeight: 400 }}>Kelas {selectedClass}</h2>
 			)}
 			{filteredUsers(selectedClass).map((userData) => (
-				<UserCard userData={userData} key={userData.uid} />
+				<UserCard
+					userData={userData}
+					key={userData.uid}
+					openModal={openModal}
+					setOpenModal={setOpenModal}
+				/>
 			))}
+			{openModal && <UserDetailModal setOpenModal={setOpenModal} />}
 		</div>
 	);
 };

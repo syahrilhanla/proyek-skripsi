@@ -6,7 +6,7 @@ import useCountAllActs from "@/components/utils/useCountAllActs";
 
 import userCardStyles from "@/styles/UserCard.module.css";
 
-const UserCard = ({ userData }) => {
+const UserCard = ({ userData, setOpenModal }) => {
 	const [percentageValue, setPercentageValue] = useState(0);
 	useCountAllActs(getUserProgress(userData)).then((data) =>
 		setPercentageValue(data)
@@ -16,7 +16,7 @@ const UserCard = ({ userData }) => {
 		<>
 			<div
 				className={userCardStyles.parentDiv}
-				onClick={() => console.log("open details")}
+				onClick={() => setOpenModal(true)}
 			>
 				<span className={userCardStyles.avatar}>
 					<Avatar alt={userData.displayName} src={userData.photoURL} />
