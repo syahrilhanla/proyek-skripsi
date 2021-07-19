@@ -45,7 +45,7 @@ const admin = () => {
 		<>
 			{isAdmin ? (
 				<>
-					<MainLayout Child1={AdminBody} title={"Menganalisis Data"} />
+					<MainLayout Child1={AdminBody} title={""} />
 				</>
 			) : (
 				<NotAdmin />

@@ -64,7 +64,8 @@ const AuthProvider = ({ children }) => {
 						getLocalUser().then((data) => {
 							setLocalUserData(data);
 							setUserProgress(useFireStore(data));
-
+							// if new user, then set userInfo with local data
+							// if not, set userInfo with firebase data
 							getUserFirestore(data).then((userData) => {
 								if (userData === undefined) setUserInfo(data);
 								else setUserInfo(userData);

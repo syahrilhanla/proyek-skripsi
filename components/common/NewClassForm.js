@@ -64,6 +64,11 @@ const NewClassForm = ({ setOpen }) => {
 						Silahkan cek di menu <i>dropdown</i>
 					</p>
 				)}
+				<input
+					type='checkbox'
+					placeholder='checkbox'
+					{...register("checkbox", {})}
+				/>
 				<input type='submit' className={formStyle.submitButton} />
 			</form>
 		</div>
