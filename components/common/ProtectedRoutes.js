@@ -16,7 +16,10 @@ const ProtectedRoutes = ({ children }) => {
 		if (!localUserData && currentLink.includes(publicLinks)) {
 			// do nothing if theres no localUser and the route is public
 		} else if (localUserData && currentLink === "/" && isAdmin) {
-			// redirect to dashboard if user goes to home when there's localUser
+			// redirect to admin page if user goes to home when user logs in as admin
+			router.push("/admin");
+		} else if (localUserData && currentLink === "/dashboard" && isAdmin) {
+			// redirect to admin page if user goes to dashboard when user logs in as admin
 			router.push("/admin");
 		} else if (localUserData && currentLink === "/") {
 			// redirect to dashboard if user goes to home when there's localUser
