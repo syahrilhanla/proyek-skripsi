@@ -23,9 +23,8 @@ const UserDetailModal = ({
 		setOpenModal(false);
 	};
 
-	const { chapterNames, pageDetails } = useExtractToDisplay(individualProgress);
-
-	console.log({ chapterNames, pageDetails });
+	const { chapterNames, chapter1Details, chapter2Details, chapter3Details } =
+		useExtractToDisplay(individualProgress);
 
 	return (
 		<Modal open={open} onClose={handleClose} className={classes.modal}>
@@ -40,13 +39,9 @@ const UserDetailModal = ({
 						<h4>{userData.className}</h4>
 					</div>
 					<div className={userCardStyles.checkboxList}>
-						{chapterNames.map((chapterName) => (
-							<h3 key={chapterName}>{chapterName}</h3>
-						))}
-						{pageDetails.map((details) => {
-							return details.map((item) =>
-								item.map((unit) => <p>{unit.name}</p>)
-							);
+						<h3>Menganalisis Data</h3>
+						{chapter1Details.map((details) => {
+							return details.map((item) => <p>{item.desc}</p>);
 						})}
 					</div>
 				</div>
