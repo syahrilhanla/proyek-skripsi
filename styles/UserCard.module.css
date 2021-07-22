@@ -50,7 +50,11 @@
 	justify-content: center;
 }
 
-.checkboxList h2 {
-	font-weight: lighter;
-	overflow: scroll;
+.checkboxList {
+	display: grid;
+	grid-template-columns: 8fr 2fr;
+}
+
+.displayData h2 {
+	text-align: center;
 }

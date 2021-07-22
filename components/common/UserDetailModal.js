@@ -38,11 +38,20 @@ const UserDetailModal = ({
 						<h4>{userData.displayName}</h4>
 						<h4>{userData.className}</h4>
 					</div>
-					<div className={userCardStyles.checkboxList}>
-						<h3>Menganalisis Data</h3>
-						{chapter1Details.map((details) => {
-							return details.map((item) => <p>{item.desc}</p>);
-						})}
+					<div className={userCardStyles.displayData}>
+						<h2>Menganalisis Data</h2>
+						<div className={userCardStyles.checkboxList}>
+							{chapter1Details.map((details) => {
+								return details.map((item) => {
+									return (
+										<>
+											<p>{item.desc}</p>
+											<input type='checkbox' value={item.act} />
+										</>
+									);
+								});
+							})}
+						</div>
 					</div>
 				</div>
 			</div>
