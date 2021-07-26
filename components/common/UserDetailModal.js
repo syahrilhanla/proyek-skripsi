@@ -6,6 +6,7 @@ import useExtractToDisplay from "@/components/utils/useExtractToDisplay";
 
 import modalStyles from "@/components/data/modalStyles";
 import userCardStyles from "@/styles/UserCard.module.css";
+import AccordionCheckbox from "./AccordionCheckbox";
 
 const UserDetailModal = ({
 	openModal,
@@ -16,17 +17,13 @@ const UserDetailModal = ({
 	const classes = modalStyles();
 	const [open, setOpen] = useState(openModal);
 
-	console.log({ openModal, userData, individualProgress });
-
 	const handleClose = () => {
 		setOpen(false);
 		setOpenModal(false);
 	};
 
-	const { chapterNames, chapter1Details, chapter2Details, chapter3Details } =
+	const { chapter1Details, chapter2Details, chapter3Details } =
 		useExtractToDisplay(individualProgress);
-
-	const randomKey = () => Math.random() * 100000;
 
 	return (
 		<Modal open={open} onClose={handleClose} className={classes.modal}>
@@ -41,29 +38,19 @@ const UserDetailModal = ({
 						<h4>{userData.className}</h4>
 					</div>
 					<div className={userCardStyles.displayData}>
-						<h2>Menganalisis Data</h2>
-						<div>
-							{chapter1Details.map((details) => {
-								return details.map((item) => {
-									return (
-										<div
-											key={randomKey()}
-											className={userCardStyles.checkboxList}
-										>
-											<p key={randomKey()}>{item.desc}</p>
-											<span>
-												<input
-													type='checkbox'
-													checked={item.act}
-													key={randomKey()}
-													readOnly={true}
-												/>
-											</span>
-										</div>
-									);
-								});
-							})}
-						</div>
+						<h2>Detail Progress</h2>
+						<AccordionCheckbox
+							chapterDetails={chapter1Details}
+							title='Bab 1: Menganalisis Data'
+						/>
+						<AccordionCheckbox
+							chapterDetails={chapter2Details}
+							title='Bab 2: Ukuran Pemusatan Data'
+						/>
+						<AccordionCheckbox
+							chapterDetails={chapter3Details}
+							title='Bab 3: Ukuran Penyebaran Data'
+						/>
 					</div>
 				</div>
 			</div>
