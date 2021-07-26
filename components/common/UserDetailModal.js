@@ -26,6 +26,8 @@ const UserDetailModal = ({
 	const { chapterNames, chapter1Details, chapter2Details, chapter3Details } =
 		useExtractToDisplay(individualProgress);
 
+	const randomKey = () => Math.random() * 100000;
+
 	return (
 		<Modal open={open} onClose={handleClose} className={classes.modal}>
 			<div className={classes.paper}>
@@ -40,14 +42,24 @@ const UserDetailModal = ({
 					</div>
 					<div className={userCardStyles.displayData}>
 						<h2>Menganalisis Data</h2>
-						<div className={userCardStyles.checkboxList}>
+						<div>
 							{chapter1Details.map((details) => {
 								return details.map((item) => {
 									return (
-										<>
-											<p>{item.desc}</p>
-											<input type='checkbox' value={item.act} />
-										</>
+										<div
+											key={randomKey()}
+											className={userCardStyles.checkboxList}
+										>
+											<p key={randomKey()}>{item.desc}</p>
+											<span>
+												<input
+													type='checkbox'
+													checked={item.act}
+													key={randomKey()}
+													readOnly={true}
+												/>
+											</span>
+										</div>
 									);
 								});
 							})}
