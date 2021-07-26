@@ -22,6 +22,11 @@ const UserCard = ({ userData }) => {
 		});
 	}, []);
 
+	const isNoUserYet = () => {
+		if (individualProgress.length === 0) return true;
+		else return false;
+	};
+
 	return (
 		<>
 			{openModal && (
@@ -35,6 +40,7 @@ const UserCard = ({ userData }) => {
 
 			<div
 				className={userCardStyles.parentDiv}
+				style={isNoUserYet() ? { pointerEvents: "none" } : null}
 				onClick={() => setOpenModal(true)}
 			>
 				<span className={userCardStyles.avatar}>
