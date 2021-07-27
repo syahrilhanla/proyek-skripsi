@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import SubmitButton from "@/components/common/SubmitButton";
 
-import quizStyle from "@/styles/QuizStyle.module.css";
+import { useProgress } from "@/components/context/ProgressContext";
 import MultipleChoices from "@/components/common/MultipleChoices";
 import useGetCurrentPage from "@/components/utils/useGetCurrentPage";
 
+import quizStyle from "@/styles/QuizStyle.module.css";
+
 const QuizComponent = ({ questionData, DisplayData }) => {
-	const [quizScore, setQuizScore] = useState(0);
+	const { quizScore, setQuizScore } = useProgress();
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [isFinished, setIsFinished] = useState(false);
 
