@@ -6,13 +6,16 @@ import { submitTestScore } from "@/components/utils/userFirestoreSavings";
 import { useAuth } from "@/components/context/AuthContext";
 import { useProgress } from "@/components/context/ProgressContext";
 
-const EvaluationCountDown = () => {
+const EvaluationCountDown = ({ setTimesUp }) => {
 	const { percentage } = useTimerPercentage();
 	const { localUserData } = useAuth();
 	const { quizScore } = useProgress;
 
 	if (localUserData) {
-		if (percentage === 0) submitTestScore(localUserData.uid, quizScore);
+		if (percentage === 0) {
+			submitTestScore(localUserData.uid, quizScore);
+			setTimesUp(true);
+		}
 	}
 
 	return (

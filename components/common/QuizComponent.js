@@ -7,7 +7,7 @@ import useGetCurrentPage from "@/components/utils/useGetCurrentPage";
 
 import quizStyle from "@/styles/QuizStyle.module.css";
 
-const QuizComponent = ({ questionData, DisplayData }) => {
+const QuizComponent = ({ questionData, DisplayData, timesUp }) => {
 	const { quizScore, setQuizScore } = useProgress();
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [isFinished, setIsFinished] = useState(false);
@@ -42,6 +42,12 @@ const QuizComponent = ({ questionData, DisplayData }) => {
 	return (
 		<div key={currentQuestion} className={quizStyle.main}>
 			{!isFinished && <DisplayData currentQuestion={currentQuestion} />}
+
+			{parentPath === "evaluasi" && timesUp && (
+				<div style={{ textAlign: "center" }}>
+					<h2>Waktu Habis</h2>
+				</div>
+			)}
 
 			<div key={currentQuestion} className={quizStyle.questionDisplay}>
 				{!isFinished && (
