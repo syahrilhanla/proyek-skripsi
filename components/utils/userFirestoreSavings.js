@@ -55,6 +55,13 @@ export const addClass = async (className, password) => {
 
 // ================================== USED BY USERS ==============================================
 
+export const joinClass = async (localUser, className) => {
+	if (className && localUser) {
+		docRef.doc(localUser).update({ className: className });
+		console.log({ localUser, className });
+	} else return;
+};
+
 // fired when there is no user checked in the initial loading
 export const createUserProgress = async (localUser) => {
 	if (localUser) {

@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useAuth } from "@/components/context/AuthContext";
 import { useForm } from "react-hook-form";
-import { useAddClass } from "@/components/utils/useAddClass";
+import { useJoinClass } from "@/components/utils/useAddClass";
 
 import formStyle from "@/styles/Form.module.css";
 
-const NewClassForm = ({ setOpen }) => {
-	const { classList } = useAuth();
+const JoinClassForm = ({ setOpen, selectedClass }) => {
+	const { classList, userInfo } = useAuth();
 	const [feedback, setFeedback] = useState("");
 
 	const {
@@ -17,27 +17,25 @@ const NewClassForm = ({ setOpen }) => {
 
 	const onSubmit = (data) => {
 		// console.log(data);
-		useAddClass(data.className, classList, setFeedback, data.password);
+		useJoinClass(
+			selectedClass,
+			classList,
+			userInfo,
+			data.password,
+			setFeedback
+		);
 		setTimeout(() => {
 			setFeedback("");
 		}, 3000);
 	};
 
-	if (feedback === "Kelas Berhasil Ditambahkan") {
+	if (feedback === "Berhasil Bergabung ke Kelas") {
 		setTimeout(() => setOpen(false), 3000);
 	}
 
 	return (
 		<div>
 			<form onSubmit={handleSubmit(onSubmit)}>
-				<label>Nama Kelas:</label>
-				<input
-					{...register("className", { required: true })}
-					className={formStyle.formInput}
-				/>
-				{errors.className?.type === "required" && (
-					<p className={formStyle.errorMsg}>Isi Nama Kelas!</p>
-				)}
 				<label>Password:</label>
 				<input
 					{...register("password", { required: true })}
@@ -46,23 +44,13 @@ const NewClassForm = ({ setOpen }) => {
 				{errors.password?.type === "required" && (
 					<p className={formStyle.errorMsg}>Isi Password!</p>
 				)}
-				{feedback !== "" && (
+				{feedback === "Berhasil Bergabung ke Kelas" && (
 					<>
-						<p
-							className={
-								feedback === "Kelas Sudah Ada!"
-									? formStyle.errorMsg
-									: formStyle.successMsg
-							}
-						>
-							{feedback}
-						</p>
+						<p className={formStyle.successMsg}>{feedback}</p>
 					</>
 				)}
-				{feedback === "Kelas Sudah Ada!" && (
-					<p className={formStyle.errorMsg}>
-						Silahkan cek di menu <i>dropdown</i>
-					</p>
+				{feedback === "Password Salah!" && (
+					<p className={formStyle.errorMsg}>Password Salah!</p>
 				)}
 				<input type='submit' className={formStyle.submitButton} />
 			</form>
@@ -70,4 +58,4 @@ const NewClassForm = ({ setOpen }) => {
 	);
 };
 
-export default NewClassForm;
+export default JoinClassForm;
