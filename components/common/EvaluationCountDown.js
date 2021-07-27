@@ -11,7 +11,9 @@ const EvaluationCountDown = () => {
 	const { localUserData } = useAuth();
 	const { quizScore } = useProgress;
 
-	if (percentage === 0) submitTestScore(localUserData.uid, quizScore);
+	if (localUserData) {
+		if (percentage === 0) submitTestScore(localUserData.uid, quizScore);
+	}
 
 	return (
 		<div>

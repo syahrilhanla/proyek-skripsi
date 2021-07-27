@@ -31,7 +31,15 @@ const AccordionCheckbox = ({ title, chapterDetails }) => {
 					<Typography className={classes.heading}>{title}</Typography>
 				</AccordionSummary>
 				<AccordionDetails>
-					<CheckboxDetails chapterDetails={chapterDetails} />
+					<div
+						style={{
+							display: "flex",
+							justifyContent: "center",
+							width: "100%",
+						}}
+					>
+						<CheckboxDetails chapterDetails={chapterDetails} />
+					</div>
 				</AccordionDetails>
 			</Accordion>
 		</div>
