@@ -30,3 +30,39 @@
 .parentDiv h3 {
 	font-weight: 400;
 }
+
+.userDetail {
+	color: #444;
+	font-weight: lighter;
+	width: 32rem;
+}
+
+.userDetail h3 {
+	text-align: center;
+}
+
+.displayName {
+	justify-content: space-between;
+	display: flex;
+}
+
+.Avatar {
+	display: flex;
+	justify-content: center;
+}
+
+.checkboxList {
+	display: grid;
+	grid-template-columns: 8fr 2fr;
+}
+
+.checkboxList span {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+
+.displayData h2 {
+	text-align: center;
+}
