@@ -39,6 +39,8 @@ const QuizComponent = ({ questionData, DisplayData, timesUp }) => {
 		);
 	};
 
+	console.log(timesUp);
+
 	return (
 		<div key={currentQuestion} className={quizStyle.main}>
 			{!isFinished && <DisplayData currentQuestion={currentQuestion} />}

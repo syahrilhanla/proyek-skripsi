@@ -23,10 +23,17 @@ const dashboard = () => {
 	// If the user is an admin, it will redirect from dashboard page to admin page
 	useEffect(() => {
 		if (isAdmin) return () => router.push("/admin");
-		else if (progressValues.userInfo) {
-			setUserClass(progressValues.userInfo.className);
-		}
 	}, []);
+
+	useEffect(() => {
+		let isMounted = true;
+		if (isMounted) {
+			if (progressValues.pageReady) {
+				setUserClass(progressValues.userInfo.className);
+			} else return;
+		}
+		() => (isMounted = false);
+	}, [progressValues]);
 
 	return (
 		<>
