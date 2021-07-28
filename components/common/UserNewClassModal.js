@@ -1,15 +1,16 @@
+import { useState, useEffect } from "react";
+
 import Modal from "@material-ui/core/Modal";
 import modalStyles from "@/components/data/modalStyles";
-import { useState, useEffect } from "react";
 import ClassDropDown from "@/components/common/ClassDropDown";
 import JoinClassForm from "@/components/common/JoinClassForm";
 
-const UserNewClassModal = ({ setNewClass, newClass }) => {
+const UserNewClassModal = ({ setNewClass, newClass, setUserClass }) => {
 	const classes = modalStyles();
 	const [open, setOpen] = useState(!newClass);
 	const [selectedClass, setSelectedClass] = useState("");
 
-	useEffect(() => console.log(selectedClass), [selectedClass]);
+	useEffect(() => setUserClass(selectedClass), [selectedClass]);
 
 	const handleClose = () => {
 		setOpen(false);

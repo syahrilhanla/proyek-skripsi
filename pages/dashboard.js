@@ -18,10 +18,14 @@ const dashboard = () => {
 	const { isAdmin } = useAuth();
 	const router = useRouter();
 	const [newClass, setNewClass] = useState(false);
+	const [userClass, setUserClass] = useState("Belum Masuk Kelas");
 
 	// If the user is an admin, it will redirect from dashboard page to admin page
 	useEffect(() => {
 		if (isAdmin) return () => router.push("/admin");
+		else if (progressValues.userInfo) {
+			setUserClass(progressValues.userInfo.className);
+		}
 	}, []);
 
 	return (
@@ -29,7 +33,12 @@ const dashboard = () => {
 			{isAdmin === false &&
 				progressValues.userInfo &&
 				progressValues.pageReady === true && <DisplayDashboard />}
-			{newClass && <UserNewClassModal setNewClass={setNewClass} />}
+			{newClass && (
+				<UserNewClassModal
+					setNewClass={setNewClass}
+					setUserClass={setUserClass}
+				/>
+			)}
 		</>
 	);
 
@@ -41,6 +50,7 @@ const dashboard = () => {
 					displayInfo={progressValues.userInfo}
 					acts={progressValues.displayOverallProgress()}
 					setNewClass={setNewClass}
+					userClass={userClass}
 				/>
 				<UserProgress progressValues={progressValues.setProgressValues()} />
 				<Footer />
@@ -74,7 +84,7 @@ function UserProgress({ progressValues }) {
 	);
 }
 
-function DashboardContent({ displayInfo, acts, setNewClass }) {
+function DashboardContent({ displayInfo, acts, setNewClass, userClass }) {
 	return (
 		<section className={dashboardStyles.dashboard}>
 			<div className={dashboardStyles.profile}>
@@ -91,8 +101,7 @@ function DashboardContent({ displayInfo, acts, setNewClass }) {
 					<div className={dashboardStyles.infoContainer}>
 						<div className={dashboardStyles.profileName}>
 							<h1>{displayInfo.displayName}</h1>
-							{displayInfo.className === "Belum Masuk Kelas" ||
-							displayInfo.className === undefined ? (
+							{userClass === "Belum Masuk Kelas" || userClass === undefined ? (
 								<p
 									onClick={() => setNewClass(true)}
 									style={{ cursor: "pointer" }}
@@ -100,7 +109,7 @@ function DashboardContent({ displayInfo, acts, setNewClass }) {
 									Klik Untuk Masuk Kelas
 								</p>
 							) : (
-								<p>{displayInfo.className}</p>
+								<p>{userClass}</p>
 							)}
 						</div>
 					</div>
