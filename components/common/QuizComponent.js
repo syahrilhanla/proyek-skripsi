@@ -41,20 +41,14 @@ const QuizComponent = ({ questionData, DisplayData }) => {
 		);
 	};
 
-	console.log(timesUp);
-
 	return (
 		<div key={currentQuestion} className={quizStyle.main}>
-			{!isFinished && <DisplayData currentQuestion={currentQuestion} />}
-
-			{parentPath === "evaluasi" && timesUp && (
-				<div style={{ textAlign: "center" }}>
-					<h2>Waktu Habis</h2>
-				</div>
-			)}
+			{!isFinished && !timesUp ? (
+				<DisplayData currentQuestion={currentQuestion} />
+			) : null}
 
 			<div key={currentQuestion} className={quizStyle.questionDisplay}>
-				{!isFinished && (
+				{!isFinished && !timesUp ? (
 					<MultipleChoices
 						questionData={questionData}
 						setQuizScore={setQuizScore}
@@ -62,10 +56,19 @@ const QuizComponent = ({ questionData, DisplayData }) => {
 						setIsFinished={setIsFinished}
 						currentQuestion={currentQuestion}
 					/>
-				)}
-				{isFinished && <DisplayScore quizScore={quizScore} />}
+				) : null}
 			</div>
-			{parentPath === "evaluasi" && <SubmitButton quizScore={quizScore} />}
+			<>
+				{parentPath === "evaluasi" && timesUp && (
+					<h2 style={{ textAlign: "center", display: "block", width: "100%" }}>
+						Waktu Habis
+					</h2>
+				)}
+				{(isFinished || timesUp) && <DisplayScore quizScore={quizScore} />}
+				{parentPath === "evaluasi" && !isFinished && !timesUp && (
+					<SubmitButton quizScore={quizScore} />
+				)}
+			</>
 			<span style={{ alignSelf: "center", width: "100%" }}>
 				<EvaluationCountDown setTimesUp={setTimesUp} />
 			</span>
