@@ -25,15 +25,16 @@ const dashboard = () => {
 		if (isAdmin) return () => router.push("/admin");
 	}, []);
 
+	// useEffect(() => {
+	// 	if (progressValues.pageReady) {
+	// 		setUserClass(progressValues.userInfo.className);
+	// 	} else return;
+	// }, [progressValues]);
+
 	useEffect(() => {
-		let isMounted = true;
-		if (isMounted) {
-			if (progressValues.pageReady) {
-				setUserClass(progressValues.userInfo.className);
-			} else return;
-		}
-		() => (isMounted = false);
-	}, [progressValues]);
+		console.log(userClass);
+		if (userClass !== "Belum Masuk Kelas") console.log("changed");
+	}, [userClass]);
 
 	return (
 		<>
@@ -108,16 +109,19 @@ function DashboardContent({ displayInfo, acts, setNewClass, userClass }) {
 					<div className={dashboardStyles.infoContainer}>
 						<div className={dashboardStyles.profileName}>
 							<h1>{displayInfo.displayName}</h1>
-							{userClass === "Belum Masuk Kelas" || userClass === undefined ? (
+							{displayInfo.className === "Belum Masuk Kelas" &&
+							userClass === "Belum Masuk Kelas" ? (
 								<p
 									onClick={() => setNewClass(true)}
 									style={{ cursor: "pointer" }}
 								>
 									Klik Untuk Masuk Kelas
 								</p>
-							) : (
+							) : displayInfo.className !== "Belum Masuk Kelas" ? (
+								<p>{displayInfo.className}</p>
+							) : userClass !== "Belum Masuk Kelas" ? (
 								<p>{userClass}</p>
-							)}
+							) : null}
 						</div>
 					</div>
 				</div>

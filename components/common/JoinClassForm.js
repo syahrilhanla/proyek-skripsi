@@ -5,7 +5,7 @@ import { useJoinClass } from "@/components/utils/useAddClass";
 
 import formStyle from "@/styles/Form.module.css";
 
-const JoinClassForm = ({ setOpen, selectedClass }) => {
+const JoinClassForm = ({ setOpen, selectedClass, setIsJoin }) => {
 	const { classList, userInfo } = useAuth();
 	const [feedback, setFeedback] = useState("");
 
@@ -30,6 +30,7 @@ const JoinClassForm = ({ setOpen, selectedClass }) => {
 	};
 
 	if (feedback === "Berhasil Bergabung ke Kelas") {
+		setIsJoin(true);
 		setTimeout(() => setOpen(false), 3000);
 	}
 

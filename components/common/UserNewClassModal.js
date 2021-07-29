@@ -8,9 +8,12 @@ import JoinClassForm from "@/components/common/JoinClassForm";
 const UserNewClassModal = ({ setNewClass, newClass, setUserClass }) => {
 	const classes = modalStyles();
 	const [open, setOpen] = useState(!newClass);
+	const [isJoin, setIsJoin] = useState(false);
 	const [selectedClass, setSelectedClass] = useState("");
 
-	useEffect(() => setUserClass(selectedClass), [selectedClass]);
+	useEffect(() => {
+		if (isJoin) setUserClass(selectedClass);
+	}, [isJoin]);
 
 	const handleClose = () => {
 		setOpen(false);
@@ -20,7 +23,11 @@ const UserNewClassModal = ({ setNewClass, newClass, setUserClass }) => {
 		<Modal open={open} onClose={handleClose} className={classes.modal}>
 			<div className={classes.paper}>
 				<ClassDropDown setSelectedClass={setSelectedClass} />
-				<JoinClassForm setOpen={setOpen} selectedClass={selectedClass} />
+				<JoinClassForm
+					setOpen={setOpen}
+					selectedClass={selectedClass}
+					setIsJoin={setIsJoin}
+				/>
 			</div>
 		</Modal>
 	);
