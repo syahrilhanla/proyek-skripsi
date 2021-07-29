@@ -1,15 +1,15 @@
 import { useState } from "react";
 
+import Navbar from "@/components/common/Navbar";
 import MainLayout from "@/components/common/MainLayout";
 import QuizComponent from "@/components/common/QuizComponent";
 import { questionData } from "@/components/data/quiz1Data";
 import TableOne from "@/components/graphsAndTables/TableOne";
 import TableTwo from "@/components/graphsAndTables/TableTwo";
 import Caption from "@/components/common/Caption";
-import EvaluationCountDown from "@/components/common/EvaluationCountDown";
 
 const evaluation = () => {
-	const [timesUp, setTimesUp] = useState(false);
+	// const [timesUp, setTimesUp] = useState(false);
 
 	// needed to display data on QuizComponent
 	// takes number as argument from questionData array being set in QuizComponent
@@ -46,16 +46,14 @@ const evaluation = () => {
 		<QuizComponent
 			questionData={questionData}
 			DisplayData={DisplayData}
-			timesUp={timesUp}
+			// timesUp={timesUp}
 		/>
 	);
 
 	return (
 		<>
-			<MainLayout Child1={DisplayQuiz} />{" "}
-			<span style={{ alignSelf: "center" }}>
-				<EvaluationCountDown setTimesUp={setTimesUp} />
-			</span>
+			<Navbar />
+			<MainLayout Child1={DisplayQuiz} />
 		</>
 	);
 };

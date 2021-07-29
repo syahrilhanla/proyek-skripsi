@@ -158,6 +158,7 @@ export const addUser = async (localUser) => {
 };
 
 export const submitTestScore = (localUser, score) => {
+	console.log(score);
 	if (score) {
 		const userData = { score: score };
 		docRef.doc(localUser).update(userData);

@@ -12,7 +12,7 @@ const EvaluationCountDown = ({ setTimesUp }) => {
 	const { quizScore } = useProgress;
 
 	if (localUserData) {
-		if (percentage === 0) {
+		if (percentage === 1) {
 			submitTestScore(localUserData.uid, quizScore);
 			setTimesUp(true);
 		}
