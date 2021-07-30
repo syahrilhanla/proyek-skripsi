@@ -7,6 +7,7 @@ import useGetCurrentPage from "@/components/utils/useGetCurrentPage";
 import EvaluationCountDown from "@/components/common/EvaluationCountDown";
 
 import quizStyle from "@/styles/QuizStyle.module.css";
+import QuestionIndex from "@/components/common/QuestionIndex";
 
 const QuizComponent = ({ questionData, DisplayData }) => {
 	const { quizScore, setQuizScore } = useProgress();
@@ -58,20 +59,24 @@ const QuizComponent = ({ questionData, DisplayData }) => {
 					/>
 				) : null}
 			</div>
+			{parentPath === "evaluasi" && timesUp && (
+				<h2 style={{ textAlign: "center", display: "block", width: "100%" }}>
+					Waktu Habis
+				</h2>
+			)}
+			{(isFinished || timesUp) && <DisplayScore quizScore={quizScore} />}
+
+			{parentPath === "evaluasi" && !isFinished && !timesUp && (
+				<QuestionIndex />
+			)}
 			<>
-				{parentPath === "evaluasi" && timesUp && (
-					<h2 style={{ textAlign: "center", display: "block", width: "100%" }}>
-						Waktu Habis
-					</h2>
-				)}
-				{(isFinished || timesUp) && <DisplayScore quizScore={quizScore} />}
 				{parentPath === "evaluasi" && !isFinished && !timesUp && (
 					<SubmitButton quizScore={quizScore} />
 				)}
+				<span style={{ alignSelf: "center", width: "100%" }}>
+					<EvaluationCountDown setTimesUp={setTimesUp} />
+				</span>
 			</>
-			<span style={{ alignSelf: "center", width: "100%" }}>
-				<EvaluationCountDown setTimesUp={setTimesUp} />
-			</span>
 		</div>
 	);
 };
