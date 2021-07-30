@@ -9,8 +9,16 @@ import useMainLayoutProgress from "@/components/utils/useMainLayoutProgress";
 import useGetCurrentPage from "@/components/utils/useGetCurrentPage";
 
 import { useAuth } from "@/components/context/AuthContext";
+import ShortEssay from "@/components/common/ShortEssay";
 
-const MainLayout = ({ Child1, Child2, title, questionData, instruction }) => {
+const MainLayout = ({
+	Child1,
+	Child2,
+	title,
+	questionData,
+	instruction,
+	essayQuestion,
+}) => {
 	const {
 		isActive,
 		setIsActive,
@@ -63,14 +71,15 @@ const MainLayout = ({ Child1, Child2, title, questionData, instruction }) => {
 					)}
 				</div>
 				<div className={layoutStyles.questionBox}>
-					{questionData ? (
+					{questionData && (
 						<QuestionBox
 							question={questionData}
 							instruction={instruction}
 							setUpdateProgress={setUpdateProgress}
 							updateProgress={updateProgress}
 						/>
-					) : null}
+					)}
+					{essayQuestion && <ShortEssay essayQuestion={essayQuestion} />}
 				</div>
 			</div>
 			{DisplayBottomProgress()}

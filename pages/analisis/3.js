@@ -1,6 +1,7 @@
 import React from "react";
 import MainLayout from "@/components/common/MainLayout";
 import TableOne from "@/components/graphsAndTables/TableOne";
+import { firstQuestion } from "@/components/data/shortEssayData";
 
 const page3 = () => {
 	const points = [
@@ -44,6 +45,7 @@ const page3 = () => {
 				Child1={TableOne}
 				Child2={Content}
 				title={"Menganalisis Tabel"}
+				essayQuestion={firstQuestion}
 			/>
 		</>
 	);

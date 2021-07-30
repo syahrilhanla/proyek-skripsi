@@ -1,0 +1,11 @@
+.mother {
+	border: 1px rgb(156, 156, 156) solid;
+	border-radius: 6px;
+	padding: 1.3rem;
+}
+
+.mother h4 {
+	font-size: large;
+	font-weight: 400;
+	color: #444;
+}
