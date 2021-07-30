@@ -44,7 +44,7 @@ const MainLayout = ({ Child1, Child2, title, questionData, instruction }) => {
 				<ModalNotification isActive={isActive} setIsActive={setIsActive} />
 			) : null}
 			<div className={layoutStyles.wrapper}>
-				{/* <Navbar /> */}
+				<Navbar />
 
 				<h1 className={layoutStyles.title}>{title}</h1>
 

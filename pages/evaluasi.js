@@ -1,6 +1,3 @@
-import { useState } from "react";
-
-import Navbar from "@/components/common/Navbar";
 import MainLayout from "@/components/common/MainLayout";
 import QuizComponent from "@/components/common/QuizComponent";
 import { questionData } from "@/components/data/quiz1Data";
@@ -9,8 +6,6 @@ import TableTwo from "@/components/graphsAndTables/TableTwo";
 import Caption from "@/components/common/Caption";
 
 const evaluation = () => {
-	// const [timesUp, setTimesUp] = useState(false);
-
 	// needed to display data on QuizComponent
 	// takes number as argument from questionData array being set in QuizComponent
 	const DisplayData = ({ currentQuestion }) => {
@@ -52,7 +47,6 @@ const evaluation = () => {
 
 	return (
 		<>
-			<Navbar />
 			<MainLayout Child1={DisplayQuiz} />
 		</>
 	);
