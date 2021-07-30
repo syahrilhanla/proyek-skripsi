@@ -1,7 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useAuth } from "@/components/context/AuthContext";
 
-import formStyle from "@/styles/Form.module.css";
 import selectStyle from "@/styles/Select.module.css";
 
 const ClassDropDown = ({ setShowClass = () => false, setSelectedClass }) => {
@@ -17,7 +16,7 @@ const ClassDropDown = ({ setShowClass = () => false, setSelectedClass }) => {
 
 	return (
 		<div className={selectStyle.dropdown}>
-			<form onSubmit={handleSubmit(onSubmit)}>
+			<form onChange={handleSubmit(onSubmit)}>
 				<select
 					{...register("className", { required: true })}
 					className={selectStyle.select}
@@ -33,7 +32,6 @@ const ClassDropDown = ({ setShowClass = () => false, setSelectedClass }) => {
 						);
 					})}
 				</select>
-				<input type='submit' className={formStyle.submitButton} />
 			</form>
 		</div>
 	);

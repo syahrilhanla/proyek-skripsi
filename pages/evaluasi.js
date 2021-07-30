@@ -4,7 +4,6 @@ import { questionData } from "@/components/data/quiz1Data";
 import TableOne from "@/components/graphsAndTables/TableOne";
 import TableTwo from "@/components/graphsAndTables/TableTwo";
 import Caption from "@/components/common/Caption";
-import EvaluationCountDown from "@/components/common/EvaluationCountDown";
 
 const evaluation = () => {
 	// needed to display data on QuizComponent
@@ -39,15 +38,16 @@ const evaluation = () => {
 	};
 
 	const DisplayQuiz = () => (
-		<QuizComponent questionData={questionData} DisplayData={DisplayData} />
+		<QuizComponent
+			questionData={questionData}
+			DisplayData={DisplayData}
+			// timesUp={timesUp}
+		/>
 	);
 
 	return (
 		<>
-			<MainLayout Child1={DisplayQuiz} />{" "}
-			<span style={{ alignSelf: "center" }}>
-				<EvaluationCountDown />
-			</span>
+			<MainLayout Child1={DisplayQuiz} />
 		</>
 	);
 };

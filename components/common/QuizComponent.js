@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 import SubmitButton from "@/components/common/SubmitButton";
 
-import quizStyle from "@/styles/QuizStyle.module.css";
+import { useProgress } from "@/components/context/ProgressContext";
 import MultipleChoices from "@/components/common/MultipleChoices";
 import useGetCurrentPage from "@/components/utils/useGetCurrentPage";
+import EvaluationCountDown from "@/components/common/EvaluationCountDown";
+
+import quizStyle from "@/styles/QuizStyle.module.css";
 
 const QuizComponent = ({ questionData, DisplayData }) => {
-	const [quizScore, setQuizScore] = useState(0);
+	const { quizScore, setQuizScore } = useProgress();
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [isFinished, setIsFinished] = useState(false);
+	const [timesUp, setTimesUp] = useState(false);
 
 	const { parentPath } = useGetCurrentPage();
 
@@ -39,10 +43,12 @@ const QuizComponent = ({ questionData, DisplayData }) => {
 
 	return (
 		<div key={currentQuestion} className={quizStyle.main}>
-			{!isFinished && <DisplayData currentQuestion={currentQuestion} />}
+			{!isFinished && !timesUp ? (
+				<DisplayData currentQuestion={currentQuestion} />
+			) : null}
 
 			<div key={currentQuestion} className={quizStyle.questionDisplay}>
-				{!isFinished && (
+				{!isFinished && !timesUp ? (
 					<MultipleChoices
 						questionData={questionData}
 						setQuizScore={setQuizScore}
@@ -50,10 +56,22 @@ const QuizComponent = ({ questionData, DisplayData }) => {
 						setIsFinished={setIsFinished}
 						currentQuestion={currentQuestion}
 					/>
-				)}
-				{isFinished && <DisplayScore quizScore={quizScore} />}
+				) : null}
 			</div>
-			{parentPath === "evaluasi" && <SubmitButton quizScore={quizScore} />}
+			<>
+				{parentPath === "evaluasi" && timesUp && (
+					<h2 style={{ textAlign: "center", display: "block", width: "100%" }}>
+						Waktu Habis
+					</h2>
+				)}
+				{(isFinished || timesUp) && <DisplayScore quizScore={quizScore} />}
+				{parentPath === "evaluasi" && !isFinished && !timesUp && (
+					<SubmitButton quizScore={quizScore} />
+				)}
+			</>
+			<span style={{ alignSelf: "center", width: "100%" }}>
+				<EvaluationCountDown setTimesUp={setTimesUp} />
+			</span>
 		</div>
 	);
 };

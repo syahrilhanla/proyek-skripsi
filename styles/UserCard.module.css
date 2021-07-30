@@ -34,7 +34,7 @@
 .userDetail {
 	color: #444;
 	font-weight: lighter;
-	width: 32rem;
+	width: 20rem;
 }
 
 .userDetail h3 {
@@ -54,6 +54,7 @@
 .checkboxList {
 	display: grid;
 	grid-template-columns: 8fr 2fr;
+	width: 100%;
 }
 
 .checkboxList span {

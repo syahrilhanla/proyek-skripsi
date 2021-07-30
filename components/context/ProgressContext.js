@@ -1,6 +1,6 @@
 // THIS CODE IS CRUCIAL FOR ANY PROGRESS IN THE WHOLE APP
 
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 
 import useSetProgress from "@/components/utils/useSetProgress";
 
@@ -12,6 +12,7 @@ export const useProgress = () => {
 
 const ProgressProvider = ({ children }) => {
 	const setProgress = useSetProgress();
+	const [quizScore, setQuizScore] = useState(0);
 
 	return (
 		<ProgressContext.Provider
@@ -19,6 +20,8 @@ const ProgressProvider = ({ children }) => {
 				useProgress,
 				dashboardLoading: setProgress.dashboardLoading,
 				overallProgress: setProgress.dashboardProgress,
+				quizScore,
+				setQuizScore,
 			}}
 		>
 			{children}
