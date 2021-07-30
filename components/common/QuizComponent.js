@@ -67,7 +67,7 @@ const QuizComponent = ({ questionData, DisplayData }) => {
 			{(isFinished || timesUp) && <DisplayScore quizScore={quizScore} />}
 
 			{parentPath === "evaluasi" && !isFinished && !timesUp && (
-				<QuestionIndex />
+				<QuestionIndex setCurrentQuestion={setCurrentQuestion} />
 			)}
 			<>
 				<div className={quizStyle.submitButton}>
