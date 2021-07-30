@@ -70,9 +70,11 @@ const QuizComponent = ({ questionData, DisplayData }) => {
 				<QuestionIndex />
 			)}
 			<>
-				{parentPath === "evaluasi" && !isFinished && !timesUp && (
-					<SubmitButton quizScore={quizScore} />
-				)}
+				<div className={quizStyle.submitButton}>
+					{parentPath === "evaluasi" && !isFinished && !timesUp && (
+						<SubmitButton quizScore={quizScore} />
+					)}
+				</div>
 				<span style={{ alignSelf: "center", width: "100%" }}>
 					<EvaluationCountDown setTimesUp={setTimesUp} />
 				</span>
