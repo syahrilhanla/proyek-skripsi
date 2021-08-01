@@ -1,0 +1,19 @@
+.mother {
+	border: 1px rgb(156, 156, 156) solid;
+	border-radius: 6px;
+	padding: 1.8rem;
+	max-width: 55%;
+}
+
+.mother h4 {
+	font-size: large;
+	font-weight: 400;
+	color: #444;
+}
+
+.mother h1 {
+	font-size: large;
+	font-weight: 600;
+	color: #444;
+	text-align: center;
+}

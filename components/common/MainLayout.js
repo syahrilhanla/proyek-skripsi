@@ -9,8 +9,16 @@ import useMainLayoutProgress from "@/components/utils/useMainLayoutProgress";
 import useGetCurrentPage from "@/components/utils/useGetCurrentPage";
 
 import { useAuth } from "@/components/context/AuthContext";
+import ShortEssay from "@/components/common/ShortEssay";
 
-const MainLayout = ({ Child1, Child2, title, questionData, instruction }) => {
+const MainLayout = ({
+	Child1,
+	Child2,
+	title,
+	questionData,
+	instruction,
+	essayQuestion,
+}) => {
 	const {
 		isActive,
 		setIsActive,
@@ -40,9 +48,9 @@ const MainLayout = ({ Child1, Child2, title, questionData, instruction }) => {
 	return (
 		<>
 			{/* Show popup modal if user is inactive for certain amount of time or user goes idle*/}
-			{checkIsAdmin() ? (
+			{/* {checkIsAdmin() ? (
 				<ModalNotification isActive={isActive} setIsActive={setIsActive} />
-			) : null}
+			) : null} */}
 			<div className={layoutStyles.wrapper}>
 				<Navbar />
 
@@ -62,16 +70,17 @@ const MainLayout = ({ Child1, Child2, title, questionData, instruction }) => {
 						</div>
 					)}
 				</div>
-				<div className={layoutStyles.questionBox}>
-					{questionData ? (
+				{questionData ? (
+					<div className={layoutStyles.questionBox}>
 						<QuestionBox
 							question={questionData}
 							instruction={instruction}
 							setUpdateProgress={setUpdateProgress}
 							updateProgress={updateProgress}
 						/>
-					) : null}
-				</div>
+						{essayQuestion && <ShortEssay essayQuestion={essayQuestion} />}
+					</div>
+				) : null}
 			</div>
 			{DisplayBottomProgress()}
 		</>
