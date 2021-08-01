@@ -4,16 +4,14 @@ import SubmitButton from "@/components/common/SubmitButton";
 import { useProgress } from "@/components/context/ProgressContext";
 import MultipleChoices from "@/components/common/MultipleChoices";
 import useGetCurrentPage from "@/components/utils/useGetCurrentPage";
-import EvaluationCountDown from "@/components/common/EvaluationCountDown";
 
 import quizStyle from "@/styles/QuizStyle.module.css";
 import QuestionIndex from "@/components/common/QuestionIndex";
 
-const QuizComponent = ({ questionData, DisplayData }) => {
+const QuizComponent = ({ questionData, DisplayData, timesUp }) => {
 	const { quizScore, setQuizScore } = useProgress();
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [isFinished, setIsFinished] = useState(false);
-	const [timesUp, setTimesUp] = useState(false);
 
 	const { parentPath } = useGetCurrentPage();
 
@@ -75,9 +73,9 @@ const QuizComponent = ({ questionData, DisplayData }) => {
 						<SubmitButton quizScore={quizScore} />
 					)}
 				</div>
-				<span style={{ alignSelf: "center", width: "100%" }}>
+				{/* <span style={{ alignSelf: "center", width: "100%" }}>
 					<EvaluationCountDown setTimesUp={setTimesUp} />
-				</span>
+				</span> */}
 			</>
 		</div>
 	);

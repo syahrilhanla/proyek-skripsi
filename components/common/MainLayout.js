@@ -48,9 +48,9 @@ const MainLayout = ({
 	return (
 		<>
 			{/* Show popup modal if user is inactive for certain amount of time or user goes idle*/}
-			{checkIsAdmin() ? (
+			{/* {checkIsAdmin() ? (
 				<ModalNotification isActive={isActive} setIsActive={setIsActive} />
-			) : null}
+			) : null} */}
 			<div className={layoutStyles.wrapper}>
 				<Navbar />
 
@@ -70,17 +70,17 @@ const MainLayout = ({
 						</div>
 					)}
 				</div>
-				<div className={layoutStyles.questionBox}>
-					{questionData && (
+				{questionData ? (
+					<div className={layoutStyles.questionBox}>
 						<QuestionBox
 							question={questionData}
 							instruction={instruction}
 							setUpdateProgress={setUpdateProgress}
 							updateProgress={updateProgress}
 						/>
-					)}
-					{essayQuestion && <ShortEssay essayQuestion={essayQuestion} />}
-				</div>
+						{essayQuestion && <ShortEssay essayQuestion={essayQuestion} />}
+					</div>
+				) : null}
 			</div>
 			{DisplayBottomProgress()}
 		</>
