@@ -51,12 +51,10 @@ const evaluation = () => {
 	);
 
 	return (
-		<div>
+		<>
 			<MainLayout Child1={DisplayQuiz} />
-			<span style={{ width: "85%" }}>
-				<EvaluationCountDown setTimesUp={setTimesUp} />
-			</span>
-		</div>
+			<EvaluationCountDown setTimesUp={setTimesUp} />
+		</>
 	);
 };
 

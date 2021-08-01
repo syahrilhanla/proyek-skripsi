@@ -19,9 +19,19 @@ const EvaluationCountDown = ({ setTimesUp }) => {
 	}
 
 	return (
-		<div>
-			<DisplayCountDown timeSet={600} />
-			<BorderLinearProgress value={percentage} />
+		<div
+			style={{
+				display: "flex",
+				justifyContent: "center",
+				width: "85%",
+				margin: "-2rem auto",
+				padding: "0 0",
+			}}
+		>
+			<div style={{ width: "100%", paddingBottom: "0.8rem" }}>
+				<DisplayCountDown timeSet={600} />
+				<BorderLinearProgress value={percentage} />
+			</div>
 		</div>
 	);
 };
