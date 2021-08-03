@@ -27,6 +27,8 @@ const UserCard = ({ userData }) => {
 		else return false;
 	};
 
+	// filterDescending();
+
 	return (
 		<>
 			{openModal && (
@@ -47,6 +49,7 @@ const UserCard = ({ userData }) => {
 					<Avatar alt={userData.displayName} src={userData.photoURL} />
 				</span>
 				<h3 key={userData.displayName}>{userData.displayName}</h3>
+				<h3>Score: {userData.score}</h3>
 				<span className={userCardStyles.userProgress}>
 					<h3>{percentageValue}% </h3>
 					<BorderLinearProgress value={percentageValue} />

@@ -7,7 +7,7 @@
 	padding: 0.8rem;
 	width: 100%;
 	display: grid;
-	grid-template-columns: 5fr 5fr;
+	grid-template-columns: 3fr 3fr 1.7fr;
 }
 
 .classMenu h2 {
@@ -24,7 +24,7 @@
 	justify-self: right;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 1100px) {
 	.pickClass {
 		grid-template-columns: 1fr;
 	}
