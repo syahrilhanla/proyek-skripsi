@@ -69,7 +69,7 @@ const QuizComponent = ({ questionData, DisplayData, timesUp }) => {
 			)}
 			<>
 				<div className={quizStyle.submitButton}>
-					{parentPath === "evaluasi" && !isFinished && !timesUp && (
+					{parentPath === "evaluasi" && !timesUp && (
 						<SubmitButton quizScore={quizScore} />
 					)}
 				</div>

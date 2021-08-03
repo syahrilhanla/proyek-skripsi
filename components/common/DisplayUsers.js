@@ -20,6 +20,20 @@ const DisplayUsers = ({ selectedClass }) => {
 		});
 	};
 
+	const sortAscending = (scores) => {
+		const sortedArr = [...scores];
+		sortedArr.sort((a, b) => a.score - b.score);
+		return sortedArr;
+	};
+
+	const sortDescending = (scores) => {
+		const sortedArr = [...scores];
+		sortedArr.sort((a, b) => b.score - a.score);
+		return sortedArr;
+	};
+
+	// sortDescending(filteredUsers(selectedClass));
+
 	return (
 		<div>
 			{selectedClass !== "Pilih Kelas" && (
