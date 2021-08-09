@@ -1,10 +1,20 @@
 import React from "react";
 import MainLayout from "@/components/common/MainLayout";
 import DisplayEquation from "@/components/charts/KatexComponent";
+import LearningObjectives from "@/components/common/LearningObjectives";
+import { chapter1Objectives } from "@/components/data/objectivesData";
 
 const page1 = () => {
 	const Text = () => (
-		<div style={{ padding: "0.8rem" }}>
+		<div
+			style={{
+				padding: "0.8rem",
+				display: "flex",
+				justifyContent: "center",
+				flexWrap: "wrap",
+			}}
+		>
+			<LearningObjectives objectives={chapter1Objectives} />
 			<p>
 				Kamu mungkin pernah mendengar dengan kata “rata-rata”, “paling
 				tinggi/rendah”, atau “paling berat/ringan”. Contohnya ada pada kalimat
@@ -23,6 +33,12 @@ const page1 = () => {
 			</p>
 
 			<DisplayEquation>\int_0^\infty x^2 dx</DisplayEquation>
+		</div>
+	);
+
+	const Objectives = () => (
+		<div>
+			<LearningObjectives objectives={chapter1Objectives} />
 		</div>
 	);
 

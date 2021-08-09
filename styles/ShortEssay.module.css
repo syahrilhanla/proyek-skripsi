@@ -1,8 +1,9 @@
 .mother {
-	border: 1px rgb(156, 156, 156) solid;
+	border: 1px #cdcdcd solid;
 	border-radius: 6px;
-	padding: 1.8rem;
+	padding: 1.5rem;
 	max-width: 55%;
+	align-self: center;
 }
 
 .mother h4 {

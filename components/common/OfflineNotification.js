@@ -13,7 +13,9 @@ const OfflineNotification = ({ open }) => {
 				anchorOrigin={{ vertical: "top", horizontal: "center" }}
 				key={{ vertical: "top" } + { horizontal: "center" }}
 			>
-				<Alert severity='info'>You are offline!</Alert>
+				<Alert severity='info'>
+					Kamu offline! Beberapa fitur mungkin tidak dapat berjalan
+				</Alert>
 			</Snackbar>
 		</>
 	);
