@@ -53,7 +53,7 @@ const evaluation = () => {
 	return (
 		<>
 			<MainLayout Child1={DisplayQuiz} />
-			<EvaluationCountDown setTimesUp={setTimesUp} />
+			<EvaluationCountDown setTimesUp={setTimesUp} title={"Evaluasi Akhir"} />
 		</>
 	);
 };
