@@ -3,14 +3,15 @@ import BottomProgress from "@/components/common/BottomProgress";
 
 import layoutStyles from "@/styles/MainLayout.module.css";
 import QuestionBox from "@/components/common/QuestionBox";
-
 import ModalNotification from "@/components/common/ModalNotification";
+import ShortEssay from "@/components/common/ShortEssay";
+
 import useMainLayoutProgress from "@/components/utils/useMainLayoutProgress";
 import useGetCurrentPage from "@/components/utils/useGetCurrentPage";
+import useUpdateScrollAct from "@/components/utils/useUpdateScrollAct";
 
 import { useBottomScrollListener } from "react-bottom-scroll-listener";
 import { useAuth } from "@/components/context/AuthContext";
-import ShortEssay from "@/components/common/ShortEssay";
 
 const MainLayout = ({
 	Child1,
@@ -19,6 +20,7 @@ const MainLayout = ({
 	questionData,
 	instruction,
 	essayQuestion,
+	scrollActID,
 }) => {
 	const {
 		isActive,
@@ -28,7 +30,7 @@ const MainLayout = ({
 		pageProgress,
 	} = useMainLayoutProgress();
 
-	const { parentPath } = useGetCurrentPage();
+	const { parentPath, currentPath } = useGetCurrentPage();
 
 	const { isAdmin } = useAuth();
 
@@ -46,7 +48,8 @@ const MainLayout = ({
 		else if (isActive === false) return true;
 	};
 
-	const callback = () => alert("reached bottom of div");
+	const callback = () =>
+		useUpdateScrollAct(scrollActID, parentPath, currentPath);
 
 	const scrollRef = useBottomScrollListener(callback);
 
