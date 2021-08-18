@@ -7,7 +7,6 @@ import Caption from "@/components/common/Caption";
 
 const page4 = () => {
 	const tableData = data();
-
 	const Text = () => (
 		<div>
 			<p>
@@ -18,6 +17,16 @@ const page4 = () => {
 				Kelabau yang tertangkap di sungai. Kita bisa mengubahnya dari tabel
 				menjadi berbagai macam grafik atau diagram, misalnya diagram batang,
 				diagram lingkaran, dan diagram garis.
+			</p>
+			<p>
+				Di samping merupakan data dari hasil kumpulan tangkapan ikan Kelabau
+				yang ada di sepanjang sungai Kapuas. Berdasarkan hasil tangkapan
+				tersebut kita dapat menyajikan datanya menjadi sebuah tabel yang
+				menggolongkan ikan berdasarkan ukurannya, kemudian per golongan ukuran
+				tersebut didapatkan persentase dari jumlah keseluruhan. Berdasarkan data
+				yang ini kita dapat membuatnya menjadi berbagai macam jenis diagram. Di
+				bawah merupakan hasil dari pembuatan diagram batang menggunakan data
+				yang sama pada tabel di atas.
 			</p>
 			<p>
 				Di samping merupakan data dari hasil kumpulan tangkapan ikan Kelabau

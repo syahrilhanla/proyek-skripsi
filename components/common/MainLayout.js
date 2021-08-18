@@ -8,6 +8,7 @@ import ModalNotification from "@/components/common/ModalNotification";
 import useMainLayoutProgress from "@/components/utils/useMainLayoutProgress";
 import useGetCurrentPage from "@/components/utils/useGetCurrentPage";
 
+import { useBottomScrollListener } from "react-bottom-scroll-listener";
 import { useAuth } from "@/components/context/AuthContext";
 import ShortEssay from "@/components/common/ShortEssay";
 
@@ -45,6 +46,10 @@ const MainLayout = ({
 		else if (isActive === false) return true;
 	};
 
+	const callback = () => alert("reached bottom of div");
+
+	const scrollRef = useBottomScrollListener(callback);
+
 	return (
 		<>
 			{/* Show popup modal if user is inactive for certain amount of time or user goes idle*/}
@@ -60,6 +65,7 @@ const MainLayout = ({
 					className={
 						Child2 ? layoutStyles.containerCombo : layoutStyles.containerSolo
 					}
+					ref={scrollRef}
 				>
 					<div className={layoutStyles.column1}>
 						<Child1 />
