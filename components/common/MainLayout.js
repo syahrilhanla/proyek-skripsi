@@ -8,10 +8,9 @@ import ShortEssay from "@/components/common/ShortEssay";
 
 import useMainLayoutProgress from "@/components/utils/useMainLayoutProgress";
 import useGetCurrentPage from "@/components/utils/useGetCurrentPage";
-import useUpdateScrollAct from "@/components/utils/useUpdateScrollAct";
 
-import { useBottomScrollListener } from "react-bottom-scroll-listener";
 import { useAuth } from "@/components/context/AuthContext";
+import useScrollActions from "@/components/utils/useScrollActions";
 
 const MainLayout = ({
 	Child1,
@@ -32,7 +31,20 @@ const MainLayout = ({
 
 	const { parentPath, currentPath } = useGetCurrentPage();
 
+	const { scrollRef, displayQuestion } = useScrollActions(
+		scrollActID,
+		parentPath,
+		currentPath,
+		setUpdateProgress,
+		updateProgress
+	);
+
 	const { isAdmin } = useAuth();
+
+	const checkIsAdmin = () => {
+		if (isAdmin === true) return false;
+		else if (isActive === false) return true;
+	};
 
 	const DisplayBottomProgress = () => {
 		if (parentPath !== "admin" && parentPath !== "evaluasi")
@@ -43,23 +55,12 @@ const MainLayout = ({
 			);
 	};
 
-	const checkIsAdmin = () => {
-		if (isAdmin === true) return false;
-		else if (isActive === false) return true;
-	};
-
-	const callback = () => {
-		useUpdateScrollAct(scrollActID, parentPath, currentPath);
-		setUpdateProgress(!updateProgress);
-	};
-	const scrollRef = useBottomScrollListener(callback);
-
 	return (
 		<>
 			{/* Show popup modal if user is inactive for certain amount of time or user goes idle*/}
-			{/* {checkIsAdmin() ? (
+			{checkIsAdmin() ? (
 				<ModalNotification isActive={isActive} setIsActive={setIsActive} />
-			) : null} */}
+			) : null}
 			<div className={layoutStyles.wrapper}>
 				<Navbar />
 
@@ -80,7 +81,7 @@ const MainLayout = ({
 						</div>
 					)}
 				</div>
-				{questionData ? (
+				{displayQuestion && questionData ? (
 					<div className={layoutStyles.questionBox}>
 						<QuestionBox
 							question={questionData}
