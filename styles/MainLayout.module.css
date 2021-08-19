@@ -76,6 +76,13 @@
 	cursor: pointer;
 }
 
+.divForObjectives {
+	padding: 0.8rem;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
 @media (max-width: 600px) {
 	.containerCombo {
 		grid-template-columns: 1fr;

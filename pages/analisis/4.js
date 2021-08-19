@@ -11,9 +11,7 @@ import { questionDataAnalysisPage4 } from "@/components/acts/questionActs";
 const page4 = () => {
 	const tableData = data();
 
-	const Text = () => {
-		return analysisPage4.act;
-	};
+	const Text = () => analysisPage4.act;
 
 	const labels = tableData.map((label) => label.size);
 	const percentageData = tableData.map((item) => item.percentage);
