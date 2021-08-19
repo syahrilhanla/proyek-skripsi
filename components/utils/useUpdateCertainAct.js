@@ -17,7 +17,7 @@ const useUpdateCertainAct = async (actID, parentPath, currentPath) => {
 		if (item.page === currentPage) {
 			item.pageData.map((data) => {
 				if (data.name === actID) {
-					data.act = !data.act;
+					data.act = true;
 				}
 			});
 		}

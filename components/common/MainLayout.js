@@ -48,9 +48,10 @@ const MainLayout = ({
 		else if (isActive === false) return true;
 	};
 
-	const callback = () =>
+	const callback = () => {
 		useUpdateScrollAct(scrollActID, parentPath, currentPath);
-
+		setUpdateProgress(!updateProgress);
+	};
 	const scrollRef = useBottomScrollListener(callback);
 
 	return (
