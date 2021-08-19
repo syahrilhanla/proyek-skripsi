@@ -3,13 +3,14 @@ import BottomProgress from "@/components/common/BottomProgress";
 
 import layoutStyles from "@/styles/MainLayout.module.css";
 import QuestionBox from "@/components/common/QuestionBox";
-
 import ModalNotification from "@/components/common/ModalNotification";
+import ShortEssay from "@/components/common/ShortEssay";
+
 import useMainLayoutProgress from "@/components/utils/useMainLayoutProgress";
 import useGetCurrentPage from "@/components/utils/useGetCurrentPage";
 
 import { useAuth } from "@/components/context/AuthContext";
-import ShortEssay from "@/components/common/ShortEssay";
+import useScrollActions from "@/components/utils/useScrollActions";
 
 const MainLayout = ({
 	Child1,
@@ -18,6 +19,7 @@ const MainLayout = ({
 	questionData,
 	instruction,
 	essayQuestion,
+	scrollActID,
 }) => {
 	const {
 		isActive,
@@ -27,9 +29,22 @@ const MainLayout = ({
 		pageProgress,
 	} = useMainLayoutProgress();
 
-	const { parentPath } = useGetCurrentPage();
+	const { parentPath, currentPath } = useGetCurrentPage();
+
+	const { scrollRef, displayQuestion } = useScrollActions(
+		scrollActID,
+		parentPath,
+		currentPath,
+		setUpdateProgress,
+		updateProgress
+	);
 
 	const { isAdmin } = useAuth();
+
+	const checkIsAdmin = () => {
+		if (isAdmin === true) return false;
+		else if (isActive === false) return true;
+	};
 
 	const DisplayBottomProgress = () => {
 		if (parentPath !== "admin" && parentPath !== "evaluasi")
@@ -40,17 +55,12 @@ const MainLayout = ({
 			);
 	};
 
-	const checkIsAdmin = () => {
-		if (isAdmin === true) return false;
-		else if (isActive === false) return true;
-	};
-
 	return (
 		<>
 			{/* Show popup modal if user is inactive for certain amount of time or user goes idle*/}
-			{/* {checkIsAdmin() ? (
+			{checkIsAdmin() ? (
 				<ModalNotification isActive={isActive} setIsActive={setIsActive} />
-			) : null} */}
+			) : null}
 			<div className={layoutStyles.wrapper}>
 				<Navbar />
 
@@ -60,6 +70,7 @@ const MainLayout = ({
 					className={
 						Child2 ? layoutStyles.containerCombo : layoutStyles.containerSolo
 					}
+					ref={scrollRef}
 				>
 					<div className={layoutStyles.column1}>
 						<Child1 />
@@ -70,7 +81,7 @@ const MainLayout = ({
 						</div>
 					)}
 				</div>
-				{questionData ? (
+				{displayQuestion && questionData ? (
 					<div className={layoutStyles.questionBox}>
 						<QuestionBox
 							question={questionData}

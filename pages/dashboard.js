@@ -32,7 +32,6 @@ const dashboard = () => {
 	// }, [progressValues]);
 
 	useEffect(() => {
-		console.log(userClass);
 		if (userClass !== "Belum Masuk Kelas") console.log("changed");
 	}, [userClass]);
 

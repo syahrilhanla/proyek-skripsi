@@ -57,12 +57,12 @@ export const initialData = [
 					{
 						name: "act2",
 						desc: "Menjawab Pertanyaan 1",
-						act: true,
+						act: false,
 					},
 					{
 						name: "act3",
 						desc: "Menjawab Pertanyaan 2",
-						act: true,
+						act: false,
 					},
 				],
 			},
@@ -77,7 +77,7 @@ export const initialData = [
 					{
 						name: "act2",
 						desc: "Menjawab Pertanyaan 1",
-						act: true,
+						act: false,
 					},
 					{
 						name: "act3",

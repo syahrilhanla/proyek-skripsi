@@ -2,7 +2,7 @@ import React from "react";
 import MainLayout from "@/components/common/MainLayout";
 import DisplayEquation from "@/components/charts/KatexComponent";
 import LearningObjectives from "@/components/common/LearningObjectives";
-import { chapter1Objectives } from "@/components/data/objectivesData";
+import { chapter2Objectives } from "@/components/data/objectivesData";
 
 const page1 = () => {
 	const Text = () => (
@@ -14,7 +14,7 @@ const page1 = () => {
 				flexWrap: "wrap",
 			}}
 		>
-			<LearningObjectives objectives={chapter1Objectives} />
+			<LearningObjectives objectives={chapter2Objectives} />
 			<p>
 				Kamu mungkin pernah mendengar dengan kata “rata-rata”, “paling
 				tinggi/rendah”, atau “paling berat/ringan”. Contohnya ada pada kalimat
@@ -36,13 +36,7 @@ const page1 = () => {
 		</div>
 	);
 
-	const Objectives = () => (
-		<div>
-			<LearningObjectives objectives={chapter1Objectives} />
-		</div>
-	);
-
-	return <MainLayout Child1={Text} title={"Apa itu Statistika?"} />;
+	return <MainLayout Child1={Text} title={"Ukuran Pemusatan Data"} />;
 };
 
 export default page1;
