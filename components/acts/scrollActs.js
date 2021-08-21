@@ -215,7 +215,96 @@ export const pemusatanPage2 = {
 				dengan menjumlahkan semua data yang dikumpulkan dan dibagi dengan jumlah
 				satuan data. Mencari nilai rata-rata dirumuskan sebagai berikut:
 			</p>
-			<DisplayEquation>{`\\bar{x} =  \\frac{ \\sum_{i=1}^nx_{i}}{n} = \\frac{x_{1} + x_{2} + ... + x_{n}}{n}`}</DisplayEquation>
+			<DisplayEquation
+				displayMode={"block"}
+			>{`\\bar{x} =  \\frac{ \\sum_{i=1}^nx_{i}}{n} = \\frac{x_{1} + x_{2} + ... + x_{n}}{n}`}</DisplayEquation>
+
+			<div style={{ width: "40%", margin: "auto" }}>
+				<p>Keterangan:</p>
+				<ul>
+					<li>
+						<DisplayEquation
+							displayMode={"inline"}
+						>{`\\bar{x}`}</DisplayEquation>{" "}
+						= nilai rata-rata yang dicari
+					</li>
+					<li>
+						<DisplayEquation
+							displayMode={"inline"}
+						>{`\\sum_{i=1}^nx_{i}`}</DisplayEquation>{" "}
+						= jumlah seluruh nilai data
+					</li>
+					<li>
+						<DisplayEquation displayMode={"inline"}>{`n`}</DisplayEquation> =
+						banyak data
+					</li>
+				</ul>
+			</div>
+
+			<p>
+				Sebagai contoh, pada tabel 2-1 di atas terdapat data yang berisikan
+				jumlah telur pertahun itik Alabio, maka untuk mencari rata-rata jumlah
+				telur yang dihasilkan oleh Itik A selama 3 tahun dihitung seperti ini:
+			</p>
+			<DisplayEquation
+				displayMode={"block"}
+			>{`\\bar{x} = \\frac{242 + 256 +251}{3}`}</DisplayEquation>
+			<DisplayEquation
+				displayMode={"block"}
+			>{`\\bar{x} = \\frac{749}{3} = 249.7`}</DisplayEquation>
+			<p>
+				Dengan demikian, maka didapatkanlah nilai rata-rata produksi telur dari
+				Itik A, yakni sebanyak 249,7 atau jika dibulatkan menjadi 249 butir
+				telur pertahun.
+			</p>
+
+			<h2 style={{ textAlign: "center" }}>Rata-rata Gabungan</h2>
+			<p>
+				Terkadang data yang tersaji merupakan banyak data yang berbeda namun
+				tetap dalam kategori yang sama. Misalkan saja terdapat kelompok data
+				yang memiliki kumpulan nilai dan rata-rata{" "}
+				{<DisplayEquation displayMode='inline'>{`\\bar{x}`}</DisplayEquation>},
+				kemudian ingin digabungkan dengan data lain yang memiliki kumpulan nilai
+				tersendiri dan rata-rata{" "}
+				{<DisplayEquation displayMode='inline'>{`\\bar{x}_2`}</DisplayEquation>}{" "}
+				. Maka untuk mencari rata-rata gabungan dari nilai-nilai tersebut
+				dirumuskan sebagai berikut:
+			</p>
+			<DisplayEquation
+				displayMode={"block"}
+			>{`\\bar{x}_gab =  \\frac{ \\sum_{i=1}^mx_{i} + \\sum_{i=1}^nx_{i}}{m + n} = \\frac{m + bar{x}_{1} + n + bar{x}_{2}}{m + n}`}</DisplayEquation>
+
+			<div style={{ width: "40%", margin: "auto" }}>
+				<p>Keterangan:</p>
+				<ul>
+					<li>
+						<DisplayEquation
+							displayMode={"inline"}
+						>{`\\bar{x}_gab`}</DisplayEquation>{" "}
+						= nilai rata-rata gabungan yang dicari
+					</li>
+					<li>
+						<DisplayEquation
+							displayMode={"inline"}
+						>{`bar{x}_{1}`}</DisplayEquation>{" "}
+						= rata-rata kelompok 1
+					</li>
+					<li>
+						<DisplayEquation
+							displayMode={"inline"}
+						>{`bar{x}_{2}`}</DisplayEquation>{" "}
+						= rata-rata kelompok 2
+					</li>
+					<li>
+						<DisplayEquation displayMode={"inline"}>{`m`}</DisplayEquation> =
+						banyak data kelompok 1
+					</li>
+					<li>
+						<DisplayEquation displayMode={"inline"}>{`n`}</DisplayEquation> =
+						banyak data kelompok 2
+					</li>
+				</ul>
+			</div>
 		</div>
 	),
 };

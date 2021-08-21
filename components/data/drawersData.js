@@ -39,14 +39,18 @@ export const drawersData = [
 		items: [
 			{
 				id: "1",
-				subTitle: "Mean",
+				subTitle: "Ukuran Pemusatan Data",
 			},
 			{
 				id: "2",
-				subTitle: "Median",
+				subTitle: "Mean",
 			},
 			{
 				id: "3",
+				subTitle: "Median",
+			},
+			{
+				id: "4",
 				subTitle: "Modus",
 			},
 			{
