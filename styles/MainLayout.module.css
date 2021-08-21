@@ -25,7 +25,7 @@
 	border-radius: 6px;
 	min-height: 70vh;
 	max-height: 70vh;
-	overflow: scroll;
+	overflow: auto;
 }
 
 .containerSolo {
@@ -40,8 +40,8 @@
 	border: 1px solid #4444;
 	border-radius: 6px;
 	max-height: 70vh;
-	overflow: scroll;
 	min-height: 70vh;
+	overflow: auto;
 }
 
 .column1,

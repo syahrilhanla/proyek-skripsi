@@ -215,9 +215,9 @@ export const pemusatanPage2 = {
 				dengan menjumlahkan semua data yang dikumpulkan dan dibagi dengan jumlah
 				satuan data. Mencari nilai rata-rata dirumuskan sebagai berikut:
 			</p>
-			<DisplayEquation
+			{/* <DisplayEquation
 				displayMode={"block"}
-			>{`\\bar{x} =  \\frac{ \\sum_{i=1}^nx_{i}}{n} = \\frac{x_{1} + x_{2} + ... + x_{n}}{n}`}</DisplayEquation>
+			>{`\\bar{x} =  \\frac{ \\sum_{i=1}^nx_{i}}{n} = \\frac{x_{1} + x_{2} + ... + x_{n}}{n}`}</DisplayEquation> */}
 
 			<div style={{ width: "40%", margin: "auto" }}>
 				<p>Keterangan:</p>
@@ -242,7 +242,7 @@ export const pemusatanPage2 = {
 			</div>
 
 			<p>
-				Sebagai contoh, pada tabel 2-1 di atas terdapat data yang berisikan
+				Sebagai contoh, pada tabel 2-1 di samping terdapat data yang berisikan
 				jumlah telur pertahun itik Alabio, maka untuk mencari rata-rata jumlah
 				telur yang dihasilkan oleh Itik A selama 3 tahun dihitung seperti ini:
 			</p>
@@ -257,8 +257,14 @@ export const pemusatanPage2 = {
 				Itik A, yakni sebanyak 249,7 atau jika dibulatkan menjadi 249 butir
 				telur pertahun.
 			</p>
+		</div>
+	),
+};
 
-			<h2 style={{ textAlign: "center" }}>Rata-rata Gabungan</h2>
+export const pemusatanPage3 = {
+	id: "act1",
+	act: (
+		<div>
 			<p>
 				Terkadang data yang tersaji merupakan banyak data yang berbeda namun
 				tetap dalam kategori yang sama. Misalkan saja terdapat kelompok data
@@ -272,7 +278,7 @@ export const pemusatanPage2 = {
 			</p>
 			<DisplayEquation
 				displayMode={"block"}
-			>{`\\bar{x}_gab =  \\frac{ \\sum_{i=1}^mx_{i} + \\sum_{i=1}^nx_{i}}{m + n} = \\frac{m + bar{x}_{1} + n + bar{x}_{2}}{m + n}`}</DisplayEquation>
+			>{`\\bar{x}_{gab} =  \\frac{ \\sum_{i=1}^mx_{i} + \\sum_{i=1}^nx_{i}}{m + n} = \\frac{m + \\bar{x}_{1} + n + \\bar{x}_{2}}{m + n}`}</DisplayEquation>
 
 			<div style={{ width: "40%", margin: "auto" }}>
 				<p>Keterangan:</p>
@@ -280,19 +286,19 @@ export const pemusatanPage2 = {
 					<li>
 						<DisplayEquation
 							displayMode={"inline"}
-						>{`\\bar{x}_gab`}</DisplayEquation>{" "}
+						>{`\\bar{x}_{gab}`}</DisplayEquation>{" "}
 						= nilai rata-rata gabungan yang dicari
 					</li>
 					<li>
 						<DisplayEquation
 							displayMode={"inline"}
-						>{`bar{x}_{1}`}</DisplayEquation>{" "}
+						>{`\\bar{x}_{1}`}</DisplayEquation>{" "}
 						= rata-rata kelompok 1
 					</li>
 					<li>
 						<DisplayEquation
 							displayMode={"inline"}
-						>{`bar{x}_{2}`}</DisplayEquation>{" "}
+						>{`\\bar{x}_{2}`}</DisplayEquation>{" "}
 						= rata-rata kelompok 2
 					</li>
 					<li>
@@ -305,6 +311,10 @@ export const pemusatanPage2 = {
 					</li>
 				</ul>
 			</div>
+			<p>
+				Dengan demikian, nilai rata-rata dari gabungan banyaknya nilai data
+				kelompok yang sudah memiliki rata-ratanya masing-masing dapat diketahui.
+			</p>
 		</div>
 	),
 };
