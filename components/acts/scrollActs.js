@@ -133,4 +133,89 @@ export const analysisPage4 = {
 	),
 };
 
+export const analysisPage5 = {
+	id: "act1",
+	act: (
+		<div>
+			<p>
+				Di bawah ini merupakan diagram garis yang menunjukkan aktivitas bertelur
+				dari Itik Alabio, itik yang terkenal sebagai produk peternakan khas
+				daerah HSU (Hulu Sungai Utara) yang berdaya jual tinggi, Analisis data
+				di atas dan ambil kesimpulan berdasarkan data yang disajikan, kemudian
+				jawablah pertanyaan berikut:
+			</p>
+			<ol>
+				<li>Tahun berapakah itik paling banyak bertelur?</li>
+				<li>Itik manakah yang paling sedikit bertelur di tahun pertama?</li>
+			</ol>
+		</div>
+	),
+};
+
+export const analysisPage6 = {
+	id: "act1",
+	act: (
+		<div>
+			<p>
+				Diagram lingkaran di samping menunjukkan data tentang luas lahan gambut
+				yang ada di Indonesia. Menurut penelitian terdapat total 14,9 juta
+				hektar luas lahan gambut di Indonesia. Dari situ terdapat 43% terletak
+				di Sumatera, 32% terletak di Kalimantan, dan sisanya di tempat lain.
+			</p>
+			<p>Pertanyaannya adalah:</p>
+			<ol>
+				<li>
+					Berapa persentase dan luas lahan gambut di tempat lain (dalam satuan
+					juta hektar)?
+				</li>
+				<li>
+					Berapa juta hektar luas lahan gambut yang terdapat di Kalimantan?
+				</li>
+			</ol>
+		</div>
+	),
+};
+
 // ===================== CHAPTER 1 __ ANALYSIS ================================
+
+// ===================== CHAPTER 2 __ PEMUSATAN ===============================
+
+export const pemusatanPage1 = {
+	id: "act1",
+	act: (
+		<div className={mainLayoutStyles.divForObjectives}>
+			<LearningObjectives objectives={chapter2Objectives} />
+			<p>
+				Di kehidupan sehari-hari kata “rata-rata” sering kali terdengar.
+				Rata-rata merupakan salah satu ukuran pemusatan data yang paling sering
+				digunakan. Berdasarkan data yang didapat dari ikan papuyu yang
+				dikumpulkan dari pasar-pasar di kawasan Banjarmasin (teks sementara,
+				sumber ditambahkan nanti), didapatkan ukuran rata-rata badan ikan
+				sebesar 8,5 cm. Ini merupakan salah satu contoh kecil dari penggunaan
+				ukuran pemusatan data dalam kehidupan sehari-hari, oleh karena itu
+				ukuran pemusatan data penting untuk dipahami.
+			</p>
+			<p>
+				Perhatikan data dalam tabel di samping! Dalam tabel tersebut terdapat
+				data hasil produksi telur itik Alabio yang telah dikumpulkan selama 3
+				tahun. Dalam subbab ini akan dipelajari cara menentukan nilai rata-rata
+				(mean), modus, dan median dari data yang disajikan.
+			</p>
+		</div>
+	),
+};
+
+export const pemusatanPage2 = {
+	id: "act1",
+	act: (
+		<div>
+			<p>
+				Pada kegiatan ini akan dipelajari cara menentukan nilai rata-rata.
+				Rata-rata dalam statistika nilai disebut dengan mean. Rata-rata dihitung
+				dengan menjumlahkan semua data yang dikumpulkan dan dibagi dengan jumlah
+				satuan data. Mencari nilai rata-rata dirumuskan sebagai berikut:
+			</p>
+			<DisplayEquation>𝑥̅</DisplayEquation>
+		</div>
+	),
+};
