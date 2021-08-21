@@ -215,7 +215,7 @@ export const pemusatanPage2 = {
 				dengan menjumlahkan semua data yang dikumpulkan dan dibagi dengan jumlah
 				satuan data. Mencari nilai rata-rata dirumuskan sebagai berikut:
 			</p>
-			<DisplayEquation>𝑥̅</DisplayEquation>
+			<DisplayEquation>{`\\bar{x} =  \\frac{ \\sum_{i=1}^nx_{i}}{n} = \\frac{x_{1} + x_{2} + ... + x_{n}}{n}`}</DisplayEquation>
 		</div>
 	),
 };
