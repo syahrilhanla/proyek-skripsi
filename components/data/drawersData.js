@@ -17,7 +17,15 @@ export const drawersData = [
 			},
 			{
 				id: "4",
-				subTitle: "Menganalis Grafik",
+				subTitle: "Menganalis Grafik/Diagram",
+			},
+			{
+				id: "5",
+				subTitle: "Ayo Mencoba!",
+			},
+			{
+				id: "6",
+				subTitle: "Berlatih Bersama",
 			},
 			{
 				id: "kuis",
