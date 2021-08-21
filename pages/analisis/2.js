@@ -1,4 +1,3 @@
-import React from "react";
 import MainLayout from "@/components/common/MainLayout";
 import { analysisPage2 } from "@/components/acts/scrollActs";
 
