@@ -9,6 +9,7 @@ import {
 } from "@/components/data/objectivesData";
 
 import mainLayoutStyles from "@/styles/MainLayout.module.css";
+import Caption from "@/components/common/Caption";
 
 // ===================== CHAPTER 1 __ ANALYSIS ================================
 
@@ -314,6 +315,97 @@ export const pemusatanPage3 = {
 			<p>
 				Dengan demikian, nilai rata-rata dari gabungan banyaknya nilai data
 				kelompok yang sudah memiliki rata-ratanya masing-masing dapat diketahui.
+			</p>
+		</div>
+	),
+};
+
+export const pemusatanPage4 = {
+	id: "act1",
+	act1: (
+		<div>
+			<h3 style={{ textAlign: "center", fontWeight: "medium" }}>
+				A. Median pada Data Berjumlah Ganjil
+			</h3>
+			<p>
+				Median adalah nilai tengah data setelah kumpulan data diurutkan. Jika
+				banyak data berjumlah ganjil, median data terletak tepat di
+				tengah-tengah data sehingga mediannya merupakan nilai yang tepat berada
+				di tengah. Misalkan diperoleh data dari banyaknya tanaman rotan yang
+				merupakan primadona salah satu hasil hutan di Kalimantan, panjang
+				(satuan meter) rotan yang sudah diukur dan diurutkan datanya sehingga
+				menjadi seperti berikut:
+			</p>
+			<p
+				style={{ wordSpacing: "2rem", textAlign: "center", fontSize: "larger" }}
+			>
+				14 15 15{" "}
+				<span
+					style={{
+						border: "#408CFF 1px solid",
+						borderRadius: "50%",
+						padding: "0.5rem",
+					}}
+				>
+					<b>16</b>
+				</span>{" "}
+				18 21 21
+			</p>
+			<Caption>
+				Jumlah data 7 buah rotan yang panjangnya telah diurutkan dari yang
+				terendah dan tertinggi
+			</Caption>
+
+			<p>
+				Seperti yang dilihat berdasarkan contoh di atas, menentukan nilai median
+				dari banyak data ganjil sangatlah mudah. Apabila terlalu banyak data
+				untuk menemukannya secara keseluruhan dapat menggunakan rumus di bawah
+				ini.
+			</p>
+			<DisplayEquation
+				displayMode={"block"}
+			>{`Med_{ganjil} = \\frac{banyak data + 1}{2}`}</DisplayEquation>
+			<p>
+				Dengan menggunakan rumus ini median dapat ditemukan tanpa perlu
+				memastikan posisi data di tengah dari keseluruhan data. Seperti pada
+				contoh di atas terdapat 7 data, maka dengan ditambahkan 1 dan dibagi dua
+				akan didapatkan urutan data sebagai posisi paling tengah, dan pada
+				contoh ini ada pada urutan ke-4.
+			</p>
+		</div>
+	),
+	act2: (
+		<div>
+			<h3 style={{ textAlign: "center", fontWeight: "medium" }}>
+				B. Median pada Data Berjumlah Genap
+			</h3>
+			<p>
+				Median juga terdapat pada banyak data berjumlah genap. Jika demikian,
+				maka median terletak di antara dua nilai data yang berada di tengah
+				sehingga mediannya adalah nilai rata-rata dari dua nilai yang terletak
+				di tengah. Untuk menentukan nilai tengahnya dengan mudah, dapat dihitung
+				dengan rumus berikut:
+			</p>
+			<DisplayEquation
+				displayMode={"block"}
+			>{`Med_{genap} = \\frac{nilai data ke-\\frac{n}{2} + nilai data ke-\\frac{n}{2} + 1}{2}`}</DisplayEquation>
+			<div style={{ width: "40%", margin: "auto" }}>
+				<p>Keterangan:</p>
+				<ul>
+					<li>
+						<DisplayEquation>n</DisplayEquation> = banyak data
+					</li>
+				</ul>
+			</div>
+			<p>
+				Sebagai contoh kasus, seorang pemilik rumah makan sedang pergi ke pasar
+				untuk membeli ikan gabus untuk dijadikan dendeng ikan gabus. Untuk
+				diolah makanan, ikan tersebut harus cukup besar untuk diolah dagingnya.
+				Maka sang pemilik tersebut menetapkan apabila ikan tersebut melewati
+				berat yang ditentukan, yakni nilai tengah dari berat ikan yang dijual
+				oleh pedagang, ia akan membelinya dan mengolahnya menjadi makanan. Dan
+				apabila tidak memenuhi kriteria yang ditentukan maka akan ia masak
+				menjadi hidangan lain.
 			</p>
 		</div>
 	),

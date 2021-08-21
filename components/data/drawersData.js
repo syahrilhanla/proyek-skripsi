@@ -47,10 +47,14 @@ export const drawersData = [
 			},
 			{
 				id: "3",
-				subTitle: "Median",
+				subTitle: "Rata-rata Gabungan",
 			},
 			{
 				id: "4",
+				subTitle: "Median",
+			},
+			{
+				id: "5",
 				subTitle: "Modus",
 			},
 			{
