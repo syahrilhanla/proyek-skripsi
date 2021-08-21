@@ -388,7 +388,7 @@ export const pemusatanPage4 = {
 			</p>
 			<DisplayEquation
 				displayMode={"block"}
-			>{`Med_{genap} = \\frac{nilai data ke-\\frac{n}{2} + nilai data ke-\\frac{n}{2} + 1}{2}`}</DisplayEquation>
+			>{`Med_{genap} = \\frac{nilai\\, data\\, ke\\,-\\frac{n}{2} + nilai\\, data\\, ke-\\,\\frac{n}{2} + 1}{2}`}</DisplayEquation>
 			<div style={{ width: "40%", margin: "auto" }}>
 				<p>Keterangan:</p>
 				<ul>
