@@ -8,6 +8,8 @@ import {
 	chapter3Objectives,
 } from "@/components/data/objectivesData";
 
+import Image from "next/image";
+
 import mainLayoutStyles from "@/styles/MainLayout.module.css";
 import Caption from "@/components/common/Caption";
 
@@ -386,9 +388,11 @@ export const pemusatanPage4 = {
 				di tengah. Untuk menentukan nilai tengahnya dengan mudah, dapat dihitung
 				dengan rumus berikut:
 			</p>
+
 			<DisplayEquation
 				displayMode={"block"}
-			>{`Med_{genap} = \\frac{nilai data ke-\\frac{n}{2} + nilai data ke-\\frac{n}{2} + 1}{2}`}</DisplayEquation>
+			>{`Med_{genap} = \\frac{nilai\\, data\\, ke\\,-\\frac{n}{2} + nilai\\, data\\, ke-\\,\\frac{n}{2} + 1}{2}`}</DisplayEquation>
+
 			<div style={{ width: "40%", margin: "auto" }}>
 				<p>Keterangan:</p>
 				<ul>
@@ -406,6 +410,119 @@ export const pemusatanPage4 = {
 				oleh pedagang, ia akan membelinya dan mengolahnya menjadi makanan. Dan
 				apabila tidak memenuhi kriteria yang ditentukan maka akan ia masak
 				menjadi hidangan lain.
+			</p>
+		</div>
+	),
+};
+
+export const pemusatanPage5 = {
+	id: "act1",
+	act1: (
+		<div>
+			<p>Perhatikan data di bawah ini!</p>
+			<p
+				style={{ wordSpacing: "2rem", textAlign: "center", fontSize: "larger" }}
+			>
+				45 46 43 41 72 84 43 43 40 39
+			</p>
+			<Caption>Data 10 ekor ikan Papuyu hasil tangkapan Udin</Caption>
+
+			<p>
+				Misalkan Udin pergi memancing dan mendapatkan ikan Papuyu. Kemudian ia
+				ingin mengamati pertumbuhan ikan Papuyu, namun Udin juga ingin
+				menyantapnya. Jadi yang Udin lakukan adalah memilih ikan Papuyu yang
+				berat per ikannya (satuan gram) melewati berat yang telah ditetapkan,
+				yaitu melewati berat nilai tengah dari semua ikan.
+			</p>
+
+			<h5>Pertanyaan:</h5>
+			<p>Berapakah jumlah berat ikan Papuyu yang dapat dimakan oleh Udin?</p>
+		</div>
+	),
+	act2: (
+		<div>
+			<h5>Pembahasan</h5>
+			<p>
+				Berdasarkan kasus yang disebutkan maka ikan papuyu harus dipilah untuk
+				menentukan mana yang dapat disantap dengan mencari nilai median. Melihat
+				data yang tersedia, terlihat jelas bahwa kumpulan data tersebut belum
+				tersusun, dengan demikian nilai median masih belum dapat ditentukan.
+				Maka yang perlu dilakukan adalah mengurutkan datanya terlebih dahulu
+				seperti berikut.
+			</p>
+
+			<p
+				style={{ wordSpacing: "2rem", textAlign: "center", fontSize: "larger" }}
+			>
+				39 40 41 43 43 43 45 46 72 84
+			</p>
+			<Caption>
+				Data 10 ekor ikan Papuyu hasil tangkapan Udin yang telah diurutkan
+			</Caption>
+
+			<p>
+				Setelah diurutkan median dapat dicari dengan menggunakan rumus yang
+				disebutkan sebelumnya. Banyak data (n) adalah genap yaitu 10, maka
+				dimasukkan ke rumus:
+			</p>
+
+			{/* <DisplayEquation
+				displayMode={"block"}
+			>{`Med_{genap} = \\frac{nilai\\, data\\, ke\\,\\frac{10}{2} + nilai\\, data\\, ke\\,\\frac{10}{2} + 1}{2}`}</DisplayEquation>
+
+			<DisplayEquation
+				displayMode={"block"}
+			>{`\\frac{nilai\\, data\\, ke\\,5 + nilai\\, data\\, ke\\,6}{2}`}</DisplayEquation>
+
+			<DisplayEquation
+				displayMode={"block"}
+			>{`\\frac{43 + 43}{2} = \\frac{86}{2}=43`}</DisplayEquation> */}
+
+			<span style={{ display: "flex", justifyContent: "center" }}>
+				<Image
+					src={"/berlatihPemusatan.png"}
+					width={460}
+					height={200}
+					quality={100}
+				/>
+			</span>
+
+			<p>
+				Nilai median yang didapatkan adalah 43 (gram). Maka dengan ini dapat
+				ditentukan berapa jumlah berat ikan yang dapat dimakan oleh Udin.
+				Apabila semua berat ikan yang ditangkap memiliki berat lebih dari 43
+				gram, dapat dijumlahkan sehingga didapatkan total beratnya 247 gram
+				(jumlah kumulatif berat ikan yang beratnya melebihi 43 gram).
+			</p>
+		</div>
+	),
+};
+
+export const pemusatanPage6 = {
+	id: "act1",
+	act: (
+		<div>
+			<p>
+				Modus adalah nilai yang “paling sering muncul” atau nilai yang
+				frekuensinya paling banyak. Perhatikanlah <b>tabel 2-2</b> di samping,
+				pada tabel tersebut menunjukkan hasil pengumpulan data sebuah tambak
+				ikan papuyu, sang peternak ikan ingin melakukan pendataan hasil
+				ternaknya dan ia ingin mengetahui persentase populasi ikan papuyu
+				terbanyak digolongkan dari ukurannya. Cobalah tentukan persentase
+				populasi ikan terbesar dari data yang disajikan!
+			</p>
+
+			<h5>Pembahasan:</h5>
+
+			<p>
+				Untuk mencari persentase populasi terbesar ikan, ikan yang paling banyak
+				jumlahnya harus diketahui, dan berdasarkan tabel dapat diketahui nilai
+				frekuensi yang paling besar (satuan ekor) adalah ikan dengan ukuran 8,1
+				– 10,0 cm, yaitu 350 ekor. Selanjutnya jumlah ikan harus diubah ke
+				persentase populasi, karena jumlah semua ikan adalah 1000 ekor, maka 350
+				ekor ikan ukuran 8,1 – 10,0 cm adalah 35% dari total populasi ikan yang
+				diukur. Dengan demikian ditemukan populasi terbesarnya, dari ikan ukuran
+				8,1 – 10,0 cm yaitu sebesar 35%.
 			</p>
 		</div>
 	),
