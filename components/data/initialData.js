@@ -11,14 +11,17 @@ export const initialData = [
 				acts: [
 					{
 						name: "act1",
+						desc: "Membaca sampai tuntas",
 						act: false,
 					},
 					{
 						name: "act2",
+						desc: "Menjawab Pertanyaan 1",
 						act: false,
 					},
 					{
 						name: "act3",
+						desc: "Menjawab Pertanyaan 2",
 						act: false,
 					},
 				],
@@ -28,14 +31,17 @@ export const initialData = [
 				acts: [
 					{
 						name: "act1",
+						desc: "Membaca sampai tuntas",
 						act: false,
 					},
 					{
 						name: "act2",
+						desc: "Menjawab Pertanyaan 1",
 						act: false,
 					},
 					{
 						name: "act3",
+						desc: "Menjawab Pertanyaan 2",
 						act: false,
 					},
 				],
@@ -45,15 +51,18 @@ export const initialData = [
 				acts: [
 					{
 						name: "act1",
+						desc: "Membaca sampai tuntas",
 						act: false,
 					},
 					{
 						name: "act2",
-						act: true,
+						desc: "Menjawab Pertanyaan 1",
+						act: false,
 					},
 					{
 						name: "act3",
-						act: true,
+						desc: "Menjawab Pertanyaan 2",
+						act: false,
 					},
 				],
 			},
@@ -62,14 +71,17 @@ export const initialData = [
 				acts: [
 					{
 						name: "act1",
+						desc: "Membaca sampai tuntas",
 						act: false,
 					},
 					{
 						name: "act2",
+						desc: "Menjawab Pertanyaan 1",
 						act: false,
 					},
 					{
 						name: "act3",
+						desc: "Menjawab Pertanyaan 2",
 						act: false,
 					},
 				],
@@ -84,18 +96,17 @@ export const initialData = [
 				acts: [
 					{
 						name: "act1",
+						desc: "Membaca sampai tuntas",
 						act: false,
 					},
 					{
 						name: "act2",
+						desc: "Menjawab Pertanyaan 1",
 						act: false,
 					},
 					{
 						name: "act3",
-						act: false,
-					},
-					{
-						name: "act4",
+						desc: "Menjawab Pertanyaan 2",
 						act: false,
 					},
 				],
@@ -105,14 +116,17 @@ export const initialData = [
 				acts: [
 					{
 						name: "act1",
+						desc: "Membaca sampai tuntas",
 						act: false,
 					},
 					{
 						name: "act2",
+						desc: "Menjawab Pertanyaan 1",
 						act: false,
 					},
 					{
 						name: "act3",
+						desc: "Menjawab Pertanyaan 2",
 						act: false,
 					},
 				],
@@ -127,14 +141,17 @@ export const initialData = [
 				acts: [
 					{
 						name: "act1",
+						desc: "Membaca sampai tuntas",
 						act: false,
 					},
 					{
 						name: "act2",
+						desc: "Menjawab Pertanyaan 1",
 						act: false,
 					},
 					{
 						name: "act3",
+						desc: "Menjawab Pertanyaan 2",
 						act: false,
 					},
 				],
@@ -144,14 +161,17 @@ export const initialData = [
 				acts: [
 					{
 						name: "act1",
+						desc: "Membaca sampai tuntas",
 						act: false,
 					},
 					{
 						name: "act2",
+						desc: "Menjawab Pertanyaan 1",
 						act: false,
 					},
 					{
 						name: "act3",
+						desc: "Menjawab Pertanyaan 2",
 						act: false,
 					},
 				],

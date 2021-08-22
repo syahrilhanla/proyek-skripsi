@@ -41,7 +41,7 @@ const quiz1 = () => {
 		<QuizComponent questionData={questionData} DisplayData={DisplayData} />
 	);
 
-	return <MainLayout Child1={DisplayQuiz} />;
+	return <MainLayout Child1={DisplayQuiz} title={"Kuis Analisis Data"} />;
 };
 
 export default quiz1;

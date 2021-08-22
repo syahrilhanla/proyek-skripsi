@@ -1,12 +1,16 @@
+import { useState } from "react";
+
 import MainLayout from "@/components/common/MainLayout";
 import QuizComponent from "@/components/common/QuizComponent";
 import { questionData } from "@/components/data/quiz1Data";
 import TableOne from "@/components/graphsAndTables/TableOne";
 import TableTwo from "@/components/graphsAndTables/TableTwo";
-import Caption from "@/components/common/Caption";
 import EvaluationCountDown from "@/components/common/EvaluationCountDown";
+import Caption from "@/components/common/Caption";
 
 const evaluation = () => {
+	const [timesUp, setTimesUp] = useState(false);
+
 	// needed to display data on QuizComponent
 	// takes number as argument from questionData array being set in QuizComponent
 	const DisplayData = ({ currentQuestion }) => {
@@ -39,15 +43,17 @@ const evaluation = () => {
 	};
 
 	const DisplayQuiz = () => (
-		<QuizComponent questionData={questionData} DisplayData={DisplayData} />
+		<QuizComponent
+			questionData={questionData}
+			DisplayData={DisplayData}
+			timesUp={timesUp}
+		/>
 	);
 
 	return (
 		<>
-			<MainLayout Child1={DisplayQuiz} />{" "}
-			<span style={{ alignSelf: "center" }}>
-				<EvaluationCountDown />
-			</span>
+			<MainLayout Child1={DisplayQuiz} title={"Evaluasi Akhir"} />
+			<EvaluationCountDown setTimesUp={setTimesUp} />
 		</>
 	);
 };

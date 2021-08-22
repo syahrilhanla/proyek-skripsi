@@ -1,7 +1,9 @@
-import questionStyle from "@/styles/QuestionBox.module.css";
+import { useState } from "react";
 
 import useUpdateCertainAct from "@/components/utils/useUpdateCertainAct";
 import useGetCurrentPage from "@/components/utils/useGetCurrentPage";
+
+import questionStyle from "@/styles/QuestionBox.module.css";
 
 const QuestionBox = ({
 	question,
@@ -11,6 +13,8 @@ const QuestionBox = ({
 }) => {
 	const { parentPath, currentPath } = useGetCurrentPage();
 
+	const [error, setError] = useState(false);
+
 	// check answers on multiple-choice question
 	const checkAnswer = async (item, answer) => {
 		if (answer.isCorrect) {
@@ -18,12 +22,18 @@ const QuestionBox = ({
 
 			setUpdateProgress(!updateProgress);
 		} else {
-			setOpen(true);
+			// to display error message for 3 seconds
+			setError(true);
+			setTimeout(() => setError(false), 3000);
 		}
 	};
 
 	return (
 		<div className={questionStyle.main}>
+			{error && (
+				<h3 className={questionStyle.error}>Jawaban Salah! Coba Lagi</h3>
+			)}
+
 			<h2 className={questionStyle.header}>Mari Mencoba</h2>
 
 			<p className={questionStyle.instruction}>{instruction}</p>

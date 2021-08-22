@@ -44,15 +44,23 @@ export const getAllUserProgress = async () => {
 	return usersData;
 };
 
-export const addClass = async (className) => {
-	if (className) {
+export const addClass = async (className, password) => {
+	if (className && password) {
 		firestore.collection("classNames").doc(className).set({
 			className: className,
+			password: password,
 		});
 	} else return;
 };
 
 // ================================== USED BY USERS ==============================================
+
+export const joinClass = async (localUser, className) => {
+	if (className && localUser) {
+		docRef.doc(localUser).update({ className: className });
+		console.log({ localUser, className });
+	} else return;
+};
 
 // fired when there is no user checked in the initial loading
 export const createUserProgress = async (localUser) => {
@@ -150,6 +158,7 @@ export const addUser = async (localUser) => {
 };
 
 export const submitTestScore = (localUser, score) => {
+	console.log(score);
 	if (score) {
 		const userData = { score: score };
 		docRef.doc(localUser).update(userData);

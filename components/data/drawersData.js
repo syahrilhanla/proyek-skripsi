@@ -17,7 +17,15 @@ export const drawersData = [
 			},
 			{
 				id: "4",
-				subTitle: "Menganalis Grafik",
+				subTitle: "Menganalis Grafik/Diagram",
+			},
+			{
+				id: "5",
+				subTitle: "Ayo Mencoba!",
+			},
+			{
+				id: "6",
+				subTitle: "Berlatih Bersama",
 			},
 			{
 				id: "kuis",
@@ -31,14 +39,22 @@ export const drawersData = [
 		items: [
 			{
 				id: "1",
-				subTitle: "Mean",
+				subTitle: "Ukuran Pemusatan Data",
 			},
 			{
 				id: "2",
-				subTitle: "Median",
+				subTitle: "Mean",
 			},
 			{
 				id: "3",
+				subTitle: "Rata-rata Gabungan",
+			},
+			{
+				id: "4",
+				subTitle: "Median",
+			},
+			{
+				id: "5",
 				subTitle: "Modus",
 			},
 			{

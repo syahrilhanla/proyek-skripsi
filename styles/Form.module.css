@@ -14,7 +14,7 @@
 	width: 100%;
 	height: fit-content;
 	border-radius: 4px;
-	border: 1px solid;
+	border: 1px solid rgb(156, 156, 156);
 	padding: 10px 15px;
 	background-color: rgba(65, 65, 160, 0.877);
 	color: white;
@@ -23,6 +23,12 @@
 
 .errorMsg {
 	color: red;
+	font-size: smaller;
+	text-align: center;
+	margin-bottom: 0.4rem;
+}
+.successMsg {
+	color: rgb(2, 112, 2);
 	font-size: smaller;
 	text-align: center;
 	margin-bottom: 0.4rem;
