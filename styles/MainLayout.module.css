@@ -19,13 +19,13 @@
 	gap: 1rem;
 	width: 90%;
 	margin: 2rem auto;
-	align-self: center;
+	/* align-self: center; */
 	padding: 1rem;
 	border: 1px solid #4444;
 	border-radius: 6px;
 	min-height: 70vh;
 	max-height: 70vh;
-	overflow: scroll;
+	overflow: auto;
 }
 
 .containerSolo {
@@ -35,13 +35,13 @@
 	gap: 1rem;
 	width: 90%;
 	margin: 2rem auto;
-	align-self: center;
+	/* align-self: center; */
 	padding: 1rem;
 	border: 1px solid #4444;
 	border-radius: 6px;
 	max-height: 70vh;
-	overflow: scroll;
 	min-height: 70vh;
+	overflow: auto;
 }
 
 .column1,
@@ -74,6 +74,13 @@
 	width: 80%;
 	color: white;
 	cursor: pointer;
+}
+
+.divForObjectives {
+	padding: 0.8rem;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
 }
 
 @media (max-width: 600px) {

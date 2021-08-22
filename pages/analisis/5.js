@@ -1,18 +1,17 @@
-import React from "react";
 import MainLayout from "@/components/common/MainLayout";
 import TableOne from "@/components/graphsAndTables/TableOne";
 import { firstQuestion } from "@/components/data/shortEssayData";
-import { analysisPage3 } from "@/components/acts/scrollActs";
+import { analysisPage5 } from "@/components/acts/scrollActs";
 
 const page3 = () => {
-	const Text = () => analysisPage3.act;
+	const Text = () => analysisPage5.act;
 
 	return (
 		<>
 			<MainLayout
 				Child1={TableOne}
 				Child2={Text}
-				title={"Menganalisis Tabel"}
+				title={"Ayo Mencoba!"}
 				essayQuestion={firstQuestion}
 			/>
 		</>
