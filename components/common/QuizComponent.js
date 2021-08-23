@@ -12,8 +12,11 @@ const QuizComponent = ({ questionData, DisplayData, timesUp }) => {
 	const { quizScore, setQuizScore } = useProgress(0);
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [isFinished, setIsFinished] = useState(false);
+	const [overallAnswers, setOverallAnswers] = useState([]);
 
 	const { parentPath, pushTo } = useGetCurrentPage();
+
+	console.log("overallAnswers", overallAnswers);
 
 	useEffect(() => {
 		if (currentQuestion < 1) setQuizScore(0);
@@ -62,6 +65,11 @@ const QuizComponent = ({ questionData, DisplayData, timesUp }) => {
 						setCurrentQuestion={setCurrentQuestion}
 						setIsFinished={setIsFinished}
 						currentQuestion={currentQuestion}
+						isFinished={isFinished}
+						overallAnswers={overallAnswers}
+						setOverallAnswers={setOverallAnswers}
+						setCountRender={setCountRender}
+						countRender={countRender}
 					/>
 				) : null}
 			</div>

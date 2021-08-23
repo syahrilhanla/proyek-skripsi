@@ -1,21 +1,54 @@
 import quizStyle from "@/styles/QuizStyle.module.css";
+import { useState } from "react";
 
 const MultipleChoices = ({
 	questionData,
 	setQuizScore,
 	setIsFinished,
+	isFinished,
 	setCurrentQuestion,
 	currentQuestion,
+	overallAnswers,
+	setOverallAnswers,
 }) => {
-	const checkAnswer = (isCorrect) => {
-		if (isCorrect === true) {
-			setQuizScore((prevState) => prevState + 10);
-		}
+	const [selectedButton, setSelectedButton] = useState(-1);
 
+	const chooseAnswer = (isCorrect, index) => {
+		setSelectedButton(index);
+		let answers = [];
+		const newAnswer = { index: index, answer: isCorrect };
+		answers.push(newAnswer);
+
+		// answers.forEach((item) => {
+		// 	if (item === index) {
+		// 		answers[index] = newAnswer;
+		// 		console.log("index", index);
+		// 		console.log(item);
+		// 	}
+		// });
+
+		// answers.forEach((item) => {
+		// 	if (item === index) {
+		// 		setOverallAnswers([].concat(answers, overallAnswers));
+		// 		console.log("same answer");
+		// 		console.log("index", index);
+		// 		console.log(item);
+		// 	}
+		// });
+
+		if (isFinished === true) {
+			answers.forEach((item) => {
+				if (item.answer) setQuizScore((prevState) => prevState + 10);
+			});
+		}
+	};
+
+	const toNextAnswer = () => {
 		if (!(currentQuestion < questionData.length - 1)) {
 			setIsFinished(true);
 		} else setCurrentQuestion((prevState) => prevState + 1);
 	};
+
 	const optionDisplay = (index) => {
 		if (index === 0) {
 			return "a";
@@ -43,12 +76,22 @@ const MultipleChoices = ({
 				{questionData[currentQuestion].answerChoices.map((answer, index) => (
 					<button
 						key={answer.id}
-						onClick={() => checkAnswer(answer.isCorrect)}
-						className={quizStyle.answerButton}
+						onClick={() => chooseAnswer(answer.isCorrect, index)}
+						className={
+							selectedButton === index
+								? quizStyle.selectedAnswer
+								: quizStyle.answerButton
+						}
 					>
 						{optionDisplay(index)}. {answer.answerText}
 					</button>
 				))}
+				<button
+					className={quizStyle.answerButton}
+					onClick={() => toNextAnswer()}
+				>
+					Selanjutnya
+				</button>
 			</div>
 		</>
 	);
