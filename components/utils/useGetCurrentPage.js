@@ -6,7 +6,13 @@ const useGetCurrentPage = () => {
 	const parentPath = currentURL.split("/")[1];
 	const currentPath = parseInt(currentURL.split("/")[2]);
 
-	return { currentPath, parentPath, currentURL };
+	const pushTo = (parentPath) => {
+		if (parentPath === "analisis") router.push("/pemusatan/1");
+		else if (parentPath === "pemusatan") router.push("/pemusatan/1");
+		else if (parentPath === "penyebaran") router.push("/kuis");
+	};
+
+	return { currentPath, parentPath, currentURL, pushTo };
 };
 
 export default useGetCurrentPage;

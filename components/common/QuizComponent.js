@@ -13,7 +13,7 @@ const QuizComponent = ({ questionData, DisplayData, timesUp }) => {
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [isFinished, setIsFinished] = useState(false);
 
-	const { parentPath } = useGetCurrentPage();
+	const { parentPath, pushTo } = useGetCurrentPage();
 
 	useEffect(() => {
 		if (currentQuestion < 1) setQuizScore(0);
@@ -27,7 +27,11 @@ const QuizComponent = ({ questionData, DisplayData, timesUp }) => {
 				return (
 					<div>
 						<h3>Kamu bisa lanjut ke materi berikutnya!</h3>
-						<button className={quizStyle.answerButton} key={quizScore}>
+						<button
+							className={quizStyle.answerButton}
+							key={quizScore}
+							onClick={() => pushTo(parentPath)}
+						>
 							Materi Berikutnya
 						</button>
 					</div>
@@ -68,8 +72,11 @@ const QuizComponent = ({ questionData, DisplayData, timesUp }) => {
 			)}
 			{(isFinished || timesUp) && <DisplayScore quizScore={quizScore} />}
 
-			{parentPath === "evaluasi" && !isFinished && !timesUp && (
-				<QuestionIndex setCurrentQuestion={setCurrentQuestion} />
+			{!isFinished && !timesUp && (
+				<QuestionIndex
+					setCurrentQuestion={setCurrentQuestion}
+					questionData={questionData}
+				/>
 			)}
 			<>
 				<div className={quizStyle.submitButton}>

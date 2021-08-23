@@ -1,7 +1,7 @@
 import indexingStyle from "@/styles/QuestionIndex.module.css";
 import { questionData } from "@/components/data/quiz1Data";
 
-const QuestionIndex = ({ setCurrentQuestion }) => {
+const QuestionIndex = ({ setCurrentQuestion, questionData }) => {
 	return (
 		<div className={indexingStyle.borderOnly}>
 			<h2>Indeks Soal:</h2>
