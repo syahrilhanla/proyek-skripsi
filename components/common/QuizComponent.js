@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SubmitButton from "@/components/common/SubmitButton";
 
 import { useProgress } from "@/components/context/ProgressContext";
@@ -9,11 +9,15 @@ import quizStyle from "@/styles/QuizStyle.module.css";
 import QuestionIndex from "@/components/common/QuestionIndex";
 
 const QuizComponent = ({ questionData, DisplayData, timesUp }) => {
-	const { quizScore, setQuizScore } = useProgress();
+	const { quizScore, setQuizScore } = useProgress(0);
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [isFinished, setIsFinished] = useState(false);
 
 	const { parentPath } = useGetCurrentPage();
+
+	useEffect(() => {
+		if (currentQuestion < 1) setQuizScore(0);
+	}, [isFinished]);
 
 	const DisplayScore = ({ quizScore }) => {
 		const DisplayFinish = () => {

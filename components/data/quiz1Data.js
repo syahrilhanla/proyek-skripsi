@@ -233,12 +233,12 @@ export const questionData = [
 			{
 				id: idGenerator(),
 				answerText: "82 ekor",
-				isCorrect: false,
+				isCorrect: true,
 			},
 			{
 				id: idGenerator(),
 				answerText: "84 ekor",
-				isCorrect: true,
+				isCorrect: false,
 			},
 			{
 				id: idGenerator(),
