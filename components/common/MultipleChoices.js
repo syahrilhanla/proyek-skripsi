@@ -16,25 +16,61 @@ const MultipleChoices = ({
 	const chooseAnswer = (isCorrect, index) => {
 		setSelectedButton(index);
 		let answers = [];
-		const newAnswer = { index: index, answer: isCorrect };
+		const newAnswer = { index: index, answer: isCorrect, currentQuestion };
 		answers.push(newAnswer);
 
-		// answers.forEach((item) => {
-		// 	if (item === index) {
-		// 		answers[index] = newAnswer;
-		// 		console.log("index", index);
-		// 		console.log(item);
-		// 	}
-		// });
+		// if no answers yet, then push answer right away
+		if (overallAnswers.length > 0) {
+			// with this, system can already check whether if the answer is already exist.
+			// change current answer from the same question
+			overallAnswers.forEach((answer, index) => {
+				if (answer.currentQuestion === newAnswer.currentQuestion) {
+					let newOverallAnswers = [...overallAnswers];
+					newOverallAnswers[index] = newAnswer;
+					setOverallAnswers([].concat(newOverallAnswers));
+				} else if (
+					answer.currentQuestion === newAnswer.currentQuestion &&
+					answer.index !== newAnswer.index
+				) {
+					// change answer from current question
+					let newOverallAnswers = [...overallAnswers];
+					newOverallAnswers[index] = newAnswer;
+					setOverallAnswers([].concat(newOverallAnswers));
+				}
+			});
 
-		// answers.forEach((item) => {
-		// 	if (item === index) {
-		// 		setOverallAnswers([].concat(answers, overallAnswers));
-		// 		console.log("same answer");
-		// 		console.log("index", index);
-		// 		console.log(item);
-		// 	}
-		// });
+			// const exactAnswer = overallAnswers.some(
+			// 	(answer) =>
+			// 		answer.index === newAnswer.index &&
+			// 		answer.currentQuestion === newAnswer.currentQuestion
+			// );
+			// const diffAnswerSameNum = overallAnswers.some(
+			// 	(answer) =>
+			// 		answer.index !== newAnswer.index &&
+			// 		answer.currentQuestion === newAnswer.currentQuestion
+			// );
+			// const sameAnswerDiffNum = overallAnswers.some(
+			// 	(answer) =>
+			// 		answer.index === newAnswer.index &&
+			// 		answer.currentQuestion !== newAnswer.currentQuestion
+			// );
+			// const diffAnswer = overallAnswers.some(
+			// 	(answer) =>
+			// 		answer.index !== newAnswer.index &&
+			// 		answer.currentQuestion !== newAnswer.currentQuestion
+			// );
+
+			// overallAnswers.forEach((answer) => console.log(answer));
+			// const submitAnswer = () => {
+			// 	if (exactAnswer) return;
+			// 	if (diffAnswer) setOverallAnswers([].concat(answers, overallAnswers));
+			// 	console.log("exactAnswer", exactAnswer);
+			// 	console.log("diffAnswerSameNum :>> ", diffAnswerSameNum);
+			// 	console.log("sameAnswerDiffNum :>> ", sameAnswerDiffNum);
+			// 	console.log("diffAnswer :>> ", diffAnswer);
+			// };
+			// submitAnswer();
+		} else setOverallAnswers([].concat(answers, overallAnswers));
 
 		if (isFinished === true) {
 			answers.forEach((item) => {

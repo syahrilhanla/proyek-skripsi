@@ -68,8 +68,6 @@ const QuizComponent = ({ questionData, DisplayData, timesUp }) => {
 						isFinished={isFinished}
 						overallAnswers={overallAnswers}
 						setOverallAnswers={setOverallAnswers}
-						setCountRender={setCountRender}
-						countRender={countRender}
 					/>
 				) : null}
 			</div>
