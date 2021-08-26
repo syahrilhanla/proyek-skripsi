@@ -67,7 +67,6 @@ const QuizComponent = ({ questionData, DisplayData, timesUp }) => {
 						currentQuestion={currentQuestion}
 						overallAnswers={overallAnswers}
 						setOverallAnswers={setOverallAnswers}
-						quizScore={quizScore}
 					/>
 				) : null}
 			</div>
@@ -82,6 +81,7 @@ const QuizComponent = ({ questionData, DisplayData, timesUp }) => {
 				<QuestionIndex
 					setCurrentQuestion={setCurrentQuestion}
 					questionData={questionData}
+					overallAnswers={overallAnswers}
 				/>
 			)}
 			<>

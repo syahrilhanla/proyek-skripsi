@@ -30,3 +30,17 @@
 	max-height: 2.5rem;
 	cursor: pointer;
 }
+
+.answeredQuestion {
+	width: 2.5rem;
+	background-color: #97a0ce;
+	border-radius: 4px;
+	color: #ffff;
+	font-size: medium;
+	font-weight: 200;
+	padding: 0.3rem;
+	margin: 0.6rem;
+	text-align: center;
+	max-height: 2.5rem;
+	cursor: pointer;
+}

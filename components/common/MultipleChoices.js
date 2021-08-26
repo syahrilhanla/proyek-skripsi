@@ -9,16 +9,17 @@ const MultipleChoices = ({
 	currentQuestion,
 	overallAnswers,
 	setOverallAnswers,
-	quizScore,
 }) => {
 	const [selectedButton, setSelectedButton] = useState(-1);
 
+	// fires when user clicks an answer
 	const useChooseAnswer = (isCorrect, index) => {
 		setSelectedButton(index);
 		let answers = [];
 		const newAnswer = { index: index, answer: isCorrect, currentQuestion };
 		answers.push(newAnswer);
 
+		// replace an exists answer
 		const changeAnswer = () => {
 			let newOverallAnswers = [...overallAnswers];
 			newOverallAnswers.forEach((item, index) => {
@@ -29,6 +30,7 @@ const MultipleChoices = ({
 			setOverallAnswers([].concat(newOverallAnswers));
 		};
 
+		// check for duplicates in overallAnswers array
 		const checkThroughAnswers = () => {
 			// returns boolean whether if there's an answer already from the same question
 			return overallAnswers.some(
@@ -47,7 +49,8 @@ const MultipleChoices = ({
 
 		checkAnswers();
 	};
-	let result = 0;
+
+	// fires when user submit the answers or finished the quiz
 	const calculateResults = (overallAnswers) => {
 		overallAnswers.forEach((item) => {
 			if (item.answer) {
@@ -63,6 +66,7 @@ const MultipleChoices = ({
 		} else setCurrentQuestion((prevState) => prevState + 1);
 	};
 
+	// gives index for answer button
 	const optionDisplay = (index) => {
 		if (index === 0) {
 			return "a";
