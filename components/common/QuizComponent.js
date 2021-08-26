@@ -16,7 +16,7 @@ const QuizComponent = ({ questionData, DisplayData, timesUp }) => {
 
 	const { parentPath, pushTo } = useGetCurrentPage();
 
-	console.log("overallAnswers", overallAnswers);
+	// console.log("overallAnswers", overallAnswers);
 
 	useEffect(() => {
 		if (currentQuestion < 1) setQuizScore(0);

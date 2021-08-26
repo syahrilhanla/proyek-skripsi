@@ -19,58 +19,33 @@ const MultipleChoices = ({
 		const newAnswer = { index: index, answer: isCorrect, currentQuestion };
 		answers.push(newAnswer);
 
-		// if no answers yet, then push answer right away
-		if (overallAnswers.length > 0) {
-			// with this, system can already check whether if the answer is already exist.
-			// change current answer from the same question
-			overallAnswers.forEach((answer, index) => {
-				if (answer.currentQuestion === newAnswer.currentQuestion) {
-					let newOverallAnswers = [...overallAnswers];
+		const changeAnswer = () => {
+			let newOverallAnswers = [...overallAnswers];
+			newOverallAnswers.forEach((item, index) => {
+				if (item.currentQuestion === newAnswer.currentQuestion) {
 					newOverallAnswers[index] = newAnswer;
-					setOverallAnswers([].concat(newOverallAnswers));
-				} else if (
-					answer.currentQuestion === newAnswer.currentQuestion &&
-					answer.index !== newAnswer.index
-				) {
-					// change answer from current question
-					let newOverallAnswers = [...overallAnswers];
-					newOverallAnswers[index] = newAnswer;
-					setOverallAnswers([].concat(newOverallAnswers));
 				}
 			});
+			setOverallAnswers([].concat(newOverallAnswers));
+		};
 
-			// const exactAnswer = overallAnswers.some(
-			// 	(answer) =>
-			// 		answer.index === newAnswer.index &&
-			// 		answer.currentQuestion === newAnswer.currentQuestion
-			// );
-			// const diffAnswerSameNum = overallAnswers.some(
-			// 	(answer) =>
-			// 		answer.index !== newAnswer.index &&
-			// 		answer.currentQuestion === newAnswer.currentQuestion
-			// );
-			// const sameAnswerDiffNum = overallAnswers.some(
-			// 	(answer) =>
-			// 		answer.index === newAnswer.index &&
-			// 		answer.currentQuestion !== newAnswer.currentQuestion
-			// );
-			// const diffAnswer = overallAnswers.some(
-			// 	(answer) =>
-			// 		answer.index !== newAnswer.index &&
-			// 		answer.currentQuestion !== newAnswer.currentQuestion
-			// );
+		const checkThroughAnswers = () => {
+			// returns boolean whether if there's an answer already from the same question
+			return overallAnswers.some(
+				(answer) => answer.currentQuestion === newAnswer.currentQuestion
+			);
+		};
 
-			// overallAnswers.forEach((answer) => console.log(answer));
-			// const submitAnswer = () => {
-			// 	if (exactAnswer) return;
-			// 	if (diffAnswer) setOverallAnswers([].concat(answers, overallAnswers));
-			// 	console.log("exactAnswer", exactAnswer);
-			// 	console.log("diffAnswerSameNum :>> ", diffAnswerSameNum);
-			// 	console.log("sameAnswerDiffNum :>> ", sameAnswerDiffNum);
-			// 	console.log("diffAnswer :>> ", diffAnswer);
-			// };
-			// submitAnswer();
-		} else setOverallAnswers([].concat(answers, overallAnswers));
+		const checkAnswers = () => {
+			if (overallAnswers.length < 1) {
+				setOverallAnswers(answers);
+			} else if (checkThroughAnswers()) {
+				changeAnswer();
+			} else if (!checkThroughAnswers())
+				setOverallAnswers([].concat(overallAnswers, answers));
+		};
+
+		checkAnswers();
 
 		if (isFinished === true) {
 			answers.forEach((item) => {
