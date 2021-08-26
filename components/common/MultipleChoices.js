@@ -5,15 +5,15 @@ const MultipleChoices = ({
 	questionData,
 	setQuizScore,
 	setIsFinished,
-	isFinished,
 	setCurrentQuestion,
 	currentQuestion,
 	overallAnswers,
 	setOverallAnswers,
+	quizScore,
 }) => {
 	const [selectedButton, setSelectedButton] = useState(-1);
 
-	const chooseAnswer = (isCorrect, index) => {
+	const useChooseAnswer = (isCorrect, index) => {
 		setSelectedButton(index);
 		let answers = [];
 		const newAnswer = { index: index, answer: isCorrect, currentQuestion };
@@ -46,17 +46,20 @@ const MultipleChoices = ({
 		};
 
 		checkAnswers();
-
-		if (isFinished === true) {
-			answers.forEach((item) => {
-				if (item.answer) setQuizScore((prevState) => prevState + 10);
-			});
-		}
+	};
+	let result = 0;
+	const calculateResults = (overallAnswers) => {
+		overallAnswers.forEach((item) => {
+			if (item.answer) {
+				setQuizScore((prevState) => prevState + 10);
+			}
+		});
 	};
 
 	const toNextAnswer = () => {
 		if (!(currentQuestion < questionData.length - 1)) {
 			setIsFinished(true);
+			calculateResults(overallAnswers);
 		} else setCurrentQuestion((prevState) => prevState + 1);
 	};
 
@@ -87,7 +90,7 @@ const MultipleChoices = ({
 				{questionData[currentQuestion].answerChoices.map((answer, index) => (
 					<button
 						key={answer.id}
-						onClick={() => chooseAnswer(answer.isCorrect, index)}
+						onClick={() => useChooseAnswer(answer.isCorrect, index)}
 						className={
 							selectedButton === index
 								? quizStyle.selectedAnswer
@@ -99,9 +102,12 @@ const MultipleChoices = ({
 				))}
 				<button
 					className={quizStyle.answerButton}
+					style={{ backgroundColor: "#6d7ede", color: "#ffff" }}
 					onClick={() => toNextAnswer()}
 				>
-					Selanjutnya
+					{currentQuestion !== questionData.length - 1
+						? "Selanjutnya"
+						: "Submit"}
 				</button>
 			</div>
 		</>

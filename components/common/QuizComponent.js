@@ -24,7 +24,7 @@ const QuizComponent = ({ questionData, DisplayData, timesUp }) => {
 
 	const DisplayScore = ({ quizScore }) => {
 		const DisplayFinish = () => {
-			if (quizScore < questionData.length / quizScore)
+			if (quizScore < questionData.length * (60 / 100) * 10)
 				return <h3>Kamu sebaiknya mengulang kembali materi sebelumnya</h3>;
 			else
 				return (
@@ -65,9 +65,9 @@ const QuizComponent = ({ questionData, DisplayData, timesUp }) => {
 						setCurrentQuestion={setCurrentQuestion}
 						setIsFinished={setIsFinished}
 						currentQuestion={currentQuestion}
-						isFinished={isFinished}
 						overallAnswers={overallAnswers}
 						setOverallAnswers={setOverallAnswers}
+						quizScore={quizScore}
 					/>
 				) : null}
 			</div>
