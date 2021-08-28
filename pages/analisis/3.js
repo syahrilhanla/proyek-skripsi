@@ -14,6 +14,7 @@ const page3 = () => {
 				Child2={Text}
 				title={"Menganalisis Tabel"}
 				essayQuestion={firstQuestion}
+				scrollActID={analysisPage3.id}
 			/>
 		</>
 	);

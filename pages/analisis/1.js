@@ -1,13 +1,19 @@
 import React from "react";
 import MainLayout from "@/components/common/MainLayout";
-import LearningObjectives from "@/components/common/LearningObjectives";
-import { chapter1Objectives } from "@/components/data/objectivesData";
 import { analysisPage1 } from "@/components/acts/scrollActs";
 
 const page1 = () => {
-	const Text = () => analysisPage1.act;
+	const Text = () => analysisPage1.act1;
+	const Image = () => analysisPage1.act2;
 
-	return <MainLayout Child1={Text} title={"Apa itu Statistika?"} />;
+	return (
+		<MainLayout
+			Child1={Image}
+			Child2={Text}
+			title={"Apa itu Statistika?"}
+			scrollActID={analysisPage1.id}
+		/>
+	);
 };
 
 export default page1;

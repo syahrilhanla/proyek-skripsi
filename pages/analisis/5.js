@@ -13,6 +13,7 @@ const page3 = () => {
 				Child2={Text}
 				title={"Ayo Mencoba!"}
 				essayQuestion={firstQuestion}
+				scrollActID={analysisPage5.id}
 			/>
 		</>
 	);
