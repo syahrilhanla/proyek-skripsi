@@ -6,7 +6,11 @@ const page2 = () => {
 
 	return (
 		<>
-			<MainLayout Child1={Text} title={"Menganalisis Data"} />
+			<MainLayout
+				Child1={Text}
+				title={"Menganalisis Data"}
+				scrollActID={analysisPage2.id}
+			/>
 		</>
 	);
 };

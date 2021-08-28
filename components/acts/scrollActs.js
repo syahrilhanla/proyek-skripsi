@@ -17,7 +17,7 @@ import Caption from "@/components/common/Caption";
 
 export const analysisPage1 = {
 	id: "act1",
-	act: (
+	act1: (
 		<div>
 			<p>
 				Ikan betok (<i>Anabas testudineus</i>) atau di sekitaran daerah
@@ -40,6 +40,25 @@ export const analysisPage1 = {
 				nilai rata-rata (mean), median, modus, dan sebaran data akan dipelajari
 				di sini.
 			</p>
+		</div>
+	),
+	act2: (
+		<div>
+			<span style={{ display: "flex", justifyContent: "center" }}>
+				<Image
+					src={"/papuyuGalam.png"}
+					width={360}
+					height={160}
+					quality={100}
+				/>
+				<Image
+					src={"/papuyuHijau.png"}
+					width={360}
+					height={160}
+					quality={100}
+				/>
+			</span>
+			<Caption>Kiri: Papuyu Galam; Kanan: Papuyu Hijau</Caption>
 		</div>
 	),
 };

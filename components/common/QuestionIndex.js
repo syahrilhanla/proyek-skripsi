@@ -1,7 +1,18 @@
 import indexingStyle from "@/styles/QuestionIndex.module.css";
-import { questionData } from "@/components/data/quiz1Data";
 
-const QuestionIndex = ({ setCurrentQuestion }) => {
+const QuestionIndex = ({
+	setCurrentQuestion,
+	questionData,
+	overallAnswers,
+}) => {
+	const determineButtonColor = (index) => {
+		const isFound = overallAnswers.some(
+			(answer) => answer.currentQuestion === index
+		);
+		if (isFound) return indexingStyle.answeredQuestion;
+		else return indexingStyle.buttonNumber;
+	};
+
 	return (
 		<div className={indexingStyle.borderOnly}>
 			<h2>Indeks Soal:</h2>
@@ -10,7 +21,7 @@ const QuestionIndex = ({ setCurrentQuestion }) => {
 					return (
 						<h3
 							key={index}
-							className={indexingStyle.buttonNumber}
+							className={determineButtonColor(index)}
 							onClick={() => setCurrentQuestion(index)}
 						>
 							{index + 1}

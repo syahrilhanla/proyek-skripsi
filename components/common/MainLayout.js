@@ -81,21 +81,26 @@ const MainLayout = ({
 						</div>
 					)}
 				</div>
-				{displayQuestion ? (
-					<div className={layoutStyles.questionBox}>
-						{questionData && (
-							<QuestionBox
-								question={questionData}
-								instruction={instruction}
-								setUpdateProgress={setUpdateProgress}
-								updateProgress={updateProgress}
-							/>
-						)}
-						<span style={{ maxWidth: "55%" }}>
-							{essayQuestion && <ShortEssay essayQuestion={essayQuestion} />}
-						</span>
-					</div>
-				) : null}
+
+				{displayQuestion
+					? (questionData || essayQuestion) && (
+							<div className={layoutStyles.questionBox}>
+								{questionData && (
+									<QuestionBox
+										question={questionData}
+										instruction={instruction}
+										setUpdateProgress={setUpdateProgress}
+										updateProgress={updateProgress}
+									/>
+								)}
+								<span style={{ maxWidth: "55%" }}>
+									{essayQuestion && (
+										<ShortEssay essayQuestion={essayQuestion} />
+									)}
+								</span>
+							</div>
+					  )
+					: null}
 			</div>
 			{DisplayBottomProgress()}
 		</>
