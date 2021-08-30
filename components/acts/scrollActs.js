@@ -12,6 +12,7 @@ import Image from "next/image";
 
 import mainLayoutStyles from "@/styles/MainLayout.module.css";
 import Caption from "@/components/common/Caption";
+import TableOne from "@/components/graphsAndTables/TableOne";
 
 // ===================== CHAPTER 1 __ ANALYSIS ================================
 
@@ -117,6 +118,12 @@ export const analysisPage3 = {
 					yang lain.
 				</li>
 			</ul>
+		</div>
+	),
+	data: (
+		<div style={{ margin: "auto" }}>
+			<TableOne />
+			<Caption>Tabel 1-3: Ukuran Benih Ikan Papuyu</Caption>
 		</div>
 	),
 };
