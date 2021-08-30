@@ -14,13 +14,18 @@ const QuestionBox = ({
 	const { parentPath, currentPath } = useGetCurrentPage();
 
 	const [error, setError] = useState(false);
+	const [currentQuestion, setCurrentQuestion] = useState(0);
 
 	// check answers on multiple-choice question
 	const checkAnswer = async (item, answer) => {
+		console.log("answer.isCorrect", answer.isCorrect);
 		if (answer.isCorrect) {
-			await useUpdateCertainAct(item.id, parentPath, currentPath);
+			if (currentQuestion < question.length - 1) {
+				setCurrentQuestion((prevState) => prevState + 1);
+			}
 
 			setUpdateProgress(!updateProgress);
+			await useUpdateCertainAct(item.id, parentPath, currentPath);
 		} else {
 			// to display error message for 3 seconds
 			setError(true);
@@ -39,30 +44,30 @@ const QuestionBox = ({
 			<p className={questionStyle.instruction}>{instruction}</p>
 
 			<ol className={questionStyle.questions}>
-				{question.map((item, index) => (
-					<li key={index}>
-						<div>
-							<h3>
-								{index + 1}. {""}
-								{item.questionText}
-							</h3>
-						</div>
-						<div>
-							<ul className={questionStyle.choices}>
-								{item.answerChoices.map((answer, index) => (
-									<li key={index}>
-										<button
-											className={questionStyle.answer}
-											onClick={() => checkAnswer(item, answer)}
-										>
-											<p>{answer.answerText}</p>
-										</button>
-									</li>
-								))}
-							</ul>
-						</div>
-					</li>
-				))}
+				<li>
+					<div>
+						<h3>
+							{currentQuestion + 1}. {""}
+							{question[currentQuestion].questionText}
+						</h3>
+					</div>
+					<div>
+						<ul className={questionStyle.choices}>
+							{question[currentQuestion].answerChoices.map((answer) => (
+								<li key={answer.answerText}>
+									<button
+										className={questionStyle.answer}
+										onClick={() =>
+											checkAnswer(question[currentQuestion], answer)
+										}
+									>
+										<p>{answer.answerText}</p>
+									</button>
+								</li>
+							))}
+						</ul>
+					</div>
+				</li>
 			</ol>
 		</div>
 	);

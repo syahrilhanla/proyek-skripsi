@@ -1,15 +1,29 @@
 export const questionDataAnalysisPage4 = [
 	{
 		id: "act2",
-		questionText: "question data analysis page 4?",
+		questionText: "Tahun berapakah itik A paling banyak bertelur?",
 		answerChoices: [
 			{
-				answerText: "this is it",
+				answerText: "Tahun 2",
 				isCorrect: true,
 			},
 			{
-				answerText: "this is not it",
+				answerText: "Tahun 3",
 				isCorrect: false,
+			},
+		],
+	},
+	{
+		id: "act3",
+		questionText: "Itik manakah yang paling sedikit bertelur di tahun pertama?",
+		answerChoices: [
+			{
+				answerText: "Itik A",
+				isCorrect: false,
+			},
+			{
+				answerText: "Itik B",
+				isCorrect: true,
 			},
 		],
 	},
