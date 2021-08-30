@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import MainLayout from "@/components/common/MainLayout";
 import QuizComponent from "@/components/common/QuizComponent";
-import { questionData } from "@/components/data/quiz1Data";
+import evaluationQuiz from "@/components/data/evaluationQuiz";
 import TableOne from "@/components/graphsAndTables/TableOne";
 import TableTwo from "@/components/graphsAndTables/TableTwo";
 import EvaluationCountDown from "@/components/common/EvaluationCountDown";
@@ -44,7 +44,7 @@ const evaluation = () => {
 
 	const DisplayQuiz = () => (
 		<QuizComponent
-			questionData={questionData}
+			questionData={evaluationQuiz}
 			DisplayData={DisplayData}
 			timesUp={timesUp}
 		/>
