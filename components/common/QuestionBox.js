@@ -13,32 +13,26 @@ const QuestionBox = ({
 }) => {
 	const { parentPath, currentPath } = useGetCurrentPage();
 
-	const [error, setError] = useState(false);
+	const [error, setError] = useState("");
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 
 	// check answers on multiple-choice question
 	const checkAnswer = async (item, answer) => {
-		console.log("answer.isCorrect", answer.isCorrect);
 		if (answer.isCorrect) {
 			if (currentQuestion < question.questions.length - 1) {
 				setCurrentQuestion((prevState) => prevState + 1);
 			}
-
-			setUpdateProgress(!updateProgress);
 			await useUpdateCertainAct(item.id, parentPath, currentPath);
+			setUpdateProgress(!updateProgress);
 		} else {
 			// to display error message for 3 seconds
-			setError(true);
-			setTimeout(() => setError(false), 3000);
+			setError("Jawaban Salah!");
+			setTimeout(() => setError(""), 3000);
 		}
 	};
 
 	return (
 		<div className={questionStyle.main}>
-			{error && (
-				<h3 className={questionStyle.error}>Jawaban Salah! Coba Lagi</h3>
-			)}
-
 			<h2 className={questionStyle.header}>Mari Mencoba</h2>
 
 			<p className={questionStyle.instruction}>{instruction}</p>
@@ -54,6 +48,9 @@ const QuestionBox = ({
 						</h3>
 					</div>
 					<div>
+						{error === "Jawaban Salah!" && (
+							<h3 className={questionStyle.error}>Jawaban Salah! Coba Lagi</h3>
+						)}
 						<ul className={questionStyle.choices}>
 							{question.questions[currentQuestion].answerChoices.map(
 								(answer) => (
@@ -61,10 +58,7 @@ const QuestionBox = ({
 										<button
 											className={questionStyle.answer}
 											onClick={() =>
-												checkAnswer(
-													questions.questions[currentQuestion],
-													answer
-												)
+												checkAnswer(question.questions[currentQuestion], answer)
 											}
 										>
 											<p>{answer.answerText}</p>

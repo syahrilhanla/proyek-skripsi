@@ -95,7 +95,11 @@ const MainLayout = ({
 								)}
 								<span style={{ maxWidth: "55%" }}>
 									{essayQuestion && (
-										<ShortEssay essayQuestion={essayQuestion} />
+										<ShortEssay
+											essayQuestion={essayQuestion}
+											setUpdateProgress={setUpdateProgress}
+											updateProgress={updateProgress}
+										/>
 									)}
 								</span>
 							</div>
