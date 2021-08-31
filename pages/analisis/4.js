@@ -7,6 +7,7 @@ import { data } from "@/components/graphsAndTables/TableTwo";
 
 import { analysisPage4 } from "@/components/acts/scrollActs";
 import { questionDataAnalysisPage4 } from "@/components/acts/questionActs";
+import Chapter1Line from "@/components/graphsAndTables/Chapter1Line";
 
 const page4 = () => {
 	const tableData = data();
