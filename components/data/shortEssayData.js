@@ -1,5 +1,6 @@
 export const firstQuestion = {
+	id: "act2",
 	questionText:
-		"How much of a bother this thing is?How much of a bother this thing is?How much of a bother this thing is?How much of a bother this thing is?",
-	answer: "No",
+		"Berdasarkan tabel di atas, setiap berapa hari pengukuran panjang ikan papuyu di lakukan? (Jawab dengan bilangan hari)",
+	answer: "30",
 };
