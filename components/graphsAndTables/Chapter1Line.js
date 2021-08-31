@@ -2,7 +2,7 @@ import LineChart from "@/components/charts/LineChart";
 
 const Chapter1Line = () => {
 	const chartData = {
-		labels: ["", "Tahun 1", "Tahun 2", "Tahun 3", ""],
+		labels: ["Tahun 1", "Tahun 2", "Tahun 3"],
 		datasets: [
 			{
 				label: "Itik A",

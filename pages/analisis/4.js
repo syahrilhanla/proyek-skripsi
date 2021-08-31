@@ -7,7 +7,6 @@ import { data } from "@/components/graphsAndTables/TableTwo";
 
 import { analysisPage4 } from "@/components/acts/scrollActs";
 import { questionDataAnalysisPage4 } from "@/components/acts/questionActs";
-import Chapter1Line from "@/components/graphsAndTables/Chapter1Line";
 
 const page4 = () => {
 	const tableData = data();
@@ -29,10 +28,10 @@ const page4 = () => {
 	const Data = () => (
 		<div style={{ margin: "auto" }}>
 			<TableTwo />
-			<Caption>Data-2: Ukuran Ikan kelabau</Caption>
+			<Caption>Tabel 1-3: Ukuran Ikan Papuyu</Caption>
 			<br />
 			<BarChart chartData={chartData} />
-			<Caption>Data-2: Ukuran Ikan kelabau</Caption>
+			<Caption>Gambar 1-4: Ukuran Ikan Papuyu</Caption>
 		</div>
 	);
 
