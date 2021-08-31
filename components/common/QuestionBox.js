@@ -20,7 +20,7 @@ const QuestionBox = ({
 	const checkAnswer = async (item, answer) => {
 		console.log("answer.isCorrect", answer.isCorrect);
 		if (answer.isCorrect) {
-			if (currentQuestion < question.length - 1) {
+			if (currentQuestion < question.questions.length - 1) {
 				setCurrentQuestion((prevState) => prevState + 1);
 			}
 
@@ -43,28 +43,35 @@ const QuestionBox = ({
 
 			<p className={questionStyle.instruction}>{instruction}</p>
 
+			<div className={questionStyle.dataDisplay}>{question.Data()}</div>
+
 			<ol className={questionStyle.questions}>
 				<li>
 					<div>
 						<h3>
 							{currentQuestion + 1}. {""}
-							{question[currentQuestion].questionText}
+							{question.questions[currentQuestion].questionText}
 						</h3>
 					</div>
 					<div>
 						<ul className={questionStyle.choices}>
-							{question[currentQuestion].answerChoices.map((answer) => (
-								<li key={answer.answerText}>
-									<button
-										className={questionStyle.answer}
-										onClick={() =>
-											checkAnswer(question[currentQuestion], answer)
-										}
-									>
-										<p>{answer.answerText}</p>
-									</button>
-								</li>
-							))}
+							{question.questions[currentQuestion].answerChoices.map(
+								(answer) => (
+									<li key={answer.answerText}>
+										<button
+											className={questionStyle.answer}
+											onClick={() =>
+												checkAnswer(
+													questions.questions[currentQuestion],
+													answer
+												)
+											}
+										>
+											<p>{answer.answerText}</p>
+										</button>
+									</li>
+								)
+							)}
 						</ul>
 					</div>
 				</li>
