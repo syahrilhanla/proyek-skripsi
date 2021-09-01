@@ -1,12 +1,15 @@
 .formInput {
 	display: block;
 	box-sizing: border-box;
-	width: 100%;
+	width: 50%;
 	border-radius: 4px;
-	border: 1px solid;
+	border: 1px solid #cecece;
 	padding: 10px 15px;
 	margin-bottom: 10px;
 	font-size: 14px;
+	margin: 10px auto;
+	background-color: #cecece;
+	text-align: center;
 }
 
 .submitButton {
@@ -14,9 +17,9 @@
 	width: 100%;
 	height: fit-content;
 	border-radius: 4px;
-	border: 1px solid rgb(156, 156, 156);
+	border: 1px solid #67679be0;
 	padding: 10px 15px;
-	background-color: rgba(65, 65, 160, 0.877);
+	background-color: #4141a0e0;
 	color: white;
 	cursor: pointer;
 }

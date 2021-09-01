@@ -12,6 +12,7 @@ import Image from "next/image";
 
 import mainLayoutStyles from "@/styles/MainLayout.module.css";
 import Caption from "@/components/common/Caption";
+import TableOne from "@/components/graphsAndTables/TableOne";
 
 // ===================== CHAPTER 1 __ ANALYSIS ================================
 
@@ -119,6 +120,12 @@ export const analysisPage3 = {
 			</ul>
 		</div>
 	),
+	data: (
+		<div style={{ margin: "auto" }}>
+			<TableOne />
+			<Caption>Tabel 1-3: Ukuran Benih Ikan Papuyu</Caption>
+		</div>
+	),
 };
 
 export const analysisPage4 = {
@@ -156,25 +163,6 @@ export const analysisPage4 = {
 };
 
 export const analysisPage5 = {
-	id: "act1",
-	act: (
-		<div>
-			<p>
-				Di bawah ini merupakan diagram garis yang menunjukkan aktivitas bertelur
-				dari Itik Alabio, itik yang terkenal sebagai produk peternakan khas
-				daerah HSU (Hulu Sungai Utara) yang berdaya jual tinggi, Analisis data
-				di atas dan ambil kesimpulan berdasarkan data yang disajikan, kemudian
-				jawablah pertanyaan berikut:
-			</p>
-			<ol>
-				<li>Tahun berapakah itik paling banyak bertelur?</li>
-				<li>Itik manakah yang paling sedikit bertelur di tahun pertama?</li>
-			</ol>
-		</div>
-	),
-};
-
-export const analysisPage6 = {
 	id: "act1",
 	act: (
 		<div>
