@@ -172,7 +172,7 @@ export const analysisPage5 = {
 				hektar luas lahan gambut di Indonesia. Dari situ terdapat 43% terletak
 				di Sumatera, 32% terletak di Kalimantan, dan sisanya di tempat lain.
 			</p>
-			<p>Pertanyaannya adalah:</p>
+			<h5>Pertanyaannya adalah:</h5>
 			<ol>
 				<li>
 					Berapa persentase dan luas lahan gambut di tempat lain (dalam satuan
@@ -180,6 +180,30 @@ export const analysisPage5 = {
 				</li>
 				<li>
 					Berapa juta hektar luas lahan gambut yang terdapat di Kalimantan?
+				</li>
+			</ol>
+			<h5>Pembahasan: </h5>
+			<ol>
+				<li>
+					Diagram di atas merupakan diagram lingkaran yang menggunakan satuan
+					persen (%), ini berarti nilai maksimum yang dapat dicapai adalah 100%.
+					Nilai yang sudah disebutkan pada diagram tadi adalah 43% untuk
+					Sumatera dan 32% untuk Kalimantan. Karena yang dicari adalah
+					persentase untuk wilayah lain, maka:
+					<h4 className={mainLayoutStyles.practiceAnswer}>
+						𝑥 = 100 - (43 + 32) = 100 - (75) = (Jawaban Pertanyaan 1)%
+					</h4>
+				</li>
+				<li>
+					Nilai persentase dari Kalimantan adalah 32% dari 19,4 juta. Untuk
+					mendapatkan luas dari persentase perlu dihitung seperti berikut:
+					<h4 className={mainLayoutStyles.practiceAnswer}>
+						𝑥 = (14, 9 x 32) / 100 = (Jawaban Pertanyaan 2) juta hektar
+					</h4>
+					Berarti nilai luas dari area lahan gambut di Kalimantan adalah 𝑥 juta
+					hektar atau bisa dibulatkan sebagai 𝑥 juta hektar. Jumlah ini
+					merupakan 32% dari 14,9 juta hektar total lahan gambut yang ada di
+					Indonesia.
 				</li>
 			</ol>
 		</div>
