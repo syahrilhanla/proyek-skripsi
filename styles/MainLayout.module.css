@@ -28,7 +28,7 @@
 	border: 1px solid #4444;
 	border-radius: 6px;
 	max-height: 65vh;
-	overflow: auto;
+	overflow: hidden;
 }
 
 .containerSolo {
@@ -42,20 +42,26 @@
 	padding: 1rem;
 	border: 1px solid #4444;
 	border-radius: 6px;
-	max-height: 70vh;
-	min-height: 70vh;
-	overflow: auto;
+	max-height: 65vh;
+	min-height: 65vh;
+	overflow: hidden;
 }
 
 .column1,
 .column2 {
 	width: 100%;
-	padding: 2.5rem 4rem;
+	padding: 0 1rem;
 	text-align: justify;
 	line-height: 1.7rem;
 	display: flex;
-	justify-items: center;
+	justify-content: center;
 	align-items: center;
+}
+
+.container {
+	max-height: 55vh;
+	overflow: auto;
+	padding: 0 2rem;
 }
 
 .questionBox {
@@ -86,9 +92,15 @@
 	flex-wrap: wrap;
 }
 
+.practiceAnswer h4 {
+	font-weight: medium;
+	text-align: center;
+}
+
 @media (max-width: 600px) {
 	.containerCombo {
 		grid-template-columns: 1fr;
+		max-height: none;
 	}
 
 	.column2 {

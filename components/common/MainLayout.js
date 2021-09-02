@@ -70,14 +70,17 @@ const MainLayout = ({
 					className={
 						Child2 ? layoutStyles.containerCombo : layoutStyles.containerSolo
 					}
-					ref={scrollRef}
 				>
 					<div className={layoutStyles.column1}>
-						<Child1 />
+						<div className={layoutStyles.container} ref={scrollRef}>
+							<Child1 />
+						</div>
 					</div>
 					{Child2 && (
 						<div className={layoutStyles.column2}>
-							<Child2 />
+							<div className={layoutStyles.container} ref={scrollRef}>
+								<Child2 />
+							</div>
 						</div>
 					)}
 				</div>
