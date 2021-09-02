@@ -24,7 +24,7 @@ const FormAnswer = ({
 	const { parentPath, currentPath } = useGetCurrentPage();
 
 	const checkAnswer = async (answer, data) => {
-		if (answer === data) {
+		if (answer.includes(data)) {
 			setFeedback("Jawaban Benar!");
 			setTimeout(() => setFeedback(""), 3000);
 			if (currentQuestion < questionsAmount - 1) {
@@ -41,7 +41,6 @@ const FormAnswer = ({
 	const onSubmit = (data) => {
 		checkAnswer(answer, data.userAnswer.toString());
 	};
-	console.log(errors);
 
 	return (
 		<form onSubmit={handleSubmit(onSubmit)}>
