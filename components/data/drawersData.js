@@ -24,10 +24,6 @@ export const drawersData = [
 				subTitle: "Ayo Mencoba!",
 			},
 			{
-				id: "6",
-				subTitle: "Berlatih Bersama",
-			},
-			{
 				id: "kuis",
 				subTitle: "Kuis 1",
 			},
