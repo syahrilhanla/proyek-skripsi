@@ -93,7 +93,7 @@ const MainLayout = ({
 										updateProgress={updateProgress}
 									/>
 								)}
-								<span style={{ maxWidth: "55%" }}>
+								<span className={layoutStyles.shortEssay}>
 									{essayQuestion && (
 										<ShortEssay
 											essayQuestion={essayQuestion}
