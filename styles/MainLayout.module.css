@@ -103,6 +103,10 @@
 		max-height: none;
 	}
 
+	.container {
+		padding: 0 0.8rem;
+	}
+
 	.column2 {
 		padding: 1rem;
 		margin: 1rem 0px;
