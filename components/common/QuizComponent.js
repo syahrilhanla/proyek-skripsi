@@ -4,6 +4,7 @@ import SubmitButton from "@/components/common/SubmitButton";
 import { useProgress } from "@/components/context/ProgressContext";
 import MultipleChoices from "@/components/common/MultipleChoices";
 import useGetCurrentPage from "@/components/utils/useGetCurrentPage";
+import useCalculateScore from "@/components/utils/useCalculateScore";
 
 import quizStyle from "@/styles/QuizStyle.module.css";
 import QuestionIndex from "@/components/common/QuestionIndex";
@@ -15,8 +16,13 @@ const QuizComponent = ({ questionData, DisplayData, timesUp }) => {
 	const [overallAnswers, setOverallAnswers] = useState([]);
 
 	const { parentPath, pushTo } = useGetCurrentPage();
+	const { getScoreThreshold, getScoringTotal, calculateResults } =
+		useCalculateScore();
 
-	// console.log("overallAnswers", overallAnswers);
+	useEffect(
+		() => calculateResults(overallAnswers, setQuizScore),
+		[overallAnswers]
+	);
 
 	useEffect(() => {
 		if (currentQuestion < 1) setQuizScore(0);
@@ -24,7 +30,12 @@ const QuizComponent = ({ questionData, DisplayData, timesUp }) => {
 
 	const DisplayScore = ({ quizScore }) => {
 		const DisplayFinish = () => {
-			if (quizScore < questionData.length * (60 / 100) * 10)
+			if (
+				getScoreThreshold(
+					getScoringTotal(quizScore, questionData.length),
+					questionData.length
+				)
+			)
 				return <h3>Kamu sebaiknya mengulang kembali materi sebelumnya</h3>;
 			else
 				return (
@@ -40,11 +51,12 @@ const QuizComponent = ({ questionData, DisplayData, timesUp }) => {
 					</div>
 				);
 		};
+
 		return (
 			<div style={{ margin: "auto", textAlign: "center" }}>
 				<h3>
-					Skor yang kamu peroleh adalah {quizScore} dari{" "}
-					{questionData.length * 10}!
+					Skor yang kamu peroleh adalah{" "}
+					{getScoringTotal(quizScore, questionData.length)} dari 100!
 				</h3>
 				{<DisplayFinish />}
 			</div>
@@ -56,12 +68,11 @@ const QuizComponent = ({ questionData, DisplayData, timesUp }) => {
 			{!isFinished && !timesUp ? (
 				<DisplayData currentQuestion={currentQuestion} />
 			) : null}
-
+			{console.log(quizScore)}
 			<div key={currentQuestion} className={quizStyle.questionDisplay}>
 				{!isFinished && !timesUp ? (
 					<MultipleChoices
 						questionData={questionData}
-						setQuizScore={setQuizScore}
 						setCurrentQuestion={setCurrentQuestion}
 						setIsFinished={setIsFinished}
 						currentQuestion={currentQuestion}
@@ -87,7 +98,11 @@ const QuizComponent = ({ questionData, DisplayData, timesUp }) => {
 			<>
 				<div className={quizStyle.submitButton}>
 					{parentPath === "evaluasi" && !timesUp && (
-						<SubmitButton quizScore={quizScore} />
+						<SubmitButton
+							questionAmount={questionData.length}
+							quizScore={quizScore}
+							setIsFinished={setIsFinished}
+						/>
 					)}
 				</div>
 				{/* <span style={{ alignSelf: "center", width: "100%" }}>

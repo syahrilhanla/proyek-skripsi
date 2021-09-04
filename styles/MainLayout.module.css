@@ -62,6 +62,7 @@
 	max-height: 55vh;
 	overflow: auto;
 	padding: 0 2rem;
+	width: 100%;
 }
 
 .questionBox {
