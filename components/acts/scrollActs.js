@@ -13,6 +13,7 @@ import Image from "next/image";
 import mainLayoutStyles from "@/styles/MainLayout.module.css";
 import Caption from "@/components/common/Caption";
 import TableOne from "@/components/graphsAndTables/TableOne";
+import TableThree from "@/components/graphsAndTables/TableThree";
 
 // ===================== CHAPTER 1 __ ANALYSIS ================================
 
@@ -253,7 +254,7 @@ export const pemusatanPage2 = {
 				displayMode={"block"}
 			>{`\\bar{x} =  \\frac{ \\sum_{i=1}^nx_{i}}{n} = \\frac{x_{1} + x_{2} + ... + x_{n}}{n}`}</DisplayEquation> */}
 
-			<div style={{ width: "40%", margin: "auto" }}>
+			<div>
 				<p>Keterangan:</p>
 				<ul>
 					<li>
@@ -291,6 +292,12 @@ export const pemusatanPage2 = {
 				Itik A, yakni sebanyak 249,7 atau jika dibulatkan menjadi 249 butir
 				telur pertahun.
 			</p>
+		</div>
+	),
+	data: (
+		<div style={{ margin: "auto" }}>
+			<TableThree />
+			<Caption>Tabel 2-1: Hasil Produk Telur Itik Alabio</Caption>
 		</div>
 	),
 };

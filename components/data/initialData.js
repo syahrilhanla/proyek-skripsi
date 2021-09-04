@@ -94,16 +94,6 @@ export const initialData = [
 						desc: "Membaca sampai tuntas",
 						act: false,
 					},
-					{
-						name: "act2",
-						desc: "Menjawab Pertanyaan 1",
-						act: false,
-					},
-					{
-						name: "act3",
-						desc: "Menjawab Pertanyaan 2",
-						act: false,
-					},
 				],
 			},
 			{
