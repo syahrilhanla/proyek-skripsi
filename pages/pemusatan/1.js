@@ -10,6 +10,7 @@ const page1 = () => {
 			Child1={TableOne}
 			Child2={Text}
 			title={"Ukuran Pemusatan Data"}
+			scrollActID={pemusatanPage1.id}
 		/>
 	);
 };
