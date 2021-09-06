@@ -504,7 +504,7 @@ export const pemusatanPage5 = {
 				dimasukkan ke rumus:
 			</p>
 
-			{/* <DisplayEquation
+			<DisplayEquation
 				displayMode={"block"}
 			>{`Med_{genap} = \\frac{nilai\\, data\\, ke\\,\\frac{10}{2} + nilai\\, data\\, ke\\,\\frac{10}{2} + 1}{2}`}</DisplayEquation>
 
@@ -514,16 +514,16 @@ export const pemusatanPage5 = {
 
 			<DisplayEquation
 				displayMode={"block"}
-			>{`\\frac{43 + 43}{2} = \\frac{86}{2}=43`}</DisplayEquation> */}
+			>{`\\frac{43 + 43}{2} = \\frac{86}{2}=43`}</DisplayEquation>
 
-			<span style={{ display: "flex", justifyContent: "center" }}>
+			{/* <span style={{ display: "flex", justifyContent: "center" }}>
 				<Image
 					src={"/berlatihPemusatan.png"}
 					width={460}
 					height={200}
 					quality={100}
 				/>
-			</span>
+			</span> */}
 
 			<p>
 				Nilai median yang didapatkan adalah 43 (gram). Maka dengan ini dapat

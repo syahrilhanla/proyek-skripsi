@@ -109,11 +109,6 @@ export const initialData = [
 						desc: "Menjawab Pertanyaan 1",
 						act: false,
 					},
-					{
-						name: "act3",
-						desc: "Menjawab Pertanyaan 2",
-						act: false,
-					},
 				],
 			},
 			{
@@ -142,6 +137,16 @@ export const initialData = [
 					{
 						name: "act5",
 						desc: "Menjawab Pertanyaan 4",
+						act: false,
+					},
+				],
+			},
+			{
+				page: "page4",
+				acts: [
+					{
+						name: "act1",
+						desc: "Membaca sampai tuntas",
 						act: false,
 					},
 				],
