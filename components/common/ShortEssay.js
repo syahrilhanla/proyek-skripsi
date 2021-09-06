@@ -10,15 +10,18 @@ const ShortEssay = ({ essayQuestion, setUpdateProgress, updateProgress }) => {
 		<>
 			<div className={essayStyle.mother}>
 				<h1>Pertanyaan Singkat</h1>
-				<h4>{essayQuestion[currentQuestion].questionText}</h4>
+				<h4>{essayQuestion.question[currentQuestion].questionText}</h4>
+				{essayQuestion.Data && (
+					<div className={essayStyle.data}>{essayQuestion.Data()}</div>
+				)}
 				<FormAnswer
-					answer={essayQuestion[currentQuestion].answer}
-					actID={essayQuestion[currentQuestion].id}
+					answer={essayQuestion.question[currentQuestion].answer}
+					actID={essayQuestion.question[currentQuestion].id}
 					setUpdateProgress={setUpdateProgress}
 					updateProgress={updateProgress}
 					setCurrentQuestion={setCurrentQuestion}
 					currentQuestion={currentQuestion}
-					questionsAmount={essayQuestion.length}
+					questionsAmount={essayQuestion.question.length}
 				/>
 			</div>
 		</>
