@@ -286,11 +286,11 @@ export const pemusatanPage2 = {
 			>{`\\bar{x} = \\frac{242 + 256 +251}{3}`}</DisplayEquation>
 			<DisplayEquation
 				displayMode={"block"}
-			>{`\\bar{x} = \\frac{749}{3} = 249.7`}</DisplayEquation>
+			>{`\\bar{x} = \\frac{749}{3} = ?`}</DisplayEquation>
 			<p>
 				Dengan demikian, maka didapatkanlah nilai rata-rata produksi telur dari
-				Itik A, yakni sebanyak 249,7 atau jika dibulatkan menjadi 249 butir
-				telur pertahun.
+				Itik A, yakni sebanyak (Jawaban Pertanyaan 1) atau jika dibulatkan
+				menjadi (Jawaban Pertanyaan 1) butir telur pertahun.
 			</p>
 		</div>
 	),
