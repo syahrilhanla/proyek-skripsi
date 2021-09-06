@@ -10,6 +10,7 @@
 	font-size: large;
 	font-weight: 400;
 	color: #444;
+	text-align: justify;
 }
 
 .mother h1 {
@@ -17,4 +18,16 @@
 	font-weight: 600;
 	color: #444;
 	text-align: center;
+}
+
+.data {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 1rem;
+}
+
+@media (max-width: 600px) {
+	.mother h4 {
+		text-align: center;
+	}
 }

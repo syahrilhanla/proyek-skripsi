@@ -13,6 +13,7 @@ import Image from "next/image";
 import mainLayoutStyles from "@/styles/MainLayout.module.css";
 import Caption from "@/components/common/Caption";
 import TableOne from "@/components/graphsAndTables/TableOne";
+import TableThree from "@/components/graphsAndTables/TableThree";
 
 // ===================== CHAPTER 1 __ ANALYSIS ================================
 
@@ -253,7 +254,7 @@ export const pemusatanPage2 = {
 				displayMode={"block"}
 			>{`\\bar{x} =  \\frac{ \\sum_{i=1}^nx_{i}}{n} = \\frac{x_{1} + x_{2} + ... + x_{n}}{n}`}</DisplayEquation> */}
 
-			<div style={{ width: "40%", margin: "auto" }}>
+			<div>
 				<p>Keterangan:</p>
 				<ul>
 					<li>
@@ -285,12 +286,18 @@ export const pemusatanPage2 = {
 			>{`\\bar{x} = \\frac{242 + 256 +251}{3}`}</DisplayEquation>
 			<DisplayEquation
 				displayMode={"block"}
-			>{`\\bar{x} = \\frac{749}{3} = 249.7`}</DisplayEquation>
+			>{`\\bar{x} = \\frac{749}{3} = ?`}</DisplayEquation>
 			<p>
 				Dengan demikian, maka didapatkanlah nilai rata-rata produksi telur dari
-				Itik A, yakni sebanyak 249,7 atau jika dibulatkan menjadi 249 butir
-				telur pertahun.
+				Itik A, yakni sebanyak (Jawaban Pertanyaan 1) atau jika dibulatkan
+				menjadi (Jawaban Pertanyaan 1) butir telur pertahun.
 			</p>
+		</div>
+	),
+	data: (
+		<div style={{ margin: "auto" }}>
+			<TableThree />
+			<Caption>Tabel 2-1: Hasil Produk Telur Itik Alabio</Caption>
 		</div>
 	),
 };
@@ -497,7 +504,7 @@ export const pemusatanPage5 = {
 				dimasukkan ke rumus:
 			</p>
 
-			{/* <DisplayEquation
+			<DisplayEquation
 				displayMode={"block"}
 			>{`Med_{genap} = \\frac{nilai\\, data\\, ke\\,\\frac{10}{2} + nilai\\, data\\, ke\\,\\frac{10}{2} + 1}{2}`}</DisplayEquation>
 
@@ -507,16 +514,16 @@ export const pemusatanPage5 = {
 
 			<DisplayEquation
 				displayMode={"block"}
-			>{`\\frac{43 + 43}{2} = \\frac{86}{2}=43`}</DisplayEquation> */}
+			>{`\\frac{43 + 43}{2} = \\frac{86}{2}=43`}</DisplayEquation>
 
-			<span style={{ display: "flex", justifyContent: "center" }}>
+			{/* <span style={{ display: "flex", justifyContent: "center" }}>
 				<Image
 					src={"/berlatihPemusatan.png"}
 					width={460}
 					height={200}
 					quality={100}
 				/>
-			</span>
+			</span> */}
 
 			<p>
 				Nilai median yang didapatkan adalah 43 (gram). Maka dengan ini dapat

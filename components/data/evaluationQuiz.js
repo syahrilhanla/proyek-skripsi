@@ -73,7 +73,7 @@ const evaluationQuiz = [
 			{
 				id: idGenerator(),
 				answerText: "18",
-				isCorrect: true,
+				isCorrect: false,
 			},
 			{
 				id: idGenerator(),
