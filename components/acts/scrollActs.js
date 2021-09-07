@@ -14,6 +14,7 @@ import mainLayoutStyles from "@/styles/MainLayout.module.css";
 import Caption from "@/components/common/Caption";
 import TableOne from "@/components/graphsAndTables/TableOne";
 import TableThree from "@/components/graphsAndTables/TableThree";
+import TableFour from "@/components/graphsAndTables/TableFour";
 
 // ===================== CHAPTER 1 __ ANALYSIS ================================
 
@@ -122,7 +123,7 @@ export const analysisPage3 = {
 		</div>
 	),
 	data: (
-		<div style={{ margin: "auto" }}>
+		<div className={mainLayoutStyles.displayTable}>
 			<TableOne />
 			<Caption>Tabel 1-3: Ukuran Benih Ikan Papuyu</Caption>
 		</div>
@@ -295,7 +296,7 @@ export const pemusatanPage2 = {
 		</div>
 	),
 	data: (
-		<div style={{ margin: "auto" }}>
+		<div className={mainLayoutStyles.displayTable}>
 			<TableThree />
 			<Caption>Tabel 2-1: Hasil Produk Telur Itik Alabio</Caption>
 		</div>
@@ -563,6 +564,12 @@ export const pemusatanPage6 = {
 				diukur. Dengan demikian ditemukan populasi terbesarnya, dari ikan ukuran
 				8,1 – 10,0 cm yaitu sebesar 35%.
 			</p>
+		</div>
+	),
+	data: (
+		<div className={mainLayoutStyles.displayTable}>
+			<TableFour />
+			<Caption>Tabel 2-2: Ukuran Ikan Papuyu</Caption>
 		</div>
 	),
 };

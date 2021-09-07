@@ -98,6 +98,11 @@
 	text-align: center;
 }
 
+.displayTable {
+	display: grid;
+	justify-content: center;
+}
+
 @media (max-width: 600px) {
 	.containerCombo {
 		grid-template-columns: 1fr;
