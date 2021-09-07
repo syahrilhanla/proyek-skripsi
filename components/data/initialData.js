@@ -1,4 +1,3 @@
-// NEVER CHANGE THIS INITIAL DATA EVER AGAIN
 // THIS DATA IS USED AS TEMPLATE WHEN A NEW USER IS SIGNED IN
 // FIRESTORE WILL INITIALIZE THE DATA BASED ON THE STRUCTURE IN THIS FILE
 
@@ -11,7 +10,7 @@ export const initialData = [
 				acts: [
 					{
 						name: "act1",
-						desc: "Membaca sampai tuntas",
+						desc: "Tuntas Membaca",
 						act: false,
 					},
 				],
@@ -21,7 +20,7 @@ export const initialData = [
 				acts: [
 					{
 						name: "act1",
-						desc: "Membaca sampai tuntas",
+						desc: "Tuntas Membaca",
 						act: false,
 					},
 				],
@@ -31,7 +30,7 @@ export const initialData = [
 				acts: [
 					{
 						name: "act1",
-						desc: "Membaca sampai tuntas",
+						desc: "Tuntas Membaca",
 						act: false,
 					},
 					{
@@ -46,7 +45,7 @@ export const initialData = [
 				acts: [
 					{
 						name: "act1",
-						desc: "Membaca sampai tuntas",
+						desc: "Tuntas Membaca",
 						act: false,
 					},
 					{
@@ -66,7 +65,7 @@ export const initialData = [
 				acts: [
 					{
 						name: "act1",
-						desc: "Membaca sampai tuntas",
+						desc: "Tuntas Membaca",
 						act: false,
 					},
 					{
@@ -91,7 +90,7 @@ export const initialData = [
 				acts: [
 					{
 						name: "act1",
-						desc: "Membaca sampai tuntas",
+						desc: "Tuntas Membaca",
 						act: false,
 					},
 				],
@@ -101,7 +100,7 @@ export const initialData = [
 				acts: [
 					{
 						name: "act1",
-						desc: "Membaca sampai tuntas",
+						desc: "Tuntas Membaca",
 						act: false,
 					},
 					{
@@ -116,7 +115,7 @@ export const initialData = [
 				acts: [
 					{
 						name: "act1",
-						desc: "Membaca sampai tuntas",
+						desc: "Tuntas Membaca",
 						act: false,
 					},
 					{
@@ -146,7 +145,47 @@ export const initialData = [
 				acts: [
 					{
 						name: "act1",
-						desc: "Membaca sampai tuntas",
+						desc: "Tuntas Membaca",
+						act: false,
+					},
+					{
+						name: "act2",
+						desc: "Menjawab Pertanyaan 1",
+						act: false,
+					},
+				],
+			},
+			{
+				page: "page5",
+				acts: [
+					{
+						name: "act1",
+						desc: "Tuntas Membaca",
+						act: false,
+					},
+					{
+						name: "act2",
+						desc: "Menjawab Pertanyaan 1",
+						act: false,
+					},
+					{
+						name: "act3",
+						desc: "Menjawab Pertanyaan 2",
+						act: false,
+					},
+				],
+			},
+			{
+				page: "page6",
+				acts: [
+					{
+						name: "act1",
+						desc: "Tuntas Membaca",
+						act: false,
+					},
+					{
+						name: "act2",
+						desc: "Menjawab Pertanyaan 1",
 						act: false,
 					},
 				],
@@ -161,7 +200,7 @@ export const initialData = [
 				acts: [
 					{
 						name: "act1",
-						desc: "Membaca sampai tuntas",
+						desc: "Tuntas Membaca",
 						act: false,
 					},
 					{
@@ -181,7 +220,7 @@ export const initialData = [
 				acts: [
 					{
 						name: "act1",
-						desc: "Membaca sampai tuntas",
+						desc: "Tuntas Membaca",
 						act: false,
 					},
 					{

@@ -23,7 +23,7 @@ export const chapter1Page5 = {
 			id: "act3",
 			questionText:
 				"Berapa juta hektar luas lahan gambut yang terdapat di Kalimantan?",
-			answer: ["4,768", "4,8"],
+			answer: ["4,768", "4,8", "4.8", "4.768"],
 		},
 	],
 };
@@ -66,4 +66,30 @@ export const chapter2Page3 = {
 		},
 	],
 	Data: TableThree,
+};
+
+export const chapter2Page5 = {
+	question: [
+		{
+			id: "act2",
+			questionText: "Nilai median yang dicari adalah....",
+			answer: ["43"],
+		},
+		{
+			id: "act3",
+			questionText:
+				"Jumlah berat ikan yang dapat dimakan oleh Udin adalah (dalam gram)....",
+			answer: ["247"],
+		},
+	],
+};
+
+export const chapter2Page6 = {
+	question: [
+		{
+			id: "act2",
+			questionText: "Nilai modus berdasarkan table 2-2 di atas adalah....",
+			answer: ["350"],
+		},
+	],
 };

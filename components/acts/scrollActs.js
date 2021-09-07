@@ -14,6 +14,7 @@ import mainLayoutStyles from "@/styles/MainLayout.module.css";
 import Caption from "@/components/common/Caption";
 import TableOne from "@/components/graphsAndTables/TableOne";
 import TableThree from "@/components/graphsAndTables/TableThree";
+import TableFour from "@/components/graphsAndTables/TableFour";
 
 // ===================== CHAPTER 1 __ ANALYSIS ================================
 
@@ -122,7 +123,7 @@ export const analysisPage3 = {
 		</div>
 	),
 	data: (
-		<div style={{ margin: "auto" }}>
+		<div className={mainLayoutStyles.displayTable}>
 			<TableOne />
 			<Caption>Tabel 1-3: Ukuran Benih Ikan Papuyu</Caption>
 		</div>
@@ -295,7 +296,7 @@ export const pemusatanPage2 = {
 		</div>
 	),
 	data: (
-		<div style={{ margin: "auto" }}>
+		<div className={mainLayoutStyles.displayTable}>
 			<TableThree />
 			<Caption>Tabel 2-1: Hasil Produk Telur Itik Alabio</Caption>
 		</div>
@@ -514,7 +515,7 @@ export const pemusatanPage5 = {
 
 			<DisplayEquation
 				displayMode={"block"}
-			>{`\\frac{43 + 43}{2} = \\frac{86}{2}=43`}</DisplayEquation>
+			>{`\\frac{43 + 43}{2} = \\frac{86}{2}=?`}</DisplayEquation>
 
 			{/* <span style={{ display: "flex", justifyContent: "center" }}>
 				<Image
@@ -526,11 +527,12 @@ export const pemusatanPage5 = {
 			</span> */}
 
 			<p>
-				Nilai median yang didapatkan adalah 43 (gram). Maka dengan ini dapat
-				ditentukan berapa jumlah berat ikan yang dapat dimakan oleh Udin.
-				Apabila semua berat ikan yang ditangkap memiliki berat lebih dari 43
-				gram, dapat dijumlahkan sehingga didapatkan total beratnya 247 gram
-				(jumlah kumulatif berat ikan yang beratnya melebihi 43 gram).
+				Nilai median yang didapatkan adalah (Jawaban Pertanyaan 1) (gram). Maka
+				dengan ini dapat ditentukan berapa jumlah berat ikan yang dapat dimakan
+				oleh Udin. Apabila semua berat ikan yang ditangkap memiliki berat lebih
+				dari (Jawaban Pertanyaan 1) gram, dapat dijumlahkan sehingga didapatkan
+				total beratnya (Jawaban Pertanyaan 2) gram (jumlah kumulatif berat ikan
+				yang beratnya melebihi 43 gram).
 			</p>
 		</div>
 	),
@@ -562,6 +564,12 @@ export const pemusatanPage6 = {
 				diukur. Dengan demikian ditemukan populasi terbesarnya, dari ikan ukuran
 				8,1 – 10,0 cm yaitu sebesar 35%.
 			</p>
+		</div>
+	),
+	data: (
+		<div className={mainLayoutStyles.displayTable}>
+			<TableFour />
+			<Caption>Tabel 2-2: Ukuran Ikan Papuyu</Caption>
 		</div>
 	),
 };
