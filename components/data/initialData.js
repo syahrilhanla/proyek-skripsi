@@ -1,4 +1,3 @@
-// NEVER CHANGE THIS INITIAL DATA EVER AGAIN
 // THIS DATA IS USED AS TEMPLATE WHEN A NEW USER IS SIGNED IN
 // FIRESTORE WILL INITIALIZE THE DATA BASED ON THE STRUCTURE IN THIS FILE
 
@@ -147,6 +146,11 @@ export const initialData = [
 					{
 						name: "act1",
 						desc: "Membaca sampai tuntas",
+						act: false,
+					},
+					{
+						name: "act2",
+						desc: "Menjawab Pertanyaan 1",
 						act: false,
 					},
 				],
