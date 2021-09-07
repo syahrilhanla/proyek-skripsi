@@ -83,3 +83,13 @@ export const chapter2Page5 = {
 		},
 	],
 };
+
+export const chapter2Page6 = {
+	question: [
+		{
+			id: "act2",
+			questionText: "Nilai modus berdasarkan table 2-2 di atas adalah....",
+			answer: ["350"],
+		},
+	],
+};
