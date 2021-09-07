@@ -514,7 +514,7 @@ export const pemusatanPage5 = {
 
 			<DisplayEquation
 				displayMode={"block"}
-			>{`\\frac{43 + 43}{2} = \\frac{86}{2}=43`}</DisplayEquation>
+			>{`\\frac{43 + 43}{2} = \\frac{86}{2}=?`}</DisplayEquation>
 
 			{/* <span style={{ display: "flex", justifyContent: "center" }}>
 				<Image
@@ -526,11 +526,12 @@ export const pemusatanPage5 = {
 			</span> */}
 
 			<p>
-				Nilai median yang didapatkan adalah 43 (gram). Maka dengan ini dapat
-				ditentukan berapa jumlah berat ikan yang dapat dimakan oleh Udin.
-				Apabila semua berat ikan yang ditangkap memiliki berat lebih dari 43
-				gram, dapat dijumlahkan sehingga didapatkan total beratnya 247 gram
-				(jumlah kumulatif berat ikan yang beratnya melebihi 43 gram).
+				Nilai median yang didapatkan adalah (Jawaban Pertanyaan 1) (gram). Maka
+				dengan ini dapat ditentukan berapa jumlah berat ikan yang dapat dimakan
+				oleh Udin. Apabila semua berat ikan yang ditangkap memiliki berat lebih
+				dari (Jawaban Pertanyaan 1) gram, dapat dijumlahkan sehingga didapatkan
+				total beratnya (Jawaban Pertanyaan 2) gram (jumlah kumulatif berat ikan
+				yang beratnya melebihi 43 gram).
 			</p>
 		</div>
 	),
