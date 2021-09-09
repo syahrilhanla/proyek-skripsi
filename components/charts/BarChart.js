@@ -25,6 +25,15 @@ const BarChart = ({ chartData }) => {
 				height={200}
 				options={{
 					maintainAspectRatio: false,
+					scales: {
+						yAxes: [
+							{
+								ticks: {
+									beginAtZero: true,
+								},
+							},
+						],
+					},
 				}}
 			/>
 		</div>

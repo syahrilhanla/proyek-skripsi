@@ -69,7 +69,11 @@ const QuizComponent = ({ questionData, DisplayData, timesUp }) => {
 				<DisplayData currentQuestion={currentQuestion} />
 			) : null}
 			{console.log(quizScore)}
-			<div key={currentQuestion} className={quizStyle.questionDisplay}>
+			<div
+				key={currentQuestion}
+				className={quizStyle.questionDisplay}
+				style={{ maxWidth: "75%" }}
+			>
 				{!isFinished && !timesUp ? (
 					<MultipleChoices
 						questionData={questionData}
