@@ -6,6 +6,7 @@ import {
 	FirstData,
 	DataColumn,
 	KasturiHarvesting,
+	MedianFrequency,
 } from "@/components/graphsAndTables/Chapter2QuizData";
 
 const quiz1 = () => {
@@ -35,7 +36,7 @@ const quiz1 = () => {
 						<DataColumn arrList={arr} />
 					</>
 				);
-			} else if (currentQuestion < 6) {
+			} else if (currentQuestion < 7) {
 				return (
 					<>
 						<Caption>Data berikut digunakan untuk pertanyaan no 5-7</Caption>
@@ -48,6 +49,12 @@ const quiz1 = () => {
 							nilai median. Berikut merupakan data hasil panen tersebut.
 						</p>
 						<KasturiHarvesting />
+					</>
+				);
+			} else if (currentQuestion > 8) {
+				return (
+					<>
+						<MedianFrequency />
 					</>
 				);
 			} else return null;

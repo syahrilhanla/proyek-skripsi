@@ -1,5 +1,6 @@
 import dataStyles from "@/styles/DataStyles.module.css";
 import BarChart from "@/components/charts/BarChart";
+import DataFrequency from "@/components/charts/DataFrequency";
 
 export const FirstData = () => (
 	<div>
@@ -31,4 +32,16 @@ export const KasturiHarvesting = () => {
 	};
 
 	return <BarChart chartData={chartData} />;
+};
+
+export const MedianFrequency = () => {
+	const data = [45, 60, 75, 80, 90, 110];
+	const frequency = [3, 7, 1, 6, 4, 1];
+
+	return (
+		<div>
+			<p>Perhatikan sekelompok data berikut!</p>
+			<DataFrequency data={data} frequency={frequency} />
+		</div>
+	);
 };
