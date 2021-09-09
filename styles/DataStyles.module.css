@@ -12,3 +12,8 @@
 	border-collapse: collapse;
 	padding: 0.4rem;
 }
+
+.displayTable {
+	margin: auto;
+	max-width: 40%;
+}

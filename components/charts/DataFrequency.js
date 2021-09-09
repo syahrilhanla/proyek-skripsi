@@ -1,5 +1,3 @@
-import dataStyles from "@/styles/DataStyles.module.css";
-
 const DataFrequency = ({ data, frequency }) => {
 	return (
 		<div>

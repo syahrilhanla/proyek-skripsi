@@ -1,37 +1,42 @@
 import MainLayout from "@/components/common/MainLayout";
 import QuizComponent from "@/components/common/QuizComponent";
 import { questionData } from "@/components/data/quiz1Data";
-import TableOne from "@/components/graphsAndTables/TableOne";
-import TableTwo from "@/components/graphsAndTables/TableTwo";
 import Caption from "@/components/common/Caption";
+import {
+	FishTable,
+	RiverTable,
+} from "@/components/graphsAndTables/Chapter1QuizData";
 
 const quiz1 = () => {
 	// needed to display data on QuizComponent
 	// takes number as argument from questionData array being set in QuizComponent
 	const DisplayData = ({ currentQuestion }) => {
 		const displayDataDynamically = (currentQuestion) => {
-			// display first chart of the quiz, which is used by question 1 & 2
-			if (currentQuestion < 2) {
+			// display first chart of the quiz, which is used by question 1 and so on...
+			if (currentQuestion < 1) {
 				return (
 					<>
-						<Caption>Data berikut digunakan untuk pertanyaan no 1-2</Caption>
-						<TableOne />
+						<RiverTable />
 					</>
 				);
-			}
-			// display first chart of the quiz, which is used by question 3-4
-			else if (currentQuestion < 4) {
+			} else if (currentQuestion < 3) {
 				return (
 					<>
-						<Caption>Data berikut digunakan untuk pertanyaan no 3</Caption>
-						<TableTwo />
+						<Caption>
+							Data berikut digunakan untuk pertanyaan nomor 2 dan 3
+						</Caption>
+						<FishTable />
 					</>
 				);
 			} else return null;
 		};
 
 		return (
-			<div style={{ margin: "auto 0px" }}>
+			<div
+				style={{
+					maxWidth: "75%",
+				}}
+			>
 				{displayDataDynamically(currentQuestion)}
 			</div>
 		);
