@@ -15,6 +15,7 @@ import Caption from "@/components/common/Caption";
 import TableOne from "@/components/graphsAndTables/TableOne";
 import TableThree from "@/components/graphsAndTables/TableThree";
 import TableFour from "@/components/graphsAndTables/TableFour";
+import DataColumn from "@/components/charts/DataColumn";
 
 // ===================== CHAPTER 1 __ ANALYSIS ================================
 
@@ -255,7 +256,7 @@ export const pemusatanPage2 = {
 				displayMode={"block"}
 			>{`\\bar{x} =  \\frac{ \\sum_{i=1}^nx_{i}}{n} = \\frac{x_{1} + x_{2} + ... + x_{n}}{n}`}</DisplayEquation> */}
 
-			<div>
+			<div margin>
 				<p>Keterangan:</p>
 				<ul>
 					<li>
@@ -570,6 +571,279 @@ export const pemusatanPage6 = {
 		<div className={mainLayoutStyles.displayTable}>
 			<TableFour />
 			<Caption>Tabel 2-2: Ukuran Ikan Papuyu</Caption>
+		</div>
+	),
+};
+
+export const penyebaranPage1 = {
+	id: "act1",
+	act: (
+		<div className={mainLayoutStyles.divForObjectives}>
+			<LearningObjectives objectives={chapter3Objectives} />
+			<p>
+				Perhatikan <b>tabel 3-1</b> di samping, itu merupakan kumpulan dari
+				rata-rata suhu pada lahan gambut yang dikumpulkan setiap harinya. Dalam
+				tahap ini pasti sudah dipahami cara menentukan nilai terkecil dan nilai
+				terbesar, dan berdasarkan dua nilai tersebut selisihnya dapat ditemukan.
+				Dalam matematika, selisih antara nilai tertinggi dan nilai terendah
+				dinamakan “jangkauan”. Di subbab ini akan dipelajari cara menentukan
+				jangkauan data, kuartil, jangkauan antar kuartil, dan simpangan kuartil
+				data.
+			</p>
+		</div>
+	),
+	data: (
+		<div className={mainLayoutStyles.displayTable}>
+			<Caption>Tabel 3-1. Suhu Rata-rata per Hari di Lahan Gambut</Caption>
+			<DataColumn
+				arrList={[
+					24, 25, 29, 31, 30, 28, 28, 29, 31, 32, 35, 31, 26, 29, 30, 28, 28,
+					29, 31, 30, 28, 31, 26, 29, 32, 35, 31, 26,
+				]}
+			/>
+		</div>
+	),
+};
+
+export const penyebaranPage2 = {
+	id: "act1",
+	act: (
+		<div>
+			{penyebaranPage1.data}
+			<p>
+				Jangkauan (R) atau rentang (range) adalah selisih antara nilai data
+				terbesar dan nilai data terkecil. Jangkauan dirumuskan sebagai berikut.
+			</p>
+			<DisplayEquation
+				displayMode={"block"}
+			>{`R =  x_{maks} - x_{min}`}</DisplayEquation>
+
+			<div style={{ display: "flex", justifyContent: "center" }}>
+				<p>Keterangan:</p>
+				<ul>
+					<li>
+						<DisplayEquation displayMode={"inline"}>{`R`}</DisplayEquation> =
+						jangkauan
+					</li>
+					<li>
+						<DisplayEquation
+							displayMode={"inline"}
+						>{`x_{maks}`}</DisplayEquation>{" "}
+						= nilai data terbesar
+					</li>
+					<li>
+						<DisplayEquation
+							displayMode={"inline"}
+						>{`x_{min}`}</DisplayEquation>{" "}
+						= nilai data terkecil
+					</li>
+				</ul>
+			</div>
+		</div>
+	),
+};
+
+export const penyebaranPage3 = {
+	id: "act1",
+	act: (
+		<div>
+			<p>
+				Kuartil adalah tiga data yang membagi seluruh data dalam empat kelompok
+				setelah dikelompokkan. Kuartil didapatkan dari data yang telah diurutkan
+				dan dibagi menjadi empat bagian yang sama. Pembagian kuartil disebutkan
+				dengan urutan, yaitu kuartil pertama (Q1), kuartil kedua (Q2), dan
+				kuartil ketiga (Q3). Pembagian kuartil digambarkan sebagai berikut.
+			</p>
+
+			<span style={{ display: "flex", justifyContent: "center" }}>
+				<Image src={"/kuartil.png"} width={560} height={140} quality={100} />
+			</span>
+
+			<p>
+				Berdasarkan ilustrasi di atas, dapat dikatakan bahwa Q1 ada di posisi
+				25% ({" "}
+				<DisplayEquation
+					displayMode={"inline"}
+				>{`\\frac{1}{4}`}</DisplayEquation>{" "}
+				dari total data), Q2 ada di posisi 50% ({" "}
+				<DisplayEquation
+					displayMode={"inline"}
+				>{`\\frac{2}{4}`}</DisplayEquation>{" "}
+				dari total data) atau berada di posisi median, Q3 ada di posisi 75% ({" "}
+				<DisplayEquation
+					displayMode={"inline"}
+				>{`\\frac{3}{4}`}</DisplayEquation>{" "}
+				dari total data). Dengan demikian maka langkah menentukan kuartil
+				adalah:
+			</p>
+			<div style={{ display: "flex", justifyContent: "center" }}>
+				<ol>
+					<li>Urutkan nilai data dari yang terkecil ke terbesar</li>
+					<li>Tentukan letak kuartil dengan rumus berikut:</li>
+					<ul>
+						<li style={{ marginBottom: "0.6rem" }}>
+							<DisplayEquation displayMode={"inline"}>{`n`}</DisplayEquation> =
+							banyak data
+						</li>
+						<li style={{ marginBottom: "0.6rem" }}>
+							Letak
+							<DisplayEquation
+								displayMode={"inline"}
+							>{`Q_{1}`}</DisplayEquation>{" "}
+							= letak nilai data ke -{" "}
+							<DisplayEquation
+								displayMode={"inline"}
+							>{`\\frac{1}{4}(n + 1)`}</DisplayEquation>
+						</li>
+						<li style={{ marginBottom: "0.6rem" }}>
+							Letak
+							<DisplayEquation
+								displayMode={"inline"}
+							>{`Q_{2}`}</DisplayEquation>{" "}
+							= letak nilai data ke -{" "}
+							<DisplayEquation
+								displayMode={"inline"}
+							>{`\\frac{2}{4}(n + 1)`}</DisplayEquation>
+						</li>
+						<li style={{ marginBottom: "0.6rem" }}>
+							Letak
+							<DisplayEquation
+								displayMode={"inline"}
+							>{`Q_{3}`}</DisplayEquation>{" "}
+							= letak nilai data ke -{" "}
+							<DisplayEquation
+								displayMode={"inline"}
+							>{`\\frac{3}{4}(n + 1)`}</DisplayEquation>
+						</li>
+					</ul>
+				</ol>
+			</div>
+		</div>
+	),
+	data: (
+		<div className={mainLayoutStyles.displayTable}>
+			<TableOne />
+			<Caption>Tabel 1-3: Ukuran Benih Ikan Papuyu</Caption>
+		</div>
+	),
+};
+
+export const penyebaranPage4 = {
+	id: "act1",
+	act: (
+		<div>
+			<p>
+				Data tersebut diperoleh dari pengukuran ikan patin di penangkaran.
+				Ikan-ikan tersebut ingin digolongkan menjadi beberapa ukuran untuk
+				dijual berdasarkan tiga golongan yaitu kecil, sedang, dan besar.
+				Kemudian terdapat golongan lain, yakni di bawah ukuran kecil untuk
+				dipelihara lebih lanjut. Berdasarkan kasus ini tentukanlah jumlah ikan
+				untuk dipelihara lebih lanjut.
+			</p>
+
+			<h5>Pembahasan: </h5>
+			<p>
+				Karena yang dicari adalah jumlah ikan untuk dipelihara lebih lanjut,
+				maka yang perlu dicari di sini adalah ukuran panjang ikan yang kurang
+				dari nilai Q1. Namun sebelum dapat mencari nilai, data yang ada pada{" "}
+				<b>tabel 3-2</b> di atas harus diurutkan. Setelah terurut maka
+				diperoleh:
+			</p>
+
+			<div className={mainLayoutStyles.displayTable}>
+				<Caption>
+					Tabel 3-3. Data Pengukuran Penangkaran Ikan Patin yang Telah Diurutkan
+				</Caption>
+				<DataColumn
+					arrList={[
+						21, 22, 22, 23, 24, 25, 25, 25, 26, 27, 27, 28, 28, 28, 28, 29, 30,
+						30, 31, 34, 34, 35, 36, 36, 36,
+					]}
+				/>
+			</div>
+			<p>
+				Dengan menggunakan rumus letak Q1 maka dihitung menggunakan rumus
+				berikut:
+			</p>
+			<div style={{ display: "flex", justifyContent: "center" }}>
+				<ul
+					style={{
+						listStyle: "none",
+					}}
+				>
+					<li style={{ marginBottom: "0.3rem" }}>
+						Letak
+						<DisplayEquation
+							displayMode={"inline"}
+						>{`Q_{1}`}</DisplayEquation>{" "}
+						= letak nilai data ke -{" "}
+						<DisplayEquation
+							displayMode={"inline"}
+						>{`\\frac{1}{4}(25 + 1)`}</DisplayEquation>
+					</li>
+					<li style={{ marginBottom: "0.7rem" }}>
+						= letak nilai data ke 6,5 atau{" "}
+						<DisplayEquation
+							displayMode={"inline"}
+						>{`6\\frac{1}{2}`}</DisplayEquation>{" "}
+						(terletak antara{" "}
+						<DisplayEquation displayMode={"inline"}>{`X_{6}`}</DisplayEquation>)
+						dan{" "}
+						<DisplayEquation displayMode={"inline"}>{`X_{7}`}</DisplayEquation>
+					</li>
+					<li style={{ marginBottom: "0.3rem" }}>
+						Nilai
+						<DisplayEquation
+							displayMode={"inline"}
+						>{`Q_{1}`}</DisplayEquation>{" "}
+						= letak nilai data ke -{" "}
+						<DisplayEquation
+							displayMode={"inline"}
+						>{`X_{6} + \\frac{1}{2}(X_{6} + X_{7})`}</DisplayEquation>
+					</li>
+					<li style={{ marginBottom: "0.3rem" }}>
+						={" "}
+						<DisplayEquation
+							displayMode={"inline"}
+						>{`25 + \\frac{1}{2}(25 + 25)`}</DisplayEquation>
+					</li>
+					<li style={{ marginBottom: "0.3rem" }}>
+						={" "}
+						<DisplayEquation
+							displayMode={"inline"}
+						>{`25 + \\frac{1}{2}(0)`}</DisplayEquation>
+					</li>
+					<li style={{ marginBottom: "0.3rem" }}>
+						={" "}
+						<DisplayEquation displayMode={"inline"}>{`25 + 0`}</DisplayEquation>
+					</li>
+					<li style={{ marginBottom: "0.3rem" }}>
+						= <DisplayEquation displayMode={"inline"}>{`25`}</DisplayEquation>
+					</li>
+				</ul>
+			</div>
+			<p>
+				Setelah mendapatkan nilai{" "}
+				<DisplayEquation displayMode={"inline"}>{`Q_{1} = 25`}</DisplayEquation>{" "}
+				maka dapat ditentukan ikan mana yang dapat dipelihara lebih lanjut, dan
+				dari data tersebut didapatkan 5 buah data yang nilainya kurang dari 25.
+				Maka jumlah ikan yang dapat dipelihara lebih lanjut adalah 5 ekor ikan
+				Patin.
+			</p>
+		</div>
+	),
+	data: (
+		<div className={mainLayoutStyles.displayTable}>
+			<p>Perhatikan data di bawah ini!</p>
+			<Caption>
+				Tabel 3-2. Data Hasil Pengukuran di Penangkaran Ikan Patin
+			</Caption>
+			<DataColumn
+				arrList={[
+					36, 35, 25, 36, 25, 28, 23, 27, 24, 29, 21, 22, 28, 28, 30, 25, 34,
+					28, 22, 26, 31, 27, 30, 34, 36,
+				]}
+			/>
 		</div>
 	),
 };
