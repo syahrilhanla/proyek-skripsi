@@ -782,7 +782,7 @@ export const penyebaranPage4 = {
 						>{`\\frac{1}{4}(25 + 1)`}</DisplayEquation>
 					</li>
 					<li style={{ marginBottom: "0.7rem" }}>
-						= letak nilai data ke 6,5 atau{" "}
+						= letak nilai data ke (<b>Jawaban Pertanyaan 1</b>) atau{" "}
 						<DisplayEquation
 							displayMode={"inline"}
 						>{`6\\frac{1}{2}`}</DisplayEquation>{" "}
@@ -815,20 +815,20 @@ export const penyebaranPage4 = {
 					</li>
 					<li style={{ marginBottom: "0.3rem" }}>
 						={" "}
-						<DisplayEquation displayMode={"inline"}>{`25 + 0`}</DisplayEquation>
+						<DisplayEquation displayMode={"inline"}>{`? + 0`}</DisplayEquation>
 					</li>
 					<li style={{ marginBottom: "0.3rem" }}>
-						= <DisplayEquation displayMode={"inline"}>{`25`}</DisplayEquation>
+						= <DisplayEquation displayMode={"inline"}>{`?`}</DisplayEquation>
 					</li>
 				</ul>
 			</div>
 			<p>
 				Setelah mendapatkan nilai{" "}
-				<DisplayEquation displayMode={"inline"}>{`Q_{1} = 25`}</DisplayEquation>{" "}
+				<DisplayEquation displayMode={"inline"}>{`Q_{1} = ?`}</DisplayEquation>{" "}
 				maka dapat ditentukan ikan mana yang dapat dipelihara lebih lanjut, dan
-				dari data tersebut didapatkan 5 buah data yang nilainya kurang dari 25.
-				Maka jumlah ikan yang dapat dipelihara lebih lanjut adalah 5 ekor ikan
-				Patin.
+				dari data tersebut didapatkan 5 buah data yang nilainya kurang dari (
+				<b>Jawaban Pertanyaan 2</b>). Maka jumlah ikan yang dapat dipelihara
+				lebih lanjut adalah 5 ekor ikan Patin.
 			</p>
 		</div>
 	),
