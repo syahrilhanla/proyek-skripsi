@@ -142,7 +142,7 @@ export const SnakeHeadLine = () => {
 
 export const DuckPie = () => {
 	const chartData = {
-		labels: ["Itik Sehat", "Itik Sakit"],
+		labels: ["Itik Sakit", "Itik Sehat"],
 		data: [18, 82],
 	};
 

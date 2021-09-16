@@ -2,9 +2,9 @@ import MainLayout from "@/components/common/MainLayout";
 import QuizComponent from "@/components/common/QuizComponent";
 import { questionData } from "@/components/data/quiz2Data";
 import Caption from "@/components/common/Caption";
+import DataColumn from "@/components/charts/DataColumn";
 import {
 	FirstData,
-	DataColumn,
 	KasturiHarvesting,
 	MedianFrequency,
 } from "@/components/graphsAndTables/Chapter2QuizData";

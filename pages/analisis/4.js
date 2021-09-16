@@ -18,7 +18,7 @@ const page4 = () => {
 
 	const chartData = {
 		labels: labels,
-		label: "Ukuran Ikan Kelabau",
+		label: "Ukuran Ikan Papuyu",
 		data: percentageData,
 	};
 

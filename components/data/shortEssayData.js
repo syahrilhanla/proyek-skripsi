@@ -28,6 +28,8 @@ export const chapter1Page5 = {
 	],
 };
 
+// ========================== CHAPTER 1 ==============
+
 export const chapter2Page2 = {
 	question: [
 		{
@@ -90,6 +92,19 @@ export const chapter2Page6 = {
 			id: "act2",
 			questionText: "Nilai modus berdasarkan table 2-2 di atas adalah....",
 			answer: ["350"],
+		},
+	],
+};
+
+// =========================== CHAPTER 2 =====================
+
+export const chapter3Page2 = {
+	question: [
+		{
+			id: "act2",
+			questionText:
+				"Berdasarkan table 3-1 di atas, nilai jangkauan dari data tersebut adalah...",
+			answer: ["11"],
 		},
 	],
 };

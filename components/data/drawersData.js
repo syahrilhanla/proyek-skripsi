@@ -69,18 +69,26 @@ export const drawersData = [
 		items: [
 			{
 				id: "1",
-				subTitle: "Jangkauan Data",
+				subTitle: "Ukuran Penyebaran Data",
 			},
 			{
 				id: "2",
-				subTitle: "Kuartil",
+				subTitle: "Jangkauan Data",
 			},
 			{
 				id: "3",
-				subTitle: "Jangkauan Antarkuartil",
+				subTitle: "Kuartil",
 			},
 			{
 				id: "4",
+				subTitle: "Berlatih Bersama Simpangan Kuartil",
+			},
+			{
+				id: "5",
+				subTitle: "Jangkauan Antarkuartil",
+			},
+			{
+				id: "6",
 				subTitle: "Simpangan Kuartil",
 			},
 			{
