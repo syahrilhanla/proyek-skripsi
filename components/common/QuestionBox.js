@@ -22,6 +22,8 @@ const QuestionBox = ({
 			if (currentQuestion < question.questions.length - 1) {
 				setCurrentQuestion((prevState) => prevState + 1);
 			}
+			setError("Jawaban Benar!");
+			setTimeout(() => setError(""), 3000);
 			await useUpdateCertainAct(item.id, parentPath, currentPath);
 			setUpdateProgress(!updateProgress);
 		} else {
@@ -52,9 +54,11 @@ const QuestionBox = ({
 						</h3>
 					</div>
 					<div>
-						{error === "Jawaban Salah!" && (
+						{error === "Jawaban Salah!" ? (
 							<h3 className={questionStyle.error}>Jawaban Salah! Coba Lagi</h3>
-						)}
+						) : error === "Jawaban Benar!" ? (
+							<h3 className={questionStyle.success}>Jawaban Benar!</h3>
+						) : null}
 						<ul className={questionStyle.choices}>
 							{question.questions[currentQuestion].answerChoices.map(
 								(answer) => (
