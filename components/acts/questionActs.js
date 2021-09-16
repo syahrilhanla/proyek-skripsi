@@ -68,3 +68,22 @@ export const questionDataPemusatanPage4 = {
 		</p>
 	),
 };
+
+export const questionDataPenyebaranPage3 = {
+	questions: [
+		{
+			id: "act2",
+			questionText: "Letak kuartil ketiga berada pada posisi data di....",
+			answerChoices: [
+				{
+					answerText: "50%",
+					isCorrect: false,
+				},
+				{
+					answerText: "75%",
+					isCorrect: true,
+				},
+			],
+		},
+	],
+};

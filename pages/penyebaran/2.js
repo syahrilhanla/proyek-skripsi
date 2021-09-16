@@ -1,6 +1,6 @@
 import MainLayout from "@/components/common/MainLayout";
 import { penyebaranPage2 } from "@/components/acts/scrollActs";
-import { chapter2Page2 } from "@/components/data/shortEssayData";
+import { chapter3Page2 } from "@/components/data/shortEssayData";
 
 const page1 = () => {
 	const Text = () => penyebaranPage2.act;
@@ -9,7 +9,7 @@ const page1 = () => {
 		<MainLayout
 			Child1={Text}
 			title={"Jangkauan Data"}
-			essayQuestion={chapter2Page2}
+			essayQuestion={chapter3Page2}
 			scrollActID={penyebaranPage2.id}
 		/>
 	);

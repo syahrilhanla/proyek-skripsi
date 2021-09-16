@@ -108,3 +108,18 @@ export const chapter3Page2 = {
 		},
 	],
 };
+
+export const chapter3Page4 = {
+	question: [
+		{
+			id: "act2",
+			questionText: "Letak kuartil pertama berdasarkan data di atas adalah...",
+			answer: ["6,5", "6.5"],
+		},
+		{
+			id: "act3",
+			questionText: "Nilai kuartil pertama berdasarkan data di atas adalah...",
+			answer: ["25"],
+		},
+	],
+};

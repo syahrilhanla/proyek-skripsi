@@ -1,4 +1,3 @@
-import dataStyles from "@/styles/DataStyles.module.css";
 import BarChart from "@/components/charts/BarChart";
 import DataFrequency from "@/components/charts/DataFrequency";
 

@@ -68,3 +68,9 @@
 	font-weight: 400;
 	color: red;
 }
+
+.success {
+	text-align: center;
+	font-weight: 400;
+	color: green;
+}
