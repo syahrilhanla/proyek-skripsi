@@ -35,9 +35,13 @@ const QuestionBox = ({
 		<div className={questionStyle.main}>
 			<h2 className={questionStyle.header}>Mari Mencoba</h2>
 
-			<p className={questionStyle.instruction}>{instruction}</p>
+			{instruction && (
+				<p className={questionStyle.instruction}>{instruction}</p>
+			)}
 
-			<div className={questionStyle.dataDisplay}>{question.Data()}</div>
+			{question.Data && (
+				<div className={questionStyle.dataDisplay}>{question.Data()}</div>
+			)}
 
 			<ol className={questionStyle.questions}>
 				<li>

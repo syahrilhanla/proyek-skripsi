@@ -81,7 +81,7 @@ export const drawersData = [
 			},
 			{
 				id: "4",
-				subTitle: "Berlatih Bersama Simpangan Kuartil",
+				subTitle: "Berlatih Bersama",
 			},
 			{
 				id: "5",
