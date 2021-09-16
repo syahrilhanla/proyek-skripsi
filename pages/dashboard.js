@@ -1,17 +1,19 @@
+import { useEffect, useState } from "react";
+
 import Navbar from "@/components/common/Navbar";
 import Footer from "@/components/common/Footer";
-
 import CircularProgressWithLabel from "@/components/common/ProgressCircularBar";
 import LearningProgress from "@/components/common/LearningProgress";
+import UserNewClassModal from "@/components/common/UserNewClassModal";
+
+import { useAuth } from "@/components/context/AuthContext";
+
+import useProgressValues from "@/components/utils/useProgressValues";
+
+import { useRouter } from "next/router";
 
 import progressStyles from "@/styles/Progress.module.css";
 import dashboardStyles from "@/styles/Dashboard.module.css";
-
-import useProgressValues from "@/components/utils/useProgressValues";
-import { useAuth } from "@/components/context/AuthContext";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import UserNewClassModal from "@/components/common/UserNewClassModal";
 
 const dashboard = () => {
 	const progressValues = useProgressValues();
