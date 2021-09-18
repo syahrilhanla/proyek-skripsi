@@ -255,6 +255,21 @@ export const initialData = [
 					},
 				],
 			},
+			{
+				page: "page5",
+				acts: [
+					{
+						name: "act1",
+						desc: "Tuntas Membaca",
+						act: false,
+					},
+					{
+						name: "act2",
+						desc: "Menjawab Pertanyaan 1",
+						act: false,
+					},
+				],
+			},
 		],
 	},
 ];
