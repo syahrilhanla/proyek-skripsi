@@ -136,3 +136,14 @@ export const chapter3Page5 = {
 		},
 	],
 };
+
+export const chapter3Page6 = {
+	question: [
+		{
+			id: "act2",
+			questionText:
+				"Menggunakan tabel 3-3,  cobalah temukan selisih panjang antara ikan Patin golongan kecil dan golongan sedang, demikian pula dengan golongan sedang dan besar!",
+			answer: ["16.25", "16,25"],
+		},
+	],
+};
