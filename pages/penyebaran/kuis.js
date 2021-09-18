@@ -1,6 +1,6 @@
 import MainLayout from "@/components/common/MainLayout";
 import QuizComponent from "@/components/common/QuizComponent";
-import { questionData } from "@/components/data/quiz1Data";
+import { questionData } from "@/components/data/quiz3Data";
 import TableOne from "@/components/graphsAndTables/TableOne";
 import TableTwo from "@/components/graphsAndTables/TableTwo";
 import Caption from "@/components/common/Caption";
