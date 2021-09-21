@@ -1,6 +1,7 @@
 import { useState } from "react";
 import UserCard from "@/components/common/UserCard";
 import { Switch } from "@material-ui/core";
+import GroupTable from "@/components/common/GroupTable";
 
 const DisplayUsers = ({ selectedClass, userList }) => {
 	// if true then display individual progress
@@ -30,10 +31,13 @@ const DisplayUsers = ({ selectedClass, userList }) => {
 						<span>Individu</span>
 					</div>
 
-					{checked &&
+					{checked ? (
 						userList.map((userData) => (
 							<UserCard userData={userData} key={userData.uid} />
-						))}
+						))
+					) : (
+						<GroupTable userList={userList} />
+					)}
 				</>
 			) : (
 				<h3 style={{ fontWeight: 400, textAlign: "center" }}>
