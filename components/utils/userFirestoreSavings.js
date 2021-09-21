@@ -44,6 +44,14 @@ export const getAllUserProgress = async () => {
 	return usersData;
 };
 
+export const getUsersDetails = (usersData) => {
+	console.log(usersData);
+	if (usersData) {
+		const usersDetails = usersData.map(async (user) => getUserProgress(user));
+		console.table(Promise.all(usersDetails));
+	}
+};
+
 export const addClass = async (className, password) => {
 	if (className && password) {
 		firestore.collection("classNames").doc(className).set({
@@ -94,7 +102,7 @@ export const getUserFirestore = async (localUser) => {
 	} else return null;
 };
 
-export const getUserProgress = async (localUser) => {
+export async function getUserProgress(localUser) {
 	if (localUser) {
 		// getting chapters data through function with String as its argument
 		const getChapterData = async (collection) => {
@@ -137,7 +145,7 @@ export const getUserProgress = async (localUser) => {
 
 		return results;
 	} else return null;
-};
+}
 
 export const addUser = async (localUser) => {
 	// creating user if there's none, with the credentials from localStorage
