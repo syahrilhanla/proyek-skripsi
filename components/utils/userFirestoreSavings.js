@@ -44,11 +44,11 @@ export const getAllUserProgress = async () => {
 	return usersData;
 };
 
-export const getUsersDetails = (usersData) => {
-	console.log(usersData);
+export const getUsersDetails = async (usersData) => {
 	if (usersData) {
 		const usersDetails = usersData.map(async (user) => getUserProgress(user));
-		console.table(Promise.all(usersDetails));
+		const results = await Promise.all(usersDetails);
+		return results;
 	}
 };
 
