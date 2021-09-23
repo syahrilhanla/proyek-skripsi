@@ -16,3 +16,8 @@
 	text-align: center;
 	margin: auto;
 }
+
+.header {
+	background-color: #d9e1f2;
+	border: 1px solid #e2e2e2;
+}

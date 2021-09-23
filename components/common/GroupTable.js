@@ -37,16 +37,19 @@ const GroupTable = ({ userList }) => {
 		}
 	}, [usersData]);
 
+	const keyGenerator = (index) => index * Math.random() * 10000;
+
 	// console.table(userList);
 
 	// TODO in this file:
-	// # make group detail table to display
-	// # iterate table data driven by data input
+	// # make group detail table header to display dynamically === DONE
+	// # iterate table header driven by data input === DONE
+	// # iterate user data to be displayed in table dynamically
 
 	return (
 		<div className={groupTableStyles.motherDiv}>
 			<table>
-				<thead>
+				<thead className={groupTableStyles.header}>
 					{/* table header for general users detail */}
 					<tr>
 						<td rowSpan={3}>No</td>
@@ -64,27 +67,17 @@ const GroupTable = ({ userList }) => {
 									style={{ padding: "0.7rem" }}
 									key={data.pageNumber}
 								>
-									Hal {data.pageNumber}
+									Kegiatan Hal. {data.pageNumber}
 								</td>
 							))}
 					</tr>
 
 					{/* Display activities number in page as header */}
 					<tr>
-						{/* {usersData.length > 0 &&
-							usersData[0]
-								.filter((chapter) => chapter.chapter === "chapter1")
-								.map((chapterData) =>
-									chapterData.data.map((data) => {
-										data.pageData.map((item, index) => {
-											return <td>{item.name}</td>;
-										});
-									})
-								)} */}
 						{actAmount.length > 0 &&
 							actAmount[0].map((item) =>
 								item.map((data, index) => (
-									<td key={index * Math.random() * 10000}>{index + 1}</td>
+									<td key={keyGenerator(index)}>{index + 1}</td>
 								))
 							)}
 					</tr>
@@ -96,25 +89,36 @@ const GroupTable = ({ userList }) => {
 						return (
 							<>
 								<tr>
-									<td>{index + 1}</td>
-									<td style={{ minWidth: "6rem" }}>{user.displayName}</td>
-									<td>{user.score}</td>
-									{/* {usersData.length > 0 &&
-									usersData
-										// .filter((chapter) => chapter.chapter === "chapter1")
-										.map((chapterData) =>
-											chapterData.map((data) => {
-												console.log(data.data);
-												// data.pageData.map((item) => (
-												// 	<td
-												// 		colSpan={item.length}
-												// 		style={{ padding: "0.7rem" }}
-												// 	>
-												// 		{item.name}
-												// 	</td>
-												// ));
-											})
-										)} */}
+									<td key={index + 1} style={{ padding: "0 0.7rem" }}>
+										{index + 1}
+									</td>
+									<td
+										key={user.displayName}
+										style={{ minWidth: "6rem", padding: "0 0.7rem" }}
+									>
+										{user.displayName}
+									</td>
+									<td key={keyGenerator(index)} style={{ padding: "0 0.7rem" }}>
+										{user.score}
+									</td>
+
+									{/* display users activities detail */}
+
+									{actAmount.length > 0 &&
+										actAmount[0].map((item) =>
+											item.map((data, index) => (
+												<td
+													key={keyGenerator(index)}
+													style={
+														data.act
+															? { background: "#C6E0B4" }
+															: { background: "#F8CBAD" }
+													}
+												>
+													{data.act ? "O" : "X"}
+												</td>
+											))
+										)}
 								</tr>
 							</>
 						);
