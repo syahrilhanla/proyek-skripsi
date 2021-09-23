@@ -1,4 +1,6 @@
 import TableThree from "@/components/graphsAndTables/TableThree";
+import DataColumn from "@/components/charts/DataColumn";
+import Caption from "@/components/common/Caption";
 
 export const chapter1Page3 = {
 	question: [
@@ -120,6 +122,28 @@ export const chapter3Page4 = {
 			id: "act3",
 			questionText: "Nilai kuartil pertama berdasarkan data di atas adalah...",
 			answer: ["25"],
+		},
+	],
+};
+
+export const chapter3Page5 = {
+	question: [
+		{
+			id: "act2",
+			questionText:
+				"Menggunakan tabel 3-3, cobalah temukan selisih panjang antara ikan Patin golongan besar dan golongan kecil!",
+			answer: ["32.5", "32,5"],
+		},
+	],
+};
+
+export const chapter3Page6 = {
+	question: [
+		{
+			id: "act2",
+			questionText:
+				"Menggunakan tabel 3-3,  cobalah temukan selisih panjang antara ikan Patin golongan kecil dan golongan sedang, demikian pula dengan golongan sedang dan besar!",
+			answer: ["16.25", "16,25"],
 		},
 	],
 };

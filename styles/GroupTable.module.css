@@ -1,0 +1,23 @@
+/* style={{
+				padding: "1rem",
+				overflowX: "auto",
+				width: "90%",
+				border: "black 1px solid",
+				textAlign: "center",
+				margin: "auto",
+			}} */
+
+.motherDiv {
+	padding: 1rem;
+	overflow-x: auto;
+	width: 90%;
+	border: 1px solid #e2e2e2;
+	border-radius: 6px;
+	text-align: center;
+	margin: auto;
+}
+
+.header {
+	background-color: #d9e1f2;
+	border: 1px solid #e2e2e2;
+}

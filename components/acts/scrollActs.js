@@ -256,7 +256,7 @@ export const pemusatanPage2 = {
 				displayMode={"block"}
 			>{`\\bar{x} =  \\frac{ \\sum_{i=1}^nx_{i}}{n} = \\frac{x_{1} + x_{2} + ... + x_{n}}{n}`}</DisplayEquation> */}
 
-			<div margin>
+			<div>
 				<p>Keterangan:</p>
 				<ul>
 					<li>
@@ -720,12 +720,6 @@ export const penyebaranPage3 = {
 			</div>
 		</div>
 	),
-	data: (
-		<div className={mainLayoutStyles.displayTable}>
-			<TableOne />
-			<Caption>Tabel 1-3: Ukuran Benih Ikan Papuyu</Caption>
-		</div>
-	),
 };
 
 export const penyebaranPage4 = {
@@ -845,5 +839,103 @@ export const penyebaranPage4 = {
 				]}
 			/>
 		</div>
+	),
+};
+
+export const penyebaranPage5 = {
+	id: "act1",
+	act: (
+		<div>
+			<p>
+				Jangkauan antarkuartil atau bisa disebut dengan hamparan (H) memiliki
+				prinsip yang sama dengan jangkauan data biasa, namun yang dijadikan
+				jangkauan di sini adalah rentang data antar kuartil ketiga dan kuartil
+				pertama.{" "}
+			</p>
+			<p>
+				Misalkan saja seperti pada kasus yang disebutkan pada bagian sebelumnya,
+				yaitu menggolongkan ikan Patin menjadi golongan kecil, besar, dan
+				sedang. Maka jangkauan antarkuartil adalah nilai selisih dari golongan
+				besar dan golongan kecil. Jangkauan antarkuartil dirumuskan sebagai
+				berikut.
+			</p>
+			<div style={{ textAlign: "center" }}>
+				<p>Keterangan:</p>
+				<p>
+					<DisplayEquation displayMode={"inline"}>H</DisplayEquation> = hamparan
+				</p>
+			</div>
+		</div>
+	),
+	data: (
+		<>
+			<Caption>
+				Tabel 3-3. Data Pengukuran Penangkaran Ikan Patin yang Telah Diurutkan
+			</Caption>
+			<DataColumn
+				arrList={[
+					21, 22, 22, 23, 24, 25, 25, 25, 26, 27, 27, 28, 28, 28, 28, 29, 30,
+					30, 31, 34, 34, 35, 36, 36, 36,
+				]}
+			/>
+		</>
+	),
+};
+
+export const penyebaranPage6 = {
+	id: "act1",
+	act: (
+		<div>
+			<p style={{ marginBottom: "2rem" }}>
+				Simpangan kuartil (
+				<DisplayEquation displayMode={"inline"}>{`Q_{d}`}</DisplayEquation>)
+				atau dapat disebut dengan rentang semi antarkuartil adalah setengah kali
+				jangkauan antarkuartil. Simpangan kuartil dapat diperoleh setelah nilai
+				dari jangkauan antarkuartil didapatkan. Dengan demikian, maka simpangan
+				kuartil dapat dirumuskan sebagai berikut.
+			</p>
+
+			<p style={{ textAlign: "center" }}>
+				<DisplayEquation
+					displayMode={"inline"}
+				>{`Q_{d} = \\frac{1}{2}H = \\frac{1}{2}(Q_{3} - Q_{1})`}</DisplayEquation>{" "}
+				atau{" "}
+				<DisplayEquation
+					displayMode={"inline"}
+				>{`\\frac{(Q_{3} - Q_{1})}{2}`}</DisplayEquation>
+			</p>
+
+			<p style={{ textAlign: "center", marginTop: "2rem" }}>
+				Keterangan:
+				<br />
+				<DisplayEquation displayMode={"inline"}>{`Q_{d}`}</DisplayEquation> =
+				Simpanan Kuartil
+			</p>
+
+			<p>
+				Dengan simpangan kuartil dapat diketahui nilai selisih atau jarak antar
+				kuartil. Maksudnya di sini adalah jarak antar{" "}
+				<DisplayEquation displayMode={"inline"}>{`Q_{1}`}</DisplayEquation> ke{" "}
+				<DisplayEquation displayMode={"inline"}>{`Q_{2}`}</DisplayEquation> atau
+				dari <DisplayEquation displayMode={"inline"}>{`Q_{2}`}</DisplayEquation>{" "}
+				ke <DisplayEquation displayMode={"inline"}>{`Q_{3}`}</DisplayEquation>.
+				Jika diimplementasikan ke kasus ikan Patin tadi, maka dapat didapatkan
+				jarak dari nilai golongan ikan Patin kecil ke sedang, begitu pula dengan
+				golongan ikan Patin sedang ke besar.
+			</p>
+		</div>
+	),
+	data: (
+		<>
+			<Caption>
+				Tabel 3-3. Data Pengukuran Penangkaran Ikan Patin yang Telah Diurutkan
+			</Caption>
+			<DataColumn
+				arrList={[
+					21, 22, 22, 23, 24, 25, 25, 25, 26, 27, 27, 28, 28, 28, 28, 29, 30,
+					30, 31, 34, 34, 35, 36, 36, 36,
+				]}
+			/>
+		</>
 	),
 };

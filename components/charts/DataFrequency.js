@@ -1,7 +1,7 @@
 const DataFrequency = ({ data, frequency }) => {
 	return (
 		<div>
-			<table>
+			<table style={{ textAlign: "center" }}>
 				<tr>
 					<td style={{ backgroundColor: "#CDF1FF", padding: "0.5rem" }}>
 						Data
