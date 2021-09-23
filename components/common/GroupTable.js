@@ -39,6 +39,17 @@ const GroupTable = ({ userList }) => {
 
 	const keyGenerator = (index) => index * Math.random() * 10000;
 
+	const getOverallColSpan = () => {
+		if (actAmount.length > 0) {
+			const pageLengths = pageAmount[0].map((item) => item.pageLength);
+			const sumPageLengths = pageLengths.reduce(
+				(prevVal, currentVal) => prevVal + currentVal,
+				0
+			);
+			return sumPageLengths;
+		}
+	};
+
 	// console.table(userList);
 
 	// TODO in this file:
@@ -55,7 +66,7 @@ const GroupTable = ({ userList }) => {
 						<td rowSpan={3}>No</td>
 						<td rowSpan={3}>Nama</td>
 						<td rowSpan={3}>Skor</td>
-						<td colSpan={25}>Bab 1: Analisis Data</td>
+						<td colSpan={getOverallColSpan()}>Bab 1: Analisis Data</td>
 					</tr>
 
 					{/* display the amount of pages column based on passed data */}
@@ -94,7 +105,11 @@ const GroupTable = ({ userList }) => {
 									</td>
 									<td
 										key={user.displayName}
-										style={{ minWidth: "6rem", padding: "0 0.7rem" }}
+										style={{
+											minWidth: "6rem",
+											padding: "0 0.7rem",
+											textTransform: "capitalize",
+										}}
 									>
 										{user.displayName}
 									</td>
