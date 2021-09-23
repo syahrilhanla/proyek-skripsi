@@ -81,7 +81,12 @@ const GroupTable = ({ userList }) => {
 										});
 									})
 								)} */}
-						{actAmount.length > 0 && console.log(actAmount)}
+						{actAmount.length > 0 &&
+							actAmount[0].map((item) =>
+								item.map((data, index) => (
+									<td key={index * Math.random() * 10000}>{index + 1}</td>
+								))
+							)}
 					</tr>
 				</thead>
 
