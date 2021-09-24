@@ -9,7 +9,7 @@ const GroupTable = ({ userList }) => {
 	const [actAmount, setActAmount] = useState([]);
 
 	const getPageAmount = (chapterName) => {
-		return usersData[0]
+		return usersData[0].progress
 			.filter((chapter) => chapter.chapter === chapterName)
 			.map((chapterData) =>
 				chapterData.data.map((data, index) => {
@@ -19,7 +19,7 @@ const GroupTable = ({ userList }) => {
 	};
 
 	const getActivities = (chapterName) => {
-		return usersData[0]
+		return usersData[0].progress
 			.filter((chapter) => chapter.chapter === chapterName)
 			.map((chapterData) =>
 				chapterData.data.map((data) => data.pageData.map((item, index) => item))

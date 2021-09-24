@@ -46,7 +46,12 @@ export const getAllUserProgress = async () => {
 
 export const getUsersDetails = async (usersData) => {
 	if (usersData) {
-		const usersDetails = usersData.map(async (user) => getUserProgress(user));
+		const usersDetails = usersData.map(async (user) => {
+			return {
+				displayName: user.displayName,
+				progress: await getUserProgress(user),
+			};
+		});
 		const results = await Promise.all(usersDetails);
 		return results;
 	}
