@@ -19,11 +19,20 @@ const GroupTable = ({ userList }) => {
 	};
 
 	const getActivities = (chapterName) => {
-		return usersData[0].progress
-			.filter((chapter) => chapter.chapter === chapterName)
-			.map((chapterData) =>
-				chapterData.data.map((data) => data.pageData.map((item, index) => item))
-			);
+		return usersData.map((data) => {
+			const results = {
+				displayName: data.displayName,
+				progress: data.progress
+					.filter((chapter) => chapter.chapter === chapterName)
+					.map((chapterData) =>
+						chapterData.data.map((data) =>
+							data.pageData.map((item, index) => item)
+						)
+					),
+			};
+			// console.log(results);
+			return results;
+		});
 	};
 
 	useEffect(() => {
@@ -55,6 +64,7 @@ const GroupTable = ({ userList }) => {
 	// TODO in this file:
 	// # make group detail table header to display dynamically === DONE
 	// # iterate table header driven by data input === DONE
+	// # match progress detail with user displayName
 	// # iterate user data to be displayed in table dynamically
 
 	return (
@@ -86,10 +96,12 @@ const GroupTable = ({ userList }) => {
 					{/* Display activities number in page as header */}
 					<tr>
 						{actAmount.length > 0 &&
-							actAmount[0].map((item) =>
-								item.map((data, index) => (
-									<td key={keyGenerator(index)}>{index + 1}</td>
-								))
+							actAmount[0].progress.map((item) =>
+								item.map((data) =>
+									data.map((atom, index) => (
+										<td key={keyGenerator(index)}>{index + 1}</td>
+									))
+								)
 							)}
 					</tr>
 				</thead>
@@ -120,20 +132,29 @@ const GroupTable = ({ userList }) => {
 									{/* display users activities detail */}
 
 									{actAmount.length > 0 &&
-										actAmount[0].map((item) =>
-											item.map((data, index) => (
-												<td
-													key={keyGenerator(index)}
-													style={
-														data.act
-															? { background: "#C6E0B4" }
-															: { background: "#F8CBAD" }
-													}
-												>
-													{data.act ? "O" : "X"}
-												</td>
-											))
-										)}
+										actAmount
+											.filter((data) => data.displayName === user.displayName)
+											.map((result) =>
+												result.progress.map((item) =>
+													item.map((data) =>
+														data.map((item) => {
+															console.log(item.name);
+															return (
+																<td
+																	key={keyGenerator(index)}
+																	style={
+																		item.act
+																			? { background: "#C6E0B4" }
+																			: { background: "#F8CBAD" }
+																	}
+																>
+																	{item.act ? "O" : "X"}
+																</td>
+															);
+														})
+													)
+												)
+											)}
 								</tr>
 							</>
 						);
