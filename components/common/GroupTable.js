@@ -96,8 +96,31 @@ const GroupTable = ({ userList }) => {
 					<LoadingProgress />
 				) : (
 					<>
-						<div style={{ marginBottom: "1rem" }}>
+						<div
+							style={{
+								marginBottom: "1rem",
+								display: "flex",
+								justifyContent: "space-between",
+							}}
+						>
 							<ChapterButton />
+							<div>
+								Ket:{" "}
+								<span style={{ backgroundColor: "#C6E0B4", padding: "0.4rem" }}>
+									O
+								</span>{" "}
+								: Telah Dilakukan
+								<span
+									style={{
+										marginLeft: "0.7rem",
+										backgroundColor: "#F8CBAD",
+										padding: "0.4rem",
+									}}
+								>
+									X
+								</span>{" "}
+								: Belum Dilakukan
+							</div>
 						</div>
 						<table>
 							<thead className={groupTableStyles.header}>
