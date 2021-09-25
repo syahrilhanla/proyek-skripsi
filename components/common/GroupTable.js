@@ -5,12 +5,14 @@
 // # iterate user data to be displayed in table dynamically === DONE
 // # add button group to choose chapter to display === DONE
 // # switch chapter data by selecting button group === DONE
+// # add circular progress when fetching data === DONE
 
 import { useEffect, useState } from "react";
 import { getUsersDetails } from "@/components/utils/userFirestoreSavings";
 
 import groupTableStyles from "@/styles/GroupTable.module.css";
-import { Box, Button, ButtonGroup, CircularProgress } from "@material-ui/core";
+import { Button, ButtonGroup } from "@material-ui/core";
+import LoadingProgress from "@/components/common/LoadingProgress";
 
 const GroupTable = ({ userList }) => {
 	const [usersData, setUsersData] = useState([]);
@@ -77,12 +79,6 @@ const GroupTable = ({ userList }) => {
 			<Button onClick={() => setChooseChapter("chapter2")}>Bab 2</Button>
 			<Button onClick={() => setChooseChapter("chapter3")}>Bab 3</Button>
 		</ButtonGroup>
-	);
-
-	const LoadingProgress = () => (
-		<Box sx={{ display: "flex" }}>
-			<CircularProgress />
-		</Box>
 	);
 
 	const chapterTitle = () => {
