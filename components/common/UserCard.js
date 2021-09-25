@@ -23,8 +23,9 @@ const UserCard = ({ userData }) => {
 	}, []);
 
 	const isNoUserYet = () => {
-		if (individualProgress.length === 0) return true;
-		else return false;
+		if (individualProgress) {
+			if (individualProgress.length === 0) return true;
+		} else return false;
 	};
 
 	// filterDescending();
