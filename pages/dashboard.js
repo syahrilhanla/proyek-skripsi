@@ -5,6 +5,7 @@ import Footer from "@/components/common/Footer";
 import CircularProgressWithLabel from "@/components/common/ProgressCircularBar";
 import LearningProgress from "@/components/common/LearningProgress";
 import UserNewClassModal from "@/components/common/UserNewClassModal";
+import LoadingProgress from "@/components/common/LoadingProgress";
 
 import { useAuth } from "@/components/context/AuthContext";
 
@@ -27,12 +28,6 @@ const dashboard = () => {
 		if (isAdmin) return () => router.push("/admin");
 	}, []);
 
-	// useEffect(() => {
-	// 	if (progressValues.pageReady) {
-	// 		setUserClass(progressValues.userInfo.className);
-	// 	} else return;
-	// }, [progressValues]);
-
 	useEffect(() => {
 		if (userClass !== "Belum Masuk Kelas") console.log("changed");
 	}, [userClass]);
@@ -40,8 +35,12 @@ const dashboard = () => {
 	return (
 		<>
 			{isAdmin === false &&
-				progressValues.userInfo &&
-				progressValues.pageReady === true && <DisplayDashboard />}
+			progressValues.userInfo &&
+			progressValues.pageReady ? (
+				<DisplayDashboard />
+			) : (
+				<DisplayLoading />
+			)}
 			{newClass && (
 				<UserNewClassModal
 					setNewClass={setNewClass}
@@ -50,6 +49,26 @@ const dashboard = () => {
 			)}
 		</>
 	);
+
+	function DisplayLoading() {
+		return (
+			<div
+				style={{
+					display: "flex",
+					justifyContent: "center",
+					alignItems: "center",
+					width: "100%",
+					height: "100vh",
+				}}
+			>
+				<div style={{ height: "10%", textAlign: "center" }}>
+					<LoadingProgress />
+					<br />
+					<p>Memuat Data...</p>
+				</div>
+			</div>
+		);
+	}
 
 	function DisplayDashboard() {
 		return (
@@ -94,7 +113,6 @@ function UserProgress({ progressValues }) {
 }
 
 function DashboardContent({ displayInfo, acts, setNewClass, userClass }) {
-	console.log(userClass);
 	return (
 		<section className={dashboardStyles.dashboard}>
 			<div className={dashboardStyles.profile}>
