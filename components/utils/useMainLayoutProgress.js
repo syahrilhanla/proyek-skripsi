@@ -1,10 +1,20 @@
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
+
 import { getScore } from "@/components/utils/dataProcessors";
 import useCheckActivity from "@/components/utils/useCheckActivity";
+import useUpdateProgress from "@/components/utils/useUpdateProgress";
 import useGetCurrentChapterProgress from "@/components/utils/useGetCurrentChapterProgress";
+import useGetCurrentPage from "@/components/utils/useGetCurrentPage";
+
+import { useAuth } from "@/components/context/AuthContext";
 
 const useMainLayoutProgress = () => {
+	// #### used to update progress to firestore
+	const { localUserData } = useAuth();
+	const { parentPath, currentPath, currentURL } = useGetCurrentPage();
+	// ####
+
 	const [pageProgress, setPageProgress] = useState([]);
 	const router = useRouter();
 
@@ -19,10 +29,12 @@ const useMainLayoutProgress = () => {
 
 	useEffect(() => {
 		let unmount = false;
-		if (!unmount)
+		if (!unmount) {
 			useGetCurrentChapterProgress(router).then((data) =>
 				setPageProgress(getScore(data))
 			);
+			useUpdateProgress(parentPath, currentPath, localUserData);
+		}
 
 		() => {
 			unmount = true;
