@@ -27,7 +27,7 @@ const useExtractToDisplay = (individualProgress) => {
 		page.pageData.map((content) => content)
 	);
 
-	console.log({ chapter1Details });
+	// console.log({ chapter1Details });
 
 	return { chapterNames, chapter1Details, chapter3Details, chapter2Details };
 };

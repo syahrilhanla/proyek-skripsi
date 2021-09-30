@@ -196,7 +196,7 @@ const GroupTable = ({ userList }) => {
 															result.progress.map((item) =>
 																item.map((data) =>
 																	data.map((item) => {
-																		console.log(item.name);
+																		// console.log(item.name);
 																		return (
 																			<td
 																				key={keyGenerator(index)}

@@ -23,7 +23,7 @@ export const useJoinClass = async (
 			(item) => item.password === password && item.className === selectedClass
 		);
 
-		console.log({ trueClass });
+		// console.log({ trueClass });
 
 		if (trueClass.length > 0) {
 			await joinClass(userInfo.uid, selectedClass);
