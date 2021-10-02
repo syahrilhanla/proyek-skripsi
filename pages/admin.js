@@ -19,14 +19,20 @@ const admin = () => {
 
 	const [newClass, setNewClass] = useState(false);
 	const [showClass, setShowClass] = useState(false);
-	const [selectedClass, setSelectedClass] = useState("");
+	const [selectedClass, setSelectedClass] = useState({
+		className: "",
+		password: "",
+	});
 	const [userList, setUserList] = useState([]);
 	const [sortUsers, setSortUsers] = useState("");
 
-	const { filteredUsers } = useGetUserForAdmin(selectedClass);
+	const { filteredUsers } = useGetUserForAdmin(selectedClass.className);
+
+	// ################## Used to sort user ##########################
 
 	useEffect(() => {
 		setUserList(filteredUsers);
+		// console.log(selectedClass);
 	}, [selectedClass]);
 
 	useEffect(() => {
@@ -34,6 +40,8 @@ const admin = () => {
 		if (sortUsers === "Tertinggi") setUserList(topUsers);
 		else setUserList(bottomUsers);
 	}, [sortUsers]);
+
+	// ################################################################
 
 	const AdminBody = () => (
 		<div className={adminStyle.mother}>

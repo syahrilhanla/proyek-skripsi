@@ -8,10 +8,13 @@ const ClassDropDown = ({ setShowClass = () => false, setSelectedClass }) => {
 
 	const { register, handleSubmit } = useForm();
 
+	const getClassInfo = (className) => {
+		return classList.filter((item) => item.className === className)[0];
+	};
+
 	const onSubmit = (data) => {
-		// console.log(data);
 		setShowClass(true);
-		setSelectedClass(data.className);
+		setSelectedClass(getClassInfo(data.className));
 	};
 
 	return (

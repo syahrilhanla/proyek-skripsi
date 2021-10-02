@@ -11,10 +11,16 @@ const DisplayUsers = ({ selectedClass, userList }) => {
 		setChecked(!checked);
 	};
 
+	console.log(selectedClass);
 	return (
 		<div>
 			{selectedClass !== "Pilih Kelas" && (
-				<h2 style={{ fontWeight: 400 }}>Kelas {selectedClass}</h2>
+				<div style={{ display: "flex", justifyContent: "space-between" }}>
+					<h2 style={{ fontWeight: 400 }}>Kelas {selectedClass.className}</h2>
+					<h3 style={{ fontWeight: 400 }}>
+						Password: {selectedClass.password}
+					</h3>
+				</div>
 			)}
 
 			{userList.length > 0 ? (
