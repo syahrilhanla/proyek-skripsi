@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Avatar } from "@material-ui/core";
+import { Avatar, Button } from "@material-ui/core";
 import { getUserProgress } from "@/components/utils/userFirestoreSavings";
 import BorderLinearProgress from "@/components/common/BorderLinearProgress";
 import UserDetailModal from "@/components/common/UserDetailModal";
@@ -8,7 +8,7 @@ import useCountAllActs from "@/components/utils/useCountAllActs";
 
 import userCardStyles from "@/styles/UserCard.module.css";
 
-const UserCard = ({ userData }) => {
+const UserCard = ({ userData, isEditMode }) => {
 	const [percentageValue, setPercentageValue] = useState(0);
 	const [openModal, setOpenModal] = useState(false);
 	const [individualProgress, setIndividualProgress] = useState([]);
@@ -42,7 +42,9 @@ const UserCard = ({ userData }) => {
 			)}
 
 			<div
-				className={userCardStyles.parentDiv}
+				className={`${userCardStyles.parentDiv} ${
+					isEditMode ? userCardStyles.editMode : userCardStyles.normalMode
+				}`}
 				style={isNoUserYet() ? { pointerEvents: "none" } : null}
 				onClick={() => setOpenModal(true)}
 			>
@@ -55,6 +57,13 @@ const UserCard = ({ userData }) => {
 					<h3>{percentageValue}% </h3>
 					<BorderLinearProgress value={percentageValue} />
 				</span>
+				{isEditMode && (
+					<span>
+						<Button variant='contained' color='secondary'>
+							X
+						</Button>
+					</span>
+				)}
 			</div>
 		</>
 	);

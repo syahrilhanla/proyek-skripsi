@@ -112,6 +112,10 @@ export const commonLinks = {
 	],
 	admin: [
 		{
+			text: "Managemen Admin",
+			link: "admin-manage",
+		},
+		{
 			text: "Tentang",
 			link: "/tentang",
 		},

@@ -3,15 +3,27 @@
 	border: 1px rgb(221, 221, 221) solid;
 	width: 100%;
 	display: grid;
-	grid-template-columns: 1fr 2fr 1fr 2fr;
 	cursor: pointer;
 	margin: 0.7rem 0px;
+	align-items: center;
+}
+
+.normalMode {
+	grid-template-columns: 1fr 2fr 1fr 2fr;
+}
+
+.editMode {
+	grid-template-columns: 1fr 2fr 1fr 2fr 1fr;
 }
 
 .parentDiv:hover {
 	box-shadow: 2px 3px 28px -11px rgba(0, 0, 0, 0.77);
 	-webkit-box-shadow: 2px 3px 28px -11px rgba(0, 0, 0, 0.77);
 	-moz-box-shadow: 2px 3px 28px -11px rgba(0, 0, 0, 0.77);
+}
+
+.parentDiv h3 {
+	font-weight: 400;
 }
 
 .avatar {
@@ -25,10 +37,6 @@
 	justify-content: center;
 	align-items: center;
 	width: 90%;
-}
-
-.parentDiv h3 {
-	font-weight: 400;
 }
 
 .userDetail {
