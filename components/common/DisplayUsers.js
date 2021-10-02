@@ -1,7 +1,9 @@
 import { useState } from "react";
 import UserCard from "@/components/common/UserCard";
-import { Switch } from "@material-ui/core";
+import { Button, Switch } from "@material-ui/core";
 import GroupTable from "@/components/common/GroupTable";
+
+import DisplayUserStyle from "@/styles/DisplayUsers.module.css";
 
 const DisplayUsers = ({ selectedClass, userList }) => {
 	// if true then display individual progress
@@ -11,15 +13,22 @@ const DisplayUsers = ({ selectedClass, userList }) => {
 		setChecked(!checked);
 	};
 
-	console.log(selectedClass);
 	return (
 		<div>
 			{selectedClass !== "Pilih Kelas" && (
-				<div style={{ display: "flex", justifyContent: "space-between" }}>
-					<h2 style={{ fontWeight: 400 }}>Kelas {selectedClass.className}</h2>
-					<h3 style={{ fontWeight: 400 }}>
-						Password: {selectedClass.password}
-					</h3>
+				<div className={DisplayUserStyle.classInfo}>
+					<span>
+						<h2>Kelas {selectedClass.className}</h2>
+						<h3>Password: {selectedClass.password}</h3>
+					</span>
+					{/* <button>Edit User</button> */}
+					<Button
+						variant='contained'
+						color='secondary'
+						className={DisplayUserStyle.editButton}
+					>
+						Edit User
+					</Button>
 				</div>
 			)}
 
