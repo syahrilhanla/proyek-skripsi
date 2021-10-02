@@ -6,6 +6,7 @@ import {
 	getLocalUser,
 	removeLocalUser,
 	deleteLocalProgress,
+	getLocalUserProgress,
 } from "@/components/utils/userLocalSavings";
 import { popup, auth } from "@/components/common/Firebase";
 import { useRouter } from "next/router";
@@ -32,6 +33,9 @@ const AuthProvider = ({ children }) => {
 	const [isAdmin, setIsAdmin] = useState(false);
 	const [classList, setClassList] = useState([]);
 
+	// functioning as switch when localStorage is being updated
+	const [LSSwitch, setLSSwitch] = useState(true);
+
 	const router = useRouter();
 
 	// set user after login success
@@ -55,11 +59,17 @@ const AuthProvider = ({ children }) => {
 	};
 
 	useEffect(() => {
+		getLocalUser().then((data) => {
+			setLocalUserData(data);
+			setUserProgress(getLocalUserProgress(data));
+		});
+	}, [LSSwitch]);
+
+	useEffect(() => {
 		const unSub = auth.onAuthStateChanged((user) => {
 			setUser(user).then(() => {
 				try {
 					setLocalStorage(user).then(() => {
-						// getUserFirestore(user).then((userData) => setUserInfo(userData));
 						// get local user from localStorage after login and set to localStorage
 						getLocalUser().then((data) => {
 							setLocalUserData(data);
@@ -95,6 +105,8 @@ const AuthProvider = ({ children }) => {
 				loading,
 				isAdmin,
 				classList,
+				LSSwitch,
+				setLSSwitch,
 				setClassList,
 				login,
 				signOut,

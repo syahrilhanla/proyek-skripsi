@@ -10,7 +10,7 @@ import quizStyle from "@/styles/QuizStyle.module.css";
 import QuestionIndex from "@/components/common/QuestionIndex";
 
 const QuizComponent = ({ questionData, DisplayData, timesUp }) => {
-	const { quizScore, setQuizScore } = useProgress(0);
+	const { quizScore, setQuizScore } = useProgress();
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [isFinished, setIsFinished] = useState(false);
 	const [overallAnswers, setOverallAnswers] = useState([]);

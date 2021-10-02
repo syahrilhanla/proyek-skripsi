@@ -5,6 +5,7 @@ import Footer from "@/components/common/Footer";
 import CircularProgressWithLabel from "@/components/common/ProgressCircularBar";
 import LearningProgress from "@/components/common/LearningProgress";
 import UserNewClassModal from "@/components/common/UserNewClassModal";
+import LoadingProgress from "@/components/common/LoadingProgress";
 
 import { useAuth } from "@/components/context/AuthContext";
 
@@ -17,7 +18,7 @@ import dashboardStyles from "@/styles/Dashboard.module.css";
 
 const dashboard = () => {
 	const progressValues = useProgressValues();
-	const { isAdmin } = useAuth();
+	const { isAdmin, LSSwitch, setLSSwitch } = useAuth();
 	const router = useRouter();
 	const [newClass, setNewClass] = useState(false);
 	const [userClass, setUserClass] = useState("Belum Masuk Kelas");
@@ -25,13 +26,8 @@ const dashboard = () => {
 	// If the user is an admin, it will redirect from dashboard page to admin page
 	useEffect(() => {
 		if (isAdmin) return () => router.push("/admin");
+		setLSSwitch(!LSSwitch);
 	}, []);
-
-	// useEffect(() => {
-	// 	if (progressValues.pageReady) {
-	// 		setUserClass(progressValues.userInfo.className);
-	// 	} else return;
-	// }, [progressValues]);
 
 	useEffect(() => {
 		if (userClass !== "Belum Masuk Kelas") console.log("changed");
@@ -40,8 +36,12 @@ const dashboard = () => {
 	return (
 		<>
 			{isAdmin === false &&
-				progressValues.userInfo &&
-				progressValues.pageReady === true && <DisplayDashboard />}
+			progressValues.userInfo &&
+			progressValues.pageReady ? (
+				<DisplayDashboard />
+			) : (
+				<DisplayLoading />
+			)}
 			{newClass && (
 				<UserNewClassModal
 					setNewClass={setNewClass}
@@ -50,6 +50,26 @@ const dashboard = () => {
 			)}
 		</>
 	);
+
+	function DisplayLoading() {
+		return (
+			<div
+				style={{
+					display: "flex",
+					justifyContent: "center",
+					alignItems: "center",
+					width: "100%",
+					height: "100vh",
+				}}
+			>
+				<div style={{ height: "10%", textAlign: "center" }}>
+					<LoadingProgress />
+					<br />
+					<p>Memuat Data...</p>
+				</div>
+			</div>
+		);
+	}
 
 	function DisplayDashboard() {
 		return (
@@ -94,7 +114,6 @@ function UserProgress({ progressValues }) {
 }
 
 function DashboardContent({ displayInfo, acts, setNewClass, userClass }) {
-	console.log(userClass);
 	return (
 		<section className={dashboardStyles.dashboard}>
 			<div className={dashboardStyles.profile}>

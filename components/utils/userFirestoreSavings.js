@@ -71,7 +71,7 @@ export const addClass = async (className, password) => {
 export const joinClass = async (localUser, className) => {
 	if (className && localUser) {
 		docRef.doc(localUser).update({ className: className });
-		console.log({ localUser, className });
+		// console.log({ localUser, className });
 	} else return;
 };
 
@@ -171,7 +171,7 @@ export const addUser = async (localUser) => {
 };
 
 export const submitTestScore = (localUser, score) => {
-	console.log(score);
+	// console.log(score);
 	if (score) {
 		const userData = { score: score };
 		docRef.doc(localUser).update(userData);

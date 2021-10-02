@@ -21,7 +21,7 @@ const AddClassModal = ({ setNewClass, newClass, setClassList }) => {
 		setNewClass(false);
 		getClassList().then((data) => {
 			setClassList(data);
-			console.log(data);
+			// console.log(data);
 		});
 	};
 
