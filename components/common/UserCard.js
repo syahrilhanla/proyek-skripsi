@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import { Avatar, Button } from "@material-ui/core";
-import { getUserProgress } from "@/components/utils/userFirestoreSavings";
+import {
+	deleteUserDocument,
+	getUserProgress,
+} from "@/components/utils/userFirestoreSavings";
 import BorderLinearProgress from "@/components/common/BorderLinearProgress";
 import UserDetailModal from "@/components/common/UserDetailModal";
 
@@ -8,7 +11,7 @@ import useCountAllActs from "@/components/utils/useCountAllActs";
 
 import userCardStyles from "@/styles/UserCard.module.css";
 
-const UserCard = ({ userData, isEditMode }) => {
+const UserCard = ({ userData, isEditMode, deleteFromUI }) => {
 	const [percentageValue, setPercentageValue] = useState(0);
 	const [openModal, setOpenModal] = useState(false);
 	const [individualProgress, setIndividualProgress] = useState([]);
@@ -45,7 +48,7 @@ const UserCard = ({ userData, isEditMode }) => {
 				className={`${userCardStyles.parentDiv} ${
 					isEditMode ? userCardStyles.editMode : userCardStyles.normalMode
 				}`}
-				style={isNoUserYet() ? { pointerEvents: "none" } : null}
+				style={isNoUserYet() ? { pointerEvents: "none", zIndex: "-100" } : null}
 				onClick={() => setOpenModal(true)}
 			>
 				<span className={userCardStyles.avatar}>
@@ -58,8 +61,16 @@ const UserCard = ({ userData, isEditMode }) => {
 					<BorderLinearProgress value={percentageValue} />
 				</span>
 				{isEditMode && (
-					<span>
-						<Button variant='contained' color='secondary'>
+					<span style={{ zIndex: "9999" }}>
+						<Button
+							variant='contained'
+							color='secondary'
+							onClick={(e) => {
+								deleteUserDocument(userData.uid);
+								deleteFromUI(userData.uid);
+								e.stopPropagation();
+							}}
+						>
 							X
 						</Button>
 					</span>

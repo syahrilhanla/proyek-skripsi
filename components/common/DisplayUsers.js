@@ -5,13 +5,19 @@ import GroupTable from "@/components/common/GroupTable";
 
 import DisplayUserStyle from "@/styles/DisplayUsers.module.css";
 
-const DisplayUsers = ({ selectedClass, userList }) => {
+const DisplayUsers = ({ selectedClass, userList, setUserList }) => {
 	// if true then display individual progress
 	const [individualChecked, setIndividualChecked] = useState(true);
 	const [isEditMode, setIsEditMode] = useState(false);
 
 	const handleChange = () => {
 		setIndividualChecked(!individualChecked);
+	};
+
+	const deleteFromUI = (userID) => {
+		console.log(userList.filter((user) => user.uid === userID));
+		const newList = userList.filter((user) => user.uid !== userID);
+		setUserList(newList);
 	};
 
 	return (
@@ -56,6 +62,7 @@ const DisplayUsers = ({ selectedClass, userList }) => {
 								userData={userData}
 								key={userData.uid}
 								isEditMode={isEditMode}
+								deleteFromUI={deleteFromUI}
 							/>
 						))
 					) : (

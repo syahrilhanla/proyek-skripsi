@@ -72,7 +72,11 @@ const admin = () => {
 			</div>
 
 			{showClass && (
-				<DisplayUsers selectedClass={selectedClass} userList={userList} />
+				<DisplayUsers
+					selectedClass={selectedClass}
+					userList={userList}
+					setUserList={setUserList}
+				/>
 			)}
 		</div>
 	);

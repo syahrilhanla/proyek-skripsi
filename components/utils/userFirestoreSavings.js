@@ -66,6 +66,10 @@ export const addClass = async (className, password) => {
 	} else return;
 };
 
+export const deleteUserDocument = (userID) => {
+	docRef.doc(userID).delete();
+};
+
 // ================================== USED BY USERS ==============================================
 
 export const joinClass = async (localUser, className) => {
