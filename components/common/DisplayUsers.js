@@ -8,6 +8,7 @@ import DisplayUserStyle from "@/styles/DisplayUsers.module.css";
 const DisplayUsers = ({ selectedClass, userList }) => {
 	// if true then display individual progress
 	const [checked, setChecked] = useState(true);
+	const [isEditMode, setIsEditMode] = useState(false);
 
 	const handleChange = () => {
 		setChecked(!checked);
@@ -26,6 +27,7 @@ const DisplayUsers = ({ selectedClass, userList }) => {
 						variant='contained'
 						color='secondary'
 						className={DisplayUserStyle.editButton}
+						onClick={() => setIsEditMode(!isEditMode)}
 					>
 						Edit User
 					</Button>
@@ -48,7 +50,11 @@ const DisplayUsers = ({ selectedClass, userList }) => {
 
 					{checked ? (
 						userList.map((userData) => (
-							<UserCard userData={userData} key={userData.uid} />
+							<UserCard
+								userData={userData}
+								key={userData.uid}
+								isEditMode={isEditMode}
+							/>
 						))
 					) : (
 						<GroupTable userList={userList} />
