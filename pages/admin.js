@@ -13,6 +13,7 @@ import useGetUserForAdmin from "@/components/utils/useGetUsersForAdmin";
 import useSortUsers from "@/components/utils/useSortUsers";
 
 import adminStyle from "@/styles/Admin.module.css";
+import SuccessNotification from "@/components/common/SuccessNotification";
 
 const admin = () => {
 	const { isAdmin, setClassList } = useAuth();
@@ -25,6 +26,7 @@ const admin = () => {
 	});
 	const [userList, setUserList] = useState([]);
 	const [sortUsers, setSortUsers] = useState("");
+	const [isSuccess, setIsSuccess] = useState(false);
 
 	const { filteredUsers } = useGetUserForAdmin(selectedClass.className);
 
@@ -41,6 +43,8 @@ const admin = () => {
 		else setUserList(bottomUsers);
 	}, [sortUsers]);
 
+	if (isSuccess) setTimeout(() => setIsSuccess(false), 3000);
+
 	// ################################################################
 
 	const AdminBody = () => (
@@ -49,6 +53,8 @@ const admin = () => {
 			{newClass && (
 				<AddClassModal setNewClass={setNewClass} setClassList={setClassList} />
 			)}
+
+			{<SuccessNotification open={isSuccess} />}
 
 			<div className={adminStyle.classMenu}>
 				<span className={adminStyle.pickClass}>
@@ -71,11 +77,15 @@ const admin = () => {
 				</span>
 			</div>
 
+			{/* {<SuccessNotification open={true} />} */}
+
 			{showClass && (
 				<DisplayUsers
 					selectedClass={selectedClass}
 					userList={userList}
 					setUserList={setUserList}
+					isSuccess={isSuccess}
+					setIsSuccess={setIsSuccess}
 				/>
 			)}
 		</div>
