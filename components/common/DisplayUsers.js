@@ -7,11 +7,11 @@ import DisplayUserStyle from "@/styles/DisplayUsers.module.css";
 
 const DisplayUsers = ({ selectedClass, userList }) => {
 	// if true then display individual progress
-	const [checked, setChecked] = useState(true);
+	const [individualChecked, setIndividualChecked] = useState(true);
 	const [isEditMode, setIsEditMode] = useState(false);
 
 	const handleChange = () => {
-		setChecked(!checked);
+		setIndividualChecked(!individualChecked);
 	};
 
 	return (
@@ -23,14 +23,16 @@ const DisplayUsers = ({ selectedClass, userList }) => {
 						<h3>Password: {selectedClass.password}</h3>
 					</span>
 					{/* <button>Edit User</button> */}
-					<Button
-						variant='contained'
-						color='secondary'
-						className={DisplayUserStyle.editButton}
-						onClick={() => setIsEditMode(!isEditMode)}
-					>
-						Edit User
-					</Button>
+					{individualChecked && (
+						<Button
+							variant={isEditMode ? "outlined" : "contained"}
+							color='secondary'
+							className={DisplayUserStyle.editButton}
+							onClick={() => setIsEditMode(!isEditMode)}
+						>
+							Edit User
+						</Button>
+					)}
 				</div>
 			)}
 
@@ -43,12 +45,12 @@ const DisplayUsers = ({ selectedClass, userList }) => {
 							size='medium'
 							color='primary'
 							onChange={handleChange}
-							checked={checked}
+							checked={individualChecked}
 						/>
 						<span>Individu</span>
 					</div>
 
-					{checked ? (
+					{individualChecked ? (
 						userList.map((userData) => (
 							<UserCard
 								userData={userData}
