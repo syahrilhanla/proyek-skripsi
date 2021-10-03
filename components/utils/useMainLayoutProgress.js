@@ -33,7 +33,7 @@ const useMainLayoutProgress = () => {
 			useGetCurrentChapterProgress(router).then((data) =>
 				setPageProgress(getScore(data))
 			);
-			if (parentPath !== "admin") {
+			if (parentPath !== "admin" && parentPath !== "manageAdmin") {
 				useUpdateProgress(parentPath, currentPath, localUserData);
 			}
 		}

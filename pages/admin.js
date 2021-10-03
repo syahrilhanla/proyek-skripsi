@@ -77,8 +77,6 @@ const admin = () => {
 				</span>
 			</div>
 
-			{/* {<SuccessNotification open={true} />} */}
-
 			{showClass && (
 				<DisplayUsers
 					selectedClass={selectedClass}

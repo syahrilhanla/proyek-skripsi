@@ -47,7 +47,11 @@ const MainLayout = ({
 	};
 
 	const DisplayBottomProgress = () => {
-		if (parentPath !== "admin" && parentPath !== "evaluasi")
+		if (
+			parentPath !== "admin" &&
+			parentPath !== "evaluasi" &&
+			parentPath !== "manageAdmin"
+		)
 			return (
 				<>
 					<BottomProgress pageProgress={pageProgress} />
