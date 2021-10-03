@@ -1,10 +1,16 @@
 // USED IN AuthContext.js TO VALIDATE IF USER IS ADMIN
 // IF YES, THEN PUSHED TO ADMIN PAGE AND DISPLAY FOR ADMIN
 
-const useCheckAdmin = (data) => {
+import { getAllAdminData } from "@/components/utils/userFirestoreSavings";
+
+const useCheckAdmin = async (data) => {
 	if (data) {
-		if (data.displayName === "syahril hanla") return true;
-		else return false;
+		const adminList = await getAllAdminData();
+
+		// checking through adminList, whether adminList contains authenticated email
+		const isAdmin = adminList.some((result) => result.email === data.email);
+		console.log({ isAdmin });
+		return isAdmin;
 	} else return false;
 };
 
