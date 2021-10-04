@@ -76,8 +76,9 @@ const MainLayout = ({
 					}
 				>
 					<div
-						className={layoutStyles.column1}
-						style={parentPath === "manageAdmin" && { alignItems: "flex-start" }}
+						className={`${layoutStyles.column1} ${
+							parentPath === "manageAdmin" && layoutStyles.manageAdmin
+						}`}
 					>
 						<div className={layoutStyles.container} ref={scrollRef}>
 							<Child1 />
