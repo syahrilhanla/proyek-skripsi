@@ -14,6 +14,11 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Production Build
+https://proyek-skripsi.vercel.app
+## Dev Build
+https://proyek-skripsi-git-dev-branch-syahrilhanla.vercel.app/
+
 ## Urgensi Pengembangan
 
 Aplikasi ini dikembangkan sebagai syarat kelulusan program Strata-1 Pendidikan Komputer Universitas Lambung Mangkurat. Dikembangkan secara mandiri oleh Syahril Hanla Azis (1710131110017).

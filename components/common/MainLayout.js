@@ -47,7 +47,11 @@ const MainLayout = ({
 	};
 
 	const DisplayBottomProgress = () => {
-		if (parentPath !== "admin" && parentPath !== "evaluasi")
+		if (
+			parentPath !== "admin" &&
+			parentPath !== "evaluasi" &&
+			parentPath !== "manageAdmin"
+		)
 			return (
 				<>
 					<BottomProgress pageProgress={pageProgress} />
@@ -71,7 +75,10 @@ const MainLayout = ({
 						Child2 ? layoutStyles.containerCombo : layoutStyles.containerSolo
 					}
 				>
-					<div className={layoutStyles.column1}>
+					<div
+						className={layoutStyles.column1}
+						style={parentPath === "manageAdmin" && { alignItems: "flex-start" }}
+					>
 						<div className={layoutStyles.container} ref={scrollRef}>
 							<Child1 />
 						</div>

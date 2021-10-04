@@ -44,6 +44,13 @@ export const getAllUserProgress = async () => {
 	return usersData;
 };
 
+export const getAllAdminData = async () => {
+	const adminsData = (await firestore.collection("adminList").get()).docs.map(
+		(doc) => doc.data()
+	);
+	return adminsData;
+};
+
 export const getUsersDetails = async (usersData) => {
 	if (usersData) {
 		const usersDetails = usersData.map(async (user) => {
@@ -55,6 +62,15 @@ export const getUsersDetails = async (usersData) => {
 		const results = await Promise.all(usersDetails);
 		return results;
 	}
+};
+
+export const addAdmin = async (newData) => {
+	if (newData) {
+		firestore.collection("adminList").doc(newData.displayName).set({
+			displayName: newData.displayName,
+			email: newData.email,
+		});
+	} else return;
 };
 
 export const addClass = async (className, password) => {
