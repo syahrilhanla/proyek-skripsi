@@ -64,6 +64,15 @@ export const getUsersDetails = async (usersData) => {
 	}
 };
 
+export const addAdmin = async (newData) => {
+	if (newData) {
+		firestore.collection("adminList").doc(newData.displayName).set({
+			displayName: newData.displayName,
+			email: newData.email,
+		});
+	} else return;
+};
+
 export const addClass = async (className, password) => {
 	if (className && password) {
 		firestore.collection("classNames").doc(className).set({

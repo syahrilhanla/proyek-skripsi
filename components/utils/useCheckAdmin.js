@@ -9,7 +9,6 @@ const useCheckAdmin = async (data) => {
 
 		// checking through adminList, whether adminList contains authenticated email
 		const isAdmin = adminList.some((result) => result.email === data.email);
-		console.log({ isAdmin });
 		return isAdmin;
 	} else return false;
 };
