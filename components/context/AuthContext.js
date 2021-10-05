@@ -89,7 +89,7 @@ const AuthProvider = ({ children }) => {
 								if (userData === undefined) setUserInfo(data);
 								else setUserInfo(userData);
 							});
-							setIsAdmin(useCheckAdmin(data));
+							useCheckAdmin(data).then((result) => setIsAdmin(result));
 							getAllAdminData().then((results) => setAdminList(results));
 							getClassList().then((data) => setClassList(data));
 							setLoading(false);
