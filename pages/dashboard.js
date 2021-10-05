@@ -128,21 +128,25 @@ function DashboardContent({ displayInfo, acts, setNewClass, userClass }) {
 						</div>
 					</div>
 					<div className={dashboardStyles.infoContainer}>
+						{console.log(("displayInfo.className", displayInfo.className), {
+							userClass,
+						})}
 						<div className={dashboardStyles.profileName}>
 							<h1>{displayInfo.displayName}</h1>
-							{(displayInfo.className === "Belum Masuk Kelas" &&
-								userClass === "Belum Masuk Kelas") ||
-							displayInfo.className === undefined ? (
+							{displayInfo.className !== "Belum Masuk Kelas" &&
+							displayInfo.className !== undefined ? (
+								<p>{"displayInfo.className"}</p>
+							) : userClass !== "Belum Masuk Kelas" ? (
+								<p>{userClass}</p>
+							) : (displayInfo.className === "Belum Masuk Kelas" &&
+									userClass === "Belum Masuk Kelas") ||
+							  displayInfo.className === undefined ? (
 								<p
 									onClick={() => setNewClass(true)}
 									style={{ cursor: "pointer" }}
 								>
 									Klik Untuk Masuk Kelas
 								</p>
-							) : displayInfo.className !== "Belum Masuk Kelas" ? (
-								<p>{displayInfo.className}</p>
-							) : userClass !== "Belum Masuk Kelas" ? (
-								<p>{userClass}</p>
 							) : null}
 						</div>
 					</div>
