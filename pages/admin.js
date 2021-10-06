@@ -13,7 +13,7 @@ import useGetUserForAdmin from "@/components/utils/useGetUsersForAdmin";
 import useSortUsers from "@/components/utils/useSortUsers";
 
 import adminStyle from "@/styles/Admin.module.css";
-import SuccessNotification from "@/components/common/SuccessNotification";
+import PushNotification from "@/components/common/PushNotification";
 
 const admin = () => {
 	const { isAdmin, setClassList } = useAuth();
@@ -54,7 +54,7 @@ const admin = () => {
 				<AddClassModal setNewClass={setNewClass} setClassList={setClassList} />
 			)}
 
-			{<SuccessNotification open={isSuccess} />}
+			{<PushNotification open={isSuccess} type={"success"} />}
 
 			<div className={adminStyle.classMenu}>
 				<span className={adminStyle.pickClass}>

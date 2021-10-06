@@ -91,7 +91,15 @@ const MainLayout = ({
 								: { alignItems: "center" }
 						}
 					>
-						<div className={layoutStyles.container} ref={scrollRef}>
+						<div
+							className={layoutStyles.container}
+							style={
+								parentPath === "admin" || parentPath === "manageAdmin"
+									? { maxHeight: "65vh" }
+									: { minHeight: "55vh" }
+							}
+							ref={scrollRef}
+						>
 							<Child1 />
 						</div>
 					</div>

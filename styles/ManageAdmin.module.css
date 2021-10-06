@@ -24,6 +24,7 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	margin-bottom: 1rem;
 }
 
 .displayName {
@@ -43,7 +44,4 @@
 	padding: 0.7rem 0px;
 	margin-bottom: 1rem;
 	margin-left: auto;
-}
-
-.textInfo {
 }

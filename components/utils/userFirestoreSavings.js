@@ -69,6 +69,7 @@ export const addAdmin = async (newData) => {
 		firestore.collection("adminList").doc(newData.displayName).set({
 			displayName: newData.displayName,
 			email: newData.email,
+			isDefaultAdmin: false,
 		});
 	} else return;
 };
@@ -91,10 +92,12 @@ export const deleteUserDocument = (userID) => {
 	}
 };
 
-export const deleteAdminDocument = (adminDisplayName) => {
+export const deleteAdminDocument = (admin) => {
 	try {
-		firestore.collection("adminList").doc(adminDisplayName).delete();
-		return true;
+		if (admin.isDefaultAdmin === false) {
+			firestore.collection("adminList").doc(admin.displayName).delete();
+			return true;
+		} else return false;
 	} catch (error) {
 		return false;
 	}

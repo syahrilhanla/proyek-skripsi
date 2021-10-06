@@ -1,7 +1,7 @@
 import MuiAlert from "@material-ui/lab/Alert";
 import Snackbar from "@material-ui/core/Snackbar";
 
-const SuccessNotification = ({ open }) => {
+const PushNotification = ({ open, type }) => {
 	const Alert = (props) => {
 		return <MuiAlert elevation={6} variant='standard' {...props} />;
 	};
@@ -13,10 +13,12 @@ const SuccessNotification = ({ open }) => {
 				anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
 				key={{ vertical: "bottom" } + { horizontal: "center" }}
 			>
-				<Alert severity='success'>Operasi Sukses!</Alert>
+				<Alert severity={type === "success" ? "success" : "error"}>
+					{type === "success" ? "Operasi Sukses" : "Operasi Gagal!"}!
+				</Alert>
 			</Snackbar>
 		</>
 	);
 };
 
-export default SuccessNotification;
+export default PushNotification;

@@ -8,7 +8,7 @@ import MainLayout from "@/components/common/MainLayout";
 import NotAdmin from "@/components/common/NotAdmin";
 import AddAdminModal from "@/components/common/AddAdminModal";
 import AddAdminButton from "@/components/common/AddAdminButton";
-import SuccessNotification from "@/components/common/SuccessNotification";
+import SuccessNotification from "@/components/common/PushNotification";
 
 import { deleteAdminDocument } from "@/components/utils/userFirestoreSavings";
 
@@ -17,22 +17,26 @@ const manageAdmin = () => {
 	const [newAdmin, setNewAdmin] = useState(false);
 	const [isEditMode, setIsEditMode] = useState(false);
 	const [isSuccess, setIsSuccess] = useState(false);
+	const [isDefaultAdmin, setIsDefaultAdmin] = useState("");
 
 	const { isAdmin, adminList, setAdminList } = useAuth();
 
 	if (isSuccess === true) setTimeout(() => setIsSuccess(false), 3000);
 
 	const deleteFromUI = (adminDisplayName) => {
-		const newList = adminList.filter(
-			(admin) => admin.displayName !== adminDisplayName
-		);
-		setAdminList(newList);
+		if (!adminDisplayName.isDefaultAdmin) {
+			const newList = adminList.filter(
+				(admin) => admin.displayName !== adminDisplayName.displayName
+			);
+			console.log({ newList });
+			setAdminList(newList);
+		} else console.log({ isDefaultAdmin });
 	};
 
 	const PageBody = () => {
 		return (
 			<div className={ManageAdminStyles.mother}>
-				<SuccessNotification open={isSuccess} />
+				<SuccessNotification open={isSuccess} type={isDefaultAdmin} />
 				{newAdmin && (
 					<AddAdminModal
 						setNewAdmin={setNewAdmin}
@@ -67,8 +71,12 @@ const manageAdmin = () => {
 										variant='contained'
 										color='secondary'
 										onClick={() => {
-											deleteFromUI(admin.displayName);
-											setIsSuccess(deleteAdminDocument(admin.displayName));
+											setIsDefaultAdmin(() => {
+												if (deleteAdminDocument(admin)) return "success";
+												else return "error";
+											});
+											setIsSuccess(true);
+											deleteFromUI(admin);
 										}}
 									>
 										X
