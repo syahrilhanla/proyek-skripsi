@@ -135,7 +135,7 @@ function DashboardContent({ displayInfo, acts, setNewClass, userClass }) {
 							<h1>{displayInfo.displayName}</h1>
 							{displayInfo.className !== "Belum Masuk Kelas" &&
 							displayInfo.className !== undefined ? (
-								<p>{"displayInfo.className"}</p>
+								<p>{displayInfo.className}</p>
 							) : userClass !== "Belum Masuk Kelas" ? (
 								<p>{userClass}</p>
 							) : (displayInfo.className === "Belum Masuk Kelas" &&
