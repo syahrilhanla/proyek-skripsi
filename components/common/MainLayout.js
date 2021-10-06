@@ -74,6 +74,11 @@ const MainLayout = ({
 					className={
 						Child2 ? layoutStyles.containerCombo : layoutStyles.containerSolo
 					}
+					style={
+						parentPath === "admin" || parentPath === "manageAdmin"
+							? { minHeight: "75vh" }
+							: { minHeight: "65vh" }
+					}
 				>
 					<div
 						// className={`${layoutStyles.column1} ${
