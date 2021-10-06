@@ -6,15 +6,20 @@ import NotAdmin from "@/components/common/NotAdmin";
 import AddAdminModal from "@/components/common/AddAdminModal";
 import AddAdminButton from "@/components/common/AddAdminButton";
 
+import ManageAdminStyles from "@/styles/ManageAdmin.module.css";
+import { Button } from "@material-ui/core";
+import { Delete } from "@material-ui/icons";
+
 const manageAdmin = () => {
 	const [newAdmin, setNewAdmin] = useState(false);
-	const { isAdmin, adminList, setAdminList } = useAuth();
+	const [isEditMode, setIsEditMode] = useState(false);
+	const [isSuccess, setIsSuccess] = useState(false);
 
-	console.log({ adminList });
+	const { isAdmin, adminList, setAdminList } = useAuth();
 
 	const PageBody = () => {
 		return (
-			<div>
+			<div className={ManageAdminStyles.mother}>
 				{newAdmin && (
 					<AddAdminModal
 						setNewAdmin={setNewAdmin}
@@ -23,22 +28,58 @@ const manageAdmin = () => {
 					/>
 				)}
 				<h2>Daftar Admin</h2>
-				<AddAdminButton setNewAdmin={setNewAdmin} />
-				{adminList.map((admin) => (
-					<h4>{admin.displayName}</h4>
-				))}
+
+				<span className={ManageAdminStyles.addButton}>
+					<AddAdminButton setNewAdmin={setNewAdmin} />
+					<Button
+						variant={isEditMode ? "outlined" : "contained"}
+						color='secondary'
+						onClick={() => setIsEditMode(!isEditMode)}
+					>
+						<Delete /> Edit User
+					</Button>
+				</span>
+				<span className={ManageAdminStyles.adminMother}>
+					{adminList.map((admin) => (
+						<div className={ManageAdminStyles.adminCard}>
+							<span className={ManageAdminStyles.textInfo}>
+								<p className={ManageAdminStyles.displayName}>
+									Nama: {admin.displayName}
+								</p>
+								<p className={ManageAdminStyles.email}>Email: {admin.email}</p>
+							</span>
+							{isEditMode && (
+								<span style={{ marginRight: "1.6rem" }}>
+									<Button
+										variant='contained'
+										color='secondary'
+										onClick={() => {
+											// deleteUserDocument(userData.uid);
+											// deleteFromUI(userData.uid);
+											// setIsSuccess(true);
+											// e.stopPropagation();
+										}}
+									>
+										X
+									</Button>
+								</span>
+							)}
+						</div>
+					))}
+				</span>
 			</div>
 		);
 	};
 	return (
 		<>
-			{isAdmin ? (
+			{/* {isAdmin ? (
 				<>
 					<MainLayout Child1={PageBody} title={""} />{" "}
 				</>
 			) : (
 				<NotAdmin />
-			)}
+			)} */}
+			<MainLayout Child1={PageBody} title={""} />{" "}
 		</>
 	);
 };

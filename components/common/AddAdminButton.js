@@ -1,9 +1,21 @@
 import quizStyle from "@/styles/QuizStyle.module.css";
+import { Button } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 
 const AddAdminButton = ({ setNewAdmin }) => {
 	return (
-		<button
+		<>
+			<Button
+				variant={"contained"}
+				color='primary'
+				onClick={() => {
+					setNewAdmin(true);
+				}}
+			>
+				<AddIcon />
+				Tambah Admin
+			</Button>
+			{/* <button
 			className={quizStyle.addClass}
 			onClick={() => {
 				setNewAdmin(true);
@@ -21,7 +33,8 @@ const AddAdminButton = ({ setNewAdmin }) => {
 					<p style={{ textAlign: "center" }}>Tambah Admin</p>
 				</span>
 			</div>
-		</button>
+		</button> */}
+		</>
 	);
 };
 

@@ -32,7 +32,7 @@
 }
 
 .manageAdmin {
-	align-items: center;
+	align-items: flex-start;
 }
 
 .containerSolo {

@@ -112,6 +112,10 @@ export const commonLinks = {
 	],
 	admin: [
 		{
+			text: "Data User",
+			link: "/admin",
+		},
+		{
 			text: "Managemen Admin",
 			link: "/manageAdmin",
 		},
