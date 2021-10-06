@@ -1,15 +1,18 @@
 import { useState } from "react";
 import { useAuth } from "@/components/context/AuthContext";
 
+import { Delete } from "@material-ui/icons";
+import { Button } from "@material-ui/core";
+
 import MainLayout from "@/components/common/MainLayout";
 import NotAdmin from "@/components/common/NotAdmin";
 import AddAdminModal from "@/components/common/AddAdminModal";
 import AddAdminButton from "@/components/common/AddAdminButton";
+import SuccessNotification from "@/components/common/SuccessNotification";
+
+import { deleteAdminDocument } from "@/components/utils/userFirestoreSavings";
 
 import ManageAdminStyles from "@/styles/ManageAdmin.module.css";
-import { Button } from "@material-ui/core";
-import { Delete } from "@material-ui/icons";
-
 const manageAdmin = () => {
 	const [newAdmin, setNewAdmin] = useState(false);
 	const [isEditMode, setIsEditMode] = useState(false);
@@ -17,9 +20,19 @@ const manageAdmin = () => {
 
 	const { isAdmin, adminList, setAdminList } = useAuth();
 
+	if (isSuccess === true) setTimeout(() => setIsSuccess(false), 3000);
+
+	const deleteFromUI = (adminDisplayName) => {
+		const newList = adminList.filter(
+			(admin) => admin.displayName !== adminDisplayName
+		);
+		setAdminList(newList);
+	};
+
 	const PageBody = () => {
 		return (
 			<div className={ManageAdminStyles.mother}>
+				<SuccessNotification open={isSuccess} />
 				{newAdmin && (
 					<AddAdminModal
 						setNewAdmin={setNewAdmin}
@@ -54,10 +67,8 @@ const manageAdmin = () => {
 										variant='contained'
 										color='secondary'
 										onClick={() => {
-											// deleteUserDocument(userData.uid);
-											// deleteFromUI(userData.uid);
-											// setIsSuccess(true);
-											// e.stopPropagation();
+											deleteFromUI(admin.displayName);
+											setIsSuccess(deleteAdminDocument(admin.displayName));
 										}}
 									>
 										X

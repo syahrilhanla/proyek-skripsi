@@ -83,7 +83,21 @@ export const addClass = async (className, password) => {
 };
 
 export const deleteUserDocument = (userID) => {
-	docRef.doc(userID).delete();
+	try {
+		docRef.doc(userID).delete();
+		return true;
+	} catch (error) {
+		return false;
+	}
+};
+
+export const deleteAdminDocument = (adminDisplayName) => {
+	try {
+		firestore.collection("adminList").doc(adminDisplayName).delete();
+		return true;
+	} catch (error) {
+		return false;
+	}
 };
 
 // ================================== USED BY USERS ==============================================
