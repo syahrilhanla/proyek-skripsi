@@ -83,14 +83,12 @@ const manageAdmin = () => {
 	};
 	return (
 		<>
-			{/* {isAdmin ? (
-				<>
-					<MainLayout Child1={PageBody} title={""} />{" "}
-				</>
+			{/* {/* {isAdmin ? ( */}
+			<>
+				<MainLayout Child1={PageBody} title={""} />{" "}
+			</>
 			) : (
-				<NotAdmin />
-			)} */}
-			<MainLayout Child1={PageBody} title={""} />{" "}
+			<NotAdmin />)
 		</>
 	);
 };
