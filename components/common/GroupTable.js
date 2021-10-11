@@ -165,7 +165,10 @@ const GroupTable = ({ userList }) => {
 									return (
 										<>
 											<tr>
-												<td key={index + 1} style={{ padding: "0 0.7rem" }}>
+												<td
+													key={keyGenerator(index)}
+													style={{ padding: "0 0.7rem" }}
+												>
 													{index + 1}
 												</td>
 												<td

@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import { Avatar, Button } from "@material-ui/core";
-import { getUserProgress } from "@/components/utils/userFirestoreSavings";
+import {
+	deleteUserDocument,
+	getUserProgress,
+} from "@/components/utils/userFirestoreSavings";
 import BorderLinearProgress from "@/components/common/BorderLinearProgress";
 import UserDetailModal from "@/components/common/UserDetailModal";
 
@@ -8,7 +11,13 @@ import useCountAllActs from "@/components/utils/useCountAllActs";
 
 import userCardStyles from "@/styles/UserCard.module.css";
 
-const UserCard = ({ userData, isEditMode }) => {
+const UserCard = ({
+	userData,
+	isEditMode,
+	deleteFromUI,
+	isSuccess,
+	setIsSuccess,
+}) => {
 	const [percentageValue, setPercentageValue] = useState(0);
 	const [openModal, setOpenModal] = useState(false);
 	const [individualProgress, setIndividualProgress] = useState([]);
@@ -59,7 +68,16 @@ const UserCard = ({ userData, isEditMode }) => {
 				</span>
 				{isEditMode && (
 					<span>
-						<Button variant='contained' color='secondary'>
+						<Button
+							variant='contained'
+							color='secondary'
+							onClick={(e) => {
+								deleteUserDocument(userData.uid);
+								deleteFromUI(userData.uid);
+								setIsSuccess(true);
+								e.stopPropagation();
+							}}
+						>
 							X
 						</Button>
 					</span>

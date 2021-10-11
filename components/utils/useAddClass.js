@@ -20,13 +20,15 @@ export const useJoinClass = async (
 ) => {
 	if (userInfo) {
 		const trueClass = classList.filter(
-			(item) => item.password === password && item.className === selectedClass
+			(item) =>
+				item.password === password && item.className === selectedClass.className
 		);
 
+		// console.log({ selectedClass });
 		// console.log({ trueClass });
 
 		if (trueClass.length > 0) {
-			await joinClass(userInfo.uid, selectedClass);
+			await joinClass(userInfo.uid, selectedClass.className);
 			return setFeedback("Berhasil Bergabung ke Kelas");
 		} else return setFeedback("Password Salah!");
 	}

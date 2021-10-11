@@ -31,6 +31,10 @@
 	overflow: hidden;
 }
 
+.manageAdmin {
+	align-items: flex-start;
+}
+
 .containerSolo {
 	color: #444;
 	display: grid;

@@ -44,6 +44,13 @@ export const getAllUserProgress = async () => {
 	return usersData;
 };
 
+export const getAllAdminData = async () => {
+	const adminsData = (await firestore.collection("adminList").get()).docs.map(
+		(doc) => doc.data()
+	);
+	return adminsData;
+};
+
 export const getUsersDetails = async (usersData) => {
 	if (usersData) {
 		const usersDetails = usersData.map(async (user) => {
@@ -57,6 +64,16 @@ export const getUsersDetails = async (usersData) => {
 	}
 };
 
+export const addAdmin = async (newData) => {
+	if (newData) {
+		firestore.collection("adminList").doc(newData.displayName).set({
+			displayName: newData.displayName,
+			email: newData.email,
+			isDefaultAdmin: false,
+		});
+	} else return;
+};
+
 export const addClass = async (className, password) => {
 	if (className && password) {
 		firestore.collection("classNames").doc(className).set({
@@ -64,6 +81,26 @@ export const addClass = async (className, password) => {
 			password: password,
 		});
 	} else return;
+};
+
+export const deleteUserDocument = (userID) => {
+	try {
+		docRef.doc(userID).delete();
+		return true;
+	} catch (error) {
+		return false;
+	}
+};
+
+export const deleteAdminDocument = (admin) => {
+	try {
+		if (admin.isDefaultAdmin === false) {
+			firestore.collection("adminList").doc(admin.displayName).delete();
+			return true;
+		} else return false;
+	} catch (error) {
+		return false;
+	}
 };
 
 // ================================== USED BY USERS ==============================================

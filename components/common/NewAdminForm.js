@@ -2,11 +2,12 @@ import { useState } from "react";
 import { useAuth } from "@/components/context/AuthContext";
 import { useForm } from "react-hook-form";
 import { useAddClass } from "@/components/utils/useAddClass";
+import useAddNewAdmin from "@/components/utils/useAddNewAdmin";
 
 import formStyle from "@/styles/Form.module.css";
 
-const NewClassForm = ({ setOpen }) => {
-	const { classList } = useAuth();
+const NewAdminForm = ({ setOpen }) => {
+	const { adminList } = useAuth();
 	const [feedback, setFeedback] = useState("");
 
 	const {
@@ -16,43 +17,48 @@ const NewClassForm = ({ setOpen }) => {
 	} = useForm();
 
 	const onSubmit = (data) => {
-		// console.log(data);
-		useAddClass(data.className, classList, setFeedback, data.password);
+		// useAddClass(data.displayName, classList, setFeedback, data.password);
+		const newData = {
+			displayName: data.displayName,
+			email: data.email,
+		};
+
+		useAddNewAdmin(newData, adminList, setFeedback);
 		setTimeout(() => {
 			setFeedback("");
 		}, 3000);
 	};
 
-	if (feedback === "Kelas Berhasil Ditambahkan") {
+	if (feedback === "Admin Berhasil Ditambahkan") {
 		setTimeout(() => setOpen(false), 3000);
 	}
 
 	return (
 		<div>
 			<form onSubmit={handleSubmit(onSubmit)}>
-				<label>Nama Kelas:</label>
+				<label>Nama Lengkap:</label>
 				<input
-					{...register("className", { required: true })}
+					{...register("displayName", { required: true })}
 					className={formStyle.formInput}
 					style={{ width: "fit-content" }}
 				/>
-				{errors.className?.type === "required" && (
+				{errors.displayName?.type === "required" && (
 					<p className={formStyle.errorMsg}>Isi Nama Kelas!</p>
 				)}
-				<label>Password:</label>
+				<label>Email:</label>
 				<input
-					{...register("password", { required: true })}
+					{...register("email", { required: true })}
 					className={formStyle.formInput}
 					style={{ width: "fit-content" }}
 				/>
-				{errors.password?.type === "required" && (
-					<p className={formStyle.errorMsg}>Isi Password!</p>
+				{errors.email?.type === "required" && (
+					<p className={formStyle.errorMsg}>Isi Email!</p>
 				)}
 				{feedback !== "" && (
 					<>
 						<p
 							className={
-								feedback === "Kelas Sudah Ada!"
+								feedback === "Admin Sudah Ada! Silahkan Ubah Nama atau Email"
 									? formStyle.errorMsg
 									: formStyle.successMsg
 							}
@@ -61,15 +67,10 @@ const NewClassForm = ({ setOpen }) => {
 						</p>
 					</>
 				)}
-				{feedback === "Kelas Sudah Ada!" && (
-					<p className={formStyle.errorMsg}>
-						Silahkan cek di menu <i>dropdown</i>
-					</p>
-				)}
 				<input type='submit' className={formStyle.submitButton} />
 			</form>
 		</div>
 	);
 };
 
-export default NewClassForm;
+export default NewAdminForm;

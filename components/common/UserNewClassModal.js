@@ -12,7 +12,7 @@ const UserNewClassModal = ({ setNewClass, newClass, setUserClass }) => {
 	const [selectedClass, setSelectedClass] = useState("");
 
 	useEffect(() => {
-		if (isJoin) setUserClass(selectedClass);
+		if (isJoin) setUserClass(selectedClass.className);
 	}, [isJoin]);
 
 	const handleClose = () => {
