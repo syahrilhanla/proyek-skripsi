@@ -62,9 +62,9 @@ const MainLayout = ({
 	return (
 		<>
 			{/* Show popup modal if user is inactive for certain amount of time or user goes idle*/}
-			{/* {checkIsAdmin() ? (
+			{checkIsAdmin() ? (
 				<ModalNotification isActive={isActive} setIsActive={setIsActive} />
-			) : null} */}
+			) : null}
 			<div className={layoutStyles.wrapper}>
 				<Navbar />
 
