@@ -1,5 +1,6 @@
 import BarChart from "@/components/charts/BarChart";
 import DataFrequency from "@/components/charts/DataFrequency";
+import DataColumn from "@/components/charts/DataColumn";
 
 export const ModusEvaluation = () => (
 	<div>
@@ -25,7 +26,19 @@ export const SouthBorneoFish = () => {
 		data: values,
 	};
 
-	return <BarChart chartData={chartData} />;
+	return (
+		<div>
+			<p style={{ overflowX: "auto" }}>
+				Diagram di bawah merupakan data berat (dalam satuan ton terdekat) dari
+				hasil produksi tangkapan ikan di Kalimantan Selatan pada tahun 2014 yang
+				bersumber dari BPSKB (Badan Pusat Statistik Kota Banjarmasin). Dengan
+				disimbolkan secara berurutan 1 sampai 4, yaitu Sepat Siam dengan berat
+				35 ton, Belida 45 ton, Udang Tawar 65 ton, dan udang jenis lainnya
+				sebanyak 20 ton.
+			</p>
+			<BarChart chartData={chartData} />
+		</div>
+	);
 };
 
 export const ShrimpCatch = () => {

@@ -12,7 +12,7 @@ import { useAuth } from "@/components/context/AuthContext";
 const useMainLayoutProgress = () => {
 	// #### used to update progress to firestore
 	const { localUserData } = useAuth();
-	const { parentPath, currentPath, currentURL } = useGetCurrentPage();
+	const { parentPath, currentPath } = useGetCurrentPage();
 	// ####
 
 	const [pageProgress, setPageProgress] = useState([]);
@@ -33,7 +33,11 @@ const useMainLayoutProgress = () => {
 			useGetCurrentChapterProgress(router).then((data) =>
 				setPageProgress(getScore(data))
 			);
-			if (parentPath !== "admin" && parentPath !== "manageAdmin") {
+			if (
+				parentPath !== "admin" &&
+				parentPath !== "manageAdmin" &&
+				parentPath !== "evaluasi"
+			) {
 				useUpdateProgress(parentPath, currentPath, localUserData);
 			}
 		}

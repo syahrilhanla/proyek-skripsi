@@ -12,6 +12,7 @@ import {
 } from "@/components/graphsAndTables/EvaluationTables";
 import {
 	MedianFrequency,
+	ModusEvaluation,
 	RattanLength,
 	ShrimpCatch,
 	SouthBorneoFish,
