@@ -24,10 +24,6 @@ export const drawersData = [
 				subTitle: "Ayo Mencoba!",
 			},
 			{
-				id: "6",
-				subTitle: "Berlatih Bersama",
-			},
-			{
 				id: "kuis",
 				subTitle: "Kuis 1",
 			},
@@ -55,6 +51,10 @@ export const drawersData = [
 			},
 			{
 				id: "5",
+				subTitle: "Berlatih Bersama",
+			},
+			{
+				id: "6",
 				subTitle: "Modus",
 			},
 			{
@@ -69,18 +69,26 @@ export const drawersData = [
 		items: [
 			{
 				id: "1",
-				subTitle: "Jangkauan Data",
+				subTitle: "Ukuran Penyebaran Data",
 			},
 			{
 				id: "2",
-				subTitle: "Kuartil",
+				subTitle: "Jangkauan Data",
 			},
 			{
 				id: "3",
-				subTitle: "Jangkauan Antarkuartil",
+				subTitle: "Kuartil",
 			},
 			{
 				id: "4",
+				subTitle: "Berlatih Bersama",
+			},
+			{
+				id: "5",
+				subTitle: "Jangkauan Antarkuartil",
+			},
+			{
+				id: "6",
 				subTitle: "Simpangan Kuartil",
 			},
 			{
@@ -103,6 +111,14 @@ export const commonLinks = {
 		},
 	],
 	admin: [
+		{
+			text: "Data User",
+			link: "/admin",
+		},
+		{
+			text: "Managemen Admin",
+			link: "/manageAdmin",
+		},
 		{
 			text: "Tentang",
 			link: "/tentang",

@@ -1,21 +1,27 @@
 import quizStyle from "@/styles/QuizStyle.module.css";
+import { useState } from "react";
+import useChooseAnswer from "@/components/utils/useChooseAnswer";
 
 const MultipleChoices = ({
 	questionData,
-	setQuizScore,
 	setIsFinished,
 	setCurrentQuestion,
 	currentQuestion,
+	overallAnswers,
+	setOverallAnswers,
 }) => {
-	const checkAnswer = (isCorrect) => {
-		if (isCorrect === true) {
-			setQuizScore((prevState) => prevState + 10);
-		}
+	const [selectedButton, setSelectedButton] = useState(-1);
+	const { chooseAnswer } = useChooseAnswer(setSelectedButton);
 
+	const toNextAnswer = () => {
 		if (!(currentQuestion < questionData.length - 1)) {
 			setIsFinished(true);
-		} else setCurrentQuestion((prevState) => prevState + 1);
+		} else {
+			setCurrentQuestion((prevState) => prevState + 1);
+		}
 	};
+
+	// gives index for answer button
 	const optionDisplay = (index) => {
 		if (index === 0) {
 			return "a";
@@ -43,12 +49,33 @@ const MultipleChoices = ({
 				{questionData[currentQuestion].answerChoices.map((answer, index) => (
 					<button
 						key={answer.id}
-						onClick={() => checkAnswer(answer.isCorrect)}
-						className={quizStyle.answerButton}
+						onClick={() =>
+							chooseAnswer(
+								answer.isCorrect,
+								index,
+								currentQuestion,
+								overallAnswers,
+								setOverallAnswers
+							)
+						}
+						className={
+							selectedButton === index
+								? quizStyle.selectedAnswer
+								: quizStyle.answerButton
+						}
 					>
 						{optionDisplay(index)}. {answer.answerText}
 					</button>
 				))}
+				<button
+					className={quizStyle.answerButton}
+					style={{ backgroundColor: "#6d7ede", color: "#ffff" }}
+					onClick={() => toNextAnswer()}
+				>
+					{currentQuestion !== questionData.length - 1
+						? "Selanjutnya"
+						: "Submit"}
+				</button>
 			</div>
 		</>
 	);

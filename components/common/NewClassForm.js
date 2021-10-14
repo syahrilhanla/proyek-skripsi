@@ -34,6 +34,7 @@ const NewClassForm = ({ setOpen }) => {
 				<input
 					{...register("className", { required: true })}
 					className={formStyle.formInput}
+					style={{ width: "fit-content" }}
 				/>
 				{errors.className?.type === "required" && (
 					<p className={formStyle.errorMsg}>Isi Nama Kelas!</p>
@@ -42,6 +43,7 @@ const NewClassForm = ({ setOpen }) => {
 				<input
 					{...register("password", { required: true })}
 					className={formStyle.formInput}
+					style={{ width: "fit-content" }}
 				/>
 				{errors.password?.type === "required" && (
 					<p className={formStyle.errorMsg}>Isi Password!</p>

@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
-import { Avatar } from "@material-ui/core";
-import { getUserProgress } from "@/components/utils/userFirestoreSavings";
+import { Avatar, Button } from "@material-ui/core";
+import {
+	deleteUserDocument,
+	getUserProgress,
+} from "@/components/utils/userFirestoreSavings";
 import BorderLinearProgress from "@/components/common/BorderLinearProgress";
 import UserDetailModal from "@/components/common/UserDetailModal";
 
@@ -8,7 +11,13 @@ import useCountAllActs from "@/components/utils/useCountAllActs";
 
 import userCardStyles from "@/styles/UserCard.module.css";
 
-const UserCard = ({ userData }) => {
+const UserCard = ({
+	userData,
+	isEditMode,
+	deleteFromUI,
+	isSuccess,
+	setIsSuccess,
+}) => {
 	const [percentageValue, setPercentageValue] = useState(0);
 	const [openModal, setOpenModal] = useState(false);
 	const [individualProgress, setIndividualProgress] = useState([]);
@@ -23,8 +32,9 @@ const UserCard = ({ userData }) => {
 	}, []);
 
 	const isNoUserYet = () => {
-		if (individualProgress.length === 0) return true;
-		else return false;
+		if (individualProgress) {
+			if (individualProgress.length === 0) return true;
+		} else return false;
 	};
 
 	// filterDescending();
@@ -41,7 +51,9 @@ const UserCard = ({ userData }) => {
 			)}
 
 			<div
-				className={userCardStyles.parentDiv}
+				className={`${userCardStyles.parentDiv} ${
+					isEditMode ? userCardStyles.editMode : userCardStyles.normalMode
+				}`}
 				style={isNoUserYet() ? { pointerEvents: "none" } : null}
 				onClick={() => setOpenModal(true)}
 			>
@@ -54,6 +66,22 @@ const UserCard = ({ userData }) => {
 					<h3>{percentageValue}% </h3>
 					<BorderLinearProgress value={percentageValue} />
 				</span>
+				{isEditMode && (
+					<span>
+						<Button
+							variant='contained'
+							color='secondary'
+							onClick={(e) => {
+								deleteUserDocument(userData.uid);
+								deleteFromUI(userData.uid);
+								setIsSuccess(true);
+								e.stopPropagation();
+							}}
+						>
+							X
+						</Button>
+					</span>
+				)}
 			</div>
 		</>
 	);

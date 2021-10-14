@@ -1,12 +1,18 @@
 import MainLayout from "@/components/common/MainLayout";
-import LearningObjectives from "@/components/common/LearningObjectives";
-import { chapter2Objectives } from "@/components/data/objectivesData";
-import { analysisPage1 } from "@/components/acts/scrollActs";
+import { penyebaranPage1 } from "@/components/acts/scrollActs";
 
 const page1 = () => {
-	const Text = () => analysisPage1.act;
+	const Text = () => penyebaranPage1.act;
+	const Data = () => penyebaranPage1.data;
 
-	return <MainLayout Child1={Text} title={"Apa itu Statistika?"} />;
+	return (
+		<MainLayout
+			Child1={Data}
+			Child2={Text}
+			title={"Ukuran Penyebaran Data"}
+			scrollActID={penyebaranPage1.id}
+		/>
+	);
 };
 
 export default page1;

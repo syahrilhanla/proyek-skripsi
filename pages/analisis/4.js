@@ -18,7 +18,7 @@ const page4 = () => {
 
 	const chartData = {
 		labels: labels,
-		label: "Ukuran Ikan Kelabau",
+		label: "Ukuran Ikan Papuyu",
 		data: percentageData,
 	};
 
@@ -28,10 +28,10 @@ const page4 = () => {
 	const Data = () => (
 		<div style={{ margin: "auto" }}>
 			<TableTwo />
-			<Caption>Data-2: Ukuran Ikan kelabau</Caption>
+			<Caption>Tabel 1-3: Ukuran Ikan Papuyu</Caption>
 			<br />
 			<BarChart chartData={chartData} />
-			<Caption>Data-2: Ukuran Ikan kelabau</Caption>
+			<Caption>Gambar 1-4: Ukuran Ikan Papuyu</Caption>
 		</div>
 	);
 

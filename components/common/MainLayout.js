@@ -47,7 +47,11 @@ const MainLayout = ({
 	};
 
 	const DisplayBottomProgress = () => {
-		if (parentPath !== "admin" && parentPath !== "evaluasi")
+		if (
+			parentPath !== "admin" &&
+			parentPath !== "evaluasi" &&
+			parentPath !== "manageAdmin"
+		)
 			return (
 				<>
 					<BottomProgress pageProgress={pageProgress} />
@@ -58,9 +62,9 @@ const MainLayout = ({
 	return (
 		<>
 			{/* Show popup modal if user is inactive for certain amount of time or user goes idle*/}
-			{/* {checkIsAdmin() ? (
+			{checkIsAdmin() ? (
 				<ModalNotification isActive={isActive} setIsActive={setIsActive} />
-			) : null} */}
+			) : null}
 			<div className={layoutStyles.wrapper}>
 				<Navbar />
 
@@ -70,32 +74,67 @@ const MainLayout = ({
 					className={
 						Child2 ? layoutStyles.containerCombo : layoutStyles.containerSolo
 					}
-					ref={scrollRef}
+					style={
+						parentPath === "admin" || parentPath === "manageAdmin"
+							? { minHeight: "75vh" }
+							: { minHeight: "65vh" }
+					}
 				>
-					<div className={layoutStyles.column1}>
-						<Child1 />
+					<div
+						// className={`${layoutStyles.column1} ${
+						// 	parentPath === "manageAdmin" && layoutStyles.manageAdmin
+						// }`}
+						className={layoutStyles.column1}
+						style={
+							parentPath === "manageAdmin"
+								? { alignItems: "flex-start" }
+								: { alignItems: "center" }
+						}
+					>
+						<div
+							className={layoutStyles.container}
+							style={
+								parentPath === "admin" || parentPath === "manageAdmin"
+									? { maxHeight: "65vh" }
+									: { minHeight: "55vh" }
+							}
+							ref={scrollRef}
+						>
+							<Child1 />
+						</div>
 					</div>
 					{Child2 && (
 						<div className={layoutStyles.column2}>
-							<Child2 />
+							<div className={layoutStyles.container} ref={scrollRef}>
+								<Child2 />
+							</div>
 						</div>
 					)}
 				</div>
-				{displayQuestion ? (
-					<div className={layoutStyles.questionBox}>
-						{questionData && (
-							<QuestionBox
-								question={questionData}
-								instruction={instruction}
-								setUpdateProgress={setUpdateProgress}
-								updateProgress={updateProgress}
-							/>
-						)}
-						<span style={{ maxWidth: "55%" }}>
-							{essayQuestion && <ShortEssay essayQuestion={essayQuestion} />}
-						</span>
-					</div>
-				) : null}
+
+				{displayQuestion
+					? (questionData || essayQuestion) && (
+							<div className={layoutStyles.questionBox}>
+								{questionData && (
+									<QuestionBox
+										question={questionData}
+										instruction={instruction}
+										setUpdateProgress={setUpdateProgress}
+										updateProgress={updateProgress}
+									/>
+								)}
+								<span className={layoutStyles.shortEssay}>
+									{essayQuestion && (
+										<ShortEssay
+											essayQuestion={essayQuestion}
+											setUpdateProgress={setUpdateProgress}
+											updateProgress={updateProgress}
+										/>
+									)}
+								</span>
+							</div>
+					  )
+					: null}
 			</div>
 			{DisplayBottomProgress()}
 		</>

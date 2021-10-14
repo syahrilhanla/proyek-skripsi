@@ -13,20 +13,28 @@ import useGetUserForAdmin from "@/components/utils/useGetUsersForAdmin";
 import useSortUsers from "@/components/utils/useSortUsers";
 
 import adminStyle from "@/styles/Admin.module.css";
+import PushNotification from "@/components/common/PushNotification";
 
 const admin = () => {
 	const { isAdmin, setClassList } = useAuth();
 
 	const [newClass, setNewClass] = useState(false);
 	const [showClass, setShowClass] = useState(false);
-	const [selectedClass, setSelectedClass] = useState("");
+	const [selectedClass, setSelectedClass] = useState({
+		className: "",
+		password: "",
+	});
 	const [userList, setUserList] = useState([]);
 	const [sortUsers, setSortUsers] = useState("");
+	const [isSuccess, setIsSuccess] = useState(false);
 
-	const { filteredUsers } = useGetUserForAdmin(selectedClass);
+	const { filteredUsers } = useGetUserForAdmin(selectedClass.className);
+
+	// ################## Used to sort user ##########################
 
 	useEffect(() => {
 		setUserList(filteredUsers);
+		// console.log(selectedClass);
 	}, [selectedClass]);
 
 	useEffect(() => {
@@ -35,12 +43,18 @@ const admin = () => {
 		else setUserList(bottomUsers);
 	}, [sortUsers]);
 
+	if (isSuccess) setTimeout(() => setIsSuccess(false), 3000);
+
+	// ################################################################
+
 	const AdminBody = () => (
 		<div className={adminStyle.mother}>
 			{/* shows modal with form to add new class */}
 			{newClass && (
 				<AddClassModal setNewClass={setNewClass} setClassList={setClassList} />
 			)}
+
+			{<PushNotification open={isSuccess} type={"success"} />}
 
 			<div className={adminStyle.classMenu}>
 				<span className={adminStyle.pickClass}>
@@ -64,7 +78,13 @@ const admin = () => {
 			</div>
 
 			{showClass && (
-				<DisplayUsers selectedClass={selectedClass} userList={userList} />
+				<DisplayUsers
+					selectedClass={selectedClass}
+					userList={userList}
+					setUserList={setUserList}
+					isSuccess={isSuccess}
+					setIsSuccess={setIsSuccess}
+				/>
 			)}
 		</div>
 	);

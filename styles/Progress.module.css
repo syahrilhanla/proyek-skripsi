@@ -1,44 +1,54 @@
 .mainProgress {
-  color: #474747;
-  display: grid;
-  grid-template-columns: 1fr;
-  position: relative;
+	color: #474747;
+	display: grid;
+	grid-template-columns: 1fr;
+	position: relative;
 }
 
 .container {
-  width: 80%;
-  margin: 2rem auto;
-  padding: 2rem 0px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+	width: 80%;
+	margin: 2rem auto;
+	padding: 2rem 0px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
 .container h1 {
-  text-align: center;
-  padding-bottom: 1rem;
-  border-bottom: 2px solid #bbbbbb;
-  border-bottom-width: 2px;
-  font-weight: 600;
+	text-align: center;
+	padding-bottom: 1rem;
+	border-bottom: 2px solid #bbbbbb;
+	border-bottom-width: 2px;
+	font-weight: 600;
 }
 
 .progresses {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  padding: 0px 0.7rem;
-  justify-content: space-evenly;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	padding: 0px 0.7rem;
+	justify-content: space-evenly;
+	cursor: pointer;
+}
+
+.progresses:hover {
+	border: #bbbbbb;
+	border-radius: 8px;
+	box-shadow: 2px 3px 28px -11px rgba(0, 0, 0, 0.77);
+	-webkit-box-shadow: 2px 3px 28px -11px rgba(0, 0, 0, 0.77);
+	-moz-box-shadow: 2px 3px 28px -11px rgba(0, 0, 0, 0.77);
 }
 
 .progressSection {
-  background-image: rgb(236, 233, 233);
+	background-image: rgb(236, 233, 233);
 }
 
-.progresses h3, .progresses h2 {
-  font-weight: 500;
+.progresses h3,
+.progresses h2 {
+	font-weight: 500;
 }
 
 @media (max-width: 600px) {
-  .progresses {
-    grid-template-columns: 1fr;
-  }
+	.progresses {
+		grid-template-columns: 1fr;
+	}
 }

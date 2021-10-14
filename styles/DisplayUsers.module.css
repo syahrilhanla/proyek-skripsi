@@ -1,0 +1,30 @@
+/* display: "flex",
+						justifyContent: "space-between",
+						fontWeight: 400, */
+
+.classInfo {
+	display: flex;
+	justify-content: space-between;
+	min-height: 3rem;
+	align-items: center;
+}
+
+.classInfo h3 {
+	margin-left: 2rem;
+}
+
+.classInfo h2,
+.classInfo h3 {
+	font-weight: 400;
+}
+
+.classInfo span {
+	display: flex;
+}
+
+@media (max-width: 728px) {
+	.classInfo {
+		display: grid;
+		grid-template-columns: 1fr;
+	}
+}

@@ -1,21 +1,24 @@
+import { useEffect, useState } from "react";
+
 import Navbar from "@/components/common/Navbar";
 import Footer from "@/components/common/Footer";
-
 import CircularProgressWithLabel from "@/components/common/ProgressCircularBar";
 import LearningProgress from "@/components/common/LearningProgress";
+import UserNewClassModal from "@/components/common/UserNewClassModal";
+import LoadingProgress from "@/components/common/LoadingProgress";
+
+import { useAuth } from "@/components/context/AuthContext";
+
+import useProgressValues from "@/components/utils/useProgressValues";
+
+import { useRouter } from "next/router";
 
 import progressStyles from "@/styles/Progress.module.css";
 import dashboardStyles from "@/styles/Dashboard.module.css";
 
-import useProgressValues from "@/components/utils/useProgressValues";
-import { useAuth } from "@/components/context/AuthContext";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import UserNewClassModal from "@/components/common/UserNewClassModal";
-
 const dashboard = () => {
 	const progressValues = useProgressValues();
-	const { isAdmin } = useAuth();
+	const { isAdmin, LSSwitch, setLSSwitch } = useAuth();
 	const router = useRouter();
 	const [newClass, setNewClass] = useState(false);
 	const [userClass, setUserClass] = useState("Belum Masuk Kelas");
@@ -23,13 +26,8 @@ const dashboard = () => {
 	// If the user is an admin, it will redirect from dashboard page to admin page
 	useEffect(() => {
 		if (isAdmin) return () => router.push("/admin");
+		setLSSwitch(!LSSwitch);
 	}, []);
-
-	// useEffect(() => {
-	// 	if (progressValues.pageReady) {
-	// 		setUserClass(progressValues.userInfo.className);
-	// 	} else return;
-	// }, [progressValues]);
 
 	useEffect(() => {
 		if (userClass !== "Belum Masuk Kelas") console.log("changed");
@@ -38,8 +36,12 @@ const dashboard = () => {
 	return (
 		<>
 			{isAdmin === false &&
-				progressValues.userInfo &&
-				progressValues.pageReady === true && <DisplayDashboard />}
+			progressValues.userInfo &&
+			progressValues.pageReady ? (
+				<DisplayDashboard />
+			) : (
+				<DisplayLoading />
+			)}
 			{newClass && (
 				<UserNewClassModal
 					setNewClass={setNewClass}
@@ -48,6 +50,26 @@ const dashboard = () => {
 			)}
 		</>
 	);
+
+	function DisplayLoading() {
+		return (
+			<div
+				style={{
+					display: "flex",
+					justifyContent: "center",
+					alignItems: "center",
+					width: "100%",
+					height: "100vh",
+				}}
+			>
+				<div style={{ height: "10%", textAlign: "center" }}>
+					<LoadingProgress />
+					<br />
+					<p>Memuat Data...</p>
+				</div>
+			</div>
+		);
+	}
 
 	function DisplayDashboard() {
 		return (
@@ -106,20 +128,25 @@ function DashboardContent({ displayInfo, acts, setNewClass, userClass }) {
 						</div>
 					</div>
 					<div className={dashboardStyles.infoContainer}>
+						{console.log(("displayInfo.className", displayInfo.className), {
+							userClass,
+						})}
 						<div className={dashboardStyles.profileName}>
 							<h1>{displayInfo.displayName}</h1>
-							{displayInfo.className === "Belum Masuk Kelas" &&
-							userClass === "Belum Masuk Kelas" ? (
+							{displayInfo.className !== "Belum Masuk Kelas" &&
+							displayInfo.className !== undefined ? (
+								<p>{displayInfo.className}</p>
+							) : userClass !== "Belum Masuk Kelas" ? (
+								<p>{userClass}</p>
+							) : (displayInfo.className === "Belum Masuk Kelas" &&
+									userClass === "Belum Masuk Kelas") ||
+							  displayInfo.className === undefined ? (
 								<p
 									onClick={() => setNewClass(true)}
 									style={{ cursor: "pointer" }}
 								>
 									Klik Untuk Masuk Kelas
 								</p>
-							) : displayInfo.className !== "Belum Masuk Kelas" ? (
-								<p>{displayInfo.className}</p>
-							) : userClass !== "Belum Masuk Kelas" ? (
-								<p>{userClass}</p>
 							) : null}
 						</div>
 					</div>
