@@ -68,7 +68,7 @@ const QuizComponent = ({ questionData, DisplayData, timesUp }) => {
 			{!isFinished && !timesUp ? (
 				<DisplayData currentQuestion={currentQuestion} />
 			) : null}
-			{console.log(quizScore)}
+			{/* {console.log(quizScore)} */}
 			<div
 				key={currentQuestion}
 				className={quizStyle.questionDisplay}
