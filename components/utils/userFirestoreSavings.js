@@ -79,7 +79,17 @@ export const addClass = async (className, password) => {
 		firestore.collection("classNames").doc(className).set({
 			className: className,
 			password: password,
+			isEvaluationOpen: false,
 		});
+	} else return;
+};
+
+export const openEvaluationSwitch = (className, isEvaluationOpen) => {
+	if (className) {
+		firestore
+			.collection("classNames")
+			.doc(className)
+			.update({ isEvaluationOpen: isEvaluationOpen });
 	} else return;
 };
 
@@ -199,6 +209,7 @@ export const addUser = async (localUser) => {
 			uid: localUser.uid,
 			className: "Belum Masuk Kelas",
 			score: 0,
+			hasDoneQuiz: false,
 		};
 
 		// setting them to firestore so it can be used in data display
