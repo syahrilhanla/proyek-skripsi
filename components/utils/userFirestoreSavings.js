@@ -223,5 +223,6 @@ export const submitTestScore = (localUser, score) => {
 	if (score) {
 		const userData = { score: score };
 		docRef.doc(localUser).update(userData);
+		docRef.doc(localUser).update({ hasDoneQuiz: true });
 	} else return;
 };
