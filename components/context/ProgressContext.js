@@ -1,9 +1,11 @@
 // THIS CODE IS CRUCIAL FOR ANY PROGRESS IN THE WHOLE APP
 
 import { createContext, useContext, useEffect, useState } from "react";
+import { firestore } from "@/components/common/Firebase";
+
+import { useAuth } from "@/components/context/AuthContext";
 
 import useSetProgress from "@/components/utils/useSetProgress";
-import { firestore } from "@/components/common/Firebase";
 
 const ProgressContext = createContext();
 
@@ -12,18 +14,24 @@ export const useProgress = () => {
 };
 
 const ProgressProvider = ({ children }) => {
+	const { userInfo } = useAuth();
+
+	console.log({ userInfo });
+
 	const setProgress = useSetProgress();
 	const [quizScore, setQuizScore] = useState(0);
 	const [isEvaluationOpen, setIsEvaluationOpen] = useState(true);
 
 	useEffect(() => {
-		const snapShotData = firestore
-			.collection("classNames")
-			.doc("IX C")
-			.onSnapshot((doc) => setIsEvaluationOpen(doc.data().isEvaluationOpen));
+		if (userInfo !== null) {
+			const snapShotData = firestore
+				.collection("classNames")
+				.doc(userInfo.className)
+				.onSnapshot((doc) => setIsEvaluationOpen(doc.data().isEvaluationOpen));
 
-		return () => snapShotData();
-	}, [isEvaluationOpen]);
+			return () => snapShotData();
+		}
+	}, [isEvaluationOpen, userInfo]);
 
 	return (
 		<ProgressContext.Provider
@@ -32,6 +40,7 @@ const ProgressProvider = ({ children }) => {
 				dashboardLoading: setProgress.dashboardLoading,
 				overallProgress: setProgress.dashboardProgress,
 				quizScore,
+				isEvaluationOpen,
 				setQuizScore,
 			}}
 		>

@@ -1,11 +1,12 @@
 import { useState } from "react";
+import { useProgress } from "@/components/context/ProgressContext";
 
 import MainLayout from "@/components/common/MainLayout";
 import QuizComponent from "@/components/common/QuizComponent";
 import evaluationQuiz from "@/components/data/evaluationQuiz";
 import EvaluationCountDown from "@/components/common/EvaluationCountDown";
 import Caption from "@/components/common/Caption";
-import DataFrequency from "@/components/charts/DataFrequency";
+
 import {
 	BaungTable,
 	FishTable,
@@ -20,6 +21,10 @@ import {
 
 const evaluation = () => {
 	const [timesUp, setTimesUp] = useState(false);
+
+	const { isEvaluationOpen } = useProgress();
+
+	console.log({ isEvaluationOpen });
 
 	// needed to display data on QuizComponent
 	// takes number as argument from questionData array being set in QuizComponent
@@ -103,9 +108,27 @@ const evaluation = () => {
 		/>
 	);
 
+	const EvaluationLockDisplay = () => (
+		<div
+			style={{
+				display: "flex",
+				flexDirection: "column",
+				justifyContent: "center",
+				alignItems: "center",
+				height: "30vh",
+			}}
+		>
+			<h2 style={{ fontWeight: "400" }}>Fitur Evaluasi sedang terkunci</h2>
+			<h2 style={{ fontWeight: "400" }}>Hubungi Admin untuk membuka fitur</h2>
+		</div>
+	);
+
 	return (
 		<>
-			<MainLayout Child1={DisplayQuiz} title={"Evaluasi Akhir"} />
+			<MainLayout
+				Child1={isEvaluationOpen ? DisplayQuiz : EvaluationLockDisplay}
+				title={"Evaluasi Akhir"}
+			/>
 			<EvaluationCountDown setTimesUp={setTimesUp} />
 		</>
 	);
