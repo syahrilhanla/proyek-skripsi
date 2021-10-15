@@ -209,6 +209,7 @@ export const addUser = async (localUser) => {
 			uid: localUser.uid,
 			className: "Belum Masuk Kelas",
 			score: 0,
+			hasDoneQuiz: false,
 		};
 
 		// setting them to firestore so it can be used in data display

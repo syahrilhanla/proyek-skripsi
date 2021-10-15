@@ -24,12 +24,15 @@ const ProgressProvider = ({ children }) => {
 
 	useEffect(() => {
 		if (userInfo !== null) {
-			const snapShotData = firestore
-				.collection("classNames")
-				.doc(userInfo.className)
-				.onSnapshot((doc) => setIsEvaluationOpen(doc.data().isEvaluationOpen));
-
-			return () => snapShotData();
+			if (userInfo.className !== "Belum Masuk Kelas") {
+				const snapShotData = firestore
+					.collection("classNames")
+					.doc(userInfo.className)
+					.onSnapshot((doc) =>
+						setIsEvaluationOpen(doc.data().isEvaluationOpen)
+					);
+				return () => snapShotData();
+			}
 		}
 	}, [isEvaluationOpen, userInfo]);
 
