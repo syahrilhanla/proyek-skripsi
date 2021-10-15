@@ -18,10 +18,10 @@ import dashboardStyles from "@/styles/Dashboard.module.css";
 
 const dashboard = () => {
 	const progressValues = useProgressValues();
-	const { isAdmin, LSSwitch, setLSSwitch } = useAuth();
+	const { isAdmin, LSSwitch, setLSSwitch, userClass, setUserClass } = useAuth();
 	const router = useRouter();
 	const [newClass, setNewClass] = useState(false);
-	const [userClass, setUserClass] = useState("Belum Masuk Kelas");
+	// const [userClass, setUserClass] = useState("Belum Masuk Kelas");
 
 	// If the user is an admin, it will redirect from dashboard page to admin page
 	useEffect(() => {
@@ -29,9 +29,9 @@ const dashboard = () => {
 		setLSSwitch(!LSSwitch);
 	}, []);
 
-	useEffect(() => {
-		if (userClass !== "Belum Masuk Kelas") console.log("changed");
-	}, [userClass]);
+	// useEffect(() => {
+	// 	if (userClass !== "Belum Masuk Kelas") console.log("changed");
+	// }, [userClass]);
 
 	return (
 		<>
@@ -128,9 +128,9 @@ function DashboardContent({ displayInfo, acts, setNewClass, userClass }) {
 						</div>
 					</div>
 					<div className={dashboardStyles.infoContainer}>
-						{console.log(("displayInfo.className", displayInfo.className), {
+						{/* {console.log(("displayInfo.className", displayInfo.className), {
 							userClass,
-						})}
+						})} */}
 						<div className={dashboardStyles.profileName}>
 							<h1>{displayInfo.displayName}</h1>
 							{displayInfo.className !== "Belum Masuk Kelas" &&
