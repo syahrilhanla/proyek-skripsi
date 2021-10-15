@@ -79,7 +79,17 @@ export const addClass = async (className, password) => {
 		firestore.collection("classNames").doc(className).set({
 			className: className,
 			password: password,
+			isEvaluationOpen: false,
 		});
+	} else return;
+};
+
+export const openEvaluationSwitch = (className, isEvaluationOpen) => {
+	if (className) {
+		firestore
+			.collection("classNames")
+			.doc(className)
+			.update({ isEvaluationOpen: isEvaluationOpen });
 	} else return;
 };
 
