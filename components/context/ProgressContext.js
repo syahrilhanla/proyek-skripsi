@@ -14,9 +14,7 @@ export const useProgress = () => {
 };
 
 const ProgressProvider = ({ children }) => {
-	const { userInfo } = useAuth();
-
-	console.log({ userInfo });
+	const { userInfo, userClass } = useAuth();
 
 	const setProgress = useSetProgress();
 	const [quizScore, setQuizScore] = useState(0);
@@ -32,9 +30,17 @@ const ProgressProvider = ({ children }) => {
 						setIsEvaluationOpen(doc.data().isEvaluationOpen)
 					);
 				return () => snapShotData();
-			}
+			} else if (userClass !== "Belum Masuk Kelas") {
+				const snapShotData = firestore
+					.collection("classNames")
+					.doc(userClass)
+					.onSnapshot((doc) =>
+						setIsEvaluationOpen(doc.data().isEvaluationOpen)
+					);
+				return () => snapShotData();
+			} else console.log({ userClass });
 		}
-	}, [isEvaluationOpen, userInfo]);
+	}, [isEvaluationOpen, userInfo, userClass]);
 
 	return (
 		<ProgressContext.Provider
