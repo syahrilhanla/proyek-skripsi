@@ -31,10 +31,6 @@ const UserCard = ({ userData, isEditMode, deleteFromUI, setIsSuccess }) => {
 		} else return false;
 	};
 
-	if (userData) {
-		console.log(userData.hasDoneQuiz);
-	}
-
 	return (
 		<>
 			{openModal && (
