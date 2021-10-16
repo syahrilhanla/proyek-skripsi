@@ -1,13 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-import { useProgress } from "@/components/context/ProgressContext";
 import { useAuth } from "@/components/context/AuthContext";
 
 import MainLayout from "@/components/common/MainLayout";
 import QuizComponent from "@/components/common/QuizComponent";
 import evaluationQuiz from "@/components/data/evaluationQuiz";
-import EvaluationCountDown from "@/components/common/EvaluationCountDown";
 import Caption from "@/components/common/Caption";
+
+import useLockEvaluation from "@/components/utils/useLockEvaluation";
 
 import {
 	BaungTable,
@@ -20,12 +20,14 @@ import {
 	ShrimpCatch,
 	SouthBorneoFish,
 } from "@/components/graphsAndTables/EvaluationQuizData";
+import EvaluationCountDown from "@/components/common/EvaluationCountDown";
 
 const evaluation = () => {
 	const [timesUp, setTimesUp] = useState(false);
-
-	const { isEvaluationOpen } = useProgress();
 	const { userInfo, userClass } = useAuth();
+
+	const { isEvaluationOpen } = useLockEvaluation();
+	console.log({ isEvaluationOpen });
 
 	// needed to display data on QuizComponent
 	// takes number as argument from questionData array being set in QuizComponent
