@@ -27,7 +27,6 @@ const evaluation = () => {
 	const { userInfo, userClass } = useAuth();
 
 	const { isEvaluationOpen } = useLockEvaluation();
-	console.log({ isEvaluationOpen });
 
 	// needed to display data on QuizComponent
 	// takes number as argument from questionData array being set in QuizComponent
@@ -155,9 +154,11 @@ const evaluation = () => {
 						}
 						title={"Evaluasi Akhir"}
 					/>
-					{(isEvaluationOpen && userInfo.className !== "Belum Masuk Kelas") ||
-					(userClass !== "Belum Masuk Kelas" && isEvaluationOpen) ? (
-						<EvaluationCountDown setTimesUp={setTimesUp} />
+					{!timesUp ? (
+						(isEvaluationOpen && userInfo.className !== "Belum Masuk Kelas") ||
+						(userClass !== "Belum Masuk Kelas" && isEvaluationOpen) ? (
+							<EvaluationCountDown setTimesUp={setTimesUp} />
+						) : null
 					) : null}
 				</>
 			)}

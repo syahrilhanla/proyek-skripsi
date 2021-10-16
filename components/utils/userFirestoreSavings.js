@@ -210,6 +210,7 @@ export const addUser = async (localUser) => {
 			className: "Belum Masuk Kelas",
 			score: 0,
 			hasDoneQuiz: false,
+			overallAnswers: [],
 		};
 
 		// setting them to firestore so it can be used in data display
@@ -218,11 +219,12 @@ export const addUser = async (localUser) => {
 	} else return;
 };
 
-export const submitTestScore = (localUser, score) => {
+export const submitTestScore = (localUser, score, overallAnswers) => {
 	// console.log(score);
 	if (score) {
 		const userData = { score: score };
 		docRef.doc(localUser).update(userData);
 		docRef.doc(localUser).update({ hasDoneQuiz: true });
+		docRef.doc(localUser).update({ overallAnswers });
 	} else return;
 };
