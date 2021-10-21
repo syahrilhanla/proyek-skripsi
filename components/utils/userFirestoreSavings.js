@@ -116,6 +116,20 @@ export const deleteAdminDocument = (admin) => {
 	}
 };
 
+export const getAnswerKey = () => {
+	return firestore
+		.collection("answerKey")
+		.doc("answerList")
+		.get()
+		.then((result) => result.data());
+};
+
+export const submitAnswerKey = (answerKey) => {
+	if (answerKey) {
+		firestore.collection("answerKey").doc("answerList").update({ answerKey });
+	}
+};
+
 // ================================== USED BY USERS ==============================================
 
 export const joinClass = async (localUser, className) => {
