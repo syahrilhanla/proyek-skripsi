@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
-import { getUsersDetails } from "@/components/utils/userFirestoreSavings";
+import {
+	getAnswerKey,
+	getUsersDetails,
+} from "@/components/utils/userFirestoreSavings";
 
 import { Button, ButtonGroup } from "@material-ui/core";
 import LoadingProgress from "@/components/common/LoadingProgress";
@@ -12,72 +15,11 @@ const GroupTable = ({ userList }) => {
 	const [pageAmount, setPageAmount] = useState([]);
 	const [actAmount, setActAmount] = useState([]);
 	const [loading, setLoading] = useState(true);
-
-	const answerKey = [
-		{
-			number: 1,
-			trueAnswer: "A",
-		},
-		{
-			number: 2,
-			trueAnswer: "A",
-		},
-		{
-			number: 3,
-			trueAnswer: "A",
-		},
-		{
-			number: 4,
-			trueAnswer: "A",
-		},
-		{
-			number: 5,
-			trueAnswer: "A",
-		},
-		{
-			number: 6,
-			trueAnswer: "A",
-		},
-		{
-			number: 7,
-			trueAnswer: "A",
-		},
-		{
-			number: 8,
-			trueAnswer: "A",
-		},
-		{
-			number: 9,
-			trueAnswer: "A",
-		},
-		{
-			number: 10,
-			trueAnswer: "A",
-		},
-		{
-			number: 11,
-			trueAnswer: "A",
-		},
-		{
-			number: 12,
-			trueAnswer: "A",
-		},
-		{
-			number: 13,
-			trueAnswer: "A",
-		},
-		{
-			number: 14,
-			trueAnswer: "A",
-		},
-		{
-			number: 15,
-			trueAnswer: "A",
-		},
-	];
+	const [answerKey, setAnswerKey] = useState([]);
 
 	useEffect(() => {
 		getUsersDetails(userList).then((data) => setUsersData(data));
+		getAnswerKey().then((results) => setAnswerKey(results.answerKey));
 	}, []);
 
 	useEffect(() => {
@@ -117,8 +59,11 @@ const GroupTable = ({ userList }) => {
 	};
 
 	const getAnswerAmount = () => {
-		return answerKey.map((item) => item.number);
+		// console.log(answerKey);
+		if (answerKey.length > 0) return answerKey.map((item) => item.number);
 	};
+
+	console.log(getAnswerAmount());
 
 	const getActivities = (chapterName) => {
 		return usersData.map((data) => {

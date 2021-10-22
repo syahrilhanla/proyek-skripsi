@@ -54,7 +54,7 @@ export const getAllAdminData = async () => {
 export const getUsersDetails = async (usersData) => {
 	if (usersData) {
 		const usersDetails = usersData.map(async (user) => {
-			console.log({ user });
+			// console.log({ user });
 			return {
 				displayName: user.displayName,
 				progress: await getUserProgress(user),
