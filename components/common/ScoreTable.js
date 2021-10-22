@@ -4,16 +4,12 @@ import {
 	getUsersDetails,
 } from "@/components/utils/userFirestoreSavings";
 
-import { Button, ButtonGroup } from "@material-ui/core";
 import LoadingProgress from "@/components/common/LoadingProgress";
 
 import groupTableStyles from "@/styles/GroupTable.module.css";
 
 const GroupTable = ({ userList }) => {
 	const [usersData, setUsersData] = useState([]);
-	const [chooseChapter, setChooseChapter] = useState("chapter1");
-	const [pageAmount, setPageAmount] = useState([]);
-	const [actAmount, setActAmount] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [answerKey, setAnswerKey] = useState([]);
 
@@ -24,62 +20,14 @@ const GroupTable = ({ userList }) => {
 
 	useEffect(() => {
 		if (usersData.length > 0) {
-			setPageAmount(getPageAmount(chooseChapter));
-			setActAmount(getActivities(chooseChapter));
 			setLoading(false);
 		}
-	}, [usersData, chooseChapter]);
+	}, [usersData]);
 
 	const keyGenerator = (index) => index * Math.random() * 10000;
 
-	const ChapterButton = () => (
-		<ButtonGroup variant='contained' aria-label='outlined primary button group'>
-			<Button onClick={() => setChooseChapter("chapter1")}>Bab 1</Button>
-			<Button onClick={() => setChooseChapter("chapter2")}>Bab 2</Button>
-			<Button onClick={() => setChooseChapter("chapter3")}>Bab 3</Button>
-		</ButtonGroup>
-	);
-
-	const chapterTitle = () => {
-		if (chooseChapter === "chapter1") return "Jawaban Bab 1: Analisis Data";
-		else if (chooseChapter === "chapter2")
-			return "Jawaban  Bab 2: Ukuran Pemusatan Data";
-		else if (chooseChapter === "chapter3")
-			return "Jawaban Bab 3: Ukuran Penyebaran Data";
-	};
-
-	const getPageAmount = (chapterName) => {
-		// return usersData[0].progress
-		// 	.filter((chapter) => chapter.chapter === chapterName)
-		// 	.map((chapterData) =>
-		// 		chapterData.data.map((data, index) => {
-		// 			return { pageNumber: index + 1, pageLength: data.pageData.length };
-		// 		})
-		// 	);
-	};
-
 	const getAnswerAmount = () => {
-		// console.log(answerKey);
 		if (answerKey.length > 0) return answerKey.map((item) => item.number);
-	};
-
-	console.log(getAnswerAmount());
-
-	const getActivities = (chapterName) => {
-		return usersData.map((data) => {
-			const results = {
-				displayName: data.displayName,
-				progress: data.progress
-					.filter((chapter) => chapter.chapter === chapterName)
-					.map((chapterData) =>
-						chapterData.data.map((data) =>
-							data.pageData.map((item, index) => item)
-						)
-					),
-			};
-			// console.log(results);
-			return results;
-		});
 	};
 
 	const getOverallColSpan = () => {
@@ -88,35 +36,8 @@ const GroupTable = ({ userList }) => {
 		}
 	};
 
-	const Misc = () => (
-		<div
-			style={{
-				marginBottom: "1rem",
-				display: "flex",
-				justifyContent: "space-between",
-			}}
-		>
-			<ChapterButton />
-			<div>
-				Ket:{" "}
-				<span style={{ backgroundColor: "#C6E0B4", padding: "0.4rem" }}>O</span>{" "}
-				: Telah Dilakukan
-				<span
-					style={{
-						marginLeft: "0.7rem",
-						backgroundColor: "#F8CBAD",
-						padding: "0.4rem",
-					}}
-				>
-					X
-				</span>{" "}
-				: Belum Dilakukan
-			</div>
-		</div>
-	);
-
 	const AnswerResults = ({ user }) => {
-		console.log({ user });
+		// console.log({ user });
 		// making default answers array, then push users existing answer to this array
 		const newAnswers = answerKey.map((item, index) => {
 			return { number: index, answer: " - ", isTrue: false };
@@ -131,7 +52,6 @@ const GroupTable = ({ userList }) => {
 						}
 					});
 				});
-				console.log({ newAnswers });
 
 				return newAnswers.map((answer, index) => (
 					<td
@@ -156,7 +76,6 @@ const GroupTable = ({ userList }) => {
 					<LoadingProgress />
 				) : (
 					<>
-						<Misc />
 						<table>
 							<thead className={groupTableStyles.header}>
 								{/* table header for general users detail */}
@@ -164,14 +83,16 @@ const GroupTable = ({ userList }) => {
 									<td rowSpan={3}>No</td>
 									<td rowSpan={3}>Nama</td>
 									<td rowSpan={3}>Skor</td>
-									<td colSpan={getOverallColSpan()}>{chapterTitle()}</td>
+									<td colSpan={getOverallColSpan()}>
+										{"Kunci Jawaban Evaluasi"}
+									</td>
 								</tr>
 
 								{/* display the amount of pages column based on passed data */}
 								<tr>
 									{getAnswerAmount().map((data) => (
 										<td style={{ padding: "0.7rem" }} key={data}>
-											{data}
+											{data + 1}
 										</td>
 									))}
 								</tr>
