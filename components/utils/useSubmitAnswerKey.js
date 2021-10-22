@@ -16,7 +16,7 @@ const useSubmitAnswerKey = () => {
 		data.answerChoices.forEach((answer, index) => {
 			if (answer.isCorrect)
 				answerList.push({
-					answer: indexDeterminer(answer.isCorrect, index),
+					trueAnswer: indexDeterminer(answer.isCorrect, index),
 					number: questionIndex,
 				});
 		})
