@@ -10,9 +10,11 @@
 import { useEffect, useState } from "react";
 import { getUsersDetails } from "@/components/utils/userFirestoreSavings";
 
-import groupTableStyles from "@/styles/GroupTable.module.css";
-import { Button, ButtonGroup } from "@material-ui/core";
 import LoadingProgress from "@/components/common/LoadingProgress";
+
+import { Button, ButtonGroup } from "@material-ui/core";
+import CheckIcon from "@material-ui/icons/Check";
+import groupTableStyles from "@/styles/GroupTable.module.css";
 
 const GroupTable = ({ userList }) => {
 	const [usersData, setUsersData] = useState([]);
@@ -107,7 +109,7 @@ const GroupTable = ({ userList }) => {
 							<div>
 								Ket:{" "}
 								<span style={{ backgroundColor: "#C6E0B4", padding: "0.4rem" }}>
-									O
+									<CheckIcon fontSize='small' />
 								</span>{" "}
 								: Telah Dilakukan
 								<span
@@ -117,7 +119,7 @@ const GroupTable = ({ userList }) => {
 										padding: "0.4rem",
 									}}
 								>
-									X
+									-
 								</span>{" "}
 								: Belum Dilakukan
 							</div>
@@ -209,7 +211,11 @@ const GroupTable = ({ userList }) => {
 																						: { background: "#F8CBAD" }
 																				}
 																			>
-																				{item.act ? "O" : "X"}
+																				{item.act ? (
+																					<CheckIcon fontSize='small' />
+																				) : (
+																					"-"
+																				)}
 																			</td>
 																		);
 																	})
