@@ -9,7 +9,7 @@ const ProtectedRoutes = ({ children }) => {
 	const router = useRouter();
 	const { localUserData, isAdmin } = useAuth();
 
-	const publicLinks = ["/tentang"];
+	const publicLinks = ["/perihal"];
 	const currentLink = router.pathname;
 
 	useEffect(() => {

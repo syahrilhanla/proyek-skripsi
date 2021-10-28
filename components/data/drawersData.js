@@ -106,8 +106,8 @@ export const commonLinks = {
 			link: "/evaluasi",
 		},
 		{
-			text: "Tentang",
-			link: "/tentang",
+			text: "Perihal",
+			link: "/perihal",
 		},
 	],
 	admin: [
@@ -120,8 +120,8 @@ export const commonLinks = {
 			link: "/manageAdmin",
 		},
 		{
-			text: "Tentang",
-			link: "/tentang",
+			text: "Perihal",
+			link: "/perihal",
 		},
 	],
 };

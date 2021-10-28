@@ -21,7 +21,7 @@ const Footer = () => {
 					<div className={footerStyles.links}>
 						<ul>
 							<li>
-								<Link href={"/tentang"}>Tentang</Link>
+								<Link href={"/perihal"}>Perihal</Link>
 							</li>
 							<li>Petunjuk Penggunaan</li>
 						</ul>

@@ -4,7 +4,7 @@ import Footer from "@/components/common/Footer";
 import aboutStyles from "@/styles/About.module.css";
 import Image from "next/image";
 
-const tentang = () => {
+const perihal = () => {
 	return (
 		<div style={{ position: "relative" }}>
 			<div className={aboutStyles.mainAbout}>
@@ -85,4 +85,4 @@ function AboutContent() {
 	);
 }
 
-export default tentang;
+export default perihal;
