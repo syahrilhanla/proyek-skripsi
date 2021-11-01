@@ -109,6 +109,10 @@ export const commonLinks = {
 			text: "Perihal",
 			link: "/perihal",
 		},
+		{
+			text: "Petunjuk Penggunaan",
+			link: "/petunjuk",
+		},
 	],
 	admin: [
 		{
@@ -122,6 +126,10 @@ export const commonLinks = {
 		{
 			text: "Perihal",
 			link: "/perihal",
+		},
+		{
+			text: "Petunjuk Penggunaan",
+			link: "/petunjuk",
 		},
 	],
 };
