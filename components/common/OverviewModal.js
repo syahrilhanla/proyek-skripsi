@@ -1,14 +1,33 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "@material-ui/core/Modal";
 import modalStyles from "@/components/data/modalStyles";
+
+import { useAuth } from "@/components/context/AuthContext";
+
 import { HelpContent } from "../../pages/petunjuk";
+import { changeHasReadOverview } from "@/components/utils/userFirestoreSavings";
 
 const OverviewModal = () => {
 	const classes = modalStyles();
-	const [open, setOpen] = useState(true);
+	const [open, setOpen] = useState(false);
+	const [hasReadOverview, setHasReadOverview] = useState(false);
+	const { userInfo } = useAuth();
+
+	useEffect(() => {
+		if (userInfo) {
+			if (userInfo.hasReadOverview === false) setOpen(true);
+		}
+	}, [userInfo]);
 
 	const handleClose = () => {
 		setOpen(false);
+		if (hasReadOverview === true) {
+			changeHasReadOverview(userInfo.uid, hasReadOverview);
+		}
+	};
+
+	const handleCheckBox = () => {
+		setHasReadOverview((prevValue) => !prevValue);
 	};
 
 	return (
@@ -28,7 +47,11 @@ const OverviewModal = () => {
 						}}
 					>
 						<span>
-							<input type='checkbox' />
+							<input
+								type='checkbox'
+								checked={hasReadOverview}
+								onChange={handleCheckBox}
+							/>
 							<span>Jangan tampilkan lagi</span>
 						</span>
 						<button

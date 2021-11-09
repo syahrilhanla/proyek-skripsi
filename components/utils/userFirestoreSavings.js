@@ -228,6 +228,7 @@ export const addUser = async (localUser) => {
 			score: 0,
 			hasDoneQuiz: false,
 			overallAnswers: [],
+			hasReadOverview: false,
 		};
 
 		// setting them to firestore so it can be used in data display
@@ -244,4 +245,10 @@ export const submitTestScore = (localUser, score, overallAnswers) => {
 		docRef.doc(localUser).update({ hasDoneQuiz: true });
 		docRef.doc(localUser).update({ overallAnswers });
 	} else return;
+};
+
+export const changeHasReadOverview = (localUser, newValue) => {
+	if (localUser) {
+		docRef.doc(localUser).update({ hasReadOverview: newValue });
+	}
 };

@@ -1,7 +1,6 @@
 import React from "react";
 import HomeNavbar from "@/components/common/HomeNavbar";
 import Footer from "@/components/common/Footer";
-import OverviewModal from "@/components/common/OverviewModal";
 
 import Image from "next/image";
 
@@ -10,7 +9,6 @@ import aboutStyles from "@/styles/About.module.css";
 const perihal = () => {
 	return (
 		<div style={{ position: "relative" }}>
-			<OverviewModal />
 			<div className={aboutStyles.mainAbout}>
 				<HomeNavbar />
 				<HelpContent />

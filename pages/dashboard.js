@@ -6,6 +6,7 @@ import CircularProgressWithLabel from "@/components/common/ProgressCircularBar";
 import LearningProgress from "@/components/common/LearningProgress";
 import UserNewClassModal from "@/components/common/UserNewClassModal";
 import LoadingProgress from "@/components/common/LoadingProgress";
+import OverviewModal from "@/components/common/OverviewModal";
 
 import { useAuth } from "@/components/context/AuthContext";
 
@@ -74,6 +75,7 @@ const dashboard = () => {
 	function DisplayDashboard() {
 		return (
 			<div className={progressStyles.mainProgress}>
+				<OverviewModal />
 				<Navbar />
 				<DashboardContent
 					displayInfo={progressValues.userInfo}
