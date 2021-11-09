@@ -18,6 +18,15 @@
 	display: grid;
 }
 
+.excelButton {
+	background-color: #0d80c2;
+	border: none;
+	border-radius: 6px;
+	padding: 0.8rem 0;
+	color: white;
+	cursor: pointer;
+}
+
 .header {
 	background-color: #d9e1f2;
 	border: 1px solid #e2e2e2;

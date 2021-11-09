@@ -12,11 +12,12 @@ import { getUsersDetails } from "@/components/utils/userFirestoreSavings";
 
 import LoadingProgress from "@/components/common/LoadingProgress";
 
+import ReactHTMLTableToExcel from "react-html-table-to-excel";
 import { Button, ButtonGroup } from "@material-ui/core";
-import CheckIcon from "@material-ui/icons/Check";
+
 import groupTableStyles from "@/styles/GroupTable.module.css";
 
-const GroupTable = ({ userList }) => {
+const GroupTable = ({ userList, classCode }) => {
 	const [usersData, setUsersData] = useState([]);
 	const [chooseChapter, setChooseChapter] = useState("chapter1");
 	const [pageAmount, setPageAmount] = useState([]);
@@ -109,7 +110,7 @@ const GroupTable = ({ userList }) => {
 							<div>
 								Ket:{" "}
 								<span style={{ backgroundColor: "#C6E0B4", padding: "0.4rem" }}>
-									<CheckIcon fontSize='small' />
+									&#10003;
 								</span>{" "}
 								: Telah Dilakukan
 								<span
@@ -124,7 +125,15 @@ const GroupTable = ({ userList }) => {
 								: Belum Dilakukan
 							</div>
 						</div>
-						<table>
+						<ReactHTMLTableToExcel
+							id='test-table-xls-button'
+							className={`download-table-xls-button ${groupTableStyles.excelButton}`}
+							table='table-to-xls'
+							filename={`Progress Kelas ${classCode}`}
+							sheet={`Progress Kelas ${classCode}`}
+							buttonText='Unduh File Excel'
+						/>
+						<table id='table-to-xls' style={{ marginTop: "1rem" }}>
 							<thead className={groupTableStyles.header}>
 								{/* table header for general users detail */}
 								<tr>
@@ -211,11 +220,7 @@ const GroupTable = ({ userList }) => {
 																						: { background: "#F8CBAD" }
 																				}
 																			>
-																				{item.act ? (
-																					<CheckIcon fontSize='small' />
-																				) : (
-																					"-"
-																				)}
+																				{item.act ? <p>&#10003;</p> : "-"}
 																			</td>
 																		);
 																	})

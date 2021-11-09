@@ -124,7 +124,10 @@ const DisplayUsers = ({
 						<div>
 							<WhichTableButton />
 							{whichTable === 1 ? (
-								<GroupTable userList={userList} />
+								<GroupTable
+									userList={userList}
+									classCode={selectedClass.className}
+								/>
 							) : (
 								<ScoreTable userList={userList} />
 							)}
