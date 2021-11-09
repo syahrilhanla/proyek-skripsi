@@ -8,7 +8,7 @@ import LoadingProgress from "@/components/common/LoadingProgress";
 
 import groupTableStyles from "@/styles/GroupTable.module.css";
 
-const GroupTable = ({ userList }) => {
+const ScoreTable = ({ userList }) => {
 	const [usersData, setUsersData] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [answerKey, setAnswerKey] = useState([]);
@@ -19,7 +19,7 @@ const GroupTable = ({ userList }) => {
 	}, []);
 
 	useEffect(() => {
-		if (usersData.length > 0) {
+		if (usersData.length > 0 && answerKey.length > 0) {
 			setLoading(false);
 		}
 	}, [usersData]);
@@ -37,36 +37,41 @@ const GroupTable = ({ userList }) => {
 	};
 
 	const AnswerResults = ({ user }) => {
-		// console.log({ user });
+		console.log({ user });
 		// making default answers array, then push users existing answer to this array
 		const newAnswers = answerKey.map((item, index) => {
 			return { number: index, answer: " - ", isTrue: false };
 		});
 
-		if (newAnswers.length > 0) {
-			if (user.overallAnswers !== undefined && user.overallAnswers.length > 0) {
-				user.overallAnswers.forEach((answer) => {
-					newAnswers.forEach((item, indexDefault) => {
-						if (item.number === answer.number) {
-							newAnswers[indexDefault] = answer;
-						}
-					});
+		if (user.overallAnswers !== undefined && user.overallAnswers.length > 0) {
+			user.overallAnswers.forEach((answer) => {
+				newAnswers.forEach((item, indexDefault) => {
+					if (item.number === answer.number) {
+						newAnswers[indexDefault] = answer;
+					}
 				});
-
-				return newAnswers.map((answer, index) => (
-					<td
-						key={keyGenerator(index)}
-						style={
-							answer.isTrue
-								? { background: "#C6E0B4" }
-								: { background: "#F8CBAD" }
-						}
-					>
-						{answer.answer}
-					</td>
-				));
-			}
+			});
 		}
+
+		console.log({ newAnswers });
+
+		return newAnswers.length > 0 ? (
+			newAnswers.map((answer, index) => (
+				<td
+					key={keyGenerator(index)}
+					style={
+						answer.isTrue
+							? { background: "#C6E0B4" }
+							: { background: "#F8CBAD" }
+					}
+				>
+					{answer.answer}
+				</td>
+			))
+		) : (
+			<td colSpan={getOverallColSpan()}>Belum Melakukan Evaluasi</td>
+		);
+		// }
 	};
 
 	return (
@@ -136,7 +141,7 @@ const GroupTable = ({ userList }) => {
 												</td>
 												{/* display users activities detail */}
 												{!user.hasDoneQuiz ? (
-													<td colspan={getOverallColSpan()}>
+													<td colSpan={getOverallColSpan()}>
 														Belum Melakukan Evaluasi
 													</td>
 												) : (
@@ -155,4 +160,4 @@ const GroupTable = ({ userList }) => {
 	);
 };
 
-export default GroupTable;
+export default ScoreTable;
