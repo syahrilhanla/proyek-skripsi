@@ -1,9 +1,9 @@
 import { useTimer } from "react-timer-hook";
 
-const CountingDown = ({ expiryTimestamp }) => {
+const CountingDown = ({ expiryTimestamp, setPushToDashboard }) => {
 	const { seconds, minutes } = useTimer({
 		expiryTimestamp,
-		onExpire: () => console.log("onExpire called"),
+		onExpire: () => setPushToDashboard(true),
 	});
 
 	return (
@@ -24,11 +24,16 @@ const CountingDown = ({ expiryTimestamp }) => {
 	);
 };
 
-const DisplayCountDown = ({ timeSet }) => {
+const DisplayCountDown = ({ timeSet, setPushToDashboard }) => {
 	const time = new Date();
 	time.setSeconds(time.getSeconds() + timeSet); // 600 to 10 minutes
 
-	return <CountingDown expiryTimestamp={time} />;
+	return (
+		<CountingDown
+			expiryTimestamp={time}
+			setPushToDashboard={setPushToDashboard}
+		/>
+	);
 };
 
 export default DisplayCountDown;
