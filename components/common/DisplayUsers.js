@@ -129,7 +129,10 @@ const DisplayUsers = ({
 									classCode={selectedClass.className}
 								/>
 							) : (
-								<ScoreTable userList={userList} />
+								<ScoreTable
+									userList={userList}
+									classCode={selectedClass.className}
+								/>
 							)}
 						</div>
 					)}
