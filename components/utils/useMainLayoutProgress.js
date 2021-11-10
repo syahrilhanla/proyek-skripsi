@@ -36,7 +36,8 @@ const useMainLayoutProgress = () => {
 			if (
 				parentPath !== "admin" &&
 				parentPath !== "manageAdmin" &&
-				parentPath !== "evaluasi"
+				parentPath !== "evaluasi" &&
+				parentPath !== "petunjuk"
 			) {
 				useUpdateProgress(parentPath, currentPath, localUserData);
 			}

@@ -106,8 +106,12 @@ export const commonLinks = {
 			link: "/evaluasi",
 		},
 		{
-			text: "Tentang",
-			link: "/tentang",
+			text: "Perihal",
+			link: "/perihal",
+		},
+		{
+			text: "Petunjuk Penggunaan",
+			link: "/petunjuk",
 		},
 	],
 	admin: [
@@ -120,8 +124,12 @@ export const commonLinks = {
 			link: "/manageAdmin",
 		},
 		{
-			text: "Tentang",
-			link: "/tentang",
+			text: "Perihal",
+			link: "/perihal",
+		},
+		{
+			text: "Petunjuk Penggunaan",
+			link: "/petunjuk",
 		},
 	],
 };

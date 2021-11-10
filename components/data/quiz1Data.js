@@ -41,7 +41,7 @@ export const questionData = [
 			{
 				id: idGenerator(),
 				answerText: "31 ekor",
-				isCorrect: true,
+				isCorrect: false,
 			},
 			{
 				id: idGenerator(),
@@ -51,7 +51,7 @@ export const questionData = [
 			{
 				id: idGenerator(),
 				answerText: "36 ekor",
-				isCorrect: false,
+				isCorrect: true,
 			},
 		],
 	},

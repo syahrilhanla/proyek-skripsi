@@ -1,15 +1,21 @@
 import React, { useState, useEffect } from "react";
+
+import { useAuth } from "@/components/context/AuthContext";
+import { useProgress } from "@/components/context/ProgressContext";
+
 import SubmitButton from "@/components/common/SubmitButton";
 
-import { useProgress } from "@/components/context/ProgressContext";
 import MultipleChoices from "@/components/common/MultipleChoices";
 import useGetCurrentPage from "@/components/utils/useGetCurrentPage";
 import useCalculateScore from "@/components/utils/useCalculateScore";
 
 import quizStyle from "@/styles/QuizStyle.module.css";
 import QuestionIndex from "@/components/common/QuestionIndex";
+import useSubmitAnswers from "@/components/utils/useSubmitAnswers";
 
 const QuizComponent = ({ questionData, DisplayData, timesUp }) => {
+	const { localUserData } = useAuth();
+
 	const { quizScore, setQuizScore } = useProgress();
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [isFinished, setIsFinished] = useState(false);
@@ -26,6 +32,14 @@ const QuizComponent = ({ questionData, DisplayData, timesUp }) => {
 
 	useEffect(() => {
 		if (currentQuestion < 1) setQuizScore(0);
+		if (isFinished) {
+			useSubmitAnswers(
+				questionData.length,
+				quizScore,
+				overallAnswers,
+				localUserData
+			);
+		}
 	}, [isFinished]);
 
 	const DisplayScore = ({ quizScore }) => {
@@ -99,20 +113,19 @@ const QuizComponent = ({ questionData, DisplayData, timesUp }) => {
 					overallAnswers={overallAnswers}
 				/>
 			)}
-			<>
+			{!isFinished && (
 				<div className={quizStyle.submitButton}>
 					{parentPath === "evaluasi" && !timesUp && (
 						<SubmitButton
 							questionAmount={questionData.length}
+							overallAnswers={overallAnswers}
 							quizScore={quizScore}
 							setIsFinished={setIsFinished}
+							localUserData={localUserData}
 						/>
 					)}
 				</div>
-				{/* <span style={{ alignSelf: "center", width: "100%" }}>
-					<EvaluationCountDown setTimesUp={setTimesUp} />
-				</span> */}
-			</>
+			)}
 		</div>
 	);
 };

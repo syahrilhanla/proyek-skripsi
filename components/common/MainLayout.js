@@ -50,7 +50,8 @@ const MainLayout = ({
 		if (
 			parentPath !== "admin" &&
 			parentPath !== "evaluasi" &&
-			parentPath !== "manageAdmin"
+			parentPath !== "manageAdmin" &&
+			parentPath !== "petunjuk"
 		)
 			return (
 				<>

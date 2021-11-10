@@ -54,9 +54,12 @@ export const getAllAdminData = async () => {
 export const getUsersDetails = async (usersData) => {
 	if (usersData) {
 		const usersDetails = usersData.map(async (user) => {
+			// console.log({ user });
 			return {
 				displayName: user.displayName,
 				progress: await getUserProgress(user),
+				hasDoneQuiz: user.hasDoneQuiz,
+				overallAnswers: user.overallAnswers,
 			};
 		});
 		const results = await Promise.all(usersDetails);
@@ -110,6 +113,20 @@ export const deleteAdminDocument = (admin) => {
 		} else return false;
 	} catch (error) {
 		return false;
+	}
+};
+
+export const getAnswerKey = () => {
+	return firestore
+		.collection("answerKey")
+		.doc("answerList")
+		.get()
+		.then((result) => result.data());
+};
+
+export const submitAnswerKey = (answerKey) => {
+	if (answerKey) {
+		firestore.collection("answerKey").doc("answerList").update({ answerKey });
 	}
 };
 
@@ -210,6 +227,8 @@ export const addUser = async (localUser) => {
 			className: "Belum Masuk Kelas",
 			score: 0,
 			hasDoneQuiz: false,
+			overallAnswers: [],
+			hasReadOverview: false,
 		};
 
 		// setting them to firestore so it can be used in data display
@@ -218,11 +237,18 @@ export const addUser = async (localUser) => {
 	} else return;
 };
 
-export const submitTestScore = (localUser, score) => {
+export const submitTestScore = (localUser, score, overallAnswers) => {
 	// console.log(score);
 	if (score) {
 		const userData = { score: score };
 		docRef.doc(localUser).update(userData);
 		docRef.doc(localUser).update({ hasDoneQuiz: true });
+		docRef.doc(localUser).update({ overallAnswers });
 	} else return;
+};
+
+export const changeHasReadOverview = (localUser, newValue) => {
+	if (localUser) {
+		docRef.doc(localUser).update({ hasReadOverview: newValue });
+	}
 };

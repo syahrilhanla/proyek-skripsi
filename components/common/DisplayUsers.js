@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { Button, Switch } from "@material-ui/core";
 import UserCard from "@/components/common/UserCard";
+import ScoreTable from "@/components/common/ScoreTable";
 import GroupTable from "@/components/common/GroupTable";
+import { ButtonGroup } from "@material-ui/core";
 
 import { openEvaluationSwitch } from "@/components/utils/userFirestoreSavings";
 
@@ -16,6 +18,9 @@ const DisplayUsers = ({
 }) => {
 	// if true then display individual progress
 	const [individualChecked, setIndividualChecked] = useState(true);
+
+	// which table to display
+	const [whichTable, setWhichTable] = useState(1);
 
 	// if true then open class' evaluation
 	const [evaluationCheck, setEvaluationCheck] = useState(
@@ -37,6 +42,23 @@ const DisplayUsers = ({
 		const newList = userList.filter((user) => user.uid !== userID);
 		setUserList(newList);
 	};
+
+	const WhichTableButton = () => (
+		<ButtonGroup variant='contained' aria-label='outlined primary button group'>
+			<Button
+				onClick={() => setWhichTable(1)}
+				color={whichTable === 1 && "primary"}
+			>
+				Tabel Progres
+			</Button>
+			<Button
+				onClick={() => setWhichTable(2)}
+				color={whichTable === 2 && "primary"}
+			>
+				Tabel Evaluasi
+			</Button>
+		</ButtonGroup>
+	);
 
 	return (
 		<div>
@@ -99,7 +121,17 @@ const DisplayUsers = ({
 							/>
 						))
 					) : (
-						<GroupTable userList={userList} />
+						<div>
+							<WhichTableButton />
+							{whichTable === 1 ? (
+								<GroupTable
+									userList={userList}
+									classCode={selectedClass.className}
+								/>
+							) : (
+								<ScoreTable userList={userList} />
+							)}
+						</div>
 					)}
 				</>
 			) : (

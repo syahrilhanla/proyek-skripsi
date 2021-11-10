@@ -9,11 +9,11 @@ const ProtectedRoutes = ({ children }) => {
 	const router = useRouter();
 	const { localUserData, isAdmin } = useAuth();
 
-	const publicLinks = ["/tentang"];
+	const publicLinks = ["/perihal", "/petunjuk"];
 	const currentLink = router.pathname;
 
 	useEffect(() => {
-		if (!localUserData && currentLink.includes(publicLinks)) {
+		if (!localUserData && publicLinks.includes(currentLink)) {
 			// do nothing if theres no localUser and the route is public
 		} else if (localUserData && currentLink === "/" && isAdmin) {
 			// redirect to admin page if user goes to home when user logs in as admin

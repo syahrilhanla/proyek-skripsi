@@ -1,19 +1,23 @@
-import { useAuth } from "@/components/context/AuthContext";
-import { submitTestScore } from "@/components/utils/userFirestoreSavings";
+import useSubmitAnswers from "@/components/utils/useSubmitAnswers";
 
 import layoutStyles from "@/styles/MainLayout.module.css";
-import useCalculateScore from "@/components/utils/useCalculateScore";
 
-const SubmitButton = ({ questionAmount, quizScore, setIsFinished }) => {
-	const { localUserData } = useAuth();
-	const { getScoringTotal } = useCalculateScore(questionAmount);
-
-	const scoreToSubmit = getScoringTotal(quizScore, questionAmount);
-
+const SubmitButton = ({
+	questionAmount,
+	quizScore,
+	setIsFinished,
+	overallAnswers,
+	localUserData,
+}) => {
 	return (
 		<button
 			onClick={() => {
-				submitTestScore(localUserData.uid, scoreToSubmit);
+				useSubmitAnswers(
+					questionAmount,
+					quizScore,
+					overallAnswers,
+					localUserData
+				);
 				setIsFinished(true);
 			}}
 			className={layoutStyles.answerButton}

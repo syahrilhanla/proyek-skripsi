@@ -11,7 +11,6 @@ const useCalculateScore = () => {
 
 	// fires when user submit the answers or finished the quiz
 	const calculateResults = (overallAnswers, setQuizScore) => {
-		// console.log(overallAnswers);
 		setQuizScore(0);
 		overallAnswers.forEach((item) => {
 			if (item.answer) {
