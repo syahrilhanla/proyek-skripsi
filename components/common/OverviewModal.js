@@ -62,7 +62,7 @@ const OverviewModal = () => {
 								padding: "0.7rem 1rem",
 								borderRadius: "4px",
 								border: "none",
-								pointer: "cursor",
+								cursor: "pointer",
 							}}
 							onClick={() => handleClose()}
 						>

@@ -125,8 +125,8 @@ export const analysisPage3 = {
 	),
 	data: (
 		<div className={mainLayoutStyles.displayTable}>
-			<TableOne />
 			<Caption>Tabel 1-3: Ukuran Benih Ikan Papuyu</Caption>
+			<TableOne />
 		</div>
 	),
 };
@@ -298,8 +298,8 @@ export const pemusatanPage2 = {
 	),
 	data: (
 		<div className={mainLayoutStyles.displayTable}>
-			<TableThree />
 			<Caption>Tabel 2-1: Hasil Produk Telur Itik Alabio</Caption>
+			<TableThree />
 		</div>
 	),
 };
@@ -569,8 +569,8 @@ export const pemusatanPage6 = {
 	),
 	data: (
 		<div className={mainLayoutStyles.displayTable}>
-			<TableFour />
 			<Caption>Tabel 2-2: Ukuran Ikan Papuyu</Caption>
+			<TableFour />
 		</div>
 	),
 };
