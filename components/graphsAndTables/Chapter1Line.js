@@ -10,6 +10,7 @@ const Chapter1Line = () => {
 				fill: false,
 				backgroundColor: "#ff9340",
 				borderColor: "#ff9340",
+				lineTension: 0,
 			},
 			{
 				label: "Itik B",
@@ -17,6 +18,7 @@ const Chapter1Line = () => {
 				fill: false,
 				backgroundColor: "#408CFF",
 				borderColor: "#408CFF",
+				lineTension: 0,
 			},
 		],
 	};

@@ -5,10 +5,11 @@ import {
 } from "@/components/utils/userFirestoreSavings";
 
 import LoadingProgress from "@/components/common/LoadingProgress";
+import ReactHTMLTableToExcel from "react-html-table-to-excel";
 
 import groupTableStyles from "@/styles/GroupTable.module.css";
 
-const ScoreTable = ({ userList }) => {
+const ScoreTable = ({ userList, classCode }) => {
 	const [usersData, setUsersData] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [answerKey, setAnswerKey] = useState([]);
@@ -81,7 +82,15 @@ const ScoreTable = ({ userList }) => {
 					<LoadingProgress />
 				) : (
 					<>
-						<table>
+						<ReactHTMLTableToExcel
+							id='test-table-xls-button'
+							className={`download-table-xls-button ${groupTableStyles.excelButton}`}
+							table='table-to-xls'
+							filename={`Jawaban Evaluasi Kelas ${classCode}`}
+							sheet={`Jawaban Evaluasi Kelas ${classCode}`}
+							buttonText='Unduh File Excel'
+						/>
+						<table id='table-to-xls' style={{ marginTop: "1rem" }}>
 							<thead className={groupTableStyles.header}>
 								{/* table header for general users detail */}
 								<tr>

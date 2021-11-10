@@ -96,17 +96,17 @@ export const analysisPage3 = {
 	act: (
 		<div>
 			<p>
-				Perhatikan tabel 1-1 di samping, berikut merupakan tabel untuk
+				Perhatikan <b>Tabel 1-1</b> di samping, berikut merupakan tabel untuk
 				menyajikan data pertumbuhan ikan papuyu. Data ini didapatkan berdasarkan
 				pengukuran yang dilakukan dalam jangka waktu tertentu, kemudian data
 				disajikan dalam bentuk tabel agar mudah untuk dibaca dan informasi dapat
 				lebih mudah dipahami.
 			</p>
 			<p>
-				Berdasarkan tabel 1-3, dapat dilihat terdapat dua judul kolom yakni Umur
-				Benih dengan satuan hari dan Panjang dengan satuan cm. Data dari
-				pengukuran dikelompokkan berdasarkan dua judul kolom tersebut, yang mana
-				didapatkan ikan papuyu berumur 60 hari memiliki panjang yang
+				Berdasarkan <b>Tabel 1-1</b>, dapat dilihat terdapat dua judul kolom
+				yakni Umur Benih dengan satuan hari dan Panjang dengan satuan cm. Data
+				dari pengukuran dikelompokkan berdasarkan dua judul kolom tersebut, yang
+				mana didapatkan ikan papuyu berumur 60 hari memiliki panjang yang
 				berbeda-beda dari 4-5 cm, begitu pula dengan yang 90 hari dan
 				seterusnya. Berdasarkan data yang disajikan pada tabel di atas,
 				kesimpulan dapat ditarik adalah:
@@ -125,8 +125,8 @@ export const analysisPage3 = {
 	),
 	data: (
 		<div className={mainLayoutStyles.displayTable}>
+			<Caption>Tabel 1-1: Ukuran Benih Ikan Papuyu</Caption>
 			<TableOne />
-			<Caption>Tabel 1-3: Ukuran Benih Ikan Papuyu</Caption>
 		</div>
 	),
 };
@@ -156,10 +156,10 @@ export const analysisPage4 = {
 				dari jumlah ikan tersebut.
 			</p>
 			<p>
-				Berdasarkan diagram 1-5 di samping dapat lebih mudah mengamati data yang
-				disajikan. Dibandingkan dengan menggunakan tabel, dengan menggunakan
-				diagram di atas dapat langsung diketahui dengan mudah mana nilai yang
-				lebih tinggi dan lebih rendahnya.
+				Berdasarkan <b>Gambar 1-2</b> di samping dapat lebih mudah mengamati
+				data yang disajikan. Dibandingkan dengan menggunakan tabel, dengan
+				menggunakan diagram di samping dapat langsung diketahui dengan mudah
+				mana nilai yang lebih tinggi dan lebih rendahnya.
 			</p>
 		</div>
 	),
@@ -279,9 +279,10 @@ export const pemusatanPage2 = {
 			</div>
 
 			<p>
-				Sebagai contoh, pada tabel 2-1 di samping terdapat data yang berisikan
-				jumlah telur pertahun itik Alabio, maka untuk mencari rata-rata jumlah
-				telur yang dihasilkan oleh Itik A selama 3 tahun dihitung seperti ini:
+				Sebagai contoh, pada <b>Tabel 2-1</b> di samping terdapat data yang
+				berisikan jumlah telur pertahun itik Alabio, maka untuk mencari
+				rata-rata jumlah telur yang dihasilkan oleh Itik A selama 3 tahun
+				dihitung seperti ini:
 			</p>
 			<DisplayEquation
 				displayMode={"block"}
@@ -298,8 +299,8 @@ export const pemusatanPage2 = {
 	),
 	data: (
 		<div className={mainLayoutStyles.displayTable}>
-			<TableThree />
 			<Caption>Tabel 2-1: Hasil Produk Telur Itik Alabio</Caption>
+			<TableThree />
 		</div>
 	),
 };
@@ -545,7 +546,7 @@ export const pemusatanPage6 = {
 		<div>
 			<p>
 				Modus adalah nilai yang “paling sering muncul” atau nilai yang
-				frekuensinya paling banyak. Perhatikanlah <b>tabel 2-2</b> di samping,
+				frekuensinya paling banyak. Perhatikanlah <b>Tabel 2-2</b> di samping,
 				pada tabel tersebut menunjukkan hasil pengumpulan data sebuah tambak
 				ikan papuyu, sang peternak ikan ingin melakukan pendataan hasil
 				ternaknya dan ia ingin mengetahui persentase populasi ikan papuyu
@@ -569,8 +570,8 @@ export const pemusatanPage6 = {
 	),
 	data: (
 		<div className={mainLayoutStyles.displayTable}>
-			<TableFour />
 			<Caption>Tabel 2-2: Ukuran Ikan Papuyu</Caption>
+			<TableFour />
 		</div>
 	),
 };
@@ -581,7 +582,7 @@ export const penyebaranPage1 = {
 		<div className={mainLayoutStyles.divForObjectives}>
 			<LearningObjectives objectives={chapter3Objectives} />
 			<p>
-				Perhatikan <b>tabel 3-1</b> di samping, itu merupakan kumpulan dari
+				Perhatikan <b>Tabel 3-1</b> di samping, itu merupakan kumpulan dari
 				rata-rata suhu pada lahan gambut yang dikumpulkan setiap harinya. Dalam
 				tahap ini pasti sudah dipahami cara menentukan nilai terkecil dan nilai
 				terbesar, dan berdasarkan dua nilai tersebut selisihnya dapat ditemukan.
@@ -740,7 +741,7 @@ export const penyebaranPage4 = {
 				Karena yang dicari adalah jumlah ikan untuk dipelihara lebih lanjut,
 				maka yang perlu dicari di sini adalah ukuran panjang ikan yang kurang
 				dari nilai Q1. Namun sebelum dapat mencari nilai, data yang ada pada{" "}
-				<b>tabel 3-2</b> di atas harus diurutkan. Setelah terurut maka
+				<b>Tabel 3-2</b> di atas harus diurutkan. Setelah terurut maka
 				diperoleh:
 			</p>
 
