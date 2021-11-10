@@ -41,6 +41,7 @@ const JoinClassForm = ({ setOpen, selectedClass, setIsJoin }) => {
 				<input
 					{...register("password", { required: true })}
 					className={formStyle.formInput}
+					autoComplete='off'
 				/>
 				{errors.password?.type === "required" && (
 					<p className={formStyle.errorMsg}>Isi Password!</p>

@@ -41,6 +41,7 @@ const NewAdminForm = ({ setOpen }) => {
 					{...register("displayName", { required: true })}
 					className={formStyle.formInput}
 					style={{ width: "fit-content" }}
+					autoComplete={false}
 				/>
 				{errors.displayName?.type === "required" && (
 					<p className={formStyle.errorMsg}>Isi Nama Kelas!</p>
@@ -50,6 +51,7 @@ const NewAdminForm = ({ setOpen }) => {
 					{...register("email", { required: true })}
 					className={formStyle.formInput}
 					style={{ width: "fit-content" }}
+					autoComplete='off'
 				/>
 				{errors.email?.type === "required" && (
 					<p className={formStyle.errorMsg}>Isi Email!</p>

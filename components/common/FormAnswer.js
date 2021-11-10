@@ -60,6 +60,7 @@ const FormAnswer = ({
 				placeholder='Masukkan Jawaban...'
 				{...register("userAnswer", { required: true, maxLength: 12 })}
 				className={formStyle.formInput}
+				autoComplete='off'
 			/>
 
 			<input type='submit' className={formStyle.submitButton} />
