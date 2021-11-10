@@ -4,13 +4,21 @@ import modalStyles from "@/components/data/modalStyles";
 
 import { useAuth } from "@/components/context/AuthContext";
 
-import { HelpContent } from "../../pages/petunjuk";
+import {
+	CommonFeatures,
+	ContentHelp,
+	DashboardHelp,
+	HelpContent,
+} from "../../pages/petunjuk";
 import { changeHasReadOverview } from "@/components/utils/userFirestoreSavings";
+import { Button, ButtonGroup } from "@material-ui/core";
 
 const OverviewModal = () => {
 	const classes = modalStyles();
 	const [open, setOpen] = useState(false);
 	const [hasReadOverview, setHasReadOverview] = useState(false);
+	const [whichInfo, setWhichInfo] = useState(1);
+
 	const { userInfo } = useAuth();
 
 	useEffect(() => {
@@ -30,6 +38,51 @@ const OverviewModal = () => {
 		setHasReadOverview((prevValue) => !prevValue);
 	};
 
+	const WhichInfoButton = () => (
+		<ButtonGroup variant='contained' aria-label='outlined primary button group'>
+			<Button
+				onClick={() => setWhichInfo(1)}
+				color={whichInfo === 1 && "primary"}
+			>
+				Fitur Umum
+			</Button>
+			<Button
+				onClick={() => setWhichInfo(2)}
+				color={whichInfo === 2 && "primary"}
+			>
+				Dashboard (Halaman Profil)
+			</Button>
+			<Button
+				onClick={() => setWhichInfo(3)}
+				color={whichInfo === 3 && "primary"}
+			>
+				Halaman Materi
+			</Button>
+		</ButtonGroup>
+	);
+
+	const DisplayInfo = ({ whichInfo }) => {
+		if (whichInfo === 1) {
+			return (
+				<>
+					<CommonFeatures />
+				</>
+			);
+		} else if (whichInfo === 2) {
+			return (
+				<>
+					<DashboardHelp />
+				</>
+			);
+		} else if (whichInfo === 3) {
+			return (
+				<>
+					<ContentHelp />
+				</>
+			);
+		}
+	};
+
 	return (
 		<div>
 			<Modal open={open} onClose={handleClose} className={classes.modal}>
@@ -37,7 +90,11 @@ const OverviewModal = () => {
 					className={classes.paper}
 					style={{ display: "grid", placeItems: "center" }}
 				>
-					<HelpContent />
+					<HelpContent
+						whichInfo={whichInfo}
+						WhichInfoButton={WhichInfoButton}
+						DisplayInfo={DisplayInfo}
+					/>
 					<div
 						style={{
 							width: "60%",

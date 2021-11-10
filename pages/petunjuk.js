@@ -59,35 +59,45 @@ const perihal = () => {
 		<div style={{ position: "relative" }}>
 			<div className={aboutStyles.mainAbout}>
 				<HomeNavbar />
-				<div className={aboutStyles.aboutContent}>
-					<h1 style={{ textAlign: "center", fontWeight: 400 }}>
-						Petunjuk Penggunaan
-					</h1>
-					<div
-						style={{
-							display: "grid",
-							placeItems: "center",
-							marginBottom: "1rem",
-						}}
-					>
-						<WhichInfoButton />
-					</div>
-					<div
-						className={aboutStyles.container}
-						style={{
-							border: "1px solid #4444",
-							borderRadius: "6px",
-							padding: "1.5rem",
-						}}
-					>
-						<DisplayInfo whichInfo={whichInfo} />
-					</div>
-				</div>
+				<HelpContent
+					whichInfo={whichInfo}
+					DisplayInfo={DisplayInfo}
+					WhichInfoButton={WhichInfoButton}
+				/>
 			</div>
 			<Footer />
 		</div>
 	);
 };
+
+export function HelpContent({ WhichInfoButton, DisplayInfo, whichInfo }) {
+	return (
+		<div className={aboutStyles.aboutContent}>
+			<h1 style={{ textAlign: "center", fontWeight: 400 }}>
+				Petunjuk Penggunaan
+			</h1>
+			<div
+				style={{
+					display: "grid",
+					placeItems: "center",
+					marginBottom: "1rem",
+				}}
+			>
+				<WhichInfoButton />
+			</div>
+			<div
+				className={aboutStyles.container}
+				style={{
+					border: "1px solid #4444",
+					borderRadius: "6px",
+					padding: "1.5rem",
+				}}
+			>
+				<DisplayInfo whichInfo={whichInfo} />
+			</div>
+		</div>
+	);
+}
 
 export function CommonFeatures() {
 	return (
