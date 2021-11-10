@@ -2,7 +2,7 @@ import PieChart from "@/components/charts/PieChart";
 
 const Chapter1Pie = () => {
 	const chartData = {
-		labels: ["Sumatera", "Kalimantan", "X"],
+		labels: ["Sumatera", "Kalimantan", "X (Tempat Lain)"],
 		data: [43, 32, 25],
 	};
 
