@@ -20,18 +20,25 @@ const BottomProgress = ({ pageProgress }) => {
 	return (
 		<div className={progressStyles.main}>
 			<div className={progressStyles.content}>
-				<span className={progressStyles.left}>
+				<span>
 					{currentPath !== 1 && (
 						<Link href={`/${prevURL()}`}>
-							<ChevronLeftIcon
-								fontSize={"large"}
-								color={"inherit"}
-								onClick={() =>
-									currentURL.split("/")[2] !== "kuis"
-										? useUpdateProgress(parentPath, currentPath, localUserData)
-										: false
-								}
-							/>
+							<span className={progressStyles.left}>
+								<ChevronLeftIcon
+									fontSize={"large"}
+									color={"inherit"}
+									onClick={() =>
+										currentURL.split("/")[2] !== "kuis"
+											? useUpdateProgress(
+													parentPath,
+													currentPath,
+													localUserData
+											  )
+											: false
+									}
+								/>
+								PREV
+							</span>
 						</Link>
 					)}
 				</span>
@@ -49,16 +56,19 @@ const BottomProgress = ({ pageProgress }) => {
 					</span>
 				)}
 
-				<span className={progressStyles.right}>
+				<span>
 					{currentPath < chooseURLList(parentPath)[0].length && (
 						<Link href={`/${nextURL()}`}>
-							<ChevronRightIcon
-								fontSize={"large"}
-								color={"inherit"}
-								onClick={() =>
-									useUpdateProgress(parentPath, currentPath, localUserData)
-								}
-							/>
+							<span className={progressStyles.right}>
+								NEXT
+								<ChevronRightIcon
+									fontSize={"large"}
+									color={"inherit"}
+									onClick={() =>
+										useUpdateProgress(parentPath, currentPath, localUserData)
+									}
+								/>
+							</span>
 						</Link>
 					)}
 				</span>
