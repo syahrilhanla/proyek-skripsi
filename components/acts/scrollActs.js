@@ -29,11 +29,10 @@ export const analysisPage1 = {
 				di air tawar, khususnya rawa, sungai, danau, saluran-saluran air hingga
 				persawahan ini merupakan salah satu jenis ikan yang paling populer di
 				Kalimantan. Di Kalimantan sendiri terdapat dua varian ikan papuyu, yakni
-				ikan papuyu galam (warna kuning) dan papuyu hijau (warna hijau) (Hidayat
-				dkk., 2016). Ikan papuyu ini bernilai ekonomis yang relatif tinggi,
-				dikarenakan permintaan permintaan masyarakat yang masih tinggi dan terus
-				meningkat seiring dengan pertambahan populasi penduduk (Mustakim dkk.,
-				2009).
+				ikan papuyu galam (warna kuning) dan papuyu hijau (warna hijau). Ikan
+				papuyu ini bernilai ekonomis yang relatif tinggi, dikarenakan permintaan
+				permintaan masyarakat yang masih tinggi dan terus meningkat seiring
+				dengan pertambahan populasi penduduk.
 			</p>
 			<p>
 				Statistika sangat dekat dengan kehidupan sehari-hari, terkadang tidak
@@ -50,13 +49,13 @@ export const analysisPage1 = {
 		<div>
 			<span style={{ display: "flex", justifyContent: "center" }}>
 				<Image
-					src={"/papuyuGalam.png"}
+					src={"/papuyuGalam.JPG"}
 					width={360}
 					height={160}
 					quality={100}
 				/>
 				<Image
-					src={"/papuyuHijau.png"}
+					src={"/papuyuHijau.JPG"}
 					width={360}
 					height={160}
 					quality={100}
