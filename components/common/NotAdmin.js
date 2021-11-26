@@ -28,12 +28,7 @@ const NotAdmin = () => {
 				<h4>
 					Mengarahkan ke <i>dashboard</i>...
 					<span>
-						{
-							<DisplayCountDown
-								timeSet={3}
-								setPushToDashboard={setPushToDashboard}
-							/>
-						}
+						{<DisplayCountDown timeSet={3} setCallback={setPushToDashboard} />}
 					</span>
 				</h4>
 			</div>
