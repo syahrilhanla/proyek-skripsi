@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-import BorderLinearProgress from "@/components/common/BorderLinearProgress";
 import DisplayCountDown from "@/components/common/DisplayCountDown";
 
 import { submitTestScore } from "@/components/utils/userFirestoreSavings";
@@ -32,7 +31,6 @@ const EvaluationCountDown = ({ setTimesUp }) => {
 		>
 			<div style={{ width: "100%", paddingBottom: "0.8rem" }}>
 				<DisplayCountDown timeSet={1200} setCallback={setIsTimeUp} />
-				<BorderLinearProgress value={percentage} />
 			</div>
 		</div>
 	);
