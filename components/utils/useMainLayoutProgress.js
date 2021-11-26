@@ -49,6 +49,17 @@ const useMainLayoutProgress = () => {
 		};
 	}, [updateProgress]);
 
+	useEffect(() => {
+		if (!isActive) {
+			const playAudio = (url) => {
+				const audio = new Audio(url);
+				audio.play();
+			};
+
+			playAudio("/WAV175.wav");
+		}
+	}, [isActive]);
+
 	return {
 		pageProgress,
 		isActive,

@@ -22,7 +22,7 @@ const SubmitButton = ({
 			}}
 			className={layoutStyles.answerButton}
 		>
-			Submit Answers
+			Kumpul Jawaban
 		</button>
 	);
 };
