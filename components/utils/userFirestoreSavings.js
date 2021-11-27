@@ -239,7 +239,7 @@ export const addUser = async (localUser) => {
 
 export const submitTestScore = (localUser, score, overallAnswers) => {
 	// console.log(score);
-	if (score) {
+	if (overallAnswers) {
 		const userData = { score: score };
 		docRef.doc(localUser).update(userData);
 		docRef.doc(localUser).update({ hasDoneQuiz: true });
