@@ -1,13 +1,23 @@
 .main {
 	margin: auto;
 	padding: 1rem;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
+	display: grid;
+	grid-template-columns: 4fr 5fr 1fr;
+	/* flex-wrap: wrap; */
+	align-items: center;
 	border-radius: 6px;
-	justify-content: space-evenly;
+	place-items: center;
 	min-width: 90%;
 	padding-bottom: 0;
+}
+
+@media (max-width: 768px) {
+	.main {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-evenly;
+	}
 }
 
 .question {
