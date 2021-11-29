@@ -32,7 +32,7 @@ const QuizComponent = ({ questionData, DisplayData, timesUp }) => {
 
 	useEffect(() => {
 		if (currentQuestion < 1) setQuizScore(0);
-		if (isFinished) {
+		if (isFinished && parentPath === "evaluasi") {
 			useSubmitAnswers(
 				questionData.length,
 				quizScore,
