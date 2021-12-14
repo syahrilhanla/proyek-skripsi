@@ -59,8 +59,8 @@ function AboutContent() {
 
 				<h1>Kepentingan Pengembangan</h1>
 				<p>
-					Media ini dibuat untuk memenuhi persyaratan dalam menyelesaikan
-					Program Strata-1 Pendidikan Komputer dengan judul "
+					Media ini dibuat sebagai tugas akhir untuk memenuhi persyaratan dalam
+					menyelesaikan Program Strata-1 Pendidikan Komputer dengan judul "
 					<i>
 						Pengembangan Media Pembelajaran Interaktif Berbasis Web pada Materi
 						Statistika Kelas VIII dengan Pendekatan Kontekstual Lahan Basah

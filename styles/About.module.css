@@ -38,4 +38,8 @@
 	.aboutContent {
 		margin-bottom: 3rem;
 	}
+
+	.container {
+		width: 95%;
+	}
 }

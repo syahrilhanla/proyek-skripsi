@@ -18,10 +18,16 @@ const ProtectedRoutes = ({ children }) => {
 		} else if (localUserData && currentLink === "/" && isAdmin) {
 			// redirect to admin page if user goes to home when user logs in as admin
 			router.push("/admin");
+		} else if (localUserData && currentLink === "/1710131110017" && isAdmin) {
+			// redirect to admin page if user goes to home when user logs in as admin
+			router.push("/admin");
 		} else if (localUserData && currentLink === "/dashboard" && isAdmin) {
 			// redirect to admin page if user goes to dashboard when user logs in as admin
 			router.push("/admin");
 		} else if (localUserData && currentLink === "/") {
+			// redirect to dashboard if user goes to home when there's localUser
+			router.push("/dashboard");
+		} else if (localUserData && currentLink === "/1710131110017") {
 			// redirect to dashboard if user goes to home when there's localUser
 			router.push("/dashboard");
 		} else if (!localUserData && currentLink !== "/") {
