@@ -11,7 +11,7 @@ export function SectionA() {
 			<div className={homeStyle.bgImage}></div>
 			<div className={homeStyle.contentWrap}>
 				<h1>Media Pembelajaran Statistika</h1>
-				<h1>Kelas VIII</h1>
+				<h1>Kelas VIII SMP</h1>
 			</div>
 			<div onClick={() => login()} className={homeStyle.startButton}>
 				Mulai
