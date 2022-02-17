@@ -107,49 +107,51 @@ const QuizComponent = ({ questionData, DisplayData, timesUp }) => {
 	};
 
 	return (
-		<div
-			key={currentQuestion}
-			className={quizStyle.main}
-			style={
-				isFinished === true
-					? { gridTemplateColumns: "1fr" }
-					: { gridTemplateColumns: "4fr 5fr 1fr" }
-			}
-		>
-			{!isFinished && !timesUp ? (
-				<DisplayData currentQuestion={currentQuestion} />
-			) : null}
-			{/* {console.log(quizScore)} */}
+		<>
 			<div
 				key={currentQuestion}
-				className={quizStyle.questionDisplay}
-				style={{ maxWidth: "75%" }}
+				className={quizStyle.main}
+				style={
+					isFinished === true
+						? { gridTemplateColumns: "1fr" }
+						: { gridTemplateColumns: "4fr 5fr 1fr" }
+				}
 			>
 				{!isFinished && !timesUp ? (
-					<MultipleChoices
-						questionData={questionData}
-						setCurrentQuestion={setCurrentQuestion}
-						setIsFinished={setIsFinished}
-						currentQuestion={currentQuestion}
-						overallAnswers={overallAnswers}
-						setOverallAnswers={setOverallAnswers}
-					/>
+					<DisplayData currentQuestion={currentQuestion} />
 				) : null}
-			</div>
-			{parentPath === "evaluasi" && timesUp && (
-				<h2 style={{ textAlign: "center", display: "block", width: "100%" }}>
-					Waktu Habis
-				</h2>
-			)}
-			{(isFinished || timesUp) && <DisplayScore quizScore={quizScore} />}
+				{/* {console.log(quizScore)} */}
+				<div
+					key={currentQuestion}
+					className={quizStyle.questionDisplay}
+					style={{ maxWidth: "75%" }}
+				>
+					{!isFinished && !timesUp ? (
+						<MultipleChoices
+							questionData={questionData}
+							setCurrentQuestion={setCurrentQuestion}
+							setIsFinished={setIsFinished}
+							currentQuestion={currentQuestion}
+							overallAnswers={overallAnswers}
+							setOverallAnswers={setOverallAnswers}
+						/>
+					) : null}
+				</div>
+				{parentPath === "evaluasi" && timesUp && (
+					<h2 style={{ textAlign: "center", display: "block", width: "100%" }}>
+						Waktu Habis
+					</h2>
+				)}
+				{(isFinished || timesUp) && <DisplayScore quizScore={quizScore} />}
 
-			{!isFinished && !timesUp && (
-				<QuestionIndex
-					setCurrentQuestion={setCurrentQuestion}
-					questionData={questionData}
-					overallAnswers={overallAnswers}
-				/>
-			)}
+				{!isFinished && !timesUp && (
+					<QuestionIndex
+						setCurrentQuestion={setCurrentQuestion}
+						questionData={questionData}
+						overallAnswers={overallAnswers}
+					/>
+				)}
+			</div>
 			{!isFinished && (
 				<div className={quizStyle.submitButton}>
 					{parentPath === "evaluasi" && !timesUp && (
@@ -163,7 +165,7 @@ const QuizComponent = ({ questionData, DisplayData, timesUp }) => {
 					)}
 				</div>
 			)}
-		</div>
+		</>
 	);
 };
 
