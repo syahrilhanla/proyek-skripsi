@@ -321,7 +321,7 @@ export const pemusatanPage3 = {
 			</p>
 			<DisplayEquation
 				displayMode={"block"}
-			>{`\\bar{x}_{gab} =  \\frac{ \\sum_{i=1}^mx_{i} + \\sum_{i=1}^nx_{i}}{m + n} = \\frac{m + \\bar{x}_{1} + n + \\bar{x}_{2}}{m + n}`}</DisplayEquation>
+			>{`\\bar{x}_{gab} =  \\frac{ \\sum_{i=1}^mx_{i} + \\sum_{i=1}^nx_{i}}{m + n} = \\frac{m  \\times \\bar{x}_{1} + n  \\times \\bar{x}_{2}}{m + n}`}</DisplayEquation>
 
 			<div style={{ width: "40%", margin: "auto" }}>
 				<p>Keterangan:</p>
