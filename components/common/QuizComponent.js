@@ -1,20 +1,24 @@
 import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
 import { useAuth } from "@/components/context/AuthContext";
 import { useProgress } from "@/components/context/ProgressContext";
 
 import SubmitButton from "@/components/common/SubmitButton";
+import { Button } from "@material-ui/core";
 
 import MultipleChoices from "@/components/common/MultipleChoices";
+import QuestionIndex from "@/components/common/QuestionIndex";
+
 import useGetCurrentPage from "@/components/utils/useGetCurrentPage";
+import useSubmitAnswers from "@/components/utils/useSubmitAnswers";
 import useCalculateScore from "@/components/utils/useCalculateScore";
 
 import quizStyle from "@/styles/QuizStyle.module.css";
-import QuestionIndex from "@/components/common/QuestionIndex";
-import useSubmitAnswers from "@/components/utils/useSubmitAnswers";
 
 const QuizComponent = ({ questionData, DisplayData, timesUp }) => {
 	const { localUserData } = useAuth();
+	const router = useRouter();
 
 	const { quizScore, setQuizScore } = useProgress();
 	const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -49,9 +53,34 @@ const QuizComponent = ({ questionData, DisplayData, timesUp }) => {
 					getScoringTotal(quizScore, questionData.length),
 					questionData.length
 				)
-			)
-				return <h3>Kamu sebaiknya mengulang kembali materi sebelumnya</h3>;
-			else
+			) {
+				// wont show anything if in quiz page
+				if (parentPath === "evaluasi")
+					return (
+						<>
+							<h3>
+								Kamu sebaiknya mengulang kembali materi sebelumnya! Semangat!
+							</h3>
+						</>
+					);
+				else
+					return (
+						<>
+							<h3>
+								Kamu sebaiknya mengulang kembali materi sebelumnya! Semangat!
+							</h3>
+							<Button
+								variant={"contained"}
+								color='primary'
+								onClick={() => {
+									router.push(`/${parentPath}/1`);
+								}}
+							>
+								Kembali ke Materi
+							</Button>
+						</>
+					);
+			} else
 				return (
 					<div>
 						<h3>Kamu bisa lanjut ke materi berikutnya!</h3>
