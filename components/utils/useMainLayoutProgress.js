@@ -50,6 +50,9 @@ const useMainLayoutProgress = () => {
 	}, [updateProgress]);
 
 	useEffect(() => {
+		// there wont any buzzer in admin page
+		if (parentPath === "admin") return;
+
 		if (!isActive) {
 			const playAudio = (url) => {
 				const audio = new Audio(url);
