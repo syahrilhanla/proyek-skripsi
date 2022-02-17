@@ -106,6 +106,10 @@ export const commonLinks = {
 			link: "/evaluasi",
 		},
 		{
+			text: "Dashboard",
+			link: "/dashboard",
+		},
+		{
 			text: "Perihal",
 			link: "/perihal",
 		},
