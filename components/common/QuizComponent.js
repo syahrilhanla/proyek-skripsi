@@ -78,7 +78,15 @@ const QuizComponent = ({ questionData, DisplayData, timesUp }) => {
 	};
 
 	return (
-		<div key={currentQuestion} className={quizStyle.main}>
+		<div
+			key={currentQuestion}
+			className={quizStyle.main}
+			style={
+				isFinished === true
+					? { gridTemplateColumns: "1fr" }
+					: { gridTemplateColumns: "4fr 5fr 1fr" }
+			}
+		>
 			{!isFinished && !timesUp ? (
 				<DisplayData currentQuestion={currentQuestion} />
 			) : null}
