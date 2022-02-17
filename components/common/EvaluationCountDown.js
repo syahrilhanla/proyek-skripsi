@@ -30,7 +30,7 @@ const EvaluationCountDown = ({ setTimesUp }) => {
 			}}
 		>
 			<div style={{ width: "100%", paddingBottom: "0.8rem" }}>
-				<DisplayCountDown timeSet={1200} setCallback={setIsTimeUp} />
+				<DisplayCountDown timeSet={1800} setCallback={setIsTimeUp} />
 			</div>
 		</div>
 	);
