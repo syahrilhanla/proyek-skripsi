@@ -13,6 +13,8 @@ const MultipleChoices = ({
 	const [selectedButton, setSelectedButton] = useState(-1);
 	const { chooseAnswer } = useChooseAnswer(setSelectedButton);
 
+	// console.log({ overallAnswers });
+
 	const toNextAnswer = () => {
 		if (!(currentQuestion < questionData.length - 1)) {
 			setIsFinished(true);
@@ -33,6 +35,26 @@ const MultipleChoices = ({
 			return "d";
 		}
 	};
+
+	const paintAnsweredQuestionBefore = () => {
+		if (overallAnswers.length > 0) {
+			const answeredQuestion = overallAnswers.filter(
+				(answer) => answer.currentQuestion === currentQuestion
+			);
+			if (answeredQuestion.length > 0) {
+				return answeredQuestion[0].index;
+			}
+		}
+	};
+
+	const classDeterminer = (index) => {
+		if (paintAnsweredQuestionBefore() === index) {
+			return quizStyle.selectedAnswer;
+		} else if (selectedButton === index) {
+			return quizStyle.selectedAnswer;
+		} else return quizStyle.answerButton;
+	};
+
 	return (
 		<>
 			<div className={quizStyle.question}>
@@ -58,11 +80,7 @@ const MultipleChoices = ({
 								setOverallAnswers
 							)
 						}
-						className={
-							selectedButton === index
-								? quizStyle.selectedAnswer
-								: quizStyle.answerButton
-						}
+						className={classDeterminer(index)}
 					>
 						{optionDisplay(index)}. {answer.answerText}
 					</button>
