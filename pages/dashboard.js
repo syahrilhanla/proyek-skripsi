@@ -22,17 +22,12 @@ const dashboard = () => {
 	const { isAdmin, LSSwitch, setLSSwitch, userClass, setUserClass } = useAuth();
 	const router = useRouter();
 	const [newClass, setNewClass] = useState(false);
-	// const [userClass, setUserClass] = useState("Belum Masuk Kelas");
 
 	// If the user is an admin, it will redirect from dashboard page to admin page
 	useEffect(() => {
 		if (isAdmin) return () => router.push("/admin");
 		setLSSwitch(!LSSwitch);
-	}, []);
-
-	// useEffect(() => {
-	// 	if (userClass !== "Belum Masuk Kelas") console.log("changed");
-	// }, [userClass]);
+	}, [isAdmin]);
 
 	return (
 		<>

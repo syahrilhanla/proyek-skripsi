@@ -32,6 +32,7 @@ const AuthProvider = ({ children }) => {
 	const [userInfo, setUserInfo] = useState(null);
 	const [userProgress, setUserProgress] = useState(null);
 	const [userClass, setUserClass] = useState("Belum Masuk Kelas");
+	const [dashboardRenderCounter, setDashboardRenderCounter] = useState(0);
 	// ###############
 
 	// used to determine whether page is ready to load
@@ -119,6 +120,8 @@ const AuthProvider = ({ children }) => {
 				classList,
 				LSSwitch,
 				userClass,
+				dashboardRenderCounter,
+				setDashboardRenderCounter,
 				setUserClass,
 				setLSSwitch,
 				setAdminList,

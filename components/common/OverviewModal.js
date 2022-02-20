@@ -15,27 +15,31 @@ import { Button, ButtonGroup } from "@material-ui/core";
 
 const OverviewModal = () => {
 	const classes = modalStyles();
-	const [open, setOpen] = useState(false);
-	const [hasReadOverview, setHasReadOverview] = useState(false);
-	const [whichInfo, setWhichInfo] = useState(1);
 
-	const { userInfo } = useAuth();
+	const [open, setOpen] = useState(false);
+	const [whichInfo, setWhichInfo] = useState(1);
+	const [isChecked, setIsChecked] = useState(false);
+
+	const { userInfo, setDashboardRenderCounter, dashboardRenderCounter } =
+		useAuth();
 
 	useEffect(() => {
-		if (userInfo) {
+		if (userInfo && dashboardRenderCounter === 0) {
 			if (userInfo.hasReadOverview === false) setOpen(true);
 		}
 	}, [userInfo]);
 
 	const handleClose = () => {
 		setOpen(false);
-		if (hasReadOverview === true) {
-			changeHasReadOverview(userInfo.uid, hasReadOverview);
+		setDashboardRenderCounter((prevValue) => prevValue + 1);
+		if (isChecked === true) {
+			changeHasReadOverview(userInfo.uid, isChecked);
 		}
 	};
 
 	const handleCheckBox = () => {
-		setHasReadOverview((prevValue) => !prevValue);
+		setIsChecked((prevValue) => !prevValue);
+		changeHasReadOverview();
 	};
 
 	const WhichInfoButton = () => (
@@ -106,7 +110,7 @@ const OverviewModal = () => {
 						<span>
 							<input
 								type='checkbox'
-								checked={hasReadOverview}
+								checked={isChecked}
 								onChange={handleCheckBox}
 							/>
 							<span>Jangan tampilkan lagi</span>
