@@ -106,16 +106,17 @@ const QuizComponent = ({ questionData, DisplayData, timesUp }) => {
 		);
 	};
 
+	const determineStyle = () => {
+		if (timesUp === true) return { display: "block" };
+		else return { display: "grid", gridTemplateColumns: "4fr 5fr 1fr" };
+	};
+
 	return (
 		<>
 			<div
 				key={currentQuestion}
 				className={quizStyle.main}
-				style={
-					isFinished === true
-						? { gridTemplateColumns: "1fr" }
-						: { gridTemplateColumns: "4fr 5fr 1fr" }
-				}
+				style={determineStyle()}
 			>
 				{!isFinished && !timesUp ? (
 					<DisplayData currentQuestion={currentQuestion} />
