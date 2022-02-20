@@ -1,37 +1,45 @@
-
 .mainAbout {
-  display: grid;
-  grid-template-columns: 1fr;
-  min-height: 100%;
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+	display: grid;
+	grid-template-columns: 1fr;
+	min-height: 100%;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
 }
 
 .aboutContent {
-  margin-bottom: 3rem;
-  padding: 1rem;
+	padding: 1rem;
 }
 
 .container {
-  width: 60%;
-  margin: auto;
+	width: 60%;
+	margin: auto;
 }
 
 .container h1 {
-  font-weight: 400;
-  margin-bottom: -0.7rem;
+	font-weight: 400;
+	margin-bottom: -0.7rem;
 }
 
 .container p {
-  font-size: 18px;
-  line-height: normal;
-  padding-bottom: 0.8rem;
+	font-size: 18px;
+	line-height: normal;
+	padding-bottom: 0.8rem;
 }
 
 .pictures {
-  margin-top: 2rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  justify-content: center;
+	margin-top: 2rem;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	justify-content: center;
+}
+
+@media (max-width: 768px) {
+	.aboutContent {
+		margin-bottom: 3rem;
+	}
+
+	.container {
+		width: 95%;
+	}
 }

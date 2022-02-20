@@ -12,7 +12,7 @@ import { useAuth } from "@/components/context/AuthContext";
 const useMainLayoutProgress = () => {
 	// #### used to update progress to firestore
 	const { localUserData } = useAuth();
-	const { parentPath, currentPath } = useGetCurrentPage();
+	const { parentPath, currentPath, currentURL } = useGetCurrentPage();
 	// ####
 
 	const [pageProgress, setPageProgress] = useState([]);
@@ -36,7 +36,9 @@ const useMainLayoutProgress = () => {
 			if (
 				parentPath !== "admin" &&
 				parentPath !== "manageAdmin" &&
-				parentPath !== "evaluasi"
+				parentPath !== "evaluasi" &&
+				parentPath !== "evaluasi" &&
+				currentURL.split("/")[2] !== "kuis"
 			) {
 				useUpdateProgress(parentPath, currentPath, localUserData);
 			}
@@ -46,6 +48,20 @@ const useMainLayoutProgress = () => {
 			unmount = true;
 		};
 	}, [updateProgress]);
+
+	useEffect(() => {
+		// there wont any buzzer in admin page
+		if (parentPath === "admin") return;
+
+		if (!isActive) {
+			const playAudio = (url) => {
+				const audio = new Audio(url);
+				audio.play();
+			};
+
+			playAudio("/WAV175.wav");
+		}
+	}, [isActive]);
 
 	return {
 		pageProgress,

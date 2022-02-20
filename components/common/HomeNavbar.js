@@ -23,7 +23,7 @@ const HomeNavbar = () => {
 					</li>
 					<li>
 						<a>
-							<Link href={"/tentang"}>Tentang</Link>
+							<Link href={"/perihal"}>Perihal</Link>
 						</a>
 					</li>
 				</ul>

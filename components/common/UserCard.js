@@ -11,13 +11,7 @@ import useCountAllActs from "@/components/utils/useCountAllActs";
 
 import userCardStyles from "@/styles/UserCard.module.css";
 
-const UserCard = ({
-	userData,
-	isEditMode,
-	deleteFromUI,
-	isSuccess,
-	setIsSuccess,
-}) => {
+const UserCard = ({ userData, isEditMode, deleteFromUI, setIsSuccess }) => {
 	const [percentageValue, setPercentageValue] = useState(0);
 	const [openModal, setOpenModal] = useState(false);
 	const [individualProgress, setIndividualProgress] = useState([]);
@@ -36,8 +30,6 @@ const UserCard = ({
 			if (individualProgress.length === 0) return true;
 		} else return false;
 	};
-
-	// filterDescending();
 
 	return (
 		<>
@@ -61,7 +53,11 @@ const UserCard = ({
 					<Avatar alt={userData.displayName} src={userData.photoURL} />
 				</span>
 				<h3 key={userData.displayName}>{userData.displayName}</h3>
-				<h3>Score: {userData.score}</h3>
+				{!userData.hasDoneQuiz ? (
+					<h3>Belum Mengerjakan</h3>
+				) : (
+					<h3>Score: {userData.score}</h3>
+				)}
 				<span className={userCardStyles.userProgress}>
 					<h3>{percentageValue}% </h3>
 					<BorderLinearProgress value={percentageValue} />

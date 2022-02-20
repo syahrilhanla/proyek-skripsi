@@ -1,25 +1,53 @@
-import { useAuth } from "@/components/context/AuthContext";
-import { submitTestScore } from "@/components/utils/userFirestoreSavings";
+import { useState, useEffect } from "react";
+
+import useSubmitAnswers from "@/components/utils/useSubmitAnswers";
 
 import layoutStyles from "@/styles/MainLayout.module.css";
-import useCalculateScore from "@/components/utils/useCalculateScore";
+import AlertDialog from "@/components/common/Dialog";
 
-const SubmitButton = ({ questionAmount, quizScore, setIsFinished }) => {
-	const { localUserData } = useAuth();
-	const { getScoringTotal } = useCalculateScore(questionAmount);
+const SubmitButton = ({
+	questionAmount,
+	quizScore,
+	setIsFinished,
+	overallAnswers,
+	localUserData,
+}) => {
+	const [isDialogOpened, setIsDialogOpened] = useState(false);
+	const [isAnswerSubmitted, setIsAnswerSubmitted] = useState(false);
 
-	const scoreToSubmit = getScoringTotal(quizScore, questionAmount);
+	useEffect(() => {
+		if (isAnswerSubmitted) {
+			useSubmitAnswers(
+				questionAmount,
+				quizScore,
+				overallAnswers,
+				localUserData
+			);
+			setIsFinished(true);
+		}
+	}, [isAnswerSubmitted]);
 
+	const checkIsFullyAnswered = () => {
+		if (overallAnswers.length === questionAmount) {
+			console.log(overallAnswers.length, questionAmount);
+			return true;
+		} else return false;
+	};
 	return (
-		<button
-			onClick={() => {
-				submitTestScore(localUserData.uid, scoreToSubmit);
-				setIsFinished(true);
-			}}
-			className={layoutStyles.answerButton}
-		>
-			Submit Answers
-		</button>
+		<>
+			<AlertDialog
+				isFullyAnswered={checkIsFullyAnswered()}
+				isDialogOpened={isDialogOpened}
+				setIsDialogOpened={setIsDialogOpened}
+				setIsAnswerSubmitted={setIsAnswerSubmitted}
+			/>
+			<button
+				onClick={() => setIsDialogOpened(true)}
+				className={layoutStyles.answerButton}
+			>
+				Kumpul Jawaban
+			</button>
+		</>
 	);
 };
 

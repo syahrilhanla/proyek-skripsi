@@ -27,11 +27,11 @@ const page4 = () => {
 
 	const Data = () => (
 		<div style={{ margin: "auto" }}>
+			<Caption>Tabel 1-2: Ukuran Ikan Papuyu</Caption>
 			<TableTwo />
-			<Caption>Tabel 1-3: Ukuran Ikan Papuyu</Caption>
 			<br />
+			<Caption>Gambar 1-2: Diagram Batang Ukuran Ikan Papuyu</Caption>
 			<BarChart chartData={chartData} />
-			<Caption>Gambar 1-4: Ukuran Ikan Papuyu</Caption>
 		</div>
 	);
 

@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+import { useAuth } from "@/components/context/AuthContext";
 
 import MainLayout from "@/components/common/MainLayout";
 import QuizComponent from "@/components/common/QuizComponent";
 import evaluationQuiz from "@/components/data/evaluationQuiz";
-import EvaluationCountDown from "@/components/common/EvaluationCountDown";
 import Caption from "@/components/common/Caption";
-import DataFrequency from "@/components/charts/DataFrequency";
+
+import useLockEvaluation from "@/components/utils/useLockEvaluation";
+
 import {
 	BaungTable,
 	FishTable,
@@ -17,9 +20,13 @@ import {
 	ShrimpCatch,
 	SouthBorneoFish,
 } from "@/components/graphsAndTables/EvaluationQuizData";
+import EvaluationCountDown from "@/components/common/EvaluationCountDown";
 
 const evaluation = () => {
 	const [timesUp, setTimesUp] = useState(false);
+	const { userInfo, userClass } = useAuth();
+
+	const { isEvaluationOpen } = useLockEvaluation();
 
 	// needed to display data on QuizComponent
 	// takes number as argument from questionData array being set in QuizComponent
@@ -103,10 +110,58 @@ const evaluation = () => {
 		/>
 	);
 
+	// console.log({ userClass });
+
+	const LockedDisplay = () => {
+		// console.log({ userInfo });
+		return (
+			<div
+				style={{
+					display: "flex",
+					flexDirection: "column",
+					justifyContent: "center",
+					alignItems: "center",
+					height: "30vh",
+				}}
+			>
+				<h2 style={{ fontWeight: "400" }}>
+					{userInfo.className !== "Belum Masuk Kelas" ||
+					userClass !== "Belum Masuk Kelas"
+						? "Fitur Evaluasi sedang terkunci"
+						: "Masuk Kelas Terlebih Dahulu di Halaman Dashboard Profil"}
+				</h2>
+				<h2 style={{ fontWeight: "400" }}>
+					{userInfo.className !== "Belum Masuk Kelas" ||
+					userClass !== "Belum Masuk Kelas"
+						? "Hubungi Admin untuk membuka fitur"
+						: null}
+				</h2>
+			</div>
+		);
+	};
+
 	return (
 		<>
-			<MainLayout Child1={DisplayQuiz} title={"Evaluasi Akhir"} />
-			<EvaluationCountDown setTimesUp={setTimesUp} />
+			{userInfo && (
+				<>
+					<MainLayout
+						Child1={
+							(isEvaluationOpen &&
+								userInfo.className !== "Belum Masuk Kelas") ||
+							(userClass !== "Belum Masuk Kelas" && isEvaluationOpen)
+								? DisplayQuiz
+								: LockedDisplay
+						}
+						title={"Evaluasi Akhir"}
+					/>
+					{!timesUp ? (
+						(isEvaluationOpen && userInfo.className !== "Belum Masuk Kelas") ||
+						(userClass !== "Belum Masuk Kelas" && isEvaluationOpen) ? (
+							<EvaluationCountDown setTimesUp={setTimesUp} />
+						) : null
+					) : null}
+				</>
+			)}
 		</>
 	);
 };

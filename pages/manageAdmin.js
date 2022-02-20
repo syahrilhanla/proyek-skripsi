@@ -53,7 +53,7 @@ const manageAdmin = () => {
 						color='secondary'
 						onClick={() => setIsEditMode(!isEditMode)}
 					>
-						<Delete /> Edit User
+						<Delete /> Edit Admin
 					</Button>
 				</span>
 				<span className={ManageAdminStyles.adminMother}>

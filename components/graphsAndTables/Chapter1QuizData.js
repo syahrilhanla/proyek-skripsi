@@ -60,7 +60,7 @@ export const RiverTable = () => {
 export const FishTable = () => {
 	const fishData = [
 		{
-			length: "31-35 ",
+			length: "21-25 ",
 			amount: 8,
 		},
 		{
@@ -68,11 +68,11 @@ export const FishTable = () => {
 			amount: 4,
 		},
 		{
-			length: "36-40",
+			length: "31-35",
 			amount: 11,
 		},
 		{
-			length: "21-25",
+			length: "36-40 ",
 			amount: 13,
 		},
 	];

@@ -1,7 +1,11 @@
 import { useState } from "react";
-import UserCard from "@/components/common/UserCard";
 import { Button, Switch } from "@material-ui/core";
+import UserCard from "@/components/common/UserCard";
+import ScoreTable from "@/components/common/ScoreTable";
 import GroupTable from "@/components/common/GroupTable";
+import { ButtonGroup } from "@material-ui/core";
+
+import { openEvaluationSwitch } from "@/components/utils/userFirestoreSavings";
 
 import DisplayUserStyle from "@/styles/DisplayUsers.module.css";
 
@@ -14,16 +18,47 @@ const DisplayUsers = ({
 }) => {
 	// if true then display individual progress
 	const [individualChecked, setIndividualChecked] = useState(true);
+
+	// which table to display
+	const [whichTable, setWhichTable] = useState(1);
+
+	// if true then open class' evaluation
+	const [evaluationCheck, setEvaluationCheck] = useState(
+		selectedClass.isEvaluationOpen
+	);
+
 	const [isEditMode, setIsEditMode] = useState(false);
 
-	const handleChange = () => {
+	const handleIndividualChecked = () => {
 		setIndividualChecked(!individualChecked);
+	};
+
+	const handleOpenEvaluation = () => {
+		setEvaluationCheck((prevValue) => !prevValue);
+		openEvaluationSwitch(selectedClass.className, !evaluationCheck);
 	};
 
 	const deleteFromUI = (userID) => {
 		const newList = userList.filter((user) => user.uid !== userID);
 		setUserList(newList);
 	};
+
+	const WhichTableButton = () => (
+		<ButtonGroup variant='contained' aria-label='outlined primary button group'>
+			<Button
+				onClick={() => setWhichTable(1)}
+				color={whichTable === 1 && "primary"}
+			>
+				Tabel Progres
+			</Button>
+			<Button
+				onClick={() => setWhichTable(2)}
+				color={whichTable === 2 && "primary"}
+			>
+				Tabel Evaluasi
+			</Button>
+		</ButtonGroup>
+	);
 
 	return (
 		<div>
@@ -49,16 +84,29 @@ const DisplayUsers = ({
 
 			{userList.length > 0 ? (
 				<>
-					<div>
-						<span>Tabel Grup</span>
-						<Switch
-							defaultChecked
-							size='medium'
-							color='primary'
-							onChange={handleChange}
-							checked={individualChecked}
-						/>
-						<span>Individu</span>
+					<div style={{ display: "flex", justifyContent: "space-between" }}>
+						<div>
+							<span>Tabel Grup</span>
+							<Switch
+								defaultChecked
+								size='medium'
+								color='primary'
+								onChange={handleIndividualChecked}
+								checked={individualChecked}
+							/>
+							<span>Individu</span>
+						</div>
+						<div>
+							<span>Kunci Evaluasi</span>
+							<Switch
+								defaultChecked
+								size='medium'
+								color='primary'
+								onChange={handleOpenEvaluation}
+								checked={evaluationCheck}
+							/>
+							<span>Buka Evaluasi</span>
+						</div>
 					</div>
 
 					{individualChecked ? (
@@ -73,7 +121,20 @@ const DisplayUsers = ({
 							/>
 						))
 					) : (
-						<GroupTable userList={userList} />
+						<div>
+							<WhichTableButton />
+							{whichTable === 1 ? (
+								<GroupTable
+									userList={userList}
+									classCode={selectedClass.className}
+								/>
+							) : (
+								<ScoreTable
+									userList={userList}
+									classCode={selectedClass.className}
+								/>
+							)}
+						</div>
 					)}
 				</>
 			) : (
