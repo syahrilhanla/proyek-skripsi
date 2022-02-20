@@ -33,9 +33,9 @@
 
 .answeredQuestion {
 	width: 2.5rem;
-	background-color: #97a0ce;
+	background-color: #c8ceec;
 	border-radius: 4px;
-	color: #ffff;
+	color: rgb(63, 49, 253);
 	font-size: medium;
 	font-weight: 200;
 	padding: 0.3rem;

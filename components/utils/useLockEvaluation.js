@@ -7,7 +7,6 @@ const useLockEvaluation = () => {
 	const [isEvaluationOpen, setIsEvaluationOpen] = useState(true);
 
 	useEffect(() => {
-		console.log({ userInfo });
 		if (userInfo !== null) {
 			if (userInfo.className !== "Belum Masuk Kelas") {
 				const snapShotData = firestore
@@ -28,7 +27,7 @@ const useLockEvaluation = () => {
 			} else console.log({ userClass });
 		}
 
-		console.log({ isEvaluationOpen });
+		// console.log({ isEvaluationOpen });
 	}, [userClass, isEvaluationOpen, userInfo]);
 
 	return { isEvaluationOpen };
