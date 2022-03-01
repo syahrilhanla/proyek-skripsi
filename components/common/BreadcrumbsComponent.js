@@ -1,7 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Typography from "@material-ui/core/Typography";
-import Link from "@material-ui/core/Link";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 
 import useGetCurrentPage from "@/components/utils/useGetCurrentPage";
@@ -18,13 +17,11 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CustomSeparator() {
 	const classes = useStyles();
-	const { parentPath, defaultPushTo, customPushTo } = useGetCurrentPage();
-
-	// currentPath example:
-	// ia-statistics.vercel.app/pemusatan/5
+	const { parentPath, currentPath, defaultPushTo, customPushTo } =
+		useGetCurrentPage();
 
 	const determineLinks = (parentPath) => {
-		const linkList = drawersData.map((list, index) => {
+		const linkList = drawersData.map((list) => {
 			return list.items.map((item) => item);
 		});
 
@@ -46,14 +43,17 @@ export default function CustomSeparator() {
 					<Typography color='textPrimary'>{parentPath}</Typography>
 				</span>
 				{determineLinks(parentPath).map((item) => {
-					return (
-						<span
-							style={{ cursor: "pointer" }}
-							onClick={() => customPushTo(`/${parentPath}/${item.id}`)}
-						>
-							<Typography color='textPrimary'>{item.subTitle}</Typography>
-						</span>
-					);
+					if (item.id == currentPath) {
+						return <p>{item.subTitle}</p>;
+					} else
+						return (
+							<span
+								style={{ cursor: "pointer" }}
+								onClick={() => customPushTo(`/${parentPath}/${item.id}`)}
+							>
+								<Typography color='textPrimary'>{item.subTitle}</Typography>
+							</span>
+						);
 				})}
 			</Breadcrumbs>
 		</div>
