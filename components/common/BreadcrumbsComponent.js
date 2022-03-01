@@ -18,38 +18,20 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CustomSeparator() {
 	const classes = useStyles();
-	const { currentPath, parentPath, currentURL, pushTo } = useGetCurrentPage();
+	const { parentPath, defaultPushTo, customPushTo } = useGetCurrentPage();
 
 	// currentPath example:
 	// ia-statistics.vercel.app/pemusatan/5
 
-	let pageList = [];
+	const determineLinks = (parentPath) => {
+		const linkList = drawersData.map((list, index) => {
+			return list.items.map((item) => item);
+		});
 
-	const linkList = drawersData.map((list, index) =>
-		list.items.map((subLink) => subLink)
-	);
-
-	const analisis = linkList[0];
-	const pemusatan = linkList[1];
-	const penyebaran = linkList[2];
-
-	const determineLinks = () => {
-		if (parentPath === "analisis") return analisis;
-		else if (parentPath === "pemusatan") return pemusatan;
-		else if (parentPath === "penyebaran") return penyebaran;
+		if (parentPath === "analisis") return linkList[0];
+		else if (parentPath === "pemusatan") return linkList[1];
+		else if (parentPath === "penyebaran") return linkList[2];
 	};
-
-	// const breadcrumbButtonGenerator = ( pageNumber) => {
-	// 	let currentPage = 1;
-	// 	while (currentPage <= pageNumber) {
-	// 		pageList = [...pageList, currentPage];
-	// 		currentPage += 1;
-	// 	}
-	// 	console.log({ pageList });
-	// };
-
-	// if user were on page 5
-	// breadcrumbButtonGenerator(determineLinks());
 
 	return (
 		<div className={classes.root}>
@@ -57,14 +39,20 @@ export default function CustomSeparator() {
 				separator={<NavigateNextIcon fontSize='small' />}
 				aria-label='breadcrumb'
 			>
-				<Link color='inherit' href='/' onClick={pushTo(parentPath)}>
+				<span
+					style={{ cursor: "pointer" }}
+					onClick={() => defaultPushTo(`${parentPath}`)}
+				>
 					<Typography color='textPrimary'>{parentPath}</Typography>
-				</Link>
-				{determineLinks().map((subTitle) => {
+				</span>
+				{determineLinks(parentPath).map((item) => {
 					return (
-						<Link color='inherit' href='/' onClick={pushTo(currentURL)}>
-							<Typography color='textPrimary'>{subTitle}</Typography>
-						</Link>
+						<span
+							style={{ cursor: "pointer" }}
+							onClick={() => customPushTo(`/${parentPath}/${item.id}`)}
+						>
+							<Typography color='textPrimary'>{item.subTitle}</Typography>
+						</span>
 					);
 				})}
 			</Breadcrumbs>

@@ -71,9 +71,6 @@ const MainLayout = ({
 				<Navbar />
 
 				<h1 className={layoutStyles.title}>{title}</h1>
-				<div style={{ display: "flex", justifyContent: "center" }}>
-					<BreadcrumbsComponent />
-				</div>
 				<div
 					className={
 						Child2 ? layoutStyles.containerCombo : layoutStyles.containerSolo
@@ -139,6 +136,16 @@ const MainLayout = ({
 							</div>
 					  )
 					: null}
+			</div>
+			<div
+				style={{
+					display: "flex",
+					justifyContent: "center",
+					marginBottom: "1rem",
+					marginTop: "-0.5rem",
+				}}
+			>
+				<BreadcrumbsComponent />
 			</div>
 			{DisplayBottomProgress()}
 		</>
