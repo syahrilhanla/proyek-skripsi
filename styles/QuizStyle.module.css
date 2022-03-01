@@ -1,9 +1,18 @@
-.main {
+.mainRemainingTime {
 	margin: auto;
 	padding: 1rem;
 	display: grid;
 	grid-template-columns: 4fr 5fr 1fr;
-	/* flex-wrap: wrap; */
+	align-items: center;
+	border-radius: 6px;
+	place-items: center;
+	min-width: 90%;
+	padding-bottom: 0;
+}
+.mainTimeout {
+	margin: auto;
+	padding: 1rem;
+	display: block;
 	align-items: center;
 	border-radius: 6px;
 	place-items: center;
@@ -12,7 +21,7 @@
 }
 
 @media (max-width: 768px) {
-	.main {
+	.mainRemainingTime {
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
