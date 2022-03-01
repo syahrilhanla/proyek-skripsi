@@ -22,7 +22,7 @@
 	grid-template-columns: 1fr 1fr;
 	gap: 1rem;
 	width: 90%;
-	margin: 2rem auto;
+	margin: 1.7rem auto;
 	/* align-self: center; */
 	padding: 2rem;
 	border: 1px solid #4444;
@@ -41,7 +41,7 @@
 	grid-template-columns: 1fr;
 	gap: 1rem;
 	width: 90%;
-	margin: 2rem auto;
+	margin: 1.7rem auto;
 	/* align-self: center; */
 	padding: 1rem;
 	border: 1px solid #4444;

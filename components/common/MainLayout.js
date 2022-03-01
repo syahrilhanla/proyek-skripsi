@@ -5,6 +5,7 @@ import layoutStyles from "@/styles/MainLayout.module.css";
 import QuestionBox from "@/components/common/QuestionBox";
 import ModalNotification from "@/components/common/ModalNotification";
 import ShortEssay from "@/components/common/ShortEssay";
+import BreadcrumbsComponent from "@/components/common/BreadcrumbsComponent";
 
 import useMainLayoutProgress from "@/components/utils/useMainLayoutProgress";
 import useGetCurrentPage from "@/components/utils/useGetCurrentPage";
@@ -70,7 +71,9 @@ const MainLayout = ({
 				<Navbar />
 
 				<h1 className={layoutStyles.title}>{title}</h1>
-
+				<div style={{ display: "flex", justifyContent: "center" }}>
+					<BreadcrumbsComponent />
+				</div>
 				<div
 					className={
 						Child2 ? layoutStyles.containerCombo : layoutStyles.containerSolo
