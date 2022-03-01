@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CustomSeparator() {
 	const classes = useStyles();
-	const { parentPath, currentPath, defaultPushTo, customPushTo } =
+	const { currentURL, parentPath, currentPath, customPushTo } =
 		useGetCurrentPage();
 
 	const determineLinks = (parentPath) => {
@@ -31,31 +31,39 @@ export default function CustomSeparator() {
 	};
 
 	return (
-		<div className={classes.root}>
-			<Breadcrumbs
-				separator={<NavigateNextIcon fontSize='small' />}
-				aria-label='breadcrumb'
-			>
-				<span
-					style={{ cursor: "pointer" }}
-					onClick={() => defaultPushTo(`${parentPath}`)}
-				>
-					<Typography color='textPrimary'>{parentPath}</Typography>
-				</span>
-				{determineLinks(parentPath).map((item) => {
-					if (item.id == currentPath) {
-						return <p>{item.subTitle}</p>;
-					} else
-						return (
-							<span
-								style={{ cursor: "pointer" }}
-								onClick={() => customPushTo(`/${parentPath}/${item.id}`)}
-							>
-								<Typography color='textPrimary'>{item.subTitle}</Typography>
-							</span>
-						);
-				})}
-			</Breadcrumbs>
-		</div>
+		<>
+			{parentPath !== "admin" &&
+			parentPath !== "manageAdmin" &&
+			parentPath !== "evaluasi" &&
+			parentPath !== "petunjuk" &&
+			currentURL.split("/")[2] !== "kuis" ? (
+				<div className={classes.root}>
+					<Breadcrumbs
+						separator={<NavigateNextIcon fontSize='small' />}
+						aria-label='breadcrumb'
+					>
+						<span
+							style={{ cursor: "pointer" }}
+							onClick={() => customPushTo(`${parentPath}/1`)}
+						>
+							<Typography color='textPrimary'>{parentPath}</Typography>
+						</span>
+						{determineLinks(parentPath).map((item) => {
+							if (item.id == currentPath) {
+								return <p>{item.subTitle}</p>;
+							} else
+								return (
+									<span
+										style={{ cursor: "pointer" }}
+										onClick={() => customPushTo(`/${parentPath}/${item.id}`)}
+									>
+										<Typography color='textPrimary'>{item.subTitle}</Typography>
+									</span>
+								);
+						})}
+					</Breadcrumbs>
+				</div>
+			) : null}
+		</>
 	);
 }
