@@ -25,7 +25,7 @@ const QuizComponent = ({ questionData, DisplayData, timesUp }) => {
 	const [isFinished, setIsFinished] = useState(false);
 	const [overallAnswers, setOverallAnswers] = useState([]);
 
-	const { parentPath, pushTo } = useGetCurrentPage();
+	const { parentPath, defaultPushTo } = useGetCurrentPage();
 	const { getScoreThreshold, getScoringTotal, calculateResults } =
 		useCalculateScore();
 
@@ -87,7 +87,7 @@ const QuizComponent = ({ questionData, DisplayData, timesUp }) => {
 						<button
 							className={quizStyle.answerButton}
 							key={quizScore}
-							onClick={() => pushTo(parentPath)}
+							onClick={() => defaultPushTo(parentPath)}
 						>
 							Materi Berikutnya
 						</button>
