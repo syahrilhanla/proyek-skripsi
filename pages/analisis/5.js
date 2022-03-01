@@ -11,7 +11,7 @@ const page3 = () => {
 			<MainLayout
 				Child1={Chapter1Pie}
 				Child2={Text}
-				title={"Berlatih Bersama"}
+				title={"Ayo Mencoba!"}
 				essayQuestion={chapter1Page5}
 				scrollActID={analysisPage5.id}
 			/>

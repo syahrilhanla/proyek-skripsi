@@ -51,7 +51,7 @@ export const drawersData = [
 			},
 			{
 				id: "5",
-				subTitle: "Berlatih Bersama",
+				subTitle: "Ayo Mencoba!",
 			},
 			{
 				id: "6",
@@ -81,7 +81,7 @@ export const drawersData = [
 			},
 			{
 				id: "4",
-				subTitle: "Berlatih Bersama",
+				subTitle: "Ayo Mencoba!",
 			},
 			{
 				id: "5",
