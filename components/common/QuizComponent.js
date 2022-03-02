@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useRouter } from "next/router";
 
 import { useAuth } from "@/components/context/AuthContext";
 import { useProgress } from "@/components/context/ProgressContext";
@@ -18,14 +17,13 @@ import quizStyle from "@/styles/QuizStyle.module.css";
 
 const QuizComponent = ({ questionData, DisplayData, timesUp }) => {
 	const { localUserData } = useAuth();
-	const router = useRouter();
 
 	const { quizScore, setQuizScore } = useProgress();
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [isFinished, setIsFinished] = useState(false);
 	const [overallAnswers, setOverallAnswers] = useState([]);
 
-	const { parentPath, pushTo } = useGetCurrentPage();
+	const { parentPath, defaultPushTo, customPushTo } = useGetCurrentPage();
 	const { getScoreThreshold, getScoringTotal, calculateResults } =
 		useCalculateScore();
 
@@ -73,7 +71,7 @@ const QuizComponent = ({ questionData, DisplayData, timesUp }) => {
 								variant={"contained"}
 								color='primary'
 								onClick={() => {
-									router.push(`/${parentPath}/1`);
+									customPushTo(`/${parentPath}/1`);
 								}}
 							>
 								Kembali ke Materi
@@ -87,7 +85,7 @@ const QuizComponent = ({ questionData, DisplayData, timesUp }) => {
 						<button
 							className={quizStyle.answerButton}
 							key={quizScore}
-							onClick={() => pushTo(parentPath)}
+							onClick={() => defaultPushTo(parentPath)}
 						>
 							Materi Berikutnya
 						</button>
@@ -115,8 +113,12 @@ const QuizComponent = ({ questionData, DisplayData, timesUp }) => {
 		<>
 			<div
 				key={currentQuestion}
-				className={quizStyle.main}
-				style={determineStyle()}
+				className={
+					timesUp === true || isFinished === true
+						? quizStyle.mainTimeout
+						: quizStyle.mainRemainingTime
+				}
+				// style={determineStyle()}
 			>
 				{!isFinished && !timesUp ? (
 					<DisplayData currentQuestion={currentQuestion} />

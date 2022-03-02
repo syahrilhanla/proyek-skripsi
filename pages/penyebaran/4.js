@@ -12,7 +12,7 @@ const page1 = () => {
 	return (
 		<MainLayout
 			Child1={Text1}
-			title={"Berlatih Bersama"}
+			title={"Ayo Mencoba!"}
 			essayQuestion={chapter3Page4}
 			scrollActID={penyebaranPage4.id}
 		/>

@@ -15,7 +15,7 @@ const page1 = () => {
 	return (
 		<MainLayout
 			Child1={Text1}
-			title={"Berlatih Bersama"}
+			title={"Ayo Mencoba!"}
 			essayQuestion={chapter2Page5}
 			scrollActID={pemusatanPage5.id}
 		/>
