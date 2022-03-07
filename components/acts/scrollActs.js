@@ -47,21 +47,28 @@ export const analysisPage1 = {
 	),
 	act2: (
 		<div>
-			<span style={{ display: "flex", justifyContent: "center" }}>
+			<span
+				style={{
+					display: "flex",
+					justifyContent: "center",
+					flexDirection: "column",
+				}}
+			>
 				<Image
 					src={"/papuyuGalam.JPG"}
-					width={360}
-					height={160}
+					width={480}
+					height={240}
 					quality={100}
 				/>
+				<Caption>Gambar 1. Papuyu Galam</Caption>
 				<Image
 					src={"/papuyuHijau.JPG"}
-					width={360}
-					height={160}
+					width={480}
+					height={240}
 					quality={100}
 				/>
+				<Caption>Gambar 2. Papuyu Hijau</Caption>
 			</span>
-			<Caption>Kiri: Papuyu Galam; Kanan: Papuyu Hijau</Caption>
 		</div>
 	),
 };
