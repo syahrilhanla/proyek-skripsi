@@ -232,11 +232,10 @@ export const pemusatanPage1 = {
 				Di kehidupan sehari-hari kata “rata-rata” sering kali terdengar.
 				Rata-rata merupakan salah satu ukuran pemusatan data yang paling sering
 				digunakan. Berdasarkan data yang didapat dari ikan papuyu yang
-				dikumpulkan dari pasar-pasar di kawasan Banjarmasin (teks sementara,
-				sumber ditambahkan nanti), didapatkan ukuran rata-rata badan ikan
-				sebesar 8,5 cm. Ini merupakan salah satu contoh kecil dari penggunaan
-				ukuran pemusatan data dalam kehidupan sehari-hari, oleh karena itu
-				ukuran pemusatan data penting untuk dipahami.
+				dikumpulkan dari pasar-pasar di kawasan Banjarmasin, didapatkan ukuran
+				rata-rata badan ikan sebesar 8,5 cm. Ini merupakan salah satu contoh
+				kecil dari penggunaan ukuran pemusatan data dalam kehidupan sehari-hari,
+				oleh karena itu ukuran pemusatan data penting untuk dipahami.
 			</p>
 			<p>
 				Perhatikan data dalam tabel di samping! Dalam tabel tersebut terdapat
