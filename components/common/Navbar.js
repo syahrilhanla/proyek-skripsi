@@ -11,6 +11,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import DrawerComponent from "@/components/common/Drawer";
+import Tooltip from "@material-ui/core/Tooltip";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -99,15 +100,17 @@ export default function Navbar() {
 		<div className={classes.grow}>
 			<AppBar position='static'>
 				<Toolbar>
-					<IconButton
-						edge='start'
-						className={classes.menuButton}
-						color='inherit'
-						aria-label='open drawer'
-						onClick={handleDrawerOpen}
-					>
-						<MenuIcon />
-					</IconButton>
+					<Tooltip title='Sidebar'>
+						<IconButton
+							edge='start'
+							className={classes.menuButton}
+							color='inherit'
+							aria-label='open drawer'
+							onClick={handleDrawerOpen}
+						>
+							<MenuIcon />
+						</IconButton>
+					</Tooltip>
 					<div className={classes.title}>
 						<div className={classes.logo}>
 							<Image src='/stats.svg' height={35} width={40} />
@@ -127,24 +130,28 @@ export default function Navbar() {
 								color='inherit'
 							>
 								<Link href={isAdmin ? "/admin" : "/dashboard"}>
-									<Avatar
-										alt={localUserData && localUserData.displayName}
-										src={localUserData && localUserData.photoURL}
-										className={classes.small}
-									/>
+									<Tooltip title={isAdmin ? "Admin" : "Dashboard"}>
+										<Avatar
+											alt={localUserData && localUserData.displayName}
+											src={localUserData && localUserData.photoURL}
+											className={classes.small}
+										/>
+									</Tooltip>
 								</Link>
 							</IconButton>
 						</span>
 						<span onClick={() => signOut()}>
-							<IconButton
-								edge='end'
-								aria-label='sign out'
-								aria-controls={menuId}
-								onClick={handleProfileMenuOpen}
-								color='inherit'
-							>
-								<ExitToAppIcon />
-							</IconButton>
+							<Tooltip title='Keluar Akun'>
+								<IconButton
+									edge='end'
+									aria-label='sign out'
+									aria-controls={menuId}
+									onClick={handleProfileMenuOpen}
+									color='inherit'
+								>
+									<ExitToAppIcon />
+								</IconButton>
+							</Tooltip>
 						</span>
 					</div>
 					<div className={classes.sectionMobile}>
