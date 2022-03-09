@@ -232,22 +232,22 @@ export const questionData = [
 		answerChoices: [
 			{
 				id: idGenerator(),
-				answerText: "82 ekor",
+				answerText: "82 telur",
 				isCorrect: true,
 			},
 			{
 				id: idGenerator(),
-				answerText: "84 ekor",
+				answerText: "84 telur",
 				isCorrect: false,
 			},
 			{
 				id: idGenerator(),
-				answerText: "94 ekor",
+				answerText: "94 telur",
 				isCorrect: false,
 			},
 			{
 				id: idGenerator(),
-				answerText: "96 ekor",
+				answerText: "96 telur",
 				isCorrect: false,
 			},
 		],
