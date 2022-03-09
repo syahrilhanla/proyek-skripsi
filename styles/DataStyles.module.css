@@ -18,3 +18,8 @@
 	margin: auto;
 	max-width: 40%;
 }
+
+.breadcrumbStyle ol {
+	display: flex;
+	justify-content: center;
+}
