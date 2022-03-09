@@ -9,6 +9,7 @@ import {
 	ContentHelp,
 	DashboardHelp,
 	HelpContent,
+	GraphHelp,
 } from "../../pages/petunjuk";
 import { changeHasReadOverview } from "@/components/utils/userFirestoreSavings";
 import { Button, ButtonGroup } from "@material-ui/core";
@@ -62,6 +63,12 @@ const OverviewModal = () => {
 			>
 				Halaman Materi
 			</Button>
+			<Button
+				onClick={() => setWhichInfo(4)}
+				color={whichInfo === 4 && "primary"}
+			>
+				Interaktifitas Diagram
+			</Button>
 		</ButtonGroup>
 	);
 
@@ -84,9 +91,14 @@ const OverviewModal = () => {
 					<ContentHelp />
 				</>
 			);
+		} else if (whichInfo === 4) {
+			return (
+				<>
+					<GraphHelp />
+				</>
+			);
 		}
 	};
-
 	return (
 		<div>
 			<Modal open={open} onClose={handleClose} className={classes.modal}>
