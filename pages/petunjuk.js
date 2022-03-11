@@ -185,7 +185,14 @@ export function GraphHelp() {
 				quality={100}
 			/>
 			<ol style={{ lineHeight: "1.9" }}>
-				<li>Letakkan kursor di atas bagian data yang ingin ditampilkan.</li>
+				<li>
+					Untuk penggunaan di PC (komputer atau laptop) letakkan kursor (panah{" "}
+					<i>mouse</i>) di atas bagian data yang ingin ditampilkan.
+				</li>
+				<li>
+					Untuk penggunaan di <i>smartphone</i> tekan bagian data yang ingin
+					ditampilkan.
+				</li>
 			</ol>
 		</>
 	);
