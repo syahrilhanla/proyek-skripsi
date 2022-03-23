@@ -2,8 +2,18 @@ import React from "react";
 import navbarStyle from "@/styles/HomeNavbar.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import useGetCurrentPage from "@/components/utils/useGetCurrentPage";
 
 const HomeNavbar = () => {
+	const { currentURL } = useGetCurrentPage();
+
+	const activeLink = (currentLink) => {
+		if (currentURL === currentLink)
+			return {
+				fontWeight: 700,
+			};
+	};
+
 	return (
 		<nav className={navbarStyle.navbar}>
 			<Link href={"/"}>
@@ -16,20 +26,20 @@ const HomeNavbar = () => {
 			</Link>
 			<div className={navbarStyle.links}>
 				<ul>
-					<li>
-						<a>
-							<Link href={"/"}>Beranda</Link>
-						</a>
+					<li style={activeLink("/")}>
+						<Link href={"/"}>Beranda</Link>
 					</li>
-					<li>
-						<a>
-							<Link href={"/perihal"}>Perihal</Link>
-						</a>
+					<li style={activeLink("/perihal")}>
+						<Link href={"/perihal"}>Perihal</Link>
 					</li>
 				</ul>
 			</div>
 		</nav>
 	);
 };
+
+// .links a {
+// 	padding: 1rem 1rem;
+// }
 
 export default HomeNavbar;

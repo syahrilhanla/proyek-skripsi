@@ -30,6 +30,12 @@ const perihal = () => {
 			>
 				Halaman Materi
 			</Button>
+			<Button
+				onClick={() => setWhichInfo(4)}
+				color={whichInfo === 4 && "primary"}
+			>
+				Interaktifitas Diagram
+			</Button>
 		</ButtonGroup>
 	);
 
@@ -50,6 +56,12 @@ const perihal = () => {
 			return (
 				<>
 					<ContentHelp />
+				</>
+			);
+		} else if (whichInfo === 4) {
+			return (
+				<>
+					<GraphHelp />
 				</>
 			);
 		}
@@ -156,6 +168,30 @@ export function ContentHelp() {
 				<li>
 					Tombol Log Out. Dengan menekan tombol ini user/admin akan keluar akun
 					dan diarahkan secara langsung ke homepage.
+				</li>
+			</ol>
+		</>
+	);
+}
+
+export function GraphHelp() {
+	return (
+		<>
+			<h1 style={{ marginBottom: "1rem" }}>Interaktifitas Diagram/Grafik</h1>
+			<Image
+				src={"/diagramInteractivity.png"}
+				height={600}
+				width={800}
+				quality={100}
+			/>
+			<ol style={{ lineHeight: "1.9" }}>
+				<li>
+					Untuk penggunaan di PC (komputer atau laptop) letakkan kursor (panah{" "}
+					<i>mouse</i>) di atas bagian data yang ingin ditampilkan.
+				</li>
+				<li>
+					Untuk penggunaan di <i>smartphone</i> tekan bagian data yang ingin
+					ditampilkan.
 				</li>
 			</ol>
 		</>

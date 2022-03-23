@@ -17,6 +17,8 @@ import { Button, ButtonGroup } from "@material-ui/core";
 
 import groupTableStyles from "@/styles/GroupTable.module.css";
 
+import Tooltip from "@material-ui/core/Tooltip";
+
 const GroupTable = ({ userList, classCode }) => {
 	const [usersData, setUsersData] = useState([]);
 	const [chooseChapter, setChooseChapter] = useState("chapter1");
@@ -212,16 +214,20 @@ const GroupTable = ({ userList, classCode }) => {
 																	data.map((item) => {
 																		// console.log(item.name);
 																		return (
-																			<td
-																				key={keyGenerator(index)}
-																				style={
-																					item.act
-																						? { background: "#C6E0B4" }
-																						: { background: "#F8CBAD" }
-																				}
-																			>
-																				{item.act ? <p>&#10003;</p> : "-"}
-																			</td>
+																			<>
+																				<Tooltip title={item.desc}>
+																					<td
+																						key={keyGenerator(index)}
+																						style={
+																							item.act
+																								? { background: "#C6E0B4" }
+																								: { background: "#F8CBAD" }
+																						}
+																					>
+																						{item.act ? <p>&#10003;</p> : "-"}
+																					</td>
+																				</Tooltip>
+																			</>
 																		);
 																	})
 																)

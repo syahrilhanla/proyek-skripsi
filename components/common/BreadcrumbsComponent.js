@@ -7,6 +7,8 @@ import useGetCurrentPage from "@/components/utils/useGetCurrentPage";
 
 import { drawersData } from "@/components/data/drawersData";
 
+import breadcrumbStyle from "@/styles/DataStyles.module.css";
+
 const useStyles = makeStyles((theme) => ({
 	root: {
 		"& > * + *": {
@@ -37,7 +39,7 @@ export default function CustomSeparator() {
 			parentPath !== "evaluasi" &&
 			parentPath !== "petunjuk" &&
 			currentURL.split("/")[2] !== "kuis" ? (
-				<div className={classes.root}>
+				<div className={`${classes.root} ${breadcrumbStyle.breadcrumbStyle}`}>
 					<Breadcrumbs
 						separator={<NavigateNextIcon fontSize='small' />}
 						aria-label='breadcrumb'
@@ -50,7 +52,7 @@ export default function CustomSeparator() {
 						</span>
 						{determineLinks(parentPath).map((item) => {
 							if (item.id == currentPath) {
-								return <p>{item.subTitle}</p>;
+								return <Typography color='primary'>{item.subTitle}</Typography>;
 							} else
 								return (
 									<span
