@@ -39,10 +39,7 @@
 }
 
 .links > ul > li :hover {
-	background-color: #d4d7e7;
-	color: #3f51b5;
-	font-weight: 600;
-	border-radius: 4px;
+	font-weight: 700;
 }
 
 .links a {

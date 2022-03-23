@@ -10,10 +10,7 @@ const HomeNavbar = () => {
 	const activeLink = (currentLink) => {
 		if (currentURL === currentLink)
 			return {
-				backgroundColor: "#d4d7e7",
-				color: "#3f51b5",
-				fontWeight: 600,
-				borderRadius: "4px",
+				fontWeight: 700,
 			};
 	};
 
