@@ -1,5 +1,7 @@
 import Chapter1Line from "@/components/graphsAndTables/Chapter1Line";
 import DisplayEquation from "@/components/charts/KatexComponent";
+import Image from "next/image";
+import Caption from "@/components/common/Caption";
 
 export const questionDataAnalysisPage4 = {
 	questions: [
@@ -33,7 +35,25 @@ export const questionDataAnalysisPage4 = {
 			],
 		},
 	],
-	Data: Chapter1Line,
+	Data: () => (
+		<>
+			<Chapter1Line />
+			<div
+				style={{
+					display: "grid",
+					placeItems: "center",
+					gridTemplateColumns: "1fr",
+					marginBottom: "0.5rem",
+					marginTop: "0.5rem",
+				}}
+			>
+				<Image src={"/itikAlabio.png"} width={360} height={240} quality={100} />
+				<div style={{ marginTop: "0.5rem" }}>
+					<Caption>Gambar 1-3: Itik Alabio</Caption>
+				</div>
+			</div>
+		</>
+	),
 };
 
 export const questionDataPemusatanPage4 = {
