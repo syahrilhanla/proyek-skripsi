@@ -404,6 +404,20 @@ export const pemusatanPage4 = {
 				terendah dan tertinggi
 			</Caption>
 
+			<span
+				style={{ display: "flex", justifyContent: "center", flexWrap: "wrap" }}
+			>
+				<Image src={"/rotanHijau.jpg"} width={400} height={240} quality={100} />
+				<Image
+					src={"/kerajinanRotan.jpg"}
+					width={400}
+					height={240}
+					quality={100}
+				/>
+
+				<Caption>Atas: Tanaman Rotan; Bawah: Kerajinan Rotan</Caption>
+			</span>
+
 			<p>
 				Seperti yang dilihat berdasarkan contoh di atas, menentukan nilai median
 				dari banyak data ganjil sangatlah mudah. Apabila terlalu banyak data
