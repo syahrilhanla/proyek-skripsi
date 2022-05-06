@@ -50,6 +50,7 @@ export const questionDataAnalysisPage4 = {
 				<Image src={"/itikAlabio.png"} width={360} height={240} quality={100} />
 				<div style={{ marginTop: "0.5rem" }}>
 					<Caption>Gambar 1-3: Itik Alabio</Caption>
+					<Caption>Sumber: bptupelaihari.ditjenpkh.pertanian.go.id</Caption>
 				</div>
 			</div>
 		</>
