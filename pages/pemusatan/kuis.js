@@ -33,7 +33,7 @@ const quiz1 = () => {
 				return (
 					<>
 						<Caption>Data berikut digunakan untuk pertanyaan no 3-4</Caption>
-						<DataColumn arrList={arr} />
+						<DataColumn arrList={arr} columns={6} />
 					</>
 				);
 			} else if (currentQuestion < 7) {

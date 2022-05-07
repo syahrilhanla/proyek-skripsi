@@ -1,6 +1,4 @@
 import TableThree from "@/components/graphsAndTables/TableThree";
-import DataColumn from "@/components/charts/DataColumn";
-import Caption from "@/components/common/Caption";
 
 export const chapter1Page3 = {
 	question: [

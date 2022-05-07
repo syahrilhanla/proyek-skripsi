@@ -95,5 +95,5 @@ export const RattanLength = () => {
 		"19",
 		"17",
 	];
-	return <DataColumn arrList={arr} />;
+	return <DataColumn arrList={arr} columns={5} />;
 };
