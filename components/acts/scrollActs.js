@@ -415,7 +415,9 @@ export const pemusatanPage4 = {
 					quality={100}
 				/>
 
-				<Caption>Atas: Tanaman Rotan; Bawah: Kerajinan Rotan</Caption>
+				<Caption>
+					Gambar 2-1: Atas: Tanaman Rotan; Bawah: Kerajinan Rotan
+				</Caption>
 			</span>
 
 			<p>
@@ -471,6 +473,12 @@ export const pemusatanPage4 = {
 				apabila tidak memenuhi kriteria yang ditentukan maka akan ia masak
 				menjadi hidangan lain.
 			</p>
+			<span
+				style={{ display: "flex", justifyContent: "center", flexWrap: "wrap" }}
+			>
+				<Image src={"/ikanGabus.jpg"} width={400} height={240} quality={100} />
+				<Caption>Gambar 2-2: Ikan Gabus</Caption>
+			</span>
 		</div>
 	),
 };
