@@ -755,6 +755,16 @@ export const penyebaranPage4 = {
 	id: "act1",
 	act: (
 		<div>
+			<span
+				style={{
+					display: "grid",
+					gridTemplateColumns: "1fr",
+					placeItems: "center",
+				}}
+			>
+				<Image src={"/ikanPatin.jpg"} width={400} height={240} quality={100} />
+				<Caption>Gambar 3-1: Ikan Patin</Caption>
+			</span>
 			<p>
 				Data tersebut diperoleh dari pengukuran ikan patin di penangkaran.
 				Ikan-ikan tersebut ingin digolongkan menjadi beberapa ukuran untuk
