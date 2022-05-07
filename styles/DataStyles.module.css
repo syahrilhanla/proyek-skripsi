@@ -1,6 +1,6 @@
 .blueTableData {
 	display: grid;
-	grid-template-columns: repeat(8, 1fr);
+	/* grid-template-columns: repeat(7, 1fr); */
 	background-color: #c9c9fa;
 	padding: 0.4rem;
 	border: 1px solid #e2e2e2;

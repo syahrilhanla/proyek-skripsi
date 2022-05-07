@@ -107,7 +107,7 @@
 	justify-content: center;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
 	.containerCombo {
 		grid-template-columns: 1fr;
 		max-height: none;
@@ -120,11 +120,13 @@
 	.column2 {
 		padding: 1rem;
 		margin: 1rem 0px;
+		overflow-y: auto;
 	}
 
 	.column1 {
 		padding: 0.8rem 0px;
 		overflow-x: scroll;
+		overflow-y: auto;
 	}
 
 	.shortEssay {

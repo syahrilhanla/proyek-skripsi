@@ -23,7 +23,7 @@ const page4 = () => {
 	};
 
 	const instruction =
-		"Di bawah ini merupakan diagram garis yang menunjukkan aktivitas bertelur dari Itik Alabio, itik yang terkenal sebagai produk peternakan khas Hulu Sungai yang berdaya jual tinggi. Berdasarkan data yang disajikan coba kamu analisa data di atas dan ambil kesimpulan, kemudian jawablah pertanyaan berikut:";
+		"Di bawah ini merupakan diagram garis yang menunjukkan aktivitas bertelur dari Itik Alabio, itik yang terkenal sebagai produk peternakan khas Hulu Sungai Utara (HSU) yang berdaya jual tinggi. Berdasarkan data yang disajikan pada diagram di bawah, analisalah data dan ambil kesimpulannya, kemudian jawablah pertanyaan berikut:";
 
 	const Data = () => (
 		<div style={{ margin: "auto" }}>

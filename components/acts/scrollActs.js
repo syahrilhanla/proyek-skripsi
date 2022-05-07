@@ -404,6 +404,22 @@ export const pemusatanPage4 = {
 				terendah dan tertinggi
 			</Caption>
 
+			<span
+				style={{ display: "flex", justifyContent: "center", flexWrap: "wrap" }}
+			>
+				<Image src={"/rotanHijau.jpg"} width={400} height={240} quality={100} />
+				<Image
+					src={"/kerajinanRotan.jpg"}
+					width={400}
+					height={240}
+					quality={100}
+				/>
+
+				<Caption>
+					Gambar 2-1: Atas: Tanaman Rotan; Bawah: Kerajinan Rotan
+				</Caption>
+			</span>
+
 			<p>
 				Seperti yang dilihat berdasarkan contoh di atas, menentukan nilai median
 				dari banyak data ganjil sangatlah mudah. Apabila terlalu banyak data
@@ -457,6 +473,12 @@ export const pemusatanPage4 = {
 				apabila tidak memenuhi kriteria yang ditentukan maka akan ia masak
 				menjadi hidangan lain.
 			</p>
+			<span
+				style={{ display: "flex", justifyContent: "center", flexWrap: "wrap" }}
+			>
+				<Image src={"/ikanGabus.jpg"} width={400} height={240} quality={100} />
+				<Caption>Gambar 2-2: Ikan Gabus</Caption>
+			</span>
 		</div>
 	),
 };
@@ -606,6 +628,7 @@ export const penyebaranPage1 = {
 					24, 25, 29, 31, 30, 28, 28, 29, 31, 32, 35, 31, 26, 29, 30, 28, 28,
 					29, 31, 30, 28, 31, 26, 29, 32, 35, 31, 26,
 				]}
+				columns={7}
 			/>
 		</div>
 	),
@@ -732,6 +755,16 @@ export const penyebaranPage4 = {
 	id: "act1",
 	act: (
 		<div>
+			<span
+				style={{
+					display: "grid",
+					gridTemplateColumns: "1fr",
+					placeItems: "center",
+				}}
+			>
+				<Image src={"/ikanPatin.jpg"} width={400} height={240} quality={100} />
+				<Caption>Gambar 3-1: Ikan Patin</Caption>
+			</span>
 			<p>
 				Data tersebut diperoleh dari pengukuran ikan patin di penangkaran.
 				Ikan-ikan tersebut ingin digolongkan menjadi beberapa ukuran untuk
@@ -759,6 +792,7 @@ export const penyebaranPage4 = {
 						21, 22, 22, 23, 24, 25, 25, 25, 26, 27, 27, 28, 28, 28, 28, 29, 30,
 						30, 31, 34, 34, 35, 36, 36, 36,
 					]}
+					columns={5}
 				/>
 			</div>
 			<p>
@@ -843,6 +877,7 @@ export const penyebaranPage4 = {
 					36, 35, 25, 36, 25, 28, 23, 27, 24, 29, 21, 22, 28, 28, 30, 25, 34,
 					28, 22, 26, 31, 27, 30, 34, 36,
 				]}
+				columns={5}
 			/>
 		</div>
 	),
@@ -883,6 +918,7 @@ export const penyebaranPage5 = {
 					21, 22, 22, 23, 24, 25, 25, 25, 26, 27, 27, 28, 28, 28, 28, 29, 30,
 					30, 31, 34, 34, 35, 36, 36, 36,
 				]}
+				columns={5}
 			/>
 		</>
 	),
@@ -941,6 +977,7 @@ export const penyebaranPage6 = {
 					21, 22, 22, 23, 24, 25, 25, 25, 26, 27, 27, 28, 28, 28, 28, 29, 30,
 					30, 31, 34, 34, 35, 36, 36, 36,
 				]}
+				columns={5}
 			/>
 		</>
 	),
