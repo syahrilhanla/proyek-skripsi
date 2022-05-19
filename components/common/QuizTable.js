@@ -8,66 +8,70 @@ import { Button, ButtonGroup } from "@material-ui/core";
 
 import groupTableStyles from "@/styles/GroupTable.module.css";
 
-import Tooltip from "@material-ui/core/Tooltip";
-
 const GroupTable = ({ userList, classCode }) => {
 	const [usersData, setUsersData] = useState([]);
 	const [chooseChapter, setChooseChapter] = useState("chapter1");
-	const [pageAmount, setPageAmount] = useState([]);
-	const [actAmount, setActAmount] = useState([]);
 	const [loading, setLoading] = useState(true);
+	const [answerKey, setAnswerKey] = useState([]);
 
 	useEffect(() => {
 		getUsersDetails(userList).then((data) => setUsersData(data));
+		getAnswerKey().then((results) => setAnswerKey(results.answerKey));
 	}, []);
 
 	useEffect(() => {
-		if (usersData.length > 0) {
-			setPageAmount(getPageAmount(chooseChapter));
-			setActAmount(getActivities(chooseChapter));
+		if (usersData.length > 0 && answerKey.length > 0) {
 			setLoading(false);
 		}
-	}, [usersData, chooseChapter]);
+	}, [usersData]);
 
-	const getPageAmount = (chapterName) => {
-		return usersData[0].progress
-			.filter((chapter) => chapter.chapter === chapterName)
-			.map((chapterData) =>
-				chapterData.data.map((data, index) => {
-					return { pageNumber: index + 1, pageLength: data.pageData.length };
-				})
-			);
-	};
+	const keyGenerator = (index) => index * Math.random() * 10000;
 
-	const getActivities = (chapterName) => {
-		return usersData.map((data) => {
-			const results = {
-				displayName: data.displayName,
-				progress: data.progress
-					.filter((chapter) => chapter.chapter === chapterName)
-					.map((chapterData) =>
-						chapterData.data.map((data) =>
-							data.pageData.map((item, index) => item)
-						)
-					),
-			};
-			// console.log(results);
-			return results;
-		});
+	const getAnswerAmount = () => {
+		if (answerKey.length > 0) return answerKey.map((item) => item.number);
 	};
 
 	const getOverallColSpan = () => {
-		if (actAmount.length > 0) {
-			const pageLengths = pageAmount[0].map((item) => item.pageLength);
-			const sumPageLengths = pageLengths.reduce(
-				(prevVal, currentVal) => prevVal + currentVal,
-				0
-			);
-			return sumPageLengths;
+		if (answerKey.length > 0) {
+			return answerKey.length;
 		}
 	};
 
-	const keyGenerator = (index) => index * Math.random() * 10000;
+	const AnswerResults = ({ user }) => {
+		console.log({ user });
+		// making default answers array, then push users existing answer to this array
+		const newAnswers = answerKey.map((item, index) => {
+			return { number: index, answer: " - ", isTrue: false };
+		});
+
+		if (user.overallAnswers !== undefined && user.overallAnswers.length > 0) {
+			user.overallAnswers.forEach((answer) => {
+				newAnswers.forEach((item, indexDefault) => {
+					if (item.number === answer.number) {
+						newAnswers[indexDefault] = answer;
+					}
+				});
+			});
+		}
+
+		return newAnswers.length > 0 ? (
+			newAnswers.map((answer, index) => (
+				<td
+					key={keyGenerator(index)}
+					style={
+						answer.isTrue
+							? { background: "#C6E0B4" }
+							: { background: "#F8CBAD" }
+					}
+				>
+					{answer.answer}
+				</td>
+			))
+		) : (
+			<td colSpan={getOverallColSpan()}>Belum Melakukan Evaluasi</td>
+		);
+		// }
+	};
 
 	const ChapterButton = () => (
 		<ButtonGroup variant='contained' aria-label='outlined primary button group'>
@@ -92,38 +96,12 @@ const GroupTable = ({ userList, classCode }) => {
 					<LoadingProgress />
 				) : (
 					<>
-						<div
-							style={{
-								marginBottom: "1rem",
-								display: "flex",
-								justifyContent: "space-between",
-							}}
-						>
-							<ChapterButton />
-							<div>
-								Ket:{" "}
-								<span style={{ backgroundColor: "#C6E0B4", padding: "0.4rem" }}>
-									&#10003;
-								</span>{" "}
-								: Telah Dilakukan
-								<span
-									style={{
-										marginLeft: "0.7rem",
-										backgroundColor: "#F8CBAD",
-										padding: "0.4rem",
-									}}
-								>
-									-
-								</span>{" "}
-								: Belum Dilakukan
-							</div>
-						</div>
 						<ReactHTMLTableToExcel
 							id='test-table-xls-button'
 							className={`download-table-xls-button ${groupTableStyles.excelButton}`}
 							table='table-to-xls'
-							filename={`Progress Kelas ${classCode}`}
-							sheet={`Progress Kelas ${classCode}`}
+							filename={`Jawaban Evaluasi Kelas ${classCode}`}
+							sheet={`Jawaban Evaluasi Kelas ${classCode}`}
 							buttonText='Unduh File Excel'
 						/>
 						<table id='table-to-xls' style={{ marginTop: "1rem" }}>
@@ -133,33 +111,24 @@ const GroupTable = ({ userList, classCode }) => {
 									<td rowSpan={3}>No</td>
 									<td rowSpan={3}>Nama</td>
 									<td rowSpan={3}>Skor</td>
-									<td colSpan={getOverallColSpan()}>{chapterTitle()}</td>
+									<td colSpan={getOverallColSpan()}>{"Rekap Jawaban Siswa"}</td>
 								</tr>
 
 								{/* display the amount of pages column based on passed data */}
 								<tr>
-									{pageAmount.length > 0 &&
-										pageAmount[0].map((data) => (
-											<td
-												colSpan={data.pageLength}
-												style={{ padding: "0.7rem" }}
-												key={data.pageNumber}
-											>
-												Kegiatan Hal. {data.pageNumber}
-											</td>
-										))}
+									{getAnswerAmount().map((data) => (
+										<td style={{ padding: "0.7rem" }} key={data}>
+											{data + 1}
+										</td>
+									))}
 								</tr>
 
 								{/* Display activities number in page as header */}
 								<tr>
-									{actAmount.length > 0 &&
-										actAmount[0].progress.map((item) =>
-											item.map((data) =>
-												data.map((atom, index) => (
-													<td key={keyGenerator(index)}>{index + 1}</td>
-												))
-											)
-										)}
+									{answerKey.length > 0 &&
+										answerKey.map((item) => (
+											<td key={keyGenerator(item.number)}>{item.trueAnswer}</td>
+										))}
 								</tr>
 							</thead>
 
@@ -189,41 +158,16 @@ const GroupTable = ({ userList, classCode }) => {
 													key={keyGenerator(index)}
 													style={{ padding: "0 0.7rem" }}
 												>
-													{user.score}
+													{user.hasDoneQuiz ? user.score : " - "}
 												</td>
-
 												{/* display users activities detail */}
-
-												{actAmount.length > 0 &&
-													actAmount
-														.filter(
-															(data) => data.displayName === user.displayName
-														)
-														.map((result) =>
-															result.progress.map((item) =>
-																item.map((data) =>
-																	data.map((item) => {
-																		// console.log(item.name);
-																		return (
-																			<>
-																				<Tooltip title={item.desc}>
-																					<td
-																						key={keyGenerator(index)}
-																						style={
-																							item.act
-																								? { background: "#C6E0B4" }
-																								: { background: "#F8CBAD" }
-																						}
-																					>
-																						{item.act ? <p>&#10003;</p> : "-"}
-																					</td>
-																				</Tooltip>
-																			</>
-																		);
-																	})
-																)
-															)
-														)}
+												{!user.hasDoneQuiz ? (
+													<td colSpan={getOverallColSpan()}>
+														Belum Melakukan Evaluasi
+													</td>
+												) : (
+													<AnswerResults user={user} />
+												)}
 											</tr>
 										</>
 									);
