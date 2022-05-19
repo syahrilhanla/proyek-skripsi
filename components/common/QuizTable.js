@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
-import { getUsersDetails } from "@/components/utils/userFirestoreSavings";
+import {
+	getAnswerKey,
+	getUsersDetails,
+} from "@/components/utils/userFirestoreSavings";
 
 import LoadingProgress from "@/components/common/LoadingProgress";
 
@@ -8,7 +11,7 @@ import { Button, ButtonGroup } from "@material-ui/core";
 
 import groupTableStyles from "@/styles/GroupTable.module.css";
 
-const GroupTable = ({ userList, classCode }) => {
+const QuizTable = ({ userList, classCode }) => {
 	const [usersData, setUsersData] = useState([]);
 	const [chooseChapter, setChooseChapter] = useState("chapter1");
 	const [loading, setLoading] = useState(true);
@@ -96,14 +99,14 @@ const GroupTable = ({ userList, classCode }) => {
 					<LoadingProgress />
 				) : (
 					<>
-						<ReactHTMLTableToExcel
+						{/* <ReactHTMLTableToExcel
 							id='test-table-xls-button'
 							className={`download-table-xls-button ${groupTableStyles.excelButton}`}
 							table='table-to-xls'
 							filename={`Jawaban Evaluasi Kelas ${classCode}`}
 							sheet={`Jawaban Evaluasi Kelas ${classCode}`}
 							buttonText='Unduh File Excel'
-						/>
+						/> */}
 						<table id='table-to-xls' style={{ marginTop: "1rem" }}>
 							<thead className={groupTableStyles.header}>
 								{/* table header for general users detail */}
@@ -181,4 +184,4 @@ const GroupTable = ({ userList, classCode }) => {
 	);
 };
 
-export default GroupTable;
+export default QuizTable;
