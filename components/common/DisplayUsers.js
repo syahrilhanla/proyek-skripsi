@@ -55,6 +55,12 @@ const DisplayUsers = ({
 				onClick={() => setWhichTable(2)}
 				color={whichTable === 2 && "primary"}
 			>
+				Tabel Kuis
+			</Button>
+			<Button
+				onClick={() => setWhichTable(3)}
+				color={whichTable === 2 && "primary"}
+			>
 				Tabel Evaluasi
 			</Button>
 		</ButtonGroup>
