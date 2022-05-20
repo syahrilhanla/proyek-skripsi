@@ -99,14 +99,24 @@ const QuizTable = ({ userList, classCode }) => {
 					<LoadingProgress />
 				) : (
 					<>
-						{/* <ReactHTMLTableToExcel
+						<div
+							style={{
+								width: "full",
+								display: "flex",
+								justifyItems: "start",
+								margin: "0.8rem 0",
+							}}
+						>
+							<ChapterButton />
+						</div>
+						<ReactHTMLTableToExcel
 							id='test-table-xls-button'
 							className={`download-table-xls-button ${groupTableStyles.excelButton}`}
 							table='table-to-xls'
 							filename={`Jawaban Evaluasi Kelas ${classCode}`}
 							sheet={`Jawaban Evaluasi Kelas ${classCode}`}
 							buttonText='Unduh File Excel'
-						/> */}
+						/>
 						<table id='table-to-xls' style={{ marginTop: "1rem" }}>
 							<thead className={groupTableStyles.header}>
 								{/* table header for general users detail */}
