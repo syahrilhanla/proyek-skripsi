@@ -11,6 +11,7 @@ import QuestionIndex from "@/components/common/QuestionIndex";
 
 import useGetCurrentPage from "@/components/utils/useGetCurrentPage";
 import useSubmitAnswers from "@/components/utils/useSubmitAnswers";
+import useSubmitQuiz from "@/components/utils/useSubmitQuiz";
 import useCalculateScore from "@/components/utils/useCalculateScore";
 
 import quizStyle from "@/styles/QuizStyle.module.css";
@@ -34,12 +35,22 @@ const QuizComponent = ({ questionData, DisplayData, timesUp }) => {
 
 	useEffect(() => {
 		if (currentQuestion < 1) setQuizScore(0);
+		// if user finished doing test in /evaluation page
 		if (isFinished && parentPath === "evaluasi") {
 			useSubmitAnswers(
 				questionData.length,
 				quizScore,
 				overallAnswers,
 				localUserData
+			);
+		} else if (isFinished) {
+			// if user finished answering quiz from each chapter
+			useSubmitQuiz(
+				questionData.length,
+				quizScore,
+				overallAnswers,
+				localUserData,
+				parentPath
 			);
 		}
 	}, [isFinished]);

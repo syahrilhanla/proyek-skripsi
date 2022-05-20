@@ -247,6 +247,19 @@ export const submitTestScore = (localUser, score, overallAnswers) => {
 	} else return;
 };
 
+export const submitQuiz = (localUser, score, overallAnswers, chapter) => {
+	if (overallAnswers) {
+		const quizData = { score, chapter, overallAnswers };
+		const chapterName = `${chapter}Quiz`;
+		const chapterQuiz = {
+			chapterName,
+			quizData,
+		};
+
+		docRef.doc(localUser).update({ [`${chapterName}`]: chapterQuiz });
+	} else return;
+};
+
 export const changeHasReadOverview = (localUser, newValue) => {
 	if (localUser) {
 		docRef.doc(localUser).update({ hasReadOverview: newValue });
