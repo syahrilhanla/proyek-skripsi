@@ -16,7 +16,9 @@ const ScoreTable = ({ userList, classCode }) => {
 
 	useEffect(() => {
 		getUsersDetails(userList).then((data) => setUsersData(data));
-		getAnswerKey().then((results) => setAnswerKey(results.answerKey));
+		getAnswerKey("answerList").then((results) =>
+			setAnswerKey(results.answerKey)
+		);
 	}, []);
 
 	useEffect(() => {
@@ -95,7 +97,9 @@ const ScoreTable = ({ userList, classCode }) => {
 									<td rowSpan={3}>No</td>
 									<td rowSpan={3}>Nama</td>
 									<td rowSpan={3}>Skor</td>
-									<td colSpan={getOverallColSpan()}>{"Rekap Jawaban Siswa"}</td>
+									<td colSpan={getOverallColSpan()}>
+										{"Rekap Jawaban Evaluasi Siswa"}
+									</td>
 								</tr>
 
 								{/* display the amount of pages column based on passed data */}

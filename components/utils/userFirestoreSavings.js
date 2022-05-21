@@ -116,17 +116,17 @@ export const deleteAdminDocument = (admin) => {
 	}
 };
 
-export const getAnswerKey = () => {
+export const getAnswerKey = (chapterName) => {
 	return firestore
 		.collection("answerKey")
-		.doc("answerList")
+		.doc(chapterName)
 		.get()
 		.then((result) => result.data());
 };
 
-export const submitAnswerKey = (answerKey) => {
+export const submitAnswerKey = (answerKey, chapterName) => {
 	if (answerKey) {
-		firestore.collection("answerKey").doc("answerList").update({ answerKey });
+		firestore.collection("answerKey").doc(chapterName).set({ answerKey });
 	}
 };
 

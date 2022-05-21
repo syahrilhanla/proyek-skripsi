@@ -19,8 +19,10 @@ const QuizTable = ({ userList, classCode }) => {
 
 	useEffect(() => {
 		getUsersDetails(userList).then((data) => setUsersData(data));
-		getAnswerKey().then((results) => setAnswerKey(results.answerKey));
-	}, []);
+		getAnswerKey(chooseChapter).then((results) =>
+			setAnswerKey(results.answerKey)
+		);
+	}, [chooseChapter]);
 
 	useEffect(() => {
 		if (usersData.length > 0 && answerKey.length > 0) {
