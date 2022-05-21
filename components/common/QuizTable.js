@@ -124,7 +124,9 @@ const QuizTable = ({ userList, classCode }) => {
 									<td rowSpan={3}>No</td>
 									<td rowSpan={3}>Nama</td>
 									<td rowSpan={3}>Skor</td>
-									<td colSpan={getOverallColSpan()}>{"Rekap Jawaban Siswa"}</td>
+									<td colSpan={getOverallColSpan()}>
+										Rekap Jawaban {chapterTitle()}
+									</td>
 								</tr>
 
 								{/* display the amount of pages column based on passed data */}
