@@ -42,6 +42,19 @@ const QuizTable = ({ userList, classCode }) => {
 		}
 	};
 
+	const pickChapterData = (user, chooseChapter) => {
+		switch (chooseChapter) {
+			case "chapter1":
+				return user.analisisQuiz;
+			case "chapter2":
+				return user.pemusatanQuiz;
+			case "chapter3":
+				return user.penyebaranQuiz;
+			default:
+				return user.analisisQuiz;
+		}
+	};
+
 	const AnswerResults = ({ user }) => {
 		console.log({ user });
 		// making default answers array, then push users existing answer to this array
@@ -49,28 +62,16 @@ const QuizTable = ({ userList, classCode }) => {
 			return { number: index, answer: " - ", isTrue: false };
 		});
 
-		const pickChapter = (chooseChapter) => {
-			switch (chooseChapter) {
-				case "chapter1":
-					return user.analisisQuiz;
-				case "chapter2":
-					return user.pemusatanQuiz;
-				case "chapter3":
-					return user.penyebaranQuiz;
-				default:
-					return user.analisisQuiz;
-			}
-		};
-		console.log(pickChapter(chooseChapter));
-
-		if (pickChapter(chooseChapter)) {
-			pickChapter(chooseChapter).quizData.overallAnswers.forEach((answer) => {
-				newAnswers.forEach((item, indexDefault) => {
-					if (item.number === answer.number) {
-						newAnswers[indexDefault] = answer;
-					}
-				});
-			});
+		if (pickChapterData(user, chooseChapter)) {
+			pickChapterData(user, chooseChapter).quizData.overallAnswers.forEach(
+				(answer) => {
+					newAnswers.forEach((item, indexDefault) => {
+						if (item.number === answer.number) {
+							newAnswers[indexDefault] = answer;
+						}
+					});
+				}
+			);
 		}
 
 		return newAnswers.length > 0 ? (
@@ -189,12 +190,16 @@ const QuizTable = ({ userList, classCode }) => {
 													key={keyGenerator(index)}
 													style={{ padding: "0 0.7rem" }}
 												>
-													{user.hasDoneQuiz ? user.score : " - "}
+													{pickChapterData(user, chooseChapter)?.quizData.score
+														? pickChapterData(user, chooseChapter)?.quizData
+																.score
+														: " - "}
 												</td>
 												{/* display users activities detail */}
-												{!user.hasDoneQuiz ? (
+												{!pickChapterData(user, chooseChapter)?.quizData
+													.score ? (
 													<td colSpan={getOverallColSpan()}>
-														Belum Melakukan Evaluasi
+														Belum Mengerjakan Quiz
 													</td>
 												) : (
 													<AnswerResults user={user} />
