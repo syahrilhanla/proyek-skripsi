@@ -49,8 +49,22 @@ const QuizTable = ({ userList, classCode }) => {
 			return { number: index, answer: " - ", isTrue: false };
 		});
 
-		if (user.overallAnswers !== undefined && user.overallAnswers.length > 0) {
-			user.overallAnswers.forEach((answer) => {
+		const pickChapter = (chooseChapter) => {
+			switch (chooseChapter) {
+				case "chapter1":
+					return user.analisisQuiz;
+				case "chapter2":
+					return user.pemusatanQuiz;
+				case "chapter3":
+					return user.penyebaranQuiz;
+				default:
+					return user.analisisQuiz;
+			}
+		};
+		console.log(pickChapter(chooseChapter));
+
+		if (pickChapter(chooseChapter)) {
+			pickChapter(chooseChapter).quizData.overallAnswers.forEach((answer) => {
 				newAnswers.forEach((item, indexDefault) => {
 					if (item.number === answer.number) {
 						newAnswers[indexDefault] = answer;
