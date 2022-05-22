@@ -5,21 +5,24 @@ import {
 } from "@/components/utils/userFirestoreSavings";
 
 import LoadingProgress from "@/components/common/LoadingProgress";
+
 import ReactHTMLTableToExcel from "react-html-table-to-excel";
+import { Button, ButtonGroup } from "@material-ui/core";
 
 import groupTableStyles from "@/styles/GroupTable.module.css";
 
-const ScoreTable = ({ userList, classCode }) => {
+const QuizTable = ({ userList, classCode }) => {
 	const [usersData, setUsersData] = useState([]);
+	const [chooseChapter, setChooseChapter] = useState("chapter1");
 	const [loading, setLoading] = useState(true);
 	const [answerKey, setAnswerKey] = useState([]);
 
 	useEffect(() => {
 		getUsersDetails(userList).then((data) => setUsersData(data));
-		getAnswerKey("answerList").then((results) =>
+		getAnswerKey(chooseChapter).then((results) =>
 			setAnswerKey(results.answerKey)
 		);
-	}, []);
+	}, [chooseChapter]);
 
 	useEffect(() => {
 		if (usersData.length > 0 && answerKey.length > 0) {
@@ -39,6 +42,19 @@ const ScoreTable = ({ userList, classCode }) => {
 		}
 	};
 
+	const pickChapterData = (user, chooseChapter) => {
+		switch (chooseChapter) {
+			case "chapter1":
+				return user.analisisQuiz;
+			case "chapter2":
+				return user.pemusatanQuiz;
+			case "chapter3":
+				return user.penyebaranQuiz;
+			default:
+				return user.analisisQuiz;
+		}
+	};
+
 	const AnswerResults = ({ user }) => {
 		console.log({ user });
 		// making default answers array, then push users existing answer to this array
@@ -46,14 +62,16 @@ const ScoreTable = ({ userList, classCode }) => {
 			return { number: index, answer: " - ", isTrue: false };
 		});
 
-		if (user.overallAnswers !== undefined && user.overallAnswers.length > 0) {
-			user.overallAnswers.forEach((answer) => {
-				newAnswers.forEach((item, indexDefault) => {
-					if (item.number === answer.number) {
-						newAnswers[indexDefault] = answer;
-					}
-				});
-			});
+		if (pickChapterData(user, chooseChapter)) {
+			pickChapterData(user, chooseChapter).quizData.overallAnswers.forEach(
+				(answer) => {
+					newAnswers.forEach((item, indexDefault) => {
+						if (item.number === answer.number) {
+							newAnswers[indexDefault] = answer;
+						}
+					});
+				}
+			);
 		}
 
 		return newAnswers.length > 0 ? (
@@ -75,6 +93,22 @@ const ScoreTable = ({ userList, classCode }) => {
 		// }
 	};
 
+	const ChapterButton = () => (
+		<ButtonGroup variant='contained' aria-label='outlined primary button group'>
+			<Button onClick={() => setChooseChapter("chapter1")}>Kuis 1</Button>
+			<Button onClick={() => setChooseChapter("chapter2")}>Kuis 2</Button>
+			<Button onClick={() => setChooseChapter("chapter3")}>Kuis 3</Button>
+		</ButtonGroup>
+	);
+
+	const chapterTitle = () => {
+		if (chooseChapter === "chapter1") return "Kuis 1: Analisis Data";
+		else if (chooseChapter === "chapter2")
+			return "Kuis 2: Ukuran Pemusatan Data";
+		else if (chooseChapter === "chapter3")
+			return "Kuis 3: Ukuran Penyebaran Data";
+	};
+
 	return (
 		<>
 			<div className={groupTableStyles.motherDiv}>
@@ -82,6 +116,16 @@ const ScoreTable = ({ userList, classCode }) => {
 					<LoadingProgress />
 				) : (
 					<>
+						<div
+							style={{
+								width: "full",
+								display: "flex",
+								justifyItems: "start",
+								margin: "0.8rem 0",
+							}}
+						>
+							<ChapterButton />
+						</div>
 						<ReactHTMLTableToExcel
 							id='test-table-xls-button'
 							className={`download-table-xls-button ${groupTableStyles.excelButton}`}
@@ -98,7 +142,7 @@ const ScoreTable = ({ userList, classCode }) => {
 									<td rowSpan={3}>Nama</td>
 									<td rowSpan={3}>Skor</td>
 									<td colSpan={getOverallColSpan()}>
-										{"Rekap Jawaban Evaluasi Siswa"}
+										Rekap Jawaban {chapterTitle()}
 									</td>
 								</tr>
 
@@ -146,12 +190,16 @@ const ScoreTable = ({ userList, classCode }) => {
 													key={keyGenerator(index)}
 													style={{ padding: "0 0.7rem" }}
 												>
-													{user.hasDoneQuiz ? user.score : " - "}
+													{pickChapterData(user, chooseChapter)?.quizData.score
+														? pickChapterData(user, chooseChapter)?.quizData
+																.score
+														: " - "}
 												</td>
 												{/* display users activities detail */}
-												{!user.hasDoneQuiz ? (
+												{!pickChapterData(user, chooseChapter)?.quizData
+													.score ? (
 													<td colSpan={getOverallColSpan()}>
-														Belum Melakukan Evaluasi
+														Belum Mengerjakan Quiz
 													</td>
 												) : (
 													<AnswerResults user={user} />
@@ -169,4 +217,4 @@ const ScoreTable = ({ userList, classCode }) => {
 	);
 };
 
-export default ScoreTable;
+export default QuizTable;

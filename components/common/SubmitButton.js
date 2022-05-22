@@ -29,7 +29,6 @@ const SubmitButton = ({
 
 	const checkIsFullyAnswered = () => {
 		if (overallAnswers.length === questionAmount) {
-			console.log(overallAnswers.length, questionAmount);
 			return true;
 		} else return false;
 	};

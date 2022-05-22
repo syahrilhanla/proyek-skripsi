@@ -116,17 +116,17 @@ export const deleteAdminDocument = (admin) => {
 	}
 };
 
-export const getAnswerKey = () => {
+export const getAnswerKey = (chapterName) => {
 	return firestore
 		.collection("answerKey")
-		.doc("answerList")
+		.doc(chapterName)
 		.get()
 		.then((result) => result.data());
 };
 
-export const submitAnswerKey = (answerKey) => {
+export const submitAnswerKey = (answerKey, chapterName) => {
 	if (answerKey) {
-		firestore.collection("answerKey").doc("answerList").update({ answerKey });
+		firestore.collection("answerKey").doc(chapterName).set({ answerKey });
 	}
 };
 
@@ -244,6 +244,19 @@ export const submitTestScore = (localUser, score, overallAnswers) => {
 		docRef.doc(localUser).update(userData);
 		docRef.doc(localUser).update({ hasDoneQuiz: true });
 		docRef.doc(localUser).update({ overallAnswers });
+	} else return;
+};
+
+export const submitQuiz = (localUser, score, overallAnswers, chapter) => {
+	if (overallAnswers) {
+		const quizData = { score, chapter, overallAnswers };
+		const chapterName = `${chapter}Quiz`;
+		const chapterQuiz = {
+			chapterName,
+			quizData,
+		};
+
+		docRef.doc(localUser).update({ [`${chapterName}`]: chapterQuiz });
 	} else return;
 };
 

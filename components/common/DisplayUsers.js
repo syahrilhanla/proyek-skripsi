@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button, Switch } from "@material-ui/core";
 import UserCard from "@/components/common/UserCard";
 import ScoreTable from "@/components/common/ScoreTable";
+import QuizTable from "@/components/common/QuizTable";
 import GroupTable from "@/components/common/GroupTable";
 import { ButtonGroup } from "@material-ui/core";
 
@@ -54,6 +55,12 @@ const DisplayUsers = ({
 			<Button
 				onClick={() => setWhichTable(2)}
 				color={whichTable === 2 && "primary"}
+			>
+				Tabel Kuis
+			</Button>
+			<Button
+				onClick={() => setWhichTable(3)}
+				color={whichTable === 3 && "primary"}
 			>
 				Tabel Evaluasi
 			</Button>
@@ -125,6 +132,11 @@ const DisplayUsers = ({
 							<WhichTableButton />
 							{whichTable === 1 ? (
 								<GroupTable
+									userList={userList}
+									classCode={selectedClass.className}
+								/>
+							) : whichTable === 2 ? (
+								<QuizTable
 									userList={userList}
 									classCode={selectedClass.className}
 								/>
